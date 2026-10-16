@@ -1,0 +1,143 @@
+{
+  "profile": {
+    "nameZh": "林楚熙",
+    "nameEn": "Chu-Xi Lin",
+    "title": "Architectural Designer & Spatial Researcher",
+    "tagline": "Exploring the continuum between tectonic structure, natural light, and human habitation.",
+    "email": "contact@chuxilin-studio.com",
+    "location": "Taipei / Tainan, Taiwan",
+    "social": {
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "instagram": "https://instagram.com"
+    }
+  },
+  "categories": [
+    { "id": "all", "name": "All Works", "nameZh": "全部作品" },
+    { "id": "residential", "name": "Residential", "nameZh": "住宅建築" },
+    { "id": "public", "name": "Public & Cultural", "nameZh": "公共與文化" },
+    { "id": "urban", "name": "Urban & Landscape", "nameZh": "都市與景觀" },
+    { "id": "interior", "name": "Interior & Pavilion", "nameZh": "空間裝置" }
+  ],
+  "projects": [
+    {
+      "id": "casa-verdant",
+      "type": "featured",
+      "reverse": false,
+      "title": "Casa Verdant",
+      "subtitle": "Hillside Biophilic Residence",
+      "year": 2024,
+      "category": "residential",
+      "location": "Yangmingshan, Taipei",
+      "area": "420 m²",
+      "summary": "Nestled into the contours of the mountain, Casa Verdant explores the interplay of monolithic exposed concrete and extensive glazed facades, dissolving the boundaries between domestic shelter and forest canopy.",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "details": {
+        "concept": "The design adopts a stepped volume strategy that adheres strictly to the existing natural topography, minimizing cut-and-fill operations. Natural ventilation courtyards act as passive cooling chimneys.",
+        "materials": "Board-formed architectural concrete, reclaimed teak louvers, low-E triple glazing, local volcanic stone.",
+        "awards": "Nominee, Emerging Spatial Design Award 2024"
+      }
+    },
+    {
+      "id": "grid-series-1",
+      "type": "grid",
+      "items": [
+        {
+          "id": "pavilion-sol",
+          "title": "Pavilion of Solitude",
+          "year": 2024,
+          "category": "interior",
+          "location": "Tainan Coast",
+          "summary": "A temporary meditation pavilion constructed with sustainable laminated timber, casting shifting shadows with coastal sunlight.",
+          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "taichung-urban-spine",
+          "title": "Linear Green Spine",
+          "year": 2023,
+          "category": "urban",
+          "location": "Taichung City",
+          "summary": "Revitalizing redundant railway corridors into a pedestrian-first biophilic urban greenway.",
+          "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "atelier-monolith",
+          "title": "Atelier Monolith",
+          "year": 2023,
+          "category": "interior",
+          "location": "Da'an, Taipei",
+          "summary": "Adaptive reuse of a 1970s print workshop into a minimalist ceramic artist studio and exhibition gallery.",
+          "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      "id": "waterfront-archive",
+      "type": "featured",
+      "reverse": true,
+      "title": "Harbor Archive & Cultural Hub",
+      "subtitle": "Civic Memory & Marine Research Facility",
+      "year": 2023,
+      "category": "public",
+      "location": "Keelung Harbor",
+      "area": "3,800 m²",
+      "summary": "Conceived as an extension of the tidal maritime landscape, the building acts as a public terrace framing harbor vistas while housing archives of regional maritime heritage and marine biodiversity research labs.",
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+      "details": {
+        "concept": "A dual-cantilever structure mimics the heavy cranes of the historic dockyards, lifting exhibition galleries above ground level to create a 24-hour open civic plaza beneath.",
+        "materials": "Weathering steel panels, seawater-resistant marine aluminum, translucent structural U-glass.",
+        "awards": "Finalist, International Waterfront Academic Competition"
+      }
+    },
+    {
+      "id": "grid-series-2",
+      "type": "grid",
+      "items": [
+        {
+          "id": "bamboo-canopy",
+          "title": "Parametric Bamboo Canopy",
+          "year": 2022,
+          "category": "public",
+          "location": "Nantou",
+          "summary": "Computational weave morphology combining traditional Taiwanese moso bamboo bending with CNC-milled steel joint nodes.",
+          "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "courtyard-house-vii",
+          "title": "Courtyard Residence VII",
+          "year": 2022,
+          "category": "residential",
+          "location": "Hsinchu Hills",
+          "summary": "Three micro-courtyards orchestrating microclimatic thermal drafts and serene garden views from every room.",
+          "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "tea-house-echo",
+          "title": "Echo Tea Pavilion",
+          "year": 2021,
+          "category": "interior",
+          "location": "Alishan, Chiayi",
+          "summary": "A cliffside tearoom cantilevered over misty valleys, framing seasonal fog and cypress forestry.",
+          "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      "id": "the-fold-library",
+      "type": "featured",
+      "reverse": false,
+      "title": "The Fold: Community Library",
+      "subtitle": "Topographical Learning Commons",
+      "year": 2022,
+      "category": "public",
+      "location": "Yilan Plain",
+      "area": "1,650 m²",
+      "summary": "The green roof folds upward from the rice paddies, forming an accessible landscaped park above and continuous, gently ramping reading terraces beneath.",
+      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "details": {
+        "concept": "Subverting the monumentalism of traditional civic libraries into a humble, topography-integrated shelter that harmonizes with Yilan's rainy climate.",
+        "materials": "Locally quarried schist stone, green sedum roof, laminated spruce glue-lam arches."
+      }
+    }
+  ]
+}

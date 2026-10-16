@@ -1,0 +1,56 @@
+{
+  "profile": {
+    "nameZh": "林楚熙",
+    "nameEn": "Chu-Xi Lin",
+    "role": "Architectural Designer & Spatial Researcher",
+    "location": "Taipei & Tainan, Taiwan",
+    "statementEn": "My practice operates at the intersection of tectonic clarity, vernacular material intelligence, and climate-adaptive spatial systems. Grounded in computational design and physical prototyping, I explore how contemporary architecture can cultivate meaningful ecological dialogues between built form and territorial landscapes.",
+    "statementZh": "實踐專注於構造清晰性、在地風土材料智慧與氣候自適應空間系統的交會點。立足於數位運算設計與實體原型製作，探索當代建築如何構建人造物與自然地景間深沉的生態對話。"
+  },
+  "education": [
+    {
+      "period": "2020 – 2025",
+      "degree": "Bachelor of Architecture (B.Arch)",
+      "institution": "National Cheng Kung University (NCKU) / Department of Architecture",
+      "notes": "Graduation Design Thesis: 'Topographical Thresholds: Post-Industrial Coastal Hydrology & Civic Pavilions'"
+    },
+    {
+      "period": "2023 – 2024",
+      "degree": "International Exchange Program in Sustainable Urbanism",
+      "institution": "Technical University of Munich (TUM), Germany",
+      "notes": "Focus on timber tectonics, passive building envelopes, and circular construction."
+    }
+  ],
+  "experience": [
+    {
+      "period": "2024 – Present",
+      "role": "Junior Architectural Designer & Computational Lead",
+      "organization": "Morpho-Tectonic Atelier, Taipei",
+      "responsibilities": [
+        "Led parametric modeling and daylighting simulations for a 4,000 m² cultural center competition in northern Taiwan.",
+        "Coordinated with structural and MEP engineering consultants on timber-concrete composite detailing.",
+        "Created physical 1:20 tectonic joinery models and client visualization decks."
+      ]
+    },
+    {
+      "period": "2023",
+      "role": "Architectural Intern",
+      "organization": "Atelier Landscape & Craft, Tainan",
+      "responsibilities": [
+        "Participated in historic masonry documentation and adaptive reuse site analysis.",
+        "Assisted in fabrication drawings and 1:1 scale bamboo bending prototypes for rural community art festival."
+      ]
+    }
+  ],
+  "skills": {
+    "spatialComputation": ["Rhino 3D", "Grasshopper (Parametric Modeling)", "AutoCAD", "Revit BIM", "Enscape / V-Ray"],
+    "fabricationPhysical": ["Laser Cutting", "CNC Milling", "3D Printing (SLA/FDM)", "Woodworking & Joinery", "Concrete Casting"],
+    "environmentalSimulation": ["Ladybug & Honeybee (Solar / Radiation)", "Climate Studio", "Daylight Optimization"],
+    "digitalWeb": ["HTML5 / CSS3", "JavaScript (ES6+)", "Git / GitHub Version Control", "Data-driven UI/UX"]
+  },
+  "honors": [
+    { "year": "2024", "title": "First Prize, Emerging Bamboo Architecture Design Competition" },
+    { "year": "2023", "title": "Dean's Honor List for Outstanding Academic & Studio Performance" },
+    { "year": "2022", "title": "Finalist, International Student Waterfront Architectural Workshop" }
+  ]
+}
