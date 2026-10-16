@@ -1,56 +1,104 @@
 {
   "profile": {
-    "nameZh": "林楚熙",
-    "nameEn": "Chu-Xi Lin",
-    "role": "Architectural Designer & Spatial Researcher",
-    "location": "Taipei & Tainan, Taiwan",
-    "statementEn": "My practice operates at the intersection of tectonic clarity, vernacular material intelligence, and climate-adaptive spatial systems. Grounded in computational design and physical prototyping, I explore how contemporary architecture can cultivate meaningful ecological dialogues between built form and territorial landscapes.",
-    "statementZh": "實踐專注於構造清晰性、在地風土材料智慧與氣候自適應空間系統的交會點。立足於數位運算設計與實體原型製作，探索當代建築如何構建人造物與自然地景間深沉的生態對話。"
+    "nameZh": "曹楚献",
+    "nameEn": "Chu-Shian Tsau",
+    "role": "Computational Building Designer & BIM Engineering Specialist",
+    "location": "Taipei, Taiwan",
+    "statementEn": "Graduate researcher and computational building designer with cross-disciplinary expertise in spatial geometry and environmental engineering. Experienced in developing automated BIM-to-BEM pipelines with Revit API, executing early-stage microclimate simulations via Autodesk Forma, and implementing NSGA-II multi-objective genetic algorithms for daylight-energy optimization.",
+    "statementZh": "國立臺灣科技大學建築研究所研究生，專注於運算化建築科學（Computational Building Science）、BIM-to-BEM 互通性與多目標遺傳演算法能耗優化。具備豐富的 Revit API 自動化腳本編寫、Autodesk Forma 早期微氣候模擬及跨專業碰撞檢討實務經驗，致力於將數位分身（Digital Twin）與環境工程深度整合於永續建築中。"
   },
   "education": [
     {
-      "period": "2020 – 2025",
-      "degree": "Bachelor of Architecture (B.Arch)",
-      "institution": "National Cheng Kung University (NCKU) / Department of Architecture",
-      "notes": "Graduation Design Thesis: 'Topographical Thresholds: Post-Industrial Coastal Hydrology & Civic Pavilions'"
+      "period": "Sep. 2026 – Present",
+      "degree": "M.S. in Architecture",
+      "institution": "National Taiwan University of Science and Technology (NTUST)",
+      "notes": "Research Specialization: Computational Building Science, BIM-to-BEM Interoperability & Multi-Objective Genetic Optimization."
     },
     {
-      "period": "2023 – 2024",
-      "degree": "International Exchange Program in Sustainable Urbanism",
-      "institution": "Technical University of Munich (TUM), Germany",
-      "notes": "Focus on timber tectonics, passive building envelopes, and circular construction."
+      "period": "Sep. 2024 – Feb. 2025",
+      "degree": "Visiting Study — European Low-Carbon Architecture & Parametric Modeling",
+      "institution": "Munich University of Applied Sciences (Hochschule München / HM), Germany",
+      "notes": "Completed advanced coursework in computational fabrication, low-carbon lifecycle assessments, and sustainable envelope systems."
+    },
+    {
+      "period": "Sep. 2021 – Jun. 2025",
+      "degree": "B.S. in Architecture",
+      "institution": "National Taiwan University of Science and Technology (NTUST)",
+      "notes": "Focused on Architectural Design, Building Information Modeling (BIM), and Digital Design Methodologies."
+    },
+    {
+      "period": "Sep. 2018 – Jun. 2021",
+      "degree": "Architecture Program",
+      "institution": "Taipei Municipal Da'an Vocational High School (大安高工)",
+      "notes": "Graduated Ranked #1 in Class across 5 semesters; recipient of the prestigious Taipei City Mayor's Award (臺北市市長獎)."
     }
   ],
   "experience": [
     {
-      "period": "2024 – Present",
-      "role": "Junior Architectural Designer & Computational Lead",
-      "organization": "Morpho-Tectonic Atelier, Taipei",
+      "period": "Jun. 2024 – Feb. 2026",
+      "role": "BIM & Computational Design Intern",
+      "organization": "Taipei International Architecture Firm",
       "responsibilities": [
-        "Led parametric modeling and daylighting simulations for a 4,000 m² cultural center competition in northern Taiwan.",
-        "Coordinated with structural and MEP engineering consultants on timber-concrete composite detailing.",
-        "Created physical 1:20 tectonic joinery models and client visualization decks."
+        "Autodesk Forma & Revit Workflow: Integrated cloud-based microclimate analysis in early design, evaluating wind patterns, solar radiation, and pedestrian comfort to reduce peak HVAC cooling loads by 12%.",
+        "Automation Scripting: Built custom Revit API scripts to automate spatial boundary extraction and thermal zone cleanup, slashing model preparation time for energy simulation by 60%.",
+        "Clash Detection & Federation: Executed multidisciplinary clash detection across architectural, structural, and MEP models, resolving over 120 critical spatial conflicts before construction documentation."
       ]
     },
     {
-      "period": "2023",
-      "role": "Architectural Intern",
-      "organization": "Atelier Landscape & Craft, Tainan",
+      "period": "May 2025",
+      "role": "Solo Graduation Exhibition Curator",
+      "organization": "Songshan Cultural and Creative Park (松菸)",
       "responsibilities": [
-        "Participated in historic masonry documentation and adaptive reuse site analysis.",
-        "Assisted in fabrication drawings and 1:1 scale bamboo bending prototypes for rural community art festival."
+        "Project Management & Execution: Independently planned, designed, and curated a solo architectural exhibition featuring parametric digital fabrication models, attracting 500+ attendees and industry professionals."
+      ]
+    },
+    {
+      "period": "Sep. 2022 – Jun. 2024",
+      "role": "Core Fabrication Specialist",
+      "organization": "NTUST Digital Fabrication Laboratory (TTDA)",
+      "responsibilities": [
+        "Digital Prototyping & Mentorship: Operated precision laser cutters, CNC mills, and multi-material 3D printers; instructed 80+ architecture cohorts in digital fabrication, geometric tessellation, and physical prototyping."
       ]
     }
   ],
   "skills": {
-    "spatialComputation": ["Rhino 3D", "Grasshopper (Parametric Modeling)", "AutoCAD", "Revit BIM", "Enscape / V-Ray"],
-    "fabricationPhysical": ["Laser Cutting", "CNC Milling", "3D Printing (SLA/FDM)", "Woodworking & Joinery", "Concrete Casting"],
-    "environmentalSimulation": ["Ladybug & Honeybee (Solar / Radiation)", "Climate Studio", "Daylight Optimization"],
-    "digitalWeb": ["HTML5 / CSS3", "JavaScript (ES6+)", "Git / GitHub Version Control", "Data-driven UI/UX"]
+    "bimComputation": [
+      "Autodesk Revit (ACU Certified)",
+      "Revit API (Python Automation)",
+      "Autodesk Forma",
+      "Rhino / Grasshopper",
+      "AutoCAD",
+      "Twinmotion",
+      "SketchUp"
+    ],
+    "environmentalSimulation": [
+      "EnergyPlus Calibration",
+      "NSGA-II Genetic Algorithm",
+      "Daylighting (sDA / ASE)",
+      "BIM-to-BEM gbXML Validation",
+      "LEED EAc2 & Taiwan BERS",
+      "DOE Asset Score Benchmarking"
+    ],
+    "fabricationTools": [
+      "Precision Laser Cutting",
+      "CNC Milling & Toolpathing",
+      "Multi-material 3D Printing (FDM/SLA)",
+      "Geometric Tessellation",
+      "Physical Joinery Prototyping"
+    ],
+    "certificationsLanguages": [
+      "Autodesk Revit Architecture Certified User (ACU)",
+      "Class-B Surveying Technician (乙級測量技術士)",
+      "Class-C Architectural Drafting Technician (丙級建築製圖技術士)",
+      "Class-C Concrete Technology (丙級混凝土技術士)",
+      "English: IELTS Band 5.5 (Listening 6.5 - Professional Working Proficiency)",
+      "Mandarin: Native",
+      "German: Basic"
+    ]
   },
   "honors": [
-    { "year": "2024", "title": "First Prize, Emerging Bamboo Architecture Design Competition" },
-    { "year": "2023", "title": "Dean's Honor List for Outstanding Academic & Studio Performance" },
-    { "year": "2022", "title": "Finalist, International Student Waterfront Architectural Workshop" }
+    { "year": "2021", "title": "Taipei City Mayor's Award (臺北市市長獎) — Ranked #1 in Class across 5 semesters at Da'an" },
+    { "year": "2025", "title": "Solo Exhibition Curation at Songshan Cultural and Creative Park (500+ Attendees)" },
+    { "year": "2024", "title": "Recipient, Visiting Study Grant for Hochschule München (HM), Germany" }
   ]
 }

@@ -1,4 +1,4 @@
-# Chu-Xi Lin (林楚熙) — Architecture & Spatial Portfolio
+# Chu-Shian Tsau (曹楚献) — Computational Building Design & BIM Portfolio
 
 A bespoke, minimal, and data-driven personal architectural portfolio website designed and developed with AI assistance. Built to demonstrate sustainable web architecture, content-presentation decoupling, and version-controlled iterative design.
 
@@ -9,7 +9,7 @@ A bespoke, minimal, and data-driven personal architectural portfolio website des
 
 ## 1. Project Overview & Design Concept
 
-This portfolio is tailored specifically for an architectural designer and spatial researcher. It translates the spatial ethos of architectural tectonics—rhythm, light, order, and materiality—into a digital editorial layout.
+This portfolio is tailored specifically for **Chu-Shian Tsau (曹楚献)**, a graduate researcher and computational building designer specializing in BIM-to-BEM interoperability, early microclimate analysis (Autodesk Forma), and multi-objective genetic optimization (NSGA-II).
 
 ### Visual Precedents & Aesthetic Direction
 - **Typography:** Harmonious pairing of *Playfair Display* (editorial serif for project titles), *Cinzel* (classical inscription style for brand monogram), and *Inter* (clean sans-serif for architectural specs and metadata).

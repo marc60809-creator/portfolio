@@ -5,14 +5,14 @@ This document provides a complete English outline and script suggestions for you
 ---
 
 ## Slide 1: Title & Overview
-- **Project Title:** Chu-Xi Lin (林楚熙) — Architecture & Spatial Portfolio
+- **Project Title:** Chu-Shian Tsau (曹楚献) — Computational Building Design & BIM Engineering Portfolio
 - **Subtitle:** An AI-Assisted, Decoupled, Bespoke Web Architecture
-- **Student Name:** Chu-Xi Lin (林楚熙)
+- **Student Name:** Chu-Shian Tsau (曹楚献)
 - **Live URL:** `https://<your-username>.github.io/<repo-name>/`
 - **GitHub Repo:** `https://github.com/<your-username>/<repo-name>`
 
 > **Talking Point:**
-> *"Good morning/afternoon everyone. Today I am presenting my bespoke personal portfolio and CV website. Rather than relying on rigid templates or manually authoring static HTML, this project explores an AI-assisted development workflow focused on content-presentation separation, rigorous editorial typography, and sustainable post-course maintenance."*
+> *"Good morning/afternoon everyone. Today I am presenting my bespoke personal portfolio and CV website. Rather than relying on rigid templates or manually authoring static HTML, this project explores an AI-assisted development workflow focused on content-presentation separation, rigorous editorial typography, and sustainable post-course maintenance tailored to computational building science."*
 
 ---
 

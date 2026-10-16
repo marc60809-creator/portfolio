@@ -35,11 +35,11 @@ function renderCV(data) {
       <div class="cv-role">${profile.role} • ${profile.location}</div>
       <div class="cv-bio-block">
         <div>
-          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ Architectural Statement ]</p>
+          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ Professional Summary ]</p>
           <p>${profile.statementEn}</p>
         </div>
         <div>
-          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ 空間實踐自述 ]</p>
+          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ 專業實踐與研究自述 ]</p>
           <p>${profile.statementZh}</p>
         </div>
       </div>
@@ -47,7 +47,7 @@ function renderCV(data) {
 
     <!-- Experience -->
     <section class="cv-section">
-      <div class="cv-section-title">01 / Practice & Experience</div>
+      <div class="cv-section-title">01 / Professional & Engineering Practice</div>
       <div class="cv-list">
         ${experience.map(exp => `
           <div class="cv-entry">
@@ -66,7 +66,7 @@ function renderCV(data) {
 
     <!-- Education -->
     <section class="cv-section">
-      <div class="cv-section-title">02 / Academic Background</div>
+      <div class="cv-section-title">02 / Education & Academic Background</div>
       <div class="cv-list">
         ${education.map(edu => `
           <div class="cv-entry">
@@ -83,33 +83,33 @@ function renderCV(data) {
 
     <!-- Skills & Tools -->
     <section class="cv-section">
-      <div class="cv-section-title">03 / Technical Competencies</div>
+      <div class="cv-section-title">03 / Technical Skills & Certifications</div>
       <div class="skills-grid">
         <div class="skill-category">
-          <h4>Spatial & Parametric Computation</h4>
+          <h4>BIM, Forma & Computational Design</h4>
           <div class="skill-pills">
-            ${skills.spatialComputation.map(s => `<span class="skill-pill">${s}</span>`).join('')}
+            ${skills.bimComputation.map(s => `<span class="skill-pill">${s}</span>`).join('')}
           </div>
         </div>
 
         <div class="skill-category">
-          <h4>Material Fabrication & Prototyping</h4>
-          <div class="skill-pills">
-            ${skills.fabricationPhysical.map(s => `<span class="skill-pill">${s}</span>`).join('')}
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h4>Environmental & Climatic Analysis</h4>
+          <h4>Environmental Simulation & Optimization</h4>
           <div class="skill-pills">
             ${skills.environmentalSimulation.map(s => `<span class="skill-pill">${s}</span>`).join('')}
           </div>
         </div>
 
         <div class="skill-category">
-          <h4>Digital & Web Technologies</h4>
+          <h4>Digital Fabrication & Prototyping</h4>
           <div class="skill-pills">
-            ${skills.digitalWeb.map(s => `<span class="skill-pill">${s}</span>`).join('')}
+            ${skills.fabricationTools.map(s => `<span class="skill-pill">${s}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Licenses, Credentials & Languages</h4>
+          <div class="skill-pills">
+            ${skills.certificationsLanguages.map(s => `<span class="skill-pill">${s}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ function renderCV(data) {
 
     <!-- Honors & Awards -->
     <section class="cv-section" style="border-bottom:none;">
-      <div class="cv-section-title">04 / Honors & Research</div>
+      <div class="cv-section-title">04 / Honors & Leadership</div>
       <div class="cv-list">
         ${honors.map(h => `
           <div class="cv-entry-head" style="margin-bottom:12px;">

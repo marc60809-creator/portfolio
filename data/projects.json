@@ -1,41 +1,40 @@
 {
   "profile": {
-    "nameZh": "林楚熙",
-    "nameEn": "Chu-Xi Lin",
-    "title": "Architectural Designer & Spatial Researcher",
-    "tagline": "Exploring the continuum between tectonic structure, natural light, and human habitation.",
-    "email": "contact@chuxilin-studio.com",
-    "location": "Taipei / Tainan, Taiwan",
+    "nameZh": "曹楚献",
+    "nameEn": "Chu-Shian Tsau",
+    "title": "Computational Building Designer & BIM Engineering Specialist",
+    "tagline": "Integrating parametric geometry, automated BIM-to-BEM interoperability pipelines, and multi-objective environmental optimization for high-performance sustainable architecture.",
+    "email": "marc60809@gmail.com",
+    "location": "Taipei, Taiwan",
     "social": {
       "github": "https://github.com",
-      "linkedin": "https://linkedin.com",
-      "instagram": "https://instagram.com"
+      "linkedin": "https://linkedin.com"
     }
   },
   "categories": [
-    { "id": "all", "name": "All Works", "nameZh": "全部作品" },
-    { "id": "residential", "name": "Residential", "nameZh": "住宅建築" },
-    { "id": "public", "name": "Public & Cultural", "nameZh": "公共與文化" },
-    { "id": "urban", "name": "Urban & Landscape", "nameZh": "都市與景觀" },
-    { "id": "interior", "name": "Interior & Pavilion", "nameZh": "空間裝置" }
+    { "id": "all", "name": "All Works", "nameZh": "全部研究與專案" },
+    { "id": "computational", "name": "BIM & Computational Science", "nameZh": "BIM運算與建築科學" },
+    { "id": "environmental", "name": "Environmental Simulation", "nameZh": "微氣候與能耗模擬" },
+    { "id": "fabrication", "name": "Digital Fabrication", "nameZh": "數位構築與策展" },
+    { "id": "architectural", "name": "Architectural Design", "nameZh": "建築空間設計" }
   ],
   "projects": [
     {
-      "id": "casa-verdant",
+      "id": "bim-bem-interoperability",
       "type": "featured",
       "reverse": false,
-      "title": "Casa Verdant",
-      "subtitle": "Hillside Biophilic Residence",
-      "year": 2024,
-      "category": "residential",
-      "location": "Yangmingshan, Taipei",
-      "area": "420 m²",
-      "summary": "Nestled into the contours of the mountain, Casa Verdant explores the interplay of monolithic exposed concrete and extensive glazed facades, dissolving the boundaries between domestic shelter and forest canopy.",
-      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+      "title": "BIM-to-BEM Interoperability & EnergyPlus Calibration",
+      "subtitle": "Automated gbXML Thermal Validation Pipeline & Optimization",
+      "year": 2025,
+      "category": "computational",
+      "location": "NTUST Research Lab, Taipei",
+      "area": "Multi-Zone Facility",
+      "summary": "Graduate research resolving geometric distortion and thermal zoning disconnects between Autodesk Revit and EnergyPlus. Implemented an automated gbXML validation workflow slashing topological error to below 5%, coupled with NSGA-II genetic algorithms to balance sDA/ASE daylighting against cooling energy.",
+      "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
       "details": {
-        "concept": "The design adopts a stepped volume strategy that adheres strictly to the existing natural topography, minimizing cut-and-fill operations. Natural ventilation courtyards act as passive cooling chimneys.",
-        "materials": "Board-formed architectural concrete, reclaimed teak louvers, low-E triple glazing, local volcanic stone.",
-        "awards": "Nominee, Emerging Spatial Design Award 2024"
+        "concept": "Bridging architectural BIM and thermal simulation (BEM). By scripting automated Revit API analytical space boundaries, the framework resolves non-manifold surface geometry prior to EnergyPlus simulation.",
+        "materials": "Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Optimization.",
+        "awards": "15%–25% Simulated Building Energy Savings | Benchmarked to LEED EAc2 & Taiwan BERS"
       }
     },
     {
@@ -43,50 +42,50 @@
       "type": "grid",
       "items": [
         {
-          "id": "pavilion-sol",
-          "title": "Pavilion of Solitude",
+          "id": "forma-microclimate",
+          "title": "Microclimate & Wind Comfort Analysis",
           "year": 2024,
-          "category": "interior",
-          "location": "Tainan Coast",
-          "summary": "A temporary meditation pavilion constructed with sustainable laminated timber, casting shifting shadows with coastal sunlight.",
-          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+          "category": "environmental",
+          "location": "Taipei International Firm",
+          "summary": "Early-stage environmental simulation using Autodesk Forma to evaluate pedestrian wind comfort and solar radiation, reducing peak cooling loads by 12%.",
+          "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
         },
         {
-          "id": "taichung-urban-spine",
-          "title": "Linear Green Spine",
-          "year": 2023,
-          "category": "urban",
-          "location": "Taichung City",
-          "summary": "Revitalizing redundant railway corridors into a pedestrian-first biophilic urban greenway.",
-          "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+          "id": "clash-federation",
+          "title": "Multidisciplinary BIM Federation",
+          "year": 2024,
+          "category": "computational",
+          "location": "Taipei Commercial Project",
+          "summary": "Federated architectural, structural, and MEP models, resolving over 120 critical spatial conflicts prior to construction documentation.",
+          "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=800&q=80"
         },
         {
-          "id": "atelier-monolith",
-          "title": "Atelier Monolith",
-          "year": 2023,
-          "category": "interior",
-          "location": "Da'an, Taipei",
-          "summary": "Adaptive reuse of a 1970s print workshop into a minimalist ceramic artist studio and exhibition gallery.",
-          "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+          "id": "revit-automation",
+          "title": "Revit API Boundary Automation",
+          "year": 2024,
+          "category": "computational",
+          "location": "Engineering Toolchain",
+          "summary": "Custom Python scripts extracting thermal boundaries and automating space cleanup, reducing model prep time by 60%.",
+          "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
         }
       ]
     },
     {
-      "id": "waterfront-archive",
+      "id": "songshan-curation",
       "type": "featured",
       "reverse": true,
-      "title": "Harbor Archive & Cultural Hub",
-      "subtitle": "Civic Memory & Marine Research Facility",
-      "year": 2023,
-      "category": "public",
-      "location": "Keelung Harbor",
-      "area": "3,800 m²",
-      "summary": "Conceived as an extension of the tidal maritime landscape, the building acts as a public terrace framing harbor vistas while housing archives of regional maritime heritage and marine biodiversity research labs.",
-      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
+      "title": "Songshan Solo Architectural Graduation Exhibition",
+      "subtitle": "Curator & Digital Fabrication Lead at Songshan Cultural Park",
+      "year": 2025,
+      "category": "fabrication",
+      "location": "Songshan Cultural and Creative Park (松菸), Taipei",
+      "area": "180 m² Exhibition",
+      "summary": "Independently planned, designed, and curated a solo architectural graduation exhibition showcasing parametric digital fabrication models, CNC-milled spatial assemblies, and environmental design methodologies to over 500 visitors and industry experts.",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
       "details": {
-        "concept": "A dual-cantilever structure mimics the heavy cranes of the historic dockyards, lifting exhibition galleries above ground level to create a 24-hour open civic plaza beneath.",
-        "materials": "Weathering steel panels, seawater-resistant marine aluminum, translucent structural U-glass.",
-        "awards": "Finalist, International Waterfront Academic Competition"
+        "concept": "Exhibiting the dialogue between digital computational algorithms and physical joinery tectonics across complex spatial geometry.",
+        "materials": "Laser-cut acrylic, 5-axis CNC-milled acoustic panels, 3D printed PLA spatial tessellations.",
+        "awards": "Attracted 500+ attendees and architectural industry professionals"
       }
     },
     {
@@ -94,50 +93,33 @@
       "type": "grid",
       "items": [
         {
-          "id": "bamboo-canopy",
-          "title": "Parametric Bamboo Canopy",
-          "year": 2022,
-          "category": "public",
-          "location": "Nantou",
-          "summary": "Computational weave morphology combining traditional Taiwanese moso bamboo bending with CNC-milled steel joint nodes.",
-          "image": "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=800&q=80"
+          "id": "munich-exchange",
+          "title": "Low-Carbon Munich Tectonic Studies",
+          "year": 2025,
+          "category": "architectural",
+          "location": "Hochschule München (HM), Germany",
+          "summary": "Parametric modeling and carbon accounting coursework focusing on European high-performance timber facades.",
+          "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
         },
         {
-          "id": "courtyard-house-vii",
-          "title": "Courtyard Residence VII",
-          "year": 2022,
-          "category": "residential",
-          "location": "Hsinchu Hills",
-          "summary": "Three micro-courtyards orchestrating microclimatic thermal drafts and serene garden views from every room.",
-          "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+          "id": "ttda-fabrication",
+          "title": "NTUST Digital Fabrication Lab (TTDA)",
+          "year": 2024,
+          "category": "fabrication",
+          "location": "NTUST, Taipei",
+          "summary": "Supervised multi-material 3D printing and CNC milling while mentoring 80+ architecture students in physical prototyping.",
+          "image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
         },
         {
-          "id": "tea-house-echo",
-          "title": "Echo Tea Pavilion",
+          "id": "daan-excellence",
+          "title": "Precision Architectural Drafting Series",
           "year": 2021,
-          "category": "interior",
-          "location": "Alishan, Chiayi",
-          "summary": "A cliffside tearoom cantilevered over misty valleys, framing seasonal fog and cypress forestry.",
-          "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+          "category": "architectural",
+          "location": "Taipei Municipal Da'an",
+          "summary": "Class-C Architectural Drafting & Class-B Surveying technical study, recognized with the Taipei City Mayor's Award.",
+          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
         }
       ]
-    },
-    {
-      "id": "the-fold-library",
-      "type": "featured",
-      "reverse": false,
-      "title": "The Fold: Community Library",
-      "subtitle": "Topographical Learning Commons",
-      "year": 2022,
-      "category": "public",
-      "location": "Yilan Plain",
-      "area": "1,650 m²",
-      "summary": "The green roof folds upward from the rice paddies, forming an accessible landscaped park above and continuous, gently ramping reading terraces beneath.",
-      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-      "details": {
-        "concept": "Subverting the monumentalism of traditional civic libraries into a humble, topography-integrated shelter that harmonizes with Yilan's rainy climate.",
-        "materials": "Locally quarried schist stone, green sedum roof, laminated spruce glue-lam arches."
-      }
     }
   ]
 }
