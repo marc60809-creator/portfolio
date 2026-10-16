@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & CV | Chu-Xi Lin 林楚熙</title>
+  <meta name="description" content="Biography, academic curriculum vitae, technical capabilities, and honors of Chu-Xi Lin 林楚熙." />
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Global Navigation -->
+    <header>
+      <nav class="nav-left">
+        <a href="index.html" class="nav-link">Works / 專案</a>
+        <a href="about.html" class="nav-link active">About & CV / 關於</a>
+      </nav>
+
+      <a href="index.html" class="site-brand">
+        <span class="brand-monogram">CXL</span>
+        <span class="brand-divider"></span>
+        <span class="brand-names">
+          <span>Chu-Xi Lin</span>
+          <span class="name-zh">林楚熙</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <span class="lang-toggle">EN / 繁中</span>
+      </div>
+    </header>
+
+    <!-- Main Dynamic CV Content (populated from data/cv.json) -->
+    <main class="cv-container" id="cvContent">
+      <!-- Generated via js/cv.js -->
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="footer-left">
+        <strong>Chu-Xi Lin 林楚熙</strong> — Architecture & Spatial Research<br />
+        Bespoke Portfolio • Designed & Maintained via JSON Content Separation
+      </div>
+      <div>
+        <a href="#" class="footer-back-top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to Top &uarr;</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="about.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dynamic CV JS Engine -->
+  <script src="./js/cv.js"></script>
+</body>
+</html>
