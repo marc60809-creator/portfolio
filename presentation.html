@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midterm Presentation: AI-Assisted Bespoke Architecture Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --card-bg: #15181e;
+      --card-border: #262b35;
+      --text-main: #f0f2f5;
+      --text-muted: #9aa0ac;
+      --text-dim: #606877;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --gold: #d4af37;
+      --green: #10b981;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --slide-width: 1200px;
+      --slide-height: 675px; /* 16:9 ratio */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px 80px;
+    }
+
+    /* Presentation Header Toolbar */
+    .top-toolbar {
+      width: 100%;
+      max-width: var(--slide-width);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(21, 24, 30, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+    }
+
+    .toolbar-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      background: #202530;
+      color: var(--text-main);
+      border: 1px solid #323947;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Slide Deck Container */
+    .slides-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+      max-width: var(--slide-width);
+    }
+
+    /* Individual Slide */
+    .slide-wrapper {
+      position: relative;
+    }
+
+    .slide-label {
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 2px 10px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .slide {
+      width: 100%;
+      height: var(--slide-height);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 56px 64px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-header {
+      margin-bottom: 24px;
+    }
+
+    .slide-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-light);
+      margin-bottom: 6px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .slide-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #fff;
+    }
+
+    .slide-title span {
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 300;
+      margin-left: 10px;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--card-border);
+      padding-top: 16px;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* Script Callout Box */
+    .script-box {
+      margin-top: 12px;
+      background: #111419;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 20px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #d1d5db;
+    }
+
+    .script-box strong {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Grid & Layout Components for Slides */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #1b1f27;
+      border: 1px solid #2d3442;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-card p, .feature-card li {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .feature-card ul {
+      margin-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* Workflow Diagram Box */
+    .flow-diagram {
+      background: #0f1217;
+      border: 1px solid #262c38;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 16px 0;
+    }
+
+    .flow-step {
+      text-align: center;
+      padding: 12px 18px;
+      background: #1c212c;
+      border-radius: 6px;
+      border: 1px solid #343d4f;
+    }
+
+    .flow-step .step-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+
+    .flow-step .step-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .flow-arrow {
+      color: var(--text-dim);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Code block */
+    pre {
+      background: #0a0c0f;
+      border: 1px solid #232833;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    /* Title Slide Specifics */
+    .slide-title-hero {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title-monogram {
+      font-family: 'Cinzel', serif;
+      font-size: 54px;
+      letter-spacing: 8px;
+      color: #fff;
+      margin-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .main-hero-title {
+      font-family: var(--font-serif);
+      font-size: 44px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--accent-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero-meta-grid {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .slide-wrapper {
+        page-break-after: always;
+        break-after: page;
+        margin-bottom: 0;
+      }
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: #fff;
+        color: #111;
+        padding: 40px;
+      }
+      .slide-title, .feature-card h3, .main-hero-title, .title-monogram {
+        color: #000;
+      }
+      .feature-card, .flow-step {
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+      }
+      .script-box {
+        background: #f9f9f9;
+        border-left: 3px solid #666;
+        color: #333;
+      }
+      .script-box strong {
+        color: #111;
+      }
+      .flow-diagram {
+        background: #fafafa;
+        border: 1px solid #eee;
+      }
+      pre {
+        background: #f5f5f5;
+        color: #222;
+        border-color: #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Toolbar -->
+  <header class="top-toolbar">
+    <div class="toolbar-title">
+      Midterm Presentation Deck • Chu-Shian Tsau (曹楚献)
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn btn-primary" onclick="window.print()">
+        🖨️ 列印 / 另存為 PDF
+      </button>
+      <button class="btn" onclick="toggleScriptBox()">
+        💬 切換演講稿顯示 (Toggle Script)
+      </button>
+      <a href="./index.html" class="btn" target="_blank">
+        🌐 預覽作品集網站
+      </a>
+    </div>
+  </header>
+
+  <!-- Presentation Slides -->
+  <main class="slides-deck">
+
+    <!-- SLIDE 1: Title -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 01</span>
+      <section class="slide slide-title-hero">
+        <div class="title-monogram">CST</div>
+        <h1 class="main-hero-title">AI-Assisted Bespoke Architecture Portfolio</h1>
+        <p class="hero-subtitle">Decoupled Web Architecture & Computational Building Science</p>
+        
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item">
+            <strong>Presenter</strong>
+            Chu-Shian Tsau (曹楚献)
+          </div>
+          <div class="hero-meta-item">
+            <strong>Affiliation</strong>
+            NTUST Architecture (M.S.) / Munich HM Visiting
+          </div>
+          <div class="hero-meta-item">
+            <strong>Repository</strong>
+            GitHub Pages / Version-Controlled
+          </div>
+        </div>
+
+        <div class="script-box">
+          <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+          "Good morning/afternoon, professor and classmates. Today I am presenting my bespoke personal portfolio website. Built specifically around my research background in computational building science and BIM-to-BEM interoperability, this project explores an AI-assisted development workflow with two core goals: avoiding rigid pre-made templates through bespoke design, and enforcing complete content-presentation decoupling for sustainable maintenance."
+        </div>
+        
+        <div class="slide-footer">
+          <span>Course Midterm Assignment Presentation</span>
+          <span>Slide 1 of 6</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SLIDE 2: Visual Precedents & AI Communication -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 02</span>
+      <section class="slide">
+        <div class="slide-header">
+          <span class="slide-tag">01 / Design Conception & Communication</span>
+          <h2 class="slide-title">Visual Precedents & Communicating Intent to AI</h2>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="feature-card">
+              <h3>📐 Architectural Monograph Precedent</h3>
+              <p>Studied contemporary minimalist studio layouts (MT Arquitectos):</p>
+              <ul>
+                <li><strong>Dynamic Rhythm:</strong> Alternating 2-column featured hero panels (image/text contrast) paired with 3-column project rows.</li>
+                <li><strong>Editorial Typography:</strong> Classical serif (<em>Playfair Display</em>), inscription monogram (<em>Cinzel</em>), and functional modern sans (<em>Inter</em>).</li>
+                <li><strong>Tectonic Aesthetics:</strong> Clean spatial hierarchy without distracting generic card shadows.</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>🤖 Multi-Modal AI Prompting Strategy</h3>
+              <p>Avoiding simple "make it look modern" prompts; directing AI with architectural constraints:</p>
+              <ul>
+                <li><strong>Annotated Reference:</strong> Uploaded visual layout references specifying content hierarchy, negative space, and image aspect ratios.</li>
+                <li><strong>Structural Directives:</strong> Instructed AI to write clean, bespoke CSS grid layouts from scratch without bloated frameworks (Bootstrap/Tailwind).</li>
+                <li><strong>Behavioral Guidelines:</strong> Implemented responsive breakpoints and an accessible keyboard-navigable lightbox modal.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="script-box">
+            <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+            "Rather than using a generic portfolio template, I directed the AI using annotated visual precedents from contemporary architectural monograph publications. I communicated structural constraints rather than simple aesthetics: an alternating rhythm between 2-column hero features and 3-column comparative grids, strict editorial typography pairings, and responsive behavior for mobile and desktop."
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>Visual Precedent Analysis & AI Prompting</span>
+          <span>Slide 2 of 6</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SLIDE 3: Decoupled Architecture -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 03</span>
+      <section class="slide">
+        <div class="slide-header">
+          <span class="slide-tag">02 / Technical Architecture</span>
+          <h2 class="slide-title">Maintainable Content: Complete Decoupling</h2>
+        </div>
+
+        <div class="slide-body">
+          <!-- Flow Diagram -->
+          <div class="flow-diagram">
+            <div class="flow-step">
+              <div class="step-title">Structured Data</div>
+              <div class="step-desc">data/projects.json<br>data/cv.json</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+              <div class="step-title">Rendering Engine</div>
+              <div class="step-desc">js/portfolio.js<br>js/cv.js (Async Fetch)</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+              <div class="step-title">Dynamic UI / DOM</div>
+              <div class="step-desc">index.html (Projects)<br>about.html (CV)</div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 10px;">
+            <div class="feature-card">
+              <h3>⚡ Zero HTML Editing for Updates</h3>
+              <p>Project descriptions, years, locations, and CV entries reside purely in JSON files. Adding or updating content requires <strong>zero HTML coding and zero AI assistance</strong>.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🛡️ Automated Counter & Filters</h3>
+              <p>Category counter badges <code>Residencial (3)</code> and filter tabs are automatically calculated from the dataset in real-time upon page load.</p>
+            </div>
+          </div>
+
+          <div class="script-box">
+            <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+            "The central requirement of this assignment is maintainability without editing HTML. As shown in this pipeline, HTML files contain zero hardcoded project or biographical text. All data lives in structured JSON files. Our JavaScript engine fetches the JSON and dynamically renders the DOM, calculates filter counters, and binds interactive modals. Even non-programmers can update this site in seconds."
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>Data-Driven Architecture & Separation of Concerns</span>
+          <span>Slide 3 of 6</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SLIDE 4: Live Features & Multi-page -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 04</span>
+      <section class="slide">
+        <div class="slide-header">
+          <span class="slide-tag">03 / Implementation & Features</span>
+          <h2 class="slide-title">Multi-Page Implementation & Real Content</h2>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="feature-card">
+              <h3>🏛️ Page 1: Selected Works (index.html)</h3>
+              <ul>
+                <li><strong>Authentic Research:</strong> BIM-to-BEM EnergyPlus calibration, Autodesk Forma microclimate simulation, and Songshan exhibition curation.</li>
+                <li><strong>Instantaneous Filtering:</strong> Filter by <em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em>, or <em>All</em> without page reload.</li>
+                <li><strong>Interactive Lightbox:</strong> Deep-dive inspection showing floor areas, tectonic concepts, materials, and awards with image-error fallback.</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <h3>📄 Page 2: Curriculum Vitae (about.html)</h3>
+              <ul>
+                <li><strong>Bilingual Identity:</strong> Chu-Shian Tsau (曹楚献) with Chinese and English professional summary.</li>
+                <li><strong>Academic & Honors:</strong> NTUST Master's research, Munich HM exchange, Da'an Mayor's Award (#1 rank).</li>
+                <li><strong>Competency Matrix:</strong> 4 distinct skill clusters (BIM/Forma, EnergyPlus simulation, digital fabrication, licenses & IELTS 5.5).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="script-box">
+            <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+            "The website contains two fully realized, distinct pages. All placeholder text and Lorem ipsum were completely replaced with my actual research projects: from Revit API thermal zone automation to my solo graduation exhibition at Songshan Cultural Park. Sensitive private identifiers like phone numbers and home addresses were strictly omitted for privacy."
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>Core Pages, Authentic Content & Privacy Compliance</span>
+          <span>Slide 4 of 6</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SLIDE 5: Git & Version Control -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 05</span>
+      <section class="slide">
+        <div class="slide-header">
+          <span class="slide-tag">04 / Version Control & Deployment</span>
+          <h2 class="slide-title">Meaningful Git Commit History & Deployment</h2>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div>
+              <pre><code>$ git log --oneline
+* a5dcb23 fix(images): resolve 404 links & add error fallback
+* 88a6c61 feat(profile): integrate Chu-Shian Tsau's authentic CV
+* fd4a429 docs: provide complete English presentation guide
+* f62d68a feat(ui): compose index & about with decoupled architecture
+* 89620c4 feat(js): dynamic data fetching, filters & modal
+* e06088e feat(data): define structured JSON schemas
+* 4087142 style: architectural typography & grid systems
+* f947a6f docs: establish specifications & roadmap</code></pre>
+            </div>
+
+            <div class="feature-card">
+              <h3>🚀 Deployment & Iteration Traceability</h3>
+              <p>Meeting course evaluation criteria for authentic version control:</p>
+              <ul>
+                <li><strong>No Single-Upload Dump:</strong> 8 distinct milestone commits demonstrating step-by-step layer construction.</li>
+                <li><strong>Conventional Commits:</strong> Clear tags (<code>docs</code>, <code>style</code>, <code>feat</code>, <code>fix</code>).</li>
+                <li><strong>GitHub Pages / Vercel:</strong> Pure static architecture ensures zero-config, highly stable public deployment.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="script-box">
+            <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+            "Our Git repository tracks a meaningful, step-by-step development history rather than a single completed file upload. Each commit corresponds to a logical milestone: from initial roadmap and CSS styling, to data schema design, JavaScript engine programming, real profile integration, and image error handling. The site is deployed publicly via GitHub Pages."
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>Git History, Conventional Commits & Cloud Deployment</span>
+          <span>Slide 5 of 6</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- SLIDE 6: Summary & Live Demo -->
+    <div class="slide-wrapper">
+      <span class="slide-label">Slide 06</span>
+      <section class="slide">
+        <div class="slide-header">
+          <span class="slide-tag">05 / Reflection & Conclusion</span>
+          <h2 class="slide-title">Key Learnings & Live Demonstration</h2>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="feature-card">
+              <h3>🎯 Prompt Precision</h3>
+              <p>Translating spatial architecture constraints into code parameters yields significantly better results than open-ended prompts.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🔄 Sustainable Decoupling</h3>
+              <p>Content separation ensures the site remains useful and easily maintainable long after this course concludes.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🌐 Live Demonstration</h3>
+              <p>Now demonstrating live category filtering, modal inspection, and editing <code>projects.json</code> on the fly.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 24px; padding: 16px; background: #161b22; border-radius: 8px;">
+            <p style="font-size: 15px; color: #fff; margin-bottom: 6px;">
+              <strong>Thank You! / 感謝聆聽</strong>
+            </p>
+            <p style="font-size: 12px; color: var(--text-muted);">
+              Chu-Shian Tsau (曹楚献) • Open for Q&A
+            </p>
+          </div>
+
+          <div class="script-box">
+            <strong>🗣️ 建議講稿 (English Talking Point):</strong>
+            "In conclusion, effective AI-assisted development is not about asking AI to do everything randomly; it is about acting as a design director who sets clear technical constraints and architecture patterns. I will now switch to a quick 1-minute live demonstration showing the responsive layout and how editing a simple JSON file immediately updates the live site. Thank you!"
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>Takeaways & Live Demonstration Transition</span>
+          <span>Slide 6 of 6</span>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleScriptBox() {
+      const boxes = document.querySelectorAll('.script-box');
+      boxes.forEach(box => {
+        box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
