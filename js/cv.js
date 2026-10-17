@@ -33,6 +33,9 @@ function renderCV(data) {
     <header class="cv-header">
       <h1>${profile.nameEn} <span style="font-family:'PingFang TC','Microsoft JhengHei',sans-serif; font-size:26px; color:#666; margin-left:12px;">${profile.nameZh}</span></h1>
       <div class="cv-role">${profile.role} • ${profile.location}</div>
+      <div class="cv-role" style="margin-top:6px; font-size:15px; letter-spacing:0.04em;">
+        <a href="mailto:${profile.email}" style="color:#111; text-decoration:none;">${profile.email}</a>
+      </div>
       <div class="cv-bio-block">
         <div>
           <p style="font-weight:400; color:#111; margin-bottom:8px;">[ Professional Summary ]</p>
