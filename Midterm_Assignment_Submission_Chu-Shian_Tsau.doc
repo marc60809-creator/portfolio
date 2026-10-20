@@ -1,0 +1,297 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+  <meta charset="utf-8">
+  <title>Course Midterm Assignment Submission - Chu-Shian Tsau</title>
+  <style>
+    @page Section1 {
+      size: 595.3pt 841.9pt; /* A4 */
+      margin: 72.0pt 72.0pt 72.0pt 72.0pt;
+      mso-header-margin: 36.0pt;
+      mso-footer-margin: 36.0pt;
+      mso-paper-source: 0;
+    }
+    div.Section1 { page: Section1; }
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 11.5pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+    }
+    h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 24pt;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 6pt;
+      border-bottom: 2pt solid #2563eb;
+      padding-bottom: 6pt;
+    }
+    h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 15pt;
+      font-weight: bold;
+      color: #1e3a8a;
+      margin-top: 18pt;
+      margin-bottom: 6pt;
+      border-bottom: 1pt solid #cbd5e1;
+      padding-bottom: 3pt;
+    }
+    h3 {
+      font-size: 12.5pt;
+      font-weight: bold;
+      color: #334155;
+      margin-top: 12pt;
+      margin-bottom: 4pt;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 6pt;
+    }
+    .meta-box {
+      background-color: #f8fafc;
+      border: 1pt solid #e2e8f0;
+      padding: 12pt;
+      margin-bottom: 18pt;
+      border-radius: 4pt;
+    }
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .meta-table td {
+      padding: 4pt 8pt;
+      vertical-align: top;
+      font-size: 11pt;
+    }
+    .meta-label {
+      font-weight: bold;
+      color: #475569;
+      width: 25%;
+    }
+    .meta-val {
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .url-link {
+      color: #2563eb;
+      text-decoration: underline;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 10.5pt;
+    }
+    table.content-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10pt 0 16pt 0;
+    }
+    table.content-table th, table.content-table td {
+      border: 1pt solid #cbd5e1;
+      padding: 6pt 10pt;
+      text-align: left;
+      font-size: 10.5pt;
+    }
+    table.content-table th {
+      background-color: #f1f5f9;
+      color: #1e293b;
+      font-weight: bold;
+    }
+    ul, ol {
+      margin-top: 2pt;
+      margin-bottom: 8pt;
+      padding-left: 20pt;
+    }
+    li {
+      margin-bottom: 3pt;
+    }
+    .script-quote {
+      background-color: #f0fdf4;
+      border-left: 3pt solid #16a34a;
+      padding: 8pt 12pt;
+      margin: 8pt 0 12pt 0;
+      font-style: italic;
+      color: #166534;
+      font-size: 10.5pt;
+    }
+    .code-block {
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 9.5pt;
+      padding: 8pt 10pt;
+      margin: 6pt 0 10pt 0;
+      border-radius: 3pt;
+    }
+    .footer-note {
+      font-size: 9pt;
+      color: #64748b;
+      text-align: center;
+      margin-top: 30pt;
+      border-top: 1pt solid #e2e8f0;
+      padding-top: 8pt;
+    }
+  </style>
+</head>
+<body>
+<div class="Section1">
+
+  <!-- Document Header -->
+  <h1>AI-Assisted Bespoke Architecture Portfolio & Web CV</h1>
+  <p style="font-size: 13pt; color: #475569; font-weight: normal; margin-bottom: 12pt;">
+    Final Project Concept & Web Portfolio Midterm Assignment Submission Report
+  </p>
+
+  <!-- Project Meta Table Box -->
+  <div class="meta-box">
+    <table class="meta-table">
+      <tr>
+        <td class="meta-label">Student Name:</td>
+        <td class="meta-val">Chu-Shian Tsau (曹楚献)</td>
+      </tr>
+      <tr>
+        <td class="meta-label">Academic Program:</td>
+        <td class="meta-val">M.S. in Architecture, National Taiwan University of Science and Technology (NTUST)</td>
+      </tr>
+      <tr>
+        <td class="meta-label">Visiting Study:</td>
+        <td class="meta-val">Munich University of Applied Sciences (Hochschule München / HM), Germany</td>
+      </tr>
+      <tr>
+        <td class="meta-label">Professional Email:</td>
+        <td class="meta-val">marc60809@gmail.com</td>
+      </tr>
+      <tr>
+        <td class="meta-label">Public Website URL:</td>
+        <td><a class="url-link" href="https://marc60809-creator.github.io/portfolio/">https://marc60809-creator.github.io/portfolio/</a></td>
+      </tr>
+      <tr>
+        <td class="meta-label">GitHub Repository:</td>
+        <td><a class="url-link" href="https://github.com/marc60809-creator/portfolio">https://github.com/marc60809-creator/portfolio</a></td>
+      </tr>
+      <tr>
+        <td class="meta-label">Interactive Slides:</td>
+        <td><a class="url-link" href="https://marc60809-creator.github.io/portfolio/presentation.html">https://marc60809-creator.github.io/portfolio/presentation.html</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. Executive Summary & Design Conception</h2>
+  <p>
+    This project documents the design, implementation, and deployment of a bespoke, data-driven personal architectural portfolio and web CV developed via AI-assisted engineering. Rather than deploying pre-made portfolio templates or modifying generic blog themes, this site was developed from first principles to reflect an authentic editorial aesthetic tailored to computational building design, BIM-to-BEM interoperability, and environmental simulation.
+  </p>
+  <p>
+    The visual system is derived from contemporary architectural monograph publications (precedent study: <em>MT Arquitectos</em>). The layout deliberately alternates between prominent two-column hero feature panels (asymmetric image/narrative pairings) and three-column comparative grids, echoing the structural and tectonic discipline of architectural practice.
+  </p>
+
+  <!-- Section 2 -->
+  <h2>2. Multi-Page Architecture & Privacy Compliance</h2>
+  <p>
+    In strict compliance with the assignment guidelines, the website contains two fully realized, distinct pages with zero placeholder content (all <em>Lorem ipsum</em> removed) and zero private personal identifiers (no phone numbers, national IDs, student IDs, or home addresses):
+  </p>
+  <ul>
+    <li>
+      <strong>Page 1: Selected Works & Research (<code>index.html</code>)</strong><br>
+      Features authentic research projects including:
+      <ul>
+        <li><em>BIM-to-BEM Interoperability & EnergyPlus Calibration</em> (Master's thesis research at NTUST).</li>
+        <li><em>Microclimate & Pedestrian Wind Comfort Simulation</em> via Autodesk Forma.</li>
+        <li><em>Revit API Automation Scripting</em> for thermal boundary extraction.</li>
+        <li><em>Solo Architectural Graduation Exhibition</em> at Songshan Cultural and Creative Park (松菸) attracting 500+ attendees.</li>
+        <li>Real-time category filtering (<em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em>, <em>Architectural</em>) and an accessible keyboard-navigable Lightbox modal with automatic image-error fallback.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Page 2: Curriculum Vitae & Bio Statement (<code>about.html</code>)</strong><br>
+      Presents bilingual personal identification (Chu-Shian Tsau / 曹楚献), an architectural statement in English and Traditional Chinese, academic milestones (NTUST, Munich HM, Da'an Vocational High School Mayor's Award), professional internships, and four specialized technical skill matrices.
+    </li>
+  </ul>
+
+  <!-- Section 3 -->
+  <h2>3. Maintainable Content System (Content-Presentation Decoupling)</h2>
+  <p>
+    A central requirement of the assignment is that the website must be maintainable <strong>without editing HTML and without requiring AI</strong>. To achieve this, the site implements a pure content-presentation decoupling workflow:
+  </p>
+  <div class="code-block">
+    [ Structured Human-Readable JSON ]<br>
+    &nbsp;&nbsp;├── data/projects.json  ──(Async Fetch)──>  js/portfolio.js  ──>  Dynamic DOM in index.html<br>
+    &nbsp;&nbsp;└── data/cv.json        ──(Async Fetch)──>  js/cv.js         ──>  Dynamic DOM in about.html
+  </div>
+  <p>
+    <strong>How Content Updates Work:</strong><br>
+    All project entries, floor areas, materials, awards, dates, and CV bullet points are stored in <code>data/projects.json</code> and <code>data/cv.json</code>. When an author wants to add a new building or update work experience, they simply add an entry to the JSON file. Upon browser refresh, the JavaScript engine calculates category counts, renders the cards, and attaches interactive modals automatically.
+  </p>
+
+  <!-- Section 4 -->
+  <h2>4. AI-Assisted Prompting & Communication Methodology</h2>
+  <p>
+    Throughout the development lifecycle, AI was directed as a design partner through multi-modal and constraint-based communication:
+  </p>
+  <table class="content-table">
+    <tr>
+      <th style="width: 30%;">Communication Dimension</th>
+      <th style="width: 70%;">Action & Prompting Strategy</th>
+    </tr>
+    <tr>
+      <td><strong>Visual Precedent Analysis</strong></td>
+      <td>Provided annotated visual layout screenshots; instructed AI to analyze column proportions (1.4:1 ratio for hero features) rather than giving generic prompts like "make it look nice."</td>
+    </tr>
+    <tr>
+      <td><strong>Typographic Hierarchy</strong></td>
+      <td>Specified an editorial font pairing: classical serif (<em>Playfair Display</em>), monumental inscriptional header (<em>Cinzel</em>), and functional modern sans-serif (<em>Inter</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>Structural Constraints</strong></td>
+      <td>Instructed AI to produce lightweight bespoke CSS Grid styles without third-party framework overhead (Bootstrap/Tailwind).</td>
+    </tr>
+    <tr>
+      <td><strong>Iterative Bug Fixing</strong></td>
+      <td>Identified 404 image errors in network requests; prompted AI to integrate an automatic <code>onerror</code> fallback handler to preserve visual integrity.</td>
+    </tr>
+  </table>
+
+  <!-- Section 5 -->
+  <h2>5. Git Version Control & Deployment History</h2>
+  <p>
+    The repository demonstrates an authentic, step-by-step development history across 11 semantic milestone commits, adhering to the Conventional Commits specification:
+  </p>
+  <div class="code-block">
+    44f2a22 - docs(presentation): align slide deck perfectly with Part 1, Part 2, and Part 3 requirements<br>
+    7ec030f - feat(contact): add professional email to cv and site footers<br>
+    cfa3903 - docs(presentation): add interactive 16:9 presentation slide deck with speaker scripts<br>
+    a5dcb23 - fix(images): resolve 404 unsplash image links and implement error fallback handler<br>
+    88a6c61 - feat(profile): integrate Chu-Shian Tsau's authentic CV, BIM research, and NTUST/Munich background<br>
+    fd4a429 - docs: provide complete English presentation guide and talking points<br>
+    f62d68a - feat(ui): compose index and about pages with decoupled presentation architecture<br>
+    89620c4 - feat(js): implement dynamic data fetching, category filtering, and modal lightbox<br>
+    e06088e - feat(data): define structured JSON schemas for projects, CV, and bio content<br>
+    4087142 - style: implement architectural typography, grid systems and responsive styling<br>
+    f947a6f - docs: establish project specifications and architecture roadmap
+  </div>
+  <p>
+    The site is hosted and publicly accessible via GitHub Pages at: <a class="url-link" href="https://marc60809-creator.github.io/portfolio/">https://marc60809-creator.github.io/portfolio/</a>.
+  </p>
+
+  <!-- Section 6 -->
+  <h2>6. Presentation Script Outline (Part 1 / Part 2 / Part 3)</h2>
+
+  <h3>Part 1: Website Introduction & Background</h3>
+  <div class="script-quote">
+    "Good morning/afternoon, professor and classmates. Today, alongside my final project concept, I am pleased to introduce my bespoke personal portfolio and web CV. My name is Chu-Shian Tsau (曹楚献), a graduate researcher at NTUST specializing in computational building design, BIM-to-BEM interoperability, and environmental simulation. This website was conceived as an editorial architectural monograph—reflecting tectonic order and spatial rhythm through a custom digital medium."
+  </div>
+
+  <h3>Part 2: Demonstration of Final Results</h3>
+  <div class="script-quote">
+    "Moving into Part 2: demonstrating the final result. The website contains two fully realized, distinct pages. All placeholder text has been replaced with authentic research projects: from Revit API thermal zone automation to my solo graduation exhibition at Songshan Cultural Park. The landing page features real-time category filtering and an accessible lightbox modal, while the About page presents my bilingual identity and academic credentials."
+  </div>
+
+  <h3>Part 3: Development Workflow, Decoupling & Git History</h3>
+  <div class="script-quote">
+    "In Part 3, I want to emphasize our core development principle: complete content-presentation decoupling. Notice that our HTML files contain zero hardcoded project titles or biography paragraphs. Everything is stored in human-readable JSON files. When the page loads, our asynchronous JavaScript engine fetches the JSON, computes category statistics, and dynamically renders the DOM elements. This guarantees effortless long-term maintenance without touching HTML or needing AI. Furthermore, our Git repository documents 11 incremental commits tracing the step-by-step layer construction."
+  </div>
+
+  <div class="footer-note">
+    Document generated for EMI Course Midterm Assignment Submission • Chu-Shian Tsau (曹楚献) • October 2026
+  </div>
+
+</div>
+</body>
+</html>
