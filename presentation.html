@@ -811,14 +811,11 @@
       <button class="btn" onclick="toggleScriptBox()">
         💬 切換演講稿 (Script)
       </button>
-      <a href="./docs.html" class="btn" target="_blank" style="border-color:#38bdf8; color:#38bdf8;">
+      <a href="./docs.html?v=3" class="btn" target="_blank" style="border-color:#38bdf8; color:#38bdf8;">
         📑 獨立文件頁 (docs.html)
       </a>
-      <a href="./about.html" class="btn" target="_blank" style="border-color:#f97316; color:#fb923c;">
-        🏛️ 3D 空間研究室
-      </a>
-      <a href="./index.html" class="btn" target="_blank">
-        🌐 作品集首頁
+      <a href="./index.html?v=3" class="btn" target="_blank" style="border-color:#f97316; color:#fb923c;">
+        🏛️ 作品集首頁 & 3D 空間研究室 (index.html)
       </a>
     </div>
   </header>
@@ -1144,102 +1141,60 @@
       </button>
     </div>
 
-    <!-- Sub-Pane 0 (DEFAULT): Full Expanded 3D Isometric Studio Lab -->
+    <!-- Sub-Pane 0 (DEFAULT): Full Expanded 3D Isometric Studio Lab (Exact Match to Screenshot) -->
     <div class="doc-pane active" id="doc-pane-studio">
-      <div style="background:#0d1219; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px 32px; box-shadow:0 20px 50px rgba(0,0,0,0.45);">
-        <!-- Studio Top Banner -->
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:18px; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
-          <div>
-            <h3 style="font-size:24px; font-weight:600; color:#fff; margin-bottom:4px;">Step inside the computational studio with Chu-Shian Tsau</h3>
-            <span style="font-size:13.5px; color:#94a3b8;">[ 運算化建築科學 • 3D 等軸測空間研究室 — 點擊左側索引或右側 3D 房間熱點探索專案 ]</span>
+      <div class="studio-visual-col" style="min-height: 620px; border-radius: 12px;">
+        <div class="pres-studio-topbar" style="padding: 14px 24px;">
+          <div class="pres-studio-title" style="font-size: 15.5px; gap: 12px;">
+            <span class="pres-studio-badge" style="font-size: 11px; padding: 4px 10px;">3D STUDIO LAB</span>
+            <span>Inside the studio. [ 空間研究室 ] — Chu-Shian Tsau</span>
           </div>
-          <div class="pres-studio-btns">
-            <button class="pres-studio-btn active" onclick="selectPresHotspot('workstation')">MY STUDIO</button>
-            <button class="pres-studio-btn" onclick="resetPresStudio()">RESET VIEW</button>
-            <button class="pres-studio-btn" onclick="togglePresLights()">💡 LIGHTS: <span id="presLightsStatus">ON</span></button>
+          <div class="pres-studio-btns" style="gap: 10px;">
+            <button class="pres-studio-btn active" onclick="selectPresHotspot('workstation')" style="font-size: 11px; padding: 6px 14px;">MY STUDIO</button>
+            <button class="pres-studio-btn" onclick="switchDocSubtab('zh')" style="border-color:rgba(56,189,248,0.55); color:#38bdf8; font-size: 11px; padding: 6px 14px;">📑 文件頁籤 (DOCS)</button>
+            <button class="pres-studio-btn" onclick="resetPresStudio()" style="font-size: 11px; padding: 6px 14px;">RESET VIEW</button>
+            <button class="pres-studio-btn" onclick="togglePresLights()" style="font-size: 11px; padding: 6px 14px;">💡 LIGHTS: <span id="presLightsStatus">ON</span></button>
           </div>
         </div>
 
-        <!-- Split Layout: Left Index Sidebar (280px) + Massive Right 3D Viewport (1fr) -->
-        <div style="display:grid; grid-template-columns:280px 1fr; gap:26px; align-items:stretch;">
-          <!-- Left Sidebar -->
-          <div style="display:flex; flex-direction:column; justify-content:space-between; gap:18px;">
-            <div>
-              <div style="font-size:15px; font-weight:600; color:#fff; margin-bottom:14px;">Studio Index & Research Spheres</div>
-              <div style="display:flex; flex-direction:column; gap:10px;">
-                <div class="pres-idx-item active" id="pres-idx-workstation" onclick="selectPresHotspot('workstation')" style="padding:12px 14px; background:rgba(249,115,22,0.12); border:1px solid #f97316; border-radius:8px; cursor:pointer;">
-                  <strong style="display:block; font-size:13.5px; color:#fff; margin-bottom:3px;">1. BIM Workstation</strong>
-                  <span style="font-size:11.5px; color:#cbd5e1;">Revit API Automation & gbXML BEM Validation</span>
-                </div>
-                <div class="pres-idx-item" id="pres-idx-window" onclick="selectPresHotspot('window')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
-                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">2. Microclimate Window</strong>
-                  <span style="font-size:11.5px; color:#94a3b8;">Autodesk Forma Daylighting & Wind Comfort</span>
-                </div>
-                <div class="pres-idx-item" id="pres-idx-shelf" onclick="selectPresHotspot('shelf')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
-                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">3. Munich & Da'an Archive</strong>
-                  <span style="font-size:11.5px; color:#94a3b8;">European Timber Exchange, IELTS 6.0 & ACU</span>
-                </div>
-                <div class="pres-idx-item" id="pres-idx-chair" onclick="selectPresHotspot('chair')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
-                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">4. Songshan Lounge & TTDA</strong>
-                  <span style="font-size:11.5px; color:#94a3b8;">Solo Graduation Exhibition & 3D Printing Lab</span>
-                </div>
-              </div>
-            </div>
+        <div class="pres-studio-viewport" style="height: 600px;">
+          <canvas id="presStudioCanvas" width="1280" height="600"></canvas>
 
-            <!-- Download CTA Pill -->
-            <a href="Midterm_Assignment_Submission_Chu-Shian_Tsau.doc" download style="display:flex; align-items:center; gap:12px; background:#fff; color:#0f172a; text-decoration:none; border-radius:36px; padding:12px 18px; font-weight:700; font-size:12.5px; box-shadow:0 8px 24px rgba(0,0,0,0.3);">
-              <span style="font-size:20px;">📄</span>
-              <span style="flex:1;">
-                <span style="display:block; color:#0f172a;">Download Official Report</span>
-                <span style="display:block; font-size:10.5px; color:#64748b; font-weight:500;">Academic Portfolio & CV 2026</span>
-              </span>
-              <span style="font-size:18px;">&rsaquo;</span>
-            </a>
+          <!-- Interactive Hotspot Pins -->
+          <div class="pres-pin active" id="pres-pin-workstation" style="top: 49%; left: 36%;" onclick="selectPresHotspot('workstation')">
+            <span class="pres-pin-dot"></span>
+            <span class="pres-pin-label">BIM Workstation</span>
           </div>
 
-          <!-- Right Expanded 3D Isometric Viewport (1020x640) -->
-          <div class="pres-studio-viewport" style="height:640px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
-            <canvas id="presStudioCanvas" width="1020" height="640"></canvas>
+          <div class="pres-pin" id="pres-pin-window" style="top: 36%; left: 58%;" onclick="selectPresHotspot('window')">
+            <span class="pres-pin-dot"></span>
+            <span class="pres-pin-label">Microclimate Window</span>
+          </div>
 
-            <!-- Interactive Hotspot Pins -->
-            <div class="pres-pin active" id="pres-pin-workstation" style="top: 48%; left: 38%;" onclick="selectPresHotspot('workstation')">
-              <span class="pres-pin-dot"></span>
-              <span class="pres-pin-label">BIM Workstation</span>
-            </div>
+          <div class="pres-pin" id="pres-pin-shelf" style="top: 23%; left: 30%;" onclick="selectPresHotspot('shelf')">
+            <span class="pres-pin-dot"></span>
+            <span class="pres-pin-label">Munich & Da'an Archive</span>
+          </div>
 
-            <div class="pres-pin" id="pres-pin-window" style="top: 36%; left: 61%;" onclick="selectPresHotspot('window')">
-              <span class="pres-pin-dot"></span>
-              <span class="pres-pin-label">Microclimate Window</span>
-            </div>
+          <div class="pres-pin" id="pres-pin-chair" style="top: 67%; left: 52%;" onclick="selectPresHotspot('chair')">
+            <span class="pres-pin-dot"></span>
+            <span class="pres-pin-label">Songshan Lounge</span>
+          </div>
 
-            <div class="pres-pin" id="pres-pin-shelf" style="top: 23%; left: 32%;" onclick="selectPresHotspot('shelf')">
-              <span class="pres-pin-dot"></span>
-              <span class="pres-pin-label">Munich & Da'an Archive</span>
-            </div>
+          <!-- Architectural Stamp -->
+          <div class="pres-sheet-stamp" style="bottom: 22px; left: 22px; padding: 12px 16px; font-size: 11px;">
+            <strong style="color:#fff;">Chu-Shian Tsau 曹楚献</strong><br>
+            COMPUTATIONAL ARCHITECTURE • BIM<br>
+            SHEET 01 • NTUST STUDIO • 2026
+          </div>
 
-            <div class="pres-pin" id="pres-pin-chair" style="top: 66%; left: 55%;" onclick="selectPresHotspot('chair')">
-              <span class="pres-pin-dot"></span>
-              <span class="pres-pin-label">Songshan Lounge</span>
-            </div>
-
-            <!-- Architectural Stamp -->
-            <div class="pres-sheet-stamp" style="bottom:20px; left:20px; padding:10px 14px; font-size:10.5px;">
-              <strong style="color:#fff;">Chu-Shian Tsau 曹楚献</strong><br>
-              COMPUTATIONAL ARCHITECTURE • BIM<br>
-              SHEET 01 • NTUST STUDIO • 2026
-            </div>
-
-            <!-- Live Updating Selected Project Card with Image Preview -->
-            <div class="pres-project-card" id="presProjectCard" style="width:320px; bottom:20px; right:20px; padding:16px 18px;">
-              <div class="pres-card-tag" id="presCardTag">SELECTED PROJECT • 01</div>
-              <div style="width:100%; height:120px; border-radius:6px; overflow:hidden; margin:6px 0 10px; border:1px solid rgba(255,255,255,0.12);">
-                <img id="presCardImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project preview" style="width:100%; height:100%; object-fit:cover;">
-              </div>
-              <div class="pres-card-title" id="presCardTitle" style="font-size:15px;">BIM-to-BEM Interoperability</div>
-              <div class="pres-card-sub" id="presCardSub">GRADUATE RESEARCH LAB • NTUST</div>
-              <div class="pres-card-desc" id="presCardDesc" style="font-size:12px;">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
-              <a href="./index.html" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding:8px 14px; font-size:11px;">OPEN PROJECT &rarr;</a>
-            </div>
+          <!-- Live Updating Selected Project Card -->
+          <div class="pres-project-card" id="presProjectCard" style="width: 330px; bottom: 22px; right: 22px; padding: 18px 20px;">
+            <div class="pres-card-tag" id="presCardTag" style="font-size: 10px;">SELECTED PROJECT • 01</div>
+            <div class="pres-card-title" id="presCardTitle" style="font-size: 16px; margin-bottom: 4px;">BIM-to-BEM Interoperability</div>
+            <div class="pres-card-sub" id="presCardSub" style="font-size: 10.5px; margin-bottom: 8px;">GRADUATE RESEARCH LAB • NTUST</div>
+            <div class="pres-card-desc" id="presCardDesc" style="font-size: 12px; line-height: 1.5; margin-bottom: 12px;">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
+            <a href="./index.html?v=3" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding: 9px 14px; font-size: 11.5px;">OPEN FULL 3D STUDIO &rarr;</a>
           </div>
         </div>
       </div>
