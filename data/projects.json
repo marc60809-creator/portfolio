@@ -13,33 +13,85 @@
   },
   "categories": [
     { "id": "all", "name": "All Works", "nameZh": "全部研究與專案" },
-    { "id": "computational", "name": "BIM & Environmental", "nameZh": "BIM與環境模擬" },
+    { "id": "computational", "name": "BIM & Practice", "nameZh": "事務所實務與BIM環境" },
     { "id": "architectural", "name": "Architectural Design", "nameZh": "建築空間設計" },
-    { "id": "competition", "name": "Competitions & Urban", "nameZh": "國際競圖與都市" },
-    { "id": "fabrication", "name": "Digital Fabrication", "nameZh": "數位構築與材料" }
+    { "id": "competition", "name": "Competitions & Exchange", "nameZh": "德國交換與國際競圖" },
+    { "id": "fabrication", "name": "Color, Light & FabLab", "nameZh": "色彩學構築與畢展" }
   ],
   "projects": [
+    {
+      "id": "taipei-united-architects",
+      "type": "featured",
+      "reverse": false,
+      "title": "Taipei International Architecture Firm (台北國際聯合建築師事務所) — BIM & Practice",
+      "subtitle": "Revit 3D Modeling, Clash Verification, Architectural Animation & Competition Proposals",
+      "year": 2025,
+      "category": "computational",
+      "location": "Taipei, Taiwan (Principal Architect: Chang Kuo-Chang 張國章建築師)",
+      "area": "Professional Practice & BIM-to-BEM",
+      "summary": "Professional architectural practice at Taipei International Architecture Firm (台北國際聯合建築師事務所) alongside graduate BIM-to-BEM interoperability research at NTUST. Executed full-scale Autodesk Revit 3D modeling and model auditing, architectural 3D rendering and walkthrough animations, and large-scale public competition reports, earning the highest Top 5% recommendation from Principal Architect Chang Kuo-Chang.",
+      "image": "./assets/studio/rec_letter_chang.jpg",
+      "gallery": [
+        "./assets/studio/rec_letter_chang.jpg",
+        "./assets/studio/autodesk_revit_cert.jpg",
+        "./assets/studio/cv_skills_p03.jpg",
+        "./assets/studio/rec_letter_tsaih.jpg"
+      ],
+      "details": {
+        "concept": "Bridging professional architectural practice at Taipei International Architecture Firm with computational BIM-to-BEM automation. Streamlined Revit 3D family auditing, multidisciplinary clash verification, real-time 3D visualization/animation workflows, and automated gbXML analytical space extraction for EnergyPlus thermal simulation.",
+        "materials": "Autodesk Revit (ACU Certified), Revit API (Python), Twinmotion / Lumion 3D Animation, AutoCAD, EnergyPlus, gbXML Validation.",
+        "awards": "Strongly Recommended (Top 5%) by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦) | Autodesk Revit Architecture Certified User (ACU)"
+      }
+    },
+    {
+      "id": "munich-origami",
+      "type": "featured",
+      "reverse": true,
+      "title": "COLOR AND LIGHT (GERMANY): Origami Gradient Color & Tectonics",
+      "subtitle": "Hochschule München (HM) Exchange Studio — Chromatic Daylight & Spatial Color Theory",
+      "year": 2025,
+      "category": "fabrication",
+      "location": "Munich (Hochschule München / HM), Germany",
+      "area": "Chromatic Louvers & Staircase Study",
+      "summary": "Developed during the 2024–2025 visiting exchange at Hochschule München (HM) in Germany. This late-stage design research investigates architectural Color Theory (色彩學) and Light Refraction through pleated origami construction louvers, translucent CMYK/RGB color-gradient matrices, and high-contrast yellow/red/green spatial staircase compositions, complemented by European architectural field photography and post-exchange lectures.",
+      "image": "./assets/studio/munich_color_origami_p26.jpg",
+      "gallery": [
+        "./assets/studio/munich_color_origami_p26.jpg",
+        "./assets/studio/munich_color_cover_p25.jpg",
+        "./assets/studio/munich_reflection_p06.jpg",
+        "./assets/studio/europe_architecture_p07.jpg",
+        "./assets/studio/munich_exchange_01.jpg",
+        "./assets/studio/munich_exchange_02.jpg",
+        "./assets/studio/munich_exchange_03.jpg",
+        "./assets/studio/ielts_score_cert.jpg"
+      ],
+      "details": {
+        "concept": "Synthesizing German architectural color theory (Farbenlehre) with pleated origami surface tectonics. By layering rhythmic vertical folds with translucent chromatic bands and bold primary/complementary staircase planes, the study demonstrates how incident daylight transforms static circulation cores into dynamic perceptual gradients.",
+        "materials": "Folded tectonic relief panels, dichromatic color filter matrices, architectural photography across Germany/Spain/Italy/Czechia, parametric daylight studies.",
+        "awards": "Visiting Exchange Scholarship • Hochschule München (HM), Germany (2024–2025) • Post-Exchange Cultural Lecture Speaker (2025)"
+      }
+    },
     {
       "id": "mooao-restaurant",
       "type": "featured",
       "reverse": false,
-      "title": "Mr. Chi MAOAO Restaurant & Coast Bar",
-      "subtitle": "Urban Heat Island (UHI) & Autodesk Forma Microclimate Analysis",
+      "title": "Mr. Chi MAOAO Restaurant & Coast Bar (阿吉師卯澳餐廳)",
+      "subtitle": "Urban Heat Island (UHI) Inside Taipei & Autodesk Forma Microclimate Analysis",
       "year": 2024,
       "category": "computational",
       "location": "Maoao Coast, New Taipei City",
       "area": "1,450 m²",
-      "summary": "Practical thesis investigation on Urban Heat Island (UHI) mitigation along the coastal landscape. Integrating thermal imaging drone observation with Autodesk Forma early-stage solar radiation and wind simulations. The white reflecting canopy geometry and aerodynamic corridors mitigate heat absorption while framing sea horizons.",
+      "summary": "Practical thesis investigation on Urban Heat Island (UHI) mitigation along the coastal landscape (Advisor: Dr. Lucky S.J. Tsaih). Integrating thermal imaging observation before and after direct sunrise with Autodesk Forma early-stage solar radiation, wind corridor, and microclimate comfort simulations.",
       "image": "./assets/studio/mooao_sun_wind_analysis.jpg",
       "gallery": [
         "./assets/studio/mooao_sun_wind_analysis.jpg",
-        "./assets/studio/mooao_restaurant_sun.jpg",
-        "./assets/studio/mooao_forma_boards.jpg"
+        "./assets/studio/mooao_forma_boards.jpg",
+        "./assets/studio/mooao_restaurant_sun.jpg"
       ],
       "details": {
-        "concept": "Analyzing thermal radiation stark contrast between rock surfaces (34.1°C) and shaded vegetative corridors (<28.9°C). Autodesk Forma solar hour simulations guided the roof curvature to shelter visitors from extreme noon exposure while inviting prevailing coastal sea breezes through winding corridors.",
-        "materials": "High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, salt-resistant timber louvers.",
-        "awards": "Special Topics on Professional Practices: Urban Heat Island in Taipei (Advisor: Dr. Lucky S.J. Tsaih)"
+        "concept": "Analyzing thermal radiation stark contrast between exposed coastal rock surfaces (34.1°C) and shaded vegetative/water zones (<28.9°C). Autodesk Forma Sun Hours (6/21 vs 12/21) and Wind Analysis guided the high-albedo white landform roof curvature to shelter visitors while channeling natural south-north sea breezes.",
+        "materials": "High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, coastal wind-adaptive landscaping.",
+        "awards": "Special Topics on Professional Practices: Urban Heat Island Inside Taipei (Advisor: Dr. Lucky S.J. Tsaih 蔡欣君副教授極力推薦)"
       }
     },
     {
@@ -47,62 +99,68 @@
       "type": "grid",
       "items": [
         {
-          "id": "voute-gallery-bistro",
-          "title": "Jingmei VOUTE: Gallery & Bistro",
-          "subtitle": "Adaptive Masonry Arch Atrium & Cultural Bistro",
-          "year": 2022,
-          "category": "architectural",
-          "location": "Jingmei, Taipei",
-          "area": "980 m² (4 Floors)",
-          "summary": "Adaptive cultural composite featuring a 3F/4F triple-height atrium gallery, cultural design shop, and rooftop sky bar beneath rhythmic masonry brick arches.",
-          "image": "./assets/studio/voute_gallery_atrium.jpg",
+          "id": "tac-sharjah",
+          "title": "TAC: Temporary Art Performance Space in Sharjah",
+          "subtitle": "OISTAT International Theatre Architecture Competition (UAE)",
+          "year": 2025,
+          "category": "competition",
+          "location": "Bait Al Obaid Shamsi, Sharjah, UAE",
+          "area": "1,157 m² Courtyard (100-Seat Theatre)",
+          "summary": "Late-stage 2025 international competition entry for OISTAT Theatre Architecture Competition (TAC) in Sharjah's Souk Al Bahar heritage district. Designed a rapid-assembly (<3 days) modular performance venue and tensile shading canopy inside the historic Bait Al Obaid Shamsi courtyard.",
+          "image": "./assets/studio/tac_sharjah_pods_p29.jpg",
           "gallery": [
-            "./assets/studio/voute_gallery_atrium.jpg",
-            "./assets/studio/voute_section.jpg"
+            "./assets/studio/tac_sharjah_pods_p29.jpg",
+            "./assets/studio/tac_model_cover_p27.jpg",
+            "./assets/studio/tac_sharjah_boards.jpg",
+            "./assets/studio/tac_sharjah_sections_p30.jpg",
+            "./assets/studio/rec_letter_tsai_mt.jpg"
           ],
           "details": {
-            "concept": "Carving a continuous vertical daylight void through an urban street-block parcel, using paraboloid brick vaults to diffuse top-lit sunshine into the lower exhibition galleries.",
-            "materials": "Hand-laid red clay masonry arches, board-formed architectural concrete, blackened steel mezzanine walkways, acoustic timber ceilings.",
-            "awards": "NTUST Architectural Design Studio II • Featured Tectonic Section Model"
+            "concept": "Respecting the historic Coral-stone fabric of Bait Al Obaid Shamsi Courtyard while deploying a lightweight multi-layered tensile canopy and reconfigurable stage pods that host music, drama, and cultural festivals from October to April.",
+            "materials": "Lightweight PTFE tensile shading sails, rapid-lock sustainable timber stage modules, breathable courtyard acoustic screens.",
+            "awards": "2025 OISTAT TAC International Competition Entry • Highlighted in Thesis Advisor Dr. Meng-Ting Tsai's Recommendation Letter"
+          }
+        },
+        {
+          "id": "ttda-3d-laser",
+          "title": "2025 NTUST Graduation Exhibition & TTDA FabLab",
+          "subtitle": "Graduation Design Showcase (June 2025) & Digital Fabrication Lab",
+          "year": 2025,
+          "category": "fabrication",
+          "location": "Songshan Cultural Park & NTUST TTDA",
+          "area": "Solo Showcase & Prototyping Lab",
+          "summary": "Presented comprehensive architectural thesis boards and physical tectonic models at the June 2025 NTUST Architecture Graduation Exhibition, building upon years as Core Manager of the TTDA 3D Printing & Laser-Cutting Lab.",
+          "image": "./assets/studio/grad_exhibition_p04.jpg",
+          "gallery": [
+            "./assets/studio/grad_exhibition_p04.jpg",
+            "./assets/studio/ttda_3d_fabrication.jpg",
+            "./assets/studio/rec_letter_tsai_mt.jpg"
+          ],
+          "details": {
+            "concept": "Bridging digital parametric modeling with high-precision physical fabrication (multi-material FDM/SLA 3D printing and laser-cut contour models) and public architectural communication at the 2025 Graduation Exhibition.",
+            "materials": "Laser-cut basswood & museum board, SLA resin & PLA 3D-printed structural nodes, full-scale exhibition boards.",
+            "awards": "2025 NTUST Architecture Graduation Exhibition Exhibitor • NTUST TTDA FabLab Core Manager"
           }
         },
         {
           "id": "ndcc-hsinchu",
-          "title": "NTUST Hsinchu Campus (NDCC)",
-          "subtitle": "Solar-Responsive Academic Courtyard & Research Complex",
+          "title": "NTUST Hsinchu Campus Design (台科大新竹校區 NDCC)",
+          "subtitle": "Sunshine Analysis & Solar-Responsive Academic Courtyard",
           "year": 2023,
           "category": "architectural",
-          "location": "Hsinchu Campus",
+          "location": "Hsinchu Campus, Taiwan",
           "area": "4,800 m²",
-          "summary": "Comprehensive campus design featuring extensive sunshine analysis, shaded sunken courtyards, and open collaborative architectural design labs.",
-          "image": "./assets/studio/mooao_forma_boards.jpg",
+          "summary": "Comprehensive university campus architecture design driven by 10:00 vs. 14:00 solar trajectory (Sunshine Analysis) massing studies, interlocking green courtyards, and glazed double-height studio commons.",
+          "image": "./assets/studio/ndcc_sunshine_p12.jpg",
           "gallery": [
-            "./assets/studio/mooao_forma_boards.jpg",
-            "./assets/studio/mooao_restaurant_sun.jpg"
+            "./assets/studio/ndcc_sunshine_p12.jpg",
+            "./assets/studio/ndcc_plans_p13.jpg",
+            "./assets/studio/ndcc_renders_p14.jpg"
           ],
           "details": {
-            "concept": "Orienting academic wings along prevailing Hsinchu wind axes while stepping terrace roofs to maximize winter solar gain and summer self-shading.",
-            "materials": "Precast concrete sun-breakers, laminated low-iron glazing, permeable campus paving, native windbreak landscaping.",
-            "awards": "NTUST Architectural Design Studio • Campus Masterplan Commendation"
-          }
-        },
-        {
-          "id": "gulin-garden",
-          "title": "Gulin Garden Parent-Child Center",
-          "subtitle": "Biophilic Cylindrical Volumes & Community Courtyard",
-          "year": 2023,
-          "category": "architectural",
-          "location": "Guling Street, Taipei",
-          "area": "1,250 m²",
-          "summary": "A dynamic organic morphology composed of interlinked cylindrical volumes, grey brickwork, wooden louvers, and perforated mesh railings.",
-          "image": "./assets/studio/gulin_garden_axon.jpg",
-          "gallery": [
-            "./assets/studio/gulin_garden_axon.jpg"
-          ],
-          "details": {
-            "concept": "Replacing rigid institutional corridors with interlocking circular play pavilions that wrap around existing heritage trees and biophilic sensory gardens.",
-            "materials": "Perforated grey masonry screen walls, warm cedar vertical louvers, cushioned cork flooring, seamless curved safetymesh.",
-            "awards": "Urban Community Architecture Studio • Taipei Guling Street Revitalization"
+            "concept": "Using solar shadow casting at 10:00 and 14:00 to carve self-shaded academic courtyards and elevated skywalk bridges that connect studio wings, lecture halls, and tree-lined outdoor plazas.",
+            "materials": "Fair-faced architectural concrete, low-E curtain wall glazing, timber acoustic ceilings, permeable courtyard landscaping.",
+            "awards": "NTUST Architectural Design Studio Project NDCC (2023)"
           }
         }
       ]
@@ -111,22 +169,23 @@
       "id": "curved-hostel",
       "type": "featured",
       "reverse": true,
-      "title": "Zhongshan CURVED Youth Hostel",
-      "subtitle": "Wave-form Urban Facade & Community Permeability",
+      "title": "Zhongshan CURVED Youth Hostel (中山青年旅舍設計)",
+      "subtitle": "Wave-form Cantilevered Balconies & 7-Story Urban Hospitality",
       "year": 2023,
       "category": "architectural",
       "location": "Zhongshan District, Taipei",
-      "area": "2,100 m² (7 Floors)",
-      "summary": "A 7-story urban boutique youth hostel defined by sculptural, wave-like cantilevered balconies that generate dynamic street rhythms. The ground floor dissolves into a public courtyard and community cafe, fostering spontaneous encounters between international travelers and local neighborhood residents.",
+      "area": "2,100 m² (B1–6F & Roof)",
+      "summary": "A 7-story urban boutique youth hostel (Project 113) defined by sculptural, wave-like cantilevered balconies that generate dynamic street rhythms. Includes complete B1 parking/service, 1F–2F public courtyard cafe & lounge, 3F–6F modular bunk & suite layouts, and rooftop garden.",
       "image": "./assets/studio/curved_hostel_exterior.jpg",
       "gallery": [
         "./assets/studio/curved_hostel_exterior.jpg",
-        "./assets/studio/rec_letter_tsaih.jpg"
+        "./assets/studio/curved_plans1_p19.jpg",
+        "./assets/studio/curved_plans2_p20.jpg"
       ],
       "details": {
-        "concept": "The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms, reducing summer cooling requirements while offering private green micro-terraces facing the city tree canopies.",
-        "materials": "Architectural fair-faced white concrete, acoustic double-glazed window assemblies, vertical greenery planter boxes, custom modular timber bunk joinery.",
-        "awards": "Design Studio III Project 113 • Selected for Departmental Exhibition"
+        "concept": "The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms while creating fluid indoor-outdoor pocket terraces overlooking Zhongshan's tree-lined avenues.",
+        "materials": "Architectural fair-faced white concrete, curved steel balcony railings, custom modular timber bunk joinery, interior green atrium.",
+        "awards": "NTUST Architectural Design Studio Project 113 (CURVED 2023)"
       }
     },
     {
@@ -134,90 +193,71 @@
       "type": "grid",
       "items": [
         {
-          "id": "tac-sharjah",
-          "title": "TAC: Temporary Art Space in Sharjah",
-          "subtitle": "Tensile Climatic Canopy & Modular Cultural Pods",
-          "year": 2025,
-          "category": "competition",
-          "location": "Sharjah, UAE",
-          "area": "1,800 m²",
-          "summary": "International architecture competition entry exploring tensile fabric canopies, Souk Al Bahar cultural corridors, and modular public gathering pods.",
-          "image": "./assets/studio/tac_sharjah_boards.jpg",
+          "id": "voute-gallery-bistro",
+          "title": "Jingmei VOUTE: Gallery & Bistro (景美藝廊複合餐酒館)",
+          "subtitle": "5-Story Masonry Arch Atrium, Cultural Shop & Rooftop Sky Bar",
+          "year": 2022,
+          "category": "architectural",
+          "location": "Jingmei, Taipei",
+          "area": "980 m² (1F–5F & RFL)",
+          "summary": "Vertical cultural composite integrating 1FL Cultural & Creative Shop, 2FL Art Gallery, 3FL–4FL Double/Triple-Height Vaulted Atrium, 5FL Bistro, and RFL Rooftop Sky Bar framed by red brick arches.",
+          "image": "./assets/studio/voute_gallery_atrium.jpg",
           "gallery": [
-            "./assets/studio/tac_sharjah_boards.jpg"
+            "./assets/studio/voute_gallery_atrium.jpg",
+            "./assets/studio/voute_axon_p09.jpg",
+            "./assets/studio/voute_section.jpg",
+            "./assets/studio/voute_bistro_p11.jpg"
           ],
           "details": {
-            "concept": "Deploying a lightweight double-skin PTFE tensile roof that induces stack-effect natural ventilation above modular timber exhibition pavilions in the arid Sharjah climate.",
-            "materials": "PTFE tensile membrane, CNC-milled glulam timber ribs, rammed earth plinths, woven palm-fiber shading screens.",
-            "awards": "2025 International Architecture Competition Entry • Sharjah Cultural District"
+            "concept": "Stacking public-to-intimate cultural programs vertically while carving a dramatic multi-story vaulted atrium hung with floating spherical luminaires that draw daylight deep into the gallery levels.",
+            "materials": "Hand-laid red clay masonry arches, warm travertine stone, blackened steel mezzanine bridges, rooftop garden paving.",
+            "awards": "NTUST Architectural Design Studio VOUTE (2022)"
           }
         },
         {
-          "id": "munich-origami",
-          "title": "Origami Gradient Color & Light",
-          "subtitle": "Hochschule München (HM) Exchange Studio & Timber Tectonics",
-          "year": 2025,
-          "category": "fabrication",
-          "location": "Munich (HM), Germany",
-          "area": "Pavilion & Facade System",
-          "summary": "Tectonic folding studies developed during visiting exchange at Hochschule München, examining light refraction through origami louver assemblies.",
-          "image": "./assets/studio/munich_exchange_01.jpg",
+          "id": "gulin-garden",
+          "title": "Gulin Garden Parent-Child Center (牯嶺街親子中心)",
+          "subtitle": "Interlocking Cylindrical Volumes, Grey Brickwork & Timber Louvers",
+          "year": 2023,
+          "category": "architectural",
+          "location": "Guling Street, Taipei",
+          "area": "1,250 m²",
+          "summary": "An organic community family center composed of three interlocking cylindrical pavilions wrapped in grey masonry brick, vertical timber louvers, and diamond-mesh rooftop safety balustrades.",
+          "image": "./assets/studio/gulin_materials_p15.jpg",
           "gallery": [
-            "./assets/studio/munich_exchange_01.jpg",
-            "./assets/studio/munich_exchange_02.jpg",
-            "./assets/studio/munich_exchange_03.jpg",
-            "./assets/studio/ielts_score_cert.jpg"
+            "./assets/studio/gulin_materials_p15.jpg",
+            "./assets/studio/gulin_courtyard_p17.jpg",
+            "./assets/studio/gulin_plans_p16.jpg",
+            "./assets/studio/gulin_garden_axon.jpg"
           ],
           "details": {
-            "concept": "Parametric Miura-ori folding geometry translated into kinetic facade louvers that modulate chromatic daylight transmission and solar heat gain across seasonal sun angles in Munich.",
-            "materials": "Birch aircraft plywood, dichromatic acrylic films, CNC-scored folding hinges, precision aluminum sub-frames.",
-            "awards": "Visiting Exchange Scholarship • Hochschule München (HM) Department of Architecture (2025)"
+            "concept": "Replacing rigid institutional corridors with three looping cylindrical volumes that embrace pocket trees, sunken amphitheaters, curved reading tables, and an elevated rooftop play promenade.",
+            "materials": "Grey masonry brickwork (灰色磚石), warm vertical timber louvers (木質柵欄), diamond wire-mesh railings (網格扶手).",
+            "awards": "NTUST Urban Community Architecture Studio (GULIN GARDEN 2023)"
           }
         },
         {
-          "id": "ttda-3d-laser",
-          "title": "TTDA Digital Fabrication & 3D Prototyping",
-          "subtitle": "Songshan Solo Graduation Exhibition & High-Precision FabLab",
-          "year": 2024,
-          "category": "fabrication",
-          "location": "NTUST TTDA FabLab & Songshan Cultural Park",
-          "area": "Exhibition & Prototyping Lab",
-          "summary": "Precision multi-material SLA/FDM 3D printing and laser-cut spatial joinery models; serving as Core FabLab Manager instructing 80+ peers.",
-          "image": "./assets/studio/ttda_3d_fabrication.jpg",
+          "id": "bim-bem-interoperability",
+          "title": "BIM-to-BEM Interoperability & EnergyPlus Calibration",
+          "subtitle": "Automated gbXML Thermal Validation & NSGA-II Optimization",
+          "year": 2025,
+          "category": "computational",
+          "location": "NTUST Research Lab, Taipei",
+          "area": "Multi-Zone Facility",
+          "summary": "Graduate research resolving geometric distortion and thermal zoning disconnects between Autodesk Revit and EnergyPlus, slashing topological error below 5% and achieving 15%–25% energy savings.",
+          "image": "./assets/studio/autodesk_revit_cert.jpg",
           "gallery": [
-            "./assets/studio/ttda_3d_fabrication.jpg",
-            "./assets/studio/rec_letter_tsai_mt.jpg"
+            "./assets/studio/autodesk_revit_cert.jpg",
+            "./assets/studio/cv_skills_p03.jpg",
+            "./assets/studio/rec_letter_chang.jpg"
           ],
           "details": {
-            "concept": "Bridging digital Grasshopper/Revit parametric geometry with physical multi-axis fabrication, structural node 3D printing, and full-scale exhibition curation at Songshan Cultural Park.",
-            "materials": "SLA Tough Resin, carbon-fiber reinforced PLA, laser-cut basswood & anodized aluminum, custom G-code toolpaths.",
-            "awards": "NTUST TTDA FabLab Manager • Songshan Cultural Park Solo Exhibition Curator"
+            "concept": "Scripting automated Revit API analytical space boundaries to resolve non-manifold surface geometry prior to EnergyPlus simulation and NSGA-II multi-objective daylight/thermal optimization.",
+            "materials": "Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Genetic Algorithm.",
+            "awards": "15%–25% Simulated Building Energy Savings | Benchmarked to LEED EAc2 & Taiwan BERS"
           }
         }
       ]
-    },
-    {
-      "id": "bim-bem-interoperability",
-      "type": "featured",
-      "reverse": false,
-      "title": "BIM-to-BEM Interoperability & EnergyPlus Calibration",
-      "subtitle": "Automated gbXML Thermal Validation Pipeline & Optimization",
-      "year": 2025,
-      "category": "computational",
-      "location": "NTUST Research Lab, Taipei",
-      "area": "Multi-Zone Facility",
-      "summary": "Graduate research resolving geometric distortion and thermal zoning disconnects between Autodesk Revit and EnergyPlus. Implemented an automated gbXML validation workflow slashing topological error to below 5%, coupled with NSGA-II genetic algorithms to balance sDA/ASE daylighting against cooling energy.",
-      "image": "./assets/studio/autodesk_revit_cert.jpg",
-      "gallery": [
-        "./assets/studio/autodesk_revit_cert.jpg",
-        "./assets/studio/mooao_forma_boards.jpg",
-        "./assets/studio/rec_letter_chang.jpg"
-      ],
-      "details": {
-        "concept": "Bridging architectural BIM and thermal simulation (BEM). By scripting automated Revit API analytical space boundaries, the framework resolves non-manifold surface geometry prior to EnergyPlus simulation.",
-        "materials": "Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Optimization.",
-        "awards": "15%–25% Simulated Building Energy Savings | Autodesk Revit ACU Certified | Benchmarked to LEED EAc2 & Taiwan BERS"
-      }
     }
   ]
 }

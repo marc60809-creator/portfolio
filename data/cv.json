@@ -110,23 +110,32 @@
   ],
   "experience": [
     {
-      "period": "Jun. 2024 – Feb. 2026",
-      "role": "BIM & Computational Design Intern (BIM與運算設計實習生)",
-      "organization": "Taipei International Architecture Firm (台北國際聯合建築師事務所)",
+      "period": "Jun. 2024 – Present",
+      "role": "Architectural & Revit BIM Intern (建築設計與 Revit BIM 實務實習生)",
+      "organization": "Taipei International Architecture Firm (台北國際聯合建築師事務所 — 主持建築師：張國章建築師)",
       "responsibilities": [
-        "Principal Architect Recommendation: Recommended by Principal Architect Chang Kuo-Chang (張國章建築師極力推薦，評價具備卓越專業技能、獨立工作能力與高度工作熱忱).",
-        "Autodesk Forma & Revit Workflow: Integrated cloud-based microclimate analysis in early design, evaluating wind patterns, solar radiation, and pedestrian comfort to reduce peak HVAC cooling loads by 12%.",
-        "Automation Scripting: Built custom Revit API scripts to automate spatial boundary extraction and thermal zone cleanup, slashing model preparation time for energy simulation by 60%.",
-        "Clash Detection & 3D Federation: Executed multidisciplinary clash detection across architectural, structural, and MEP models, resolving over 120 critical spatial conflicts before construction documentation."
+        "Principal Architect Top 5% Recommendation: Strongly recommended by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦：專業技能、創造力、獨立工作能力、恆心與合作態度均獲評最高等級「極為突出」).",
+        "Revit 3D BIM Modeling & Model Auditing: Executed full-scale architectural design drafting (建築設計圖面繪製), Autodesk Revit 3D model construction and clash/quality auditing (Revit 3D模型建模及檢核).",
+        "3D Rendering, Animation & Competition Proposals: Produced high-impact architectural 3D renderings, walkthrough animation videos (建築3D渲染圖及動畫影片製作), and comprehensive competition proposal reports (競圖報告書作業).",
+        "BIM-to-BEM & Forma Integration: Combined firm practice with automated Revit API space boundary extraction and Autodesk Forma early-stage solar/wind microclimate studies."
       ]
     },
     {
-      "period": "May 2025",
-      "role": "Solo Graduation Exhibition Curator (畢業設計展覽策展人)",
-      "organization": "Songshan Cultural and Creative Park (松山文創園區 松菸)",
+      "period": "Sep. 2024 – Mar. 2025",
+      "role": "Visiting Exchange Researcher & Color/Light Designer (德國交換研究與色彩學光影設計)",
+      "organization": "Hochschule München (HM / 德國慕尼黑應用科技大學) & Post-Exchange Cultural Sharing",
       "responsibilities": [
-        "Project Management & Execution: Independently planned, designed, and curated a solo architectural exhibition featuring parametric digital fabrication models, attracting 500+ attendees and industry professionals.",
-        "Cultural Exchange: Actively shared overseas architectural exchange insights and conducted design sharing sessions to promote architectural aesthetics in Taiwan."
+        "Color & Light Tectonic Design (COLOR AND LIGHT 2025): Developed 'DESIGN PROJECT: Origami Gradient Color 2025' in Germany, investigating pleated origami facade louvers, CMYK/RGB translucent color matrices, and high-contrast spatial staircase color theory.",
+        "Post-Exchange Lectures & Cultural Vision (2025年3月返台演講與文化分享): Organized lectures, photography exhibitions, and student sharing sessions after returning from Germany in March 2025, aspiring to publish architectural culture books to elevate public aesthetic awareness in Taiwan."
+      ]
+    },
+    {
+      "period": "Jun. 2025",
+      "role": "2025 NTUST Graduation Exhibition Exhibitor & Curator (2025 臺科大建築系畢業設計展參展與策展)",
+      "organization": "NTUST Department of Architecture & Songshan Cultural Park (2025 臺科大建築畢業設計展)",
+      "responsibilities": [
+        "Graduation Design Exhibition (2025年6月中旬畢業展覽): Exhibited comprehensive architectural thesis boards, multi-scale contour site models, and tectonic prototypes, engaging directly with visiting critics, peers, and the public.",
+        "International Competition Integration: Presented the 2025 OISTAT TAC Sharjah Temporary Art Performance Space competition proposal alongside graduation studio works."
       ]
     },
     {

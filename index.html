@@ -497,11 +497,12 @@
     <section class="home-studio-card" aria-label="3D Isometric Studio Lab" style="margin-top: 8px; margin-bottom: 40px;">
       <div class="home-studio-topbar">
         <div class="home-studio-title">
-          <span class="home-studio-badge">3D STUDIO LAB</span>
-          <span>Inside the studio. [ 空間研究室 ] — Chu-Shian Tsau</span>
+          <span class="home-studio-badge" id="homeStudioStyleBadge" style="background: linear-gradient(135deg, #4d7c0f, #15803d); border: 1px solid #84cc16; box-shadow: 0 2px 8px rgba(132,204,22,0.35);">⛏️ MINECRAFT 3D LAB</span>
+          <span>Inside the studio. [ 麥塊體素空間研究室 ] — Chu-Shian Tsau</span>
         </div>
         <div class="home-studio-btns">
-          <button class="home-studio-btn active" onclick="selectHomeHotspot('workstation')">MY STUDIO</button>
+          <button class="home-studio-btn active" id="homeStyleToggleBtn" onclick="toggleHomeMinecraftStyle()" style="background: rgba(132, 204, 22, 0.18); border-color: #84cc16; color: #ecfccb;">⛏️ STYLE: <span id="homeMinecraftStatus">MINECRAFT</span></button>
+          <button class="home-studio-btn" onclick="selectHomeHotspot('workstation')">MY STUDIO</button>
           <a href="./docs.html" class="home-studio-btn docs-link">📑 文件頁籤 (DOCS)</a>
           <button class="home-studio-btn" onclick="resetHomeStudio()">RESET VIEW</button>
           <button class="home-studio-btn" onclick="toggleHomeLights()">💡 LIGHTS: <span id="homeLightsStatus">ON</span></button>
@@ -529,68 +530,68 @@
           <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
         </div>
 
-        <!-- Interactive Hotspot Pins (8 Pins Collapsed by Default, Expand on Click) -->
-        <div class="home-pin" id="home-pin-workstation" onclick="toggleHomeHotspot('workstation', event)" title="點擊展開 / 收合：01 • BIM-to-BEM & Revit API">
+        <!-- Interactive Hotspot Pins (8 Pins Placed on Bespoke Objects Across the 8 Room Corners, Collapsed by Default) -->
+        <div class="home-pin" id="home-pin-workstation" onclick="toggleHomeHotspot('workstation', event)" title="點擊展開 / 收合：01 • 台北聯合建築師事務所 & Revit BIM">
           <span class="home-pin-dot">01</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/autodesk_revit_cert.jpg" alt="BIM-to-BEM">
-            01 • BIM-to-BEM &amp; Revit API
+            <img class="home-pin-thumb" src="./assets/studio/rec_letter_chang.jpg" alt="Taipei United Architects">
+            01 • 台北聯合建築師事務所 &amp; Revit BIM
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-window" onclick="toggleHomeHotspot('window', event)" title="點擊展開 / 收合：02 • MAOAO Forma Microclimate">
+        <div class="home-pin" id="home-pin-window" onclick="toggleHomeHotspot('window', event)" title="點擊展開 / 收合：02 • 阿吉師卯澳餐廳 & Forma 微氣候">
           <span class="home-pin-dot">02</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/mooao_sun_wind_analysis.jpg" alt="MAOAO Forma">
-            02 • MAOAO Forma Microclimate
+            02 • 阿吉師卯澳餐廳 &amp; Forma 微氣候
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-shelf" onclick="toggleHomeHotspot('shelf', event)" title="點擊展開 / 收合：03 • Munich HM Exchange">
+        <div class="home-pin" id="home-pin-shelf" onclick="toggleHomeHotspot('shelf', event)" title="點擊展開 / 收合：03 • 德國交換：色彩學光影折紙設計">
           <span class="home-pin-dot">03</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/munich_exchange_01.jpg" alt="Munich HM">
-            03 • Munich HM Exchange
+            <img class="home-pin-thumb" src="./assets/studio/munich_color_origami_p26.jpg" alt="Munich Color & Light">
+            03 • 德國交換：色彩學光影折紙設計
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-chair" onclick="toggleHomeHotspot('chair', event)" title="點擊展開 / 收合：04 • TTDA 3D Fabrication">
+        <div class="home-pin" id="home-pin-chair" onclick="toggleHomeHotspot('chair', event)" title="點擊展開 / 收合：04 • 2025 畢業設計展 & TTDA 3D列印">
           <span class="home-pin-dot">04</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/ttda_3d_fabrication.jpg" alt="TTDA FabLab">
-            04 • TTDA 3D Fabrication
+            <img class="home-pin-thumb" src="./assets/studio/grad_exhibition_p04.jpg" alt="2025 Grad Exhibition">
+            04 • 2025 畢業設計展 &amp; TTDA 3D列印
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-daybed" onclick="toggleHomeHotspot('daybed', event)" title="點擊展開 / 收合：05 • Zhongshan CURVED Hostel">
+        <div class="home-pin" id="home-pin-daybed" onclick="toggleHomeHotspot('daybed', event)" title="點擊展開 / 收合：05 • 中山 CURVED 青年旅舍 (7F波浪模型)">
           <span class="home-pin-dot">05</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/curved_hostel_exterior.jpg" alt="CURVED Hostel">
-            05 • Zhongshan CURVED Hostel
+            05 • 中山 CURVED 青年旅舍 (7F波浪模型)
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-wardrobe" onclick="toggleHomeHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • Jingmei VOUTE Gallery">
+        <div class="home-pin" id="home-pin-wardrobe" onclick="toggleHomeHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • 景美 VOUTE 藝廊 & 新竹校區 NDCC">
           <span class="home-pin-dot">06</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/voute_gallery_atrium.jpg" alt="Jingmei VOUTE">
-            06 • Jingmei VOUTE Gallery
+            <img class="home-pin-thumb" src="./assets/studio/voute_gallery_atrium.jpg" alt="VOUTE & NDCC">
+            06 • 景美 VOUTE 藝廊 &amp; 新竹校區 NDCC
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-nightstand" onclick="toggleHomeHotspot('nightstand', event)" title="點擊展開 / 收合：07 • Gulin Garden Center">
+        <div class="home-pin" id="home-pin-nightstand" onclick="toggleHomeHotspot('nightstand', event)" title="點擊展開 / 收合：07 • 牯嶺街親子中心 Gulin Garden">
           <span class="home-pin-dot">07</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/gulin_garden_axon.jpg" alt="Gulin Garden">
-            07 • Gulin Garden Center
+            <img class="home-pin-thumb" src="./assets/studio/gulin_materials_p15.jpg" alt="Gulin Garden">
+            07 • 牯嶺街親子中心 Gulin Garden
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-elevation" onclick="toggleHomeHotspot('elevation', event)" title="點擊展開 / 收合：08 • TAC Sharjah Competition">
+        <div class="home-pin" id="home-pin-elevation" onclick="toggleHomeHotspot('elevation', event)" title="點擊展開 / 收合：08 • TAC 沙迦國際競圖：沙漠展演棚架">
           <span class="home-pin-dot">08</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/tac_sharjah_boards.jpg" alt="TAC Sharjah">
-            08 • TAC Sharjah Competition
+            <img class="home-pin-thumb" src="./assets/studio/tac_sharjah_pods_p29.jpg" alt="TAC Sharjah">
+            08 • TAC 沙迦國際競圖：沙漠展演棚架
           </span>
         </div>
 
@@ -679,61 +680,66 @@
   <script>
     const homeHotspots = {
       workstation: {
-        projectId: 'bim-bem-interoperability',
-        tag: 'SELECTED PROJECT • 01 • COMPUTATIONAL',
-        title: 'BIM-to-BEM Interoperability & EnergyPlus',
-        sub: 'NTUST RESEARCH LAB • 2025 • MULTI-ZONE FACILITY',
-        desc: 'Automated Revit API analytical space boundaries & gbXML thermal validation pipeline (<5% error, 15–25% energy savings).',
-        image: './assets/studio/autodesk_revit_cert.jpg',
+        projectId: 'taipei-united-architects',
+        tag: 'SELECTED PROJECT • 01 • ARCHITECTURAL PRACTICE & BIM',
+        title: '台北國際聯合建築師事務所 — Revit 3D BIM 實務與渲染動畫',
+        sub: 'TAIPEI INTERNATIONAL ARCHITECTURE FIRM • 2024–2025 • TOP 5%',
+        desc: '主持建築師張國章極力推薦（Top 5%）：執行建築設計圖面繪製、Revit 3D 模型建模與檢核、3D 渲染動畫製作、競圖報告書與 BIM-to-BEM 能耗驗證。',
+        image: './assets/studio/rec_letter_chang.jpg',
         gallery: [
+          './assets/studio/rec_letter_chang.jpg',
           './assets/studio/autodesk_revit_cert.jpg',
-          './assets/studio/mooao_forma_boards.jpg',
-          './assets/studio/rec_letter_chang.jpg'
+          './assets/studio/cv_skills_p03.jpg',
+          './assets/studio/rec_letter_tsaih.jpg'
         ],
         year: 2025,
         category: 'computational',
-        location: 'NTUST Research Lab, Taipei',
-        area: 'Multi-Zone Facility',
+        location: 'Taipei International Architecture Firm (台北國際聯合建築師事務所)',
+        area: 'Revit 3D BIM, Animation & Competition Practice',
         details: {
-          concept: 'Bridging architectural BIM and thermal simulation (BEM). By scripting automated Revit API analytical space boundaries, the framework resolves non-manifold surface geometry prior to EnergyPlus simulation.',
-          materials: 'Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Optimization.',
-          awards: '15%–25% Simulated Building Energy Savings | Autodesk Revit ACU Certified | Benchmarked to LEED EAc2 & Taiwan BERS'
+          concept: '於台北國際聯合建築師事務所實習期間，負責大型建築專案之設計圖面繪製、Autodesk Revit 3D 建築資訊模型建模與跨專業碰撞檢核、3D 渲染圖及漫遊動畫影片製作，並參與競圖報告書編纂；同時結合臺科大 BIM-to-BEM 空間熱區自動化研究。',
+          materials: 'Autodesk Revit (ACU 原廠國際認證), Revit API (Python), Twinmotion / Lumion 3D 動畫, AutoCAD, EnergyPlus.',
+          awards: '台北國際聯合建築師事務所 張國章主持建築師「極力推薦 (Top 5%)」｜Autodesk Revit ACU 原廠國際認證'
         },
-        pos3D: { x: 148, y: 74, z: 18 },
+        pos3D: { x: 146, y: 74, z: 22 },
         targetZoom: 1.35
       },
       window: {
         projectId: 'mooao-restaurant',
-        tag: 'SELECTED PROJECT • 02 • MICROCLIMATE',
-        title: 'Mr. Chi MAOAO Restaurant & Coast Bar',
-        sub: 'MAOAO COAST • 2024 • 1,450 m² • FORMA UHI',
-        desc: 'Urban Heat Island (UHI) thesis integrating drone thermal imaging with Autodesk Forma solar radiation & coastal wind simulations.',
+        tag: 'SELECTED PROJECT • 02 • FORMA MICROCLIMATE & UHI',
+        title: '阿吉師 Mr. Chi MAOAO Restaurant & Forma 微氣候分析',
+        sub: 'MAOAO COAST • 2024 • 1,450 m² • URBAN HEAT ISLAND',
+        desc: '都市熱島效應 (UHI) 實務專題：結合日出前後紅外線熱成像觀測與 Autodesk Forma 日照時數、海風廊道與微氣候舒適度模擬。',
         image: './assets/studio/mooao_sun_wind_analysis.jpg',
         gallery: [
           './assets/studio/mooao_sun_wind_analysis.jpg',
-          './assets/studio/mooao_restaurant_sun.jpg',
-          './assets/studio/mooao_forma_boards.jpg'
+          './assets/studio/mooao_forma_boards.jpg',
+          './assets/studio/mooao_restaurant_sun.jpg'
         ],
         year: 2024,
         category: 'computational',
-        location: 'Maoao Coast, New Taipei City',
+        location: 'Maoao Coast, New Taipei City (卯澳海岸)',
         area: '1,450 m²',
         details: {
-          concept: 'Analyzing thermal radiation stark contrast between rock surfaces (34.1°C) and shaded vegetative corridors (<28.9°C). Autodesk Forma solar hour simulations guided the roof curvature to shelter visitors from extreme noon exposure.',
-          materials: 'High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, salt-resistant timber louvers.',
-          awards: 'Special Topics on Professional Practices: Urban Heat Island in Taipei (Advisor: Dr. Lucky S.J. Tsaih)'
+          concept: '實測海岸岩石表面（34.1°C）與水體/植栽陰涼處（<28.9°C）之顯著溫差，透過 Autodesk Forma 模擬夏至 (6/21) 與冬至 (12/21) 日照時數及南北向盛行風場，以高反照率白色波浪地景屋頂順應海風並降低熱輻射吸收。',
+          materials: 'High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, coastal wind corridors.',
+          awards: '實務專題 Special Topics on Professional Practices: Urban Heat Island in Taipei (指導教授：蔡欣君 Dr. Lucky S.J. Tsaih 極力推薦)'
         },
-        pos3D: { x: 8, y: 112, z: 78 },
+        pos3D: { x: 14, y: 98, z: 66 },
         targetZoom: 1.35
       },
       shelf: {
         projectId: 'munich-origami',
-        tag: 'SELECTED PROJECT • 03 • MUNICH EXCHANGE',
-        title: 'Origami Gradient Color & Light (Munich HM)',
-        sub: 'HOCHSCHULE MÜNCHEN, GERMANY • 2025 • FABRICATION',
-        desc: 'Tectonic folding & timber daylight refraction studies developed during visiting exchange at Hochschule München.',
-        image: './assets/studio/munich_exchange_01.jpg',
+        tag: 'SELECTED PROJECT • 03 • GERMANY EXCHANGE (COLOR & LIGHT)',
+        title: 'COLOR AND LIGHT (GERMANY): 德國交換色彩學與光影折紙設計',
+        sub: 'HOCHSCHULE MÜNCHEN (HM) • 2025 • ORIGAMI GRADIENT COLOR',
+        desc: '德國慕尼黑應用科技大學 (HM) 交換後期專案：結合折紙構造 (Origami Construction)、色彩學漸層矩陣與高對比黃/紅/綠空間樓梯光影實驗。',
+        image: './assets/studio/munich_color_origami_p26.jpg',
         gallery: [
+          './assets/studio/munich_color_origami_p26.jpg',
+          './assets/studio/munich_color_cover_p25.jpg',
+          './assets/studio/munich_reflection_p06.jpg',
+          './assets/studio/europe_architecture_p07.jpg',
           './assets/studio/munich_exchange_01.jpg',
           './assets/studio/munich_exchange_02.jpg',
           './assets/studio/munich_exchange_03.jpg',
@@ -741,136 +747,149 @@
         ],
         year: 2025,
         category: 'fabrication',
-        location: 'Munich (HM), Germany',
-        area: 'Pavilion & Kinetic Louver System',
+        location: 'Munich (Hochschule München / HM), Germany',
+        area: 'Color Theory, Origami Louvers & Staircase Study',
         details: {
-          concept: 'Parametric Miura-ori folding geometry translated into kinetic facade louvers that modulate chromatic daylight transmission and solar heat gain across seasonal sun angles in Munich.',
-          materials: 'Birch aircraft plywood, dichromatic acrylic films, CNC-scored folding hinges, precision aluminum sub-frames.',
-          awards: 'Visiting Exchange Scholarship • Hochschule München (HM) Department of Architecture (2025) • IELTS 6.0'
+          concept: '於德國慕尼黑交換期間完成之色彩學與光影構築設計（DESIGN PROJECT: Origami Gradient Color 2025）。透過折紙立面肌理在不同日照角度下的明暗轉折，結合半透明色彩交織矩陣與鮮明色彩樓梯空間，探索光線、色彩心理學與建築構造之互動；返台後亦舉辦交換演講與攝影分享。',
+          materials: 'Pleated origami tectonic panels, dichromatic color-gradient filters, architectural field photography across Europe.',
+          awards: '德國慕尼黑應用科技大學 (HM) 交換獎學金 (2024–2025) • 2025 交換生活演講與文化分享 • IELTS 6.0'
         },
-        pos3D: { x: 64, y: 88, z: 14 },
+        pos3D: { x: 74, y: 88, z: 18 },
         targetZoom: 1.35
       },
       chair: {
         projectId: 'ttda-3d-laser',
-        tag: 'SELECTED PROJECT • 04 • DIGITAL FABRICATION',
-        title: 'TTDA Digital Fabrication & 3D Prototyping',
-        sub: 'NTUST TTDA FABLAB & SONGSHAN PARK • 2024',
-        desc: 'Precision multi-material SLA/FDM 3D printing & laser-cut spatial joinery models; instructing 80+ peers as Core FabLab Manager.',
-        image: './assets/studio/ttda_3d_fabrication.jpg',
+        tag: 'SELECTED PROJECT • 04 • 2025 GRADUATION EXHIBITION & FABLAB',
+        title: '2025 臺科大建築系畢業設計展 & TTDA 3D列印數位構築',
+        sub: 'NTUST GRADUATION EXHIBITION • JUNE 2025 • TTDA FABLAB',
+        desc: '2025年6月臺科大建築系畢業設計展覽實紀與精密建築實體模型展出，結合 TTDA 實驗室多材質 3D 列印與雷射切割構築經驗。',
+        image: './assets/studio/grad_exhibition_p04.jpg',
         gallery: [
+          './assets/studio/grad_exhibition_p04.jpg',
           './assets/studio/ttda_3d_fabrication.jpg',
           './assets/studio/rec_letter_tsai_mt.jpg'
         ],
-        year: 2024,
+        year: 2025,
         category: 'fabrication',
-        location: 'NTUST TTDA FabLab & Songshan Cultural Park',
-        area: 'Solo Exhibition & Prototyping Lab',
+        location: 'Songshan Cultural Park & NTUST TTDA FabLab',
+        area: '2025 Graduation Exhibition & Prototyping Lab',
         details: {
-          concept: 'Bridging digital Grasshopper/Revit parametric geometry with physical multi-axis fabrication, structural node 3D printing, and full-scale exhibition curation at Songshan Cultural Park.',
-          materials: 'SLA Tough Resin, carbon-fiber reinforced PLA, laser-cut basswood & anodized aluminum, custom G-code toolpaths.',
-          awards: 'NTUST TTDA FabLab Manager • Songshan Cultural Park Solo Exhibition Curator'
+          concept: '於 2025 年 6 月中旬參與臺科大建築系畢業設計展覽，現場展出多組等高線基地模型、結構細部模型與完整設計圖板，與觀展貴賓及師生深度交流；並融合擔任 TTDA 3D列印與雷切實驗室管理員期間指導 80+ 同儕之數位製造技術。',
+          materials: 'Multi-material SLA/FDM 3D printing, precision laser-cut architectural models, full-scale exhibition display boards.',
+          awards: '2025 臺科大建築系畢業設計展參展人 • TTDA 數位構築實驗室核心管理員 • 畢業設計指導教授蔡孟廷極力推薦'
         },
-        pos3D: { x: 112, y: 26, z: 132 },
+        pos3D: { x: 146, y: 54, z: 144 },
         targetZoom: 1.35
       },
       daybed: {
         projectId: 'curved-hostel',
-        tag: 'SELECTED PROJECT • 05 • ARCHITECTURAL DESIGN',
-        title: 'Zhongshan CURVED Youth Hostel',
-        sub: 'ZHONGSHAN DISTRICT, TAIPEI • 2023 • 2,100 m² (7F)',
-        desc: '7-story urban boutique youth hostel with wave-like cantilevered passive solar balconies and ground-floor community courtyard.',
+        tag: 'SELECTED PROJECT • 05 • ARCHITECTURAL DESIGN (PROJECT 113)',
+        title: '中山 CURVED 青年旅舍設計 (7F 波浪懸挑陽台建築)',
+        sub: 'ZHONGSHAN DISTRICT, TAIPEI • 2023 • 2,100 m² (B1–6F & RF)',
+        desc: '7 層樓都會精品青年旅舍（Project 113）：以流線型波浪懸挑陽台創造動態街景韻律与被動式遮陽，含完整 B1–6F 及屋頂家具配置圖。',
         image: './assets/studio/curved_hostel_exterior.jpg',
         gallery: [
           './assets/studio/curved_hostel_exterior.jpg',
-          './assets/studio/rec_letter_tsaih.jpg'
+          './assets/studio/curved_plans1_p19.jpg',
+          './assets/studio/curved_plans2_p20.jpg'
         ],
         year: 2023,
         category: 'architectural',
         location: 'Zhongshan District, Taipei',
-        area: '2,100 m² (7 Floors)',
+        area: '2,100 m² (B1–6F & Roof)',
         details: {
-          concept: 'The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms, reducing summer cooling requirements while offering private green micro-terraces facing the city tree canopies.',
-          materials: 'Architectural fair-faced white concrete, acoustic double-glazed window assemblies, vertical greenery planter boxes, custom modular timber bunk joinery.',
-          awards: 'Design Studio III Project 113 • Selected for Departmental Exhibition'
+          concept: '連續波浪形懸挑樓板兼具客房深遮陽與綠化微露台機能，一、二樓結合穿透性中庭植栽與開放交誼空間，三至六樓配置高坪效模組化上下舖與景觀套房。',
+          materials: 'Architectural fair-faced white concrete, curved balcony balustrades, modular timber bunk joinery, courtyard bamboo landscaping.',
+          awards: 'NTUST Architectural Design Studio III • Project 113 (CURVED 2023)'
         },
-        pos3D: { x: 46, y: 34, z: 76 },
+        pos3D: { x: 26, y: 58, z: 108 },
         targetZoom: 1.35
       },
       wardrobe: {
         projectId: 'voute-gallery-bistro',
-        tag: 'SELECTED PROJECT • 06 • CULTURAL ATRIUM',
-        title: 'Jingmei VOUTE: Gallery & Bistro',
-        sub: 'JINGMEI, TAIPEI • 2022 • 980 m² (4F)',
-        desc: 'Adaptive cultural composite featuring a 3F/4F triple-height atrium gallery, design shop & rooftop sky bar beneath brick arches.',
+        tag: 'SELECTED PROJECT • 06 • VOUTE ATRIUM & NDCC CAMPUS',
+        title: '景美 VOUTE 藝廊複合餐酒館 & 台科大新竹校區 (NDCC)',
+        sub: 'JINGMEI & HSINCHU • 2022–2023 • MASONRY ARCH & SUNSHINE CAMPUS',
+        desc: '景美 5 層樓紅磚拱挑高藝廊複合餐酒館（1FL文創、2FL–4FL挑高藝廊、5FL餐酒館、RFL空中酒吧）與台科大新竹校區日照分析校園設計。',
         image: './assets/studio/voute_gallery_atrium.jpg',
         gallery: [
           './assets/studio/voute_gallery_atrium.jpg',
-          './assets/studio/voute_section.jpg'
+          './assets/studio/voute_axon_p09.jpg',
+          './assets/studio/voute_section.jpg',
+          './assets/studio/voute_bistro_p11.jpg',
+          './assets/studio/ndcc_sunshine_p12.jpg',
+          './assets/studio/ndcc_plans_p13.jpg',
+          './assets/studio/ndcc_renders_p14.jpg'
         ],
-        year: 2022,
+        year: 2023,
         category: 'architectural',
-        location: 'Jingmei, Taipei',
-        area: '980 m² (4 Floors)',
+        location: 'Jingmei, Taipei & NTUST Hsinchu Campus',
+        area: '980 m² (VOUTE) & 4,800 m² (NDCC)',
         details: {
-          concept: 'Carving a continuous vertical daylight void through an urban street-block parcel, using paraboloid brick vaults to diffuse top-lit sunshine into the lower exhibition galleries.',
-          materials: 'Hand-laid red clay masonry arches, board-formed architectural concrete, blackened steel mezzanine walkways, acoustic timber ceilings.',
-          awards: 'NTUST Architectural Design Studio II • Featured Tectonic Section Model'
+          concept: 'VOUTE 透過連續紅磚拋物線拱廊與三、四樓挑高漂浮球體燈飾中庭，串聯文創商店、本土藝術展覽與空中酒吧；NDCC 台科大新竹校區則以 10:00 與 14:00 太陽軌跡日照分析（Sunshine Analysis）形塑綠意中庭與教學研究量體。',
+          materials: 'Hand-laid red clay masonry arches, suspended spherical luminaires, fair-faced concrete sun-breakers, low-E campus glazing.',
+          awards: 'NTUST Design Studio Projects: VOUTE (2022) & NDCC Hsinchu Campus (2023)'
         },
-        pos3D: { x: 105, y: 96, z: 18 },
+        pos3D: { x: 22, y: 78, z: 20 },
         targetZoom: 1.35
       },
       nightstand: {
         projectId: 'gulin-garden',
-        tag: 'SELECTED PROJECT • 07 • BIOPHILIC DESIGN',
-        title: 'Gulin Garden Parent-Child Center',
+        tag: 'SELECTED PROJECT • 07 • BIOPHILIC COMMUNITY DESIGN',
+        title: '牯嶺街親子中心 Gulin Garden (三連圓筒綠建築)',
         sub: 'GULING STREET, TAIPEI • 2023 • 1,250 m²',
-        desc: 'Dynamic organic morphology composed of interlinked cylindrical volumes, grey brickwork, wooden louvers & sensory courtyards.',
-        image: './assets/studio/gulin_garden_axon.jpg',
+        desc: '以三座交織圓筒量體結合灰色磚石、木質柵欄與網格扶手，在城市叢林中打造環抱綠樹與屋頂跑道的自然親子聚落。',
+        image: './assets/studio/gulin_materials_p15.jpg',
         gallery: [
-          './assets/studio/gulin_garden_axon.jpg',
-          './assets/studio/mooao_forma_boards.jpg'
+          './assets/studio/gulin_materials_p15.jpg',
+          './assets/studio/gulin_courtyard_p17.jpg',
+          './assets/studio/gulin_plans_p16.jpg',
+          './assets/studio/gulin_garden_axon.jpg'
         ],
         year: 2023,
         category: 'architectural',
-        location: 'Guling Street, Taipei',
+        location: 'Guling Street, Taipei (台北牯嶺街)',
         area: '1,250 m²',
         details: {
-          concept: 'Replacing rigid institutional corridors with interlocking circular play pavilions that wrap around existing heritage trees and biophilic sensory gardens.',
-          materials: 'Perforated grey masonry screen walls, warm cedar vertical louvers, cushioned cork flooring, seamless curved safety mesh.',
-          awards: 'Urban Community Architecture Studio • Taipei Guling Street Revitalization'
+          concept: '打破傳統方正機構框架，以三座互相串聯的圓形量體圍塑出多層次戶外庭園、弧形親子閱讀桌與頂樓空中綠廊，讓孩童在灰色磚石與溫暖木質柵欄的光影中親近自然。',
+          materials: '灰色磚石 (Grey Masonry Brickwork)、木質柵欄 (Vertical Timber Louvers)、網格扶手 (Diamond Wire-Mesh Railings).',
+          awards: 'NTUST Architectural Design Studio • GULIN GARDEN (2023)'
         },
-        pos3D: { x: 22, y: 52, z: 135 },
+        pos3D: { x: 32, y: 48, z: 154 },
         targetZoom: 1.35
       },
       elevation: {
         projectId: 'tac-sharjah',
-        tag: 'SELECTED PROJECT • 08 • INTERNATIONAL COMPETITION',
-        title: 'TAC: Temporary Art Space in Sharjah',
-        sub: 'SHARJAH, UAE • 2025 • 1,800 m² • TENSILE CANOPY',
-        desc: 'International competition entry exploring tensile fabric canopies, Souk Al Bahar cultural corridors & modular public pods.',
-        image: './assets/studio/tac_sharjah_boards.jpg',
+        tag: 'SELECTED PROJECT • 08 • OISTAT TAC COMPETITION (UAE)',
+        title: 'TAC 沙迦國際劇場建築競圖：Temporary Art Space in Sharjah',
+        sub: 'BAIT AL OBAID SHAMSI, SHARJAH • 2025 • 1,157 m² COURTYARD',
+        desc: '2025 後期國際競圖（OISTAT TAC）：於阿聯酋沙迦古蹟庭院 Bait Al Obaid Shamsi 設計三日內快速組裝之張力膜展演棚架與百人劇場。',
+        image: './assets/studio/tac_sharjah_pods_p29.jpg',
         gallery: [
+          './assets/studio/tac_sharjah_pods_p29.jpg',
+          './assets/studio/tac_model_cover_p27.jpg',
           './assets/studio/tac_sharjah_boards.jpg',
-          './assets/studio/rec_letter_chang.jpg'
+          './assets/studio/tac_sharjah_sections_p30.jpg',
+          './assets/studio/rec_letter_tsai_mt.jpg'
         ],
         year: 2025,
         category: 'competition',
-        location: 'Sharjah, UAE',
-        area: '1,800 m²',
+        location: 'Souk Al Bahar, Sharjah, UAE (阿聯酋沙迦藝術區)',
+        area: '1,157 m² Courtyard (100-Seat Performance Space)',
         details: {
-          concept: 'Deploying a lightweight double-skin PTFE tensile roof that induces stack-effect natural ventilation above modular timber exhibition pavilions in the arid Sharjah climate.',
-          materials: 'PTFE tensile membrane, CNC-milled glulam timber ribs, rammed earth plinths, woven palm-fiber shading screens.',
-          awards: '2025 International Architecture Competition Entry • Sharjah Cultural District'
+          concept: '基地位於沙迦歷史悠久的 Bait Al Obaid Shamsi 藝術中心庭院（鄰近沙迦美術館與清真寺）。設計採用輕量化幾何張力膜遮陽棚架與模組化舞台/觀眾席單元，可於 3 天內快速建造與拆移，提供每年 10 月至隔年 4 月音樂、戲劇、舞蹈與文化節慶使用。',
+          materials: 'Multi-layered PTFE tensile shading membrane, rapid-assembly modular timber stage & seating (75 m² audience + 30 m² stage).',
+          awards: '2025 OISTAT Theatre Architecture Competition (TAC) 國際競圖作品 • 蔡孟廷教授推薦函特別肯定之國際競圖代表作'
         },
-        pos3D: { x: 152, y: 104, z: 6 },
+        pos3D: { x: 96, y: 52, z: 146 },
         targetZoom: 1.35
       }
     };
 
-    let activeHomeHotspotId = 'workstation';
+    let activeHomeHotspotId = null;
 
     let homeLightOn = true;
+    let homeMinecraftMode = true;
     let camZoom = 1.0;
     let camPanX = 0;
     let camPanY = 0;
@@ -878,6 +897,25 @@
     let camPitch = Math.PI / 6; // Elevation pitch in radians (default 30 deg)
 
     let animFrameId = null;
+
+    function toggleHomeMinecraftStyle() {
+      homeMinecraftMode = !homeMinecraftMode;
+      const statusEl = document.getElementById('homeMinecraftStatus');
+      const badgeEl = document.getElementById('homeStudioStyleBadge');
+      const btnEl = document.getElementById('homeStyleToggleBtn');
+      if (statusEl) statusEl.textContent = homeMinecraftMode ? 'MINECRAFT' : 'ARCH ISO';
+      if (badgeEl) {
+        badgeEl.textContent = homeMinecraftMode ? '⛏️ MINECRAFT 3D LAB' : '3D STUDIO LAB';
+        badgeEl.style.background = homeMinecraftMode ? 'linear-gradient(135deg, #4d7c0f, #15803d)' : '';
+        badgeEl.style.borderColor = homeMinecraftMode ? '#84cc16' : '';
+      }
+      if (btnEl) {
+        btnEl.style.background = homeMinecraftMode ? 'rgba(132, 204, 22, 0.18)' : '';
+        btnEl.style.borderColor = homeMinecraftMode ? '#84cc16' : '';
+        btnEl.style.color = homeMinecraftMode ? '#ecfccb' : '';
+      }
+      renderHomeStudio();
+    }
 
     function animateCameraTo(targetZoom, targetPanX, targetPanY, targetYaw = camYaw, targetPitch = camPitch) {
       if (animFrameId) cancelAnimationFrame(animFrameId);
@@ -1070,161 +1108,371 @@
         ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
       }
 
-      // 1. Thick 3D Floor Slab Base (always rendered underneath at layerBias -2000)
-      addBox3D(
-        -WALL_THICK, -SLAB_THICK, -WALL_THICK,
-        ROOM_SIZE + WALL_THICK, SLAB_THICK, ROOM_SIZE + WALL_THICK,
-        homeLightOn ? '#d6c7b2' : '#574c3f',
-        homeLightOn ? '#dfbe99' : '#63513d',
-        homeLightOn ? '#bfa07a' : '#4a3c2c',
-        'rgba(0,0,0,0.18)',
-        -2000
-      );
-
-      // 2. Checkered Architectural Tile Carpet & Flooring
-      const tileCount = 6;
-      const tileSize = ROOM_SIZE / tileCount;
-      const tilePaletteLight = [
-        ['#f5efe6', '#eadbc8', '#d4c3b3', '#e8d5b7', '#f5efe6', '#d8c8b8'],
-        ['#eadbc8', '#f7f3eb', '#e5d0b1', '#9e9289', '#eadbc8', '#c9b8a6'],
-        ['#f5efe6', '#e8d5b7', '#968980', '#84776f', '#e5d0b1', '#b5a493'],
-        ['#eadbc8', '#f7f3eb', '#e8d5b7', '#c2b09c', '#968980', '#d8c8b8'],
-        ['#d4c3b3', '#e5d0b1', '#f5efe6', '#e8d5b7', '#eadbc8', '#b5a493'],
-        ['#c9b8a6', '#d8c8b8', '#eadbc8', '#d4c3b3', '#c2b09c', '#9e9289']
-      ];
-      for (let ix = 0; ix < tileCount; ix++) {
-        for (let iz = 0; iz < tileCount; iz++) {
-          const x0 = ix * tileSize, z0 = iz * tileSize;
-          const baseCol = tilePaletteLight[ix][iz];
-          addQuad3D(
-            [[x0, 0.2, z0], [x0 + tileSize, 0.2, z0], [x0 + tileSize, 0.2, z0 + tileSize], [x0, 0.2, z0 + tileSize]],
-            homeLightOn ? baseCol : '#3e3832',
-            'rgba(0,0,0,0.08)',
-            1,
-            -1500
-          );
-        }
-      }
-
       // Dynamic Smart Wall Cutaway: when rotating 360 deg, if a wall turns to the front and blocks the interior,
       // it automatically drops to a low cutaway section (height 24) with a translucent ghost upper wall so you can see inside!
       const leftWallInFront = (cosYaw + sinYaw) < -0.22;
       const backWallInFront = (cosYaw - sinYaw) < -0.22;
-      const leftWallH = leftWallInFront ? 22 : WALL_HEIGHT;
-      const backWallH = backWallInFront ? 22 : WALL_HEIGHT;
+      const leftWallH = leftWallInFront ? 23 : WALL_HEIGHT;
+      const backWallH = backWallInFront ? 23 : WALL_HEIGHT;
       const leftWallBias = leftWallInFront ? 800 : -900;
       const backWallBias = backWallInFront ? 800 : -900;
 
-      // 3. Left Wall (along Z axis at X = 0)
-      addBox3D(
-        -WALL_THICK, 0, -WALL_THICK,
-        WALL_THICK, leftWallH, ROOM_SIZE + WALL_THICK,
-        leftWallInFront ? '#f97316' : (homeLightOn ? '#e8f1f5' : '#64748b'),
-        homeLightOn ? '#9abfd1' : '#334155',
-        homeLightOn ? '#78a5bd' : '#1e293b',
-        'rgba(0,0,0,0.15)',
-        leftWallBias
-      );
+      if (homeMinecraftMode) {
+        // ============================================================================
+        // MINECRAFT 3D VOXEL STUDIO LAB ENGINE (16x16 Chunk Grid, 1 Block = 11.5 units)
+        // ============================================================================
+        const B = 11.5; // 16 * 11.5 = 184 (matches ROOM_SIZE so all 8 hotspot pins align!)
+        const vStroke = 'rgba(12, 16, 23, 0.42)';
 
-      // 4. Right/Back Wall (along X axis at Z = 0)
-      addBox3D(
-        0, 0, -WALL_THICK,
-        ROOM_SIZE, backWallH, WALL_THICK,
-        backWallInFront ? '#f97316' : (homeLightOn ? '#f2f7f2' : '#64748b'),
-        homeLightOn ? '#c8d9ce' : '#334155',
-        homeLightOn ? '#dcebe0' : '#475569',
-        'rgba(0,0,0,0.15)',
-        backWallBias
-      );
+        function addVoxel(bx, by, bz, bw, bh, bd, topC, xC, zC, bias = 0, customStroke = vStroke) {
+          addBox3D(bx * B, by * B, bz * B, bw * B, bh * B, bd * B, topC, xC, zC, customStroke, bias);
+        }
 
-      // Subtle diagonal sunlight shadow cast on right wall when standing
-      if (homeLightOn && !backWallInFront) {
-        addQuad3D(
-          [[0, WALL_HEIGHT, 0.2], [52, WALL_HEIGHT, 0.2], [15, 0, 0.2], [0, 0, 0.2]],
-          'rgba(55, 85, 110, 0.22)',
-          null,
-          1,
-          backWallBias + 5
+        // Authentic Minecraft Grass Block with dirt base + jagged green top turf overhang
+        function addGrassVoxel(bx, by, bz, bw = 1, bh = 1, bd = 1, bias = -1900) {
+          const dirtX = homeLightOn ? '#866043' : '#4a3525';
+          const dirtZ = homeLightOn ? '#704f36' : '#3b2a1d';
+          const grassTop = homeLightOn ? (((bx + bz) % 2 === 0) ? '#68b030' : '#5ea329') : '#2d5217';
+          const grassSideX = homeLightOn ? '#5a9e27' : '#264713';
+          const grassSideZ = homeLightOn ? '#4c8720' : '#1f3b0f';
+          // Dirt body
+          addVoxel(bx, by, bz, bw, bh * 0.72, bd, dirtX, dirtX, dirtZ, bias);
+          // Grass top crown (0.28 block height)
+          addVoxel(bx, by + bh * 0.72, bz, bw, bh * 0.28, bd, grassTop, grassSideX, grassSideZ, bias + 2);
+        }
+
+        // 1. Outer Minecraft Grass Block & Bedrock/Stone Brick Chunk Border (y = -1..0)
+        addVoxel(-1, -1.2, -1, 17, 0.35, 17, '#475569', '#334155', '#1e293b', -2300); // Bedrock base
+        for (let ix = -1; ix <= 15; ix++) {
+          addGrassVoxel(ix, -0.85, 15, 1, 0.85, 1, -1800); // Front grass terrace edge
+          addGrassVoxel(15, -0.85, ix, 1, 0.85, 1, -1800); // Right grass terrace edge
+        }
+        // Stone Brick foundation under walls
+        addVoxel(-1, -0.85, -1, 16, 0.85, 16,
+          homeLightOn ? '#94a3b8' : '#475569',
+          homeLightOn ? '#78869b' : '#334155',
+          homeLightOn ? '#64748b' : '#1e293b',
+          -2000
         );
-      }
 
-      // 5. Recessed Window on Left Wall with Terracotta Curtains (Microclimate Window)
-      if (!leftWallInFront) {
-        const winZ1 = 42, winZ2 = 114, winY1 = 76, winY2 = 136;
-        addQuad3D(
-          [[0.5, winY1, winZ1], [0.5, winY1, winZ2], [0.5, winY2, winZ2], [0.5, winY2, winZ1]],
-          homeLightOn ? '#f5e1e4' : '#1e293b',
-          '#ffffff',
-          2.5,
-          leftWallBias + 10
+        // 2. 16x16 Voxel Oak Planks Floor & Pixel Wool Carpet Blocks
+        for (let ix = 0; ix < 15; ix++) {
+          for (let iz = 0; iz < 15; iz++) {
+            const isCarpet = (ix >= 3 && ix <= 12 && iz >= 4 && iz <= 12);
+            let topC, sideX, sideZ;
+            if (isCarpet) {
+              // Iconic Minecraft Wool Carpet (Checkered White, Orange, Cyan, Yellow & Red Wool)
+              const pat = (Math.floor((ix - 3) / 2) + Math.floor((iz - 4) / 2)) % 4;
+              if (pat === 0) { topC = '#f8fafc'; sideX = '#cbd5e1'; sideZ = '#94a3b8'; }
+              else if (pat === 1) { topC = '#f59e0b'; sideX = '#d97706'; sideZ = '#b45309'; }
+              else if (pat === 2) { topC = '#06b6d4'; sideX = '#0891b2'; sideZ = '#0e7490'; }
+              else { topC = '#ef4444'; sideX = '#dc2626'; sideZ = '#b91c1c'; }
+              if (!homeLightOn) { topC = '#334155'; sideX = '#1e293b'; sideZ = '#0f172a'; }
+              addVoxel(ix, 0, iz, 1, 0.14, 1, topC, sideX, sideZ, -1450);
+            } else {
+              // Minecraft Oak Planks Voxel Grid
+              const isAlt = (ix + iz) % 2 === 0;
+              topC = homeLightOn ? (isAlt ? '#c29d66' : '#b59059') : (isAlt ? '#4a3b28' : '#3f3221');
+              sideX = homeLightOn ? '#9e7c4b' : '#362a1b';
+              sideZ = homeLightOn ? '#87693e' : '#2b2115';
+              addVoxel(ix, -0.05, iz, 1, 0.08, 1, topC, sideX, sideZ, -1500);
+            }
+          }
+        }
+
+        // 3. Minecraft Oak Log Corner Pillars & Stone/Quartz Block Walls (Course by Course)
+        const leftBlocksH = leftWallInFront ? 2 : 13;
+        const backBlocksH = backWallInFront ? 2 : 13;
+
+        // Corner Oak Log Pillar at (-1, -1)
+        const cornerLogH = Math.min(leftBlocksH, backBlocksH);
+        for (let by = 0; by < cornerLogH; by++) {
+          addVoxel(-1, by, -1, 1, 1, 1, '#d6b485', '#6b5130', '#574125', Math.min(leftWallBias, backWallBias));
+        }
+        // Front-Left Oak Log Pillar at (-1, 15)
+        for (let by = 0; by < leftBlocksH; by++) {
+          addVoxel(-1, by, 15, 1, 1, 1, '#d6b485', '#6b5130', '#574125', leftWallBias + 5);
+        }
+        // Back-Right Oak Log Pillar at (15, -1)
+        for (let by = 0; by < backBlocksH; by++) {
+          addVoxel(15, by, -1, 1, 1, 1, '#d6b485', '#6b5130', '#574125', backWallBias + 5);
+        }
+
+        // Left Voxel Wall (X = -1..0, Z = 0..15) with Window Opening at Z = 4..10, Y = 6..11
+        for (let by = 0; by < leftBlocksH; by++) {
+          for (let bz = 0; bz < 15; bz += 3) {
+            const bwZ = Math.min(3, 15 - bz);
+            const inWindowHole = (!leftWallInFront && by >= 6 && by <= 10 && bz >= 3 && bz <= 9);
+            if (!inWindowHole) {
+              const isTrim = (by === 0 || by === leftBlocksH - 1);
+              const wTop = leftWallInFront ? '#f97316' : (isTrim ? '#94a3b8' : (homeLightOn ? '#cbd5e1' : '#475569'));
+              const wX = isTrim ? (homeLightOn ? '#64748b' : '#334155') : (homeLightOn ? ((by + bz) % 2 === 0 ? '#93c5fd' : '#7dd3fc') : '#334155');
+              const wZ = isTrim ? '#475569' : (homeLightOn ? '#60a5fa' : '#1e293b');
+              addVoxel(-1, by, bz, 1, 1, bwZ, wTop, wX, wZ, leftWallBias);
+            }
+          }
+        }
+
+        // Back/Right Voxel Wall (X = 0..15, Z = -1..0)
+        for (let by = 0; by < backBlocksH; by++) {
+          for (let bx = 0; bx < 15; bx += 3) {
+            const bwX = Math.min(3, 15 - bx);
+            const isTrim = (by === 0 || by === backBlocksH - 1);
+            const wTop = backWallInFront ? '#f97316' : (isTrim ? '#94a3b8' : (homeLightOn ? '#e2e8f0' : '#475569'));
+            const wX = isTrim ? '#64748b' : (homeLightOn ? '#cbd5e1' : '#334155');
+            const wZ = isTrim ? (homeLightOn ? '#64748b' : '#334155') : (homeLightOn ? ((by + bx) % 2 === 0 ? '#e2e8f0' : '#f1f5f9') : '#475569');
+            addVoxel(bx, by, -1, bwX, 1, 1, wTop, wX, wZ, backWallBias);
+          }
+        }
+
+        // ============================================================================
+        // 8 BESPOKE 3D VOXEL ARCHITECTURAL MODELS PLACED IN THE 8 CORNERS OF THE ROOM
+        // ============================================================================
+
+        // CORNER 06 (Back-Left Corner: bx 0.4..3.5, bz 0.3..3.2)
+        // [06 • 景美 VOUTE 紅磚拱藝廊複合餐酒館 & 台科大新竹校區 NDCC]
+        // 5-Story Red-Brick Arch Atrium Cutaway Model with Floating Spherical Pendant Lights
+        addVoxel(0.4, 0, 0.3, 3.1, 0.6, 2.9, '#c29d66', '#9e7c4b', '#87693e', 2); // Timber model plinth
+        // Red-brick masonry outer walls & arch piers
+        addVoxel(0.5, 0.6, 0.4, 2.9, 5.2, 0.5, '#b45309', '#9a3412', '#7c2d12', 4); // Back brick wall
+        addVoxel(0.5, 0.6, 0.4, 0.5, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 5); // Left brick arch pier
+        addVoxel(2.9, 0.6, 0.4, 0.5, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 6); // Right brick arch pier
+        addVoxel(0.5, 5.8, 0.4, 2.9, 0.5, 2.6, '#d97706', '#b45309', '#9a3412', 10); // Rooftop Sky Bar cornice
+        // Floating Glowing Spherical Atrium Luminaires (from VOUTE Page 10)
+        addVoxel(1.3, 3.8, 1.3, 0.65, 0.65, 0.65, '#fef08a', '#fde047', '#facc15', 12);
+        addVoxel(2.1, 2.6, 1.6, 0.55, 0.55, 0.55, '#ffffff', '#fef08a', '#fde047', 14);
+        addVoxel(1.5, 6.3, 1.2, 0.9, 0.9, 0.9,
+          homeLightOn ? '#fef08a' : '#38bdf8',
+          homeLightOn ? '#facc15' : '#0284c7',
+          homeLightOn ? '#eab308' : '#0369a1',
+          16
+        ); // RFL Sky Bar Beacon
+
+        // CORNER 02 (Left-Center Wall & Diorama: bx 0.2..2.8, bz 3.8..7.4)
+        // [02 • 阿吉師卯澳餐廳 Mr. Chi MAOAO & Forma 微氣候分析]
+        if (!leftWallInFront) {
+          addQuad3D(
+            [[0.1, 6 * B, 3.5 * B], [0.1, 6 * B, 9.5 * B], [0.1, 11 * B, 9.5 * B], [0.1, 11 * B, 3.5 * B]],
+            homeLightOn ? '#38bdf8' : '#0f172a',
+            '#334155', 2, leftWallBias + 8
+          );
+          // Blocky Minecraft Sun / Moon in Forma Window
+          addQuad3D(
+            [[0.2, 8.2 * B, 5.5 * B], [0.2, 8.2 * B, 7.3 * B], [0.2, 9.8 * B, 7.3 * B], [0.2, 9.8 * B, 5.5 * B]],
+            homeLightOn ? '#fde047' : '#e2e8f0',
+            homeLightOn ? '#f59e0b' : '#94a3b8', 1.5, leftWallBias + 10
+          );
+          for (let gz = 3.5; gz < 9.5; gz += 2.0) {
+            addLine3D([0.3, 6 * B, gz * B], [0.3, 11 * B, gz * B], 'rgba(255,255,255,0.75)', 2 * camZoom, leftWallBias + 12);
+          }
+          addLine3D([0.3, 8.5 * B, 3.5 * B], [0.3, 8.5 * B, 9.5 * B], 'rgba(255,255,255,0.75)', 2 * camZoom, leftWallBias + 12);
+          addVoxel(-0.2, 5.5, 3.3, 0.8, 0.5, 6.4, '#f8fafc', '#cbd5e1', '#94a3b8', leftWallBias + 15);
+        }
+        // Coastal Microclimate Diorama Table underneath Window (Ocean + Basalt Rock + White Wave Roof)
+        addVoxel(0.4, 0, 4.0, 2.5, 2.2, 3.4, '#87693e', '#6b5130', '#574125', 4); // Diorama cabinet
+        addVoxel(0.5, 2.2, 4.1, 2.3, 0.35, 1.6, '#0ea5e9', '#0284c7', '#0369a1', 8); // Maoao Ocean water zone (<28.9°C)
+        addVoxel(0.5, 2.2, 5.7, 2.3, 0.45, 1.6, '#ef4444', '#dc2626', '#b91c1c', 8); // Thermal red rock heat zone (34.1°C)
+        addVoxel(0.7, 2.65, 4.5, 1.9, 0.5, 2.2, '#ffffff', '#e2e8f0', '#cbd5e1', 12); // Mr. Chi White High-Albedo Wave Roof
+
+        // CORNER 05 (Left-Front-Center Zone: bx 0.5..3.8, bz 8.0..11.2)
+        // [05 • 中山 CURVED 青年旅舍設計 (7F 波浪懸挑陽台建築模型)]
+        addVoxel(0.5, 0, 8.0, 3.2, 1.2, 3.1, '#c29d66', '#9e7c4b', '#87693e', 5); // Architectural model base
+        // 7-Story Stacked White Wave-Cantilevered Floorplates + Recessed Glazing
+        for (let fl = 0; fl < 5; fl++) {
+          const fy = 1.2 + fl * 0.78;
+          const waveShift = (fl % 2 === 0) ? 0.18 : 0;
+          addVoxel(0.8, fy, 8.4 + waveShift, 2.3, 0.42, 2.1, '#38bdf8', '#0284c7', '#0369a1', 10 + fl * 2); // Glazed core
+          addVoxel(0.65, fy + 0.42, 8.25 + waveShift, 2.6, 0.36, 2.4, '#f8fafc', '#e2e8f0', '#cbd5e1', 11 + fl * 2); // White wave balcony slab
+        }
+        // Street tree next to CURVED Hostel model
+        addVoxel(3.1, 1.2, 10.3, 0.45, 1.3, 0.45, '#65a30d', '#4d7c0f', '#3f6212', 16);
+
+        // CORNER 07 (Extreme Front-Left Corner: bx 0.8..4.6, bz 12.0..14.8)
+        // [07 • 牯嶺街親子中心 Gulin Garden (三座交織圓筒綠建築模型)]
+        addVoxel(0.8, 0, 12.0, 3.8, 0.8, 2.7, '#68b030', '#9c661c', '#7c4d12', 6); // Green site base
+        // Drum 1: Grey Brickwork Cylinder (Left)
+        addVoxel(1.0, 0.8, 12.3, 1.4, 1.8, 1.4, '#94a3b8', '#64748b', '#475569', 10);
+        // Drum 2: Timber Louver Cylinder (Center)
+        addVoxel(2.1, 0.8, 13.0, 1.2, 1.4, 1.2, '#d97706', '#b45309', '#92400e', 12);
+        // Drum 3: Grey Brick & Timber Cylinder (Right)
+        addVoxel(2.9, 0.8, 12.2, 1.4, 2.1, 1.4, '#cbd5e1', '#94a3b8', '#64748b', 14);
+        // Skywalk Bridge & Biophilic Courtyard Trees sprouting from cylinders
+        addVoxel(1.4, 2.4, 12.7, 2.2, 0.25, 0.5, '#e2e8f0', '#cbd5e1', '#94a3b8', 16);
+        addVoxel(1.3, 2.6, 12.6, 0.8, 1.2, 0.8, '#65a30d', '#4d7c0f', '#3f6212', 20);
+        addVoxel(3.2, 2.9, 12.5, 0.9, 1.3, 0.9, '#84cc16', '#65a30d', '#4d7c0f', 22);
+
+        // CORNER 03 (Back-Center Zone: bx 4.4..9.2, bz 0.1..2.6)
+        // [03 • 德國慕尼黑交換：COLOR AND LIGHT (Origami Gradient Color 2025)]
+        // Exhibition Plinth + Yellow/Red/Green Spiral Staircase Sculpture (from Page 26)
+        addVoxel(4.5, 0, 0.2, 4.6, 1.6, 2.2, '#1e293b', '#0f172a', '#334155', 4); // Matte black gallery plinth
+        // Yellow Staircase Steps ascending against Red & Neon-Green Walls (Page 26 bottom-right)
+        addVoxel(4.8, 1.6, 0.4, 1.8, 2.8, 0.35, '#dc2626', '#b91c1c', '#991b1b', 8); // Red chromatic backdrop
+        addVoxel(6.8, 1.6, 0.4, 1.8, 2.8, 0.35, '#84cc16', '#65a30d', '#4d7c0f', 8); // Lime-green chromatic backdrop
+        for (let st = 0; st < 4; st++) {
+          addVoxel(4.9 + st * 0.38, 1.6 + st * 0.55, 0.8, 0.45, 0.55, 1.2, '#fde047', '#facc15', '#eab308', 12 + st);
+          addVoxel(6.9 + st * 0.38, 1.6 + st * 0.55, 0.8, 0.45, 0.55, 1.2, '#fde047', '#facc15', '#eab308', 12 + st);
+        }
+        // Wall-Mounted White Origami Pleated Louvers & CMYK Color-Gradient Grid (Page 26 top)
+        if (!backWallInFront) {
+          for (let fin = 0; fin < 5; fin++) {
+            addVoxel(4.6 + fin * 0.42, 5.2, 0.08, 0.24, 3.8, 0.45, '#f8fafc', '#cbd5e1', '#ffffff', backWallBias + 16);
+          }
+          // Translucent Color-Gradient Matrix (Orange, Green, Pink vertical bars + Yellow horizontal bands)
+          addVoxel(7.0, 5.2, 0.08, 0.55, 3.8, 0.25, '#fb923c', '#f97316', '#fdba74', backWallBias + 16);
+          addVoxel(7.7, 5.2, 0.08, 0.55, 3.8, 0.25, '#4ade80', '#22c55e', '#86efac', backWallBias + 16);
+          addVoxel(8.4, 5.2, 0.08, 0.55, 3.8, 0.25, '#f472b6', '#ec4899', '#f9a8d4', backWallBias + 16);
+          addVoxel(6.8, 6.0, 0.14, 2.3, 0.45, 0.28, '#fef08a', '#fde047', '#fef9c3', backWallBias + 20);
+          addVoxel(6.8, 7.4, 0.14, 2.3, 0.45, 0.28, '#fef08a', '#fde047', '#fef9c3', backWallBias + 20);
+        }
+
+        // CORNER 01 (Back-Right Corner: bx 10.4..14.9, bz 0.2..3.6)
+        // [01 • 台北國際聯合建築師事務所 & Revit 3D BIM 工作站]
+        // Quartz & Command Block BIM Desk + Dual Revit Screens + 3D BIM High-Rise Tower Model + Architect Avatar
+        addVoxel(10.5, 0, 0.2, 1.3, 4.2, 2.3, '#e2e8f0', '#cbd5e1', '#94a3b8', 5); // Left Quartz pedestal
+        addVoxel(13.6, 0, 0.2, 1.3, 4.2, 2.3, '#d97706', '#b45309', '#92400e', 5); // Right Command Block pedestal
+        addVoxel(10.4, 4.2, 0.2, 4.5, 0.55, 2.4, '#f8fafc', '#cbd5e1', '#e2e8f0', 8); // Smooth Quartz desktop
+        // Dual Glowing Cyan Revit 3D BIM Monitors
+        addVoxel(10.8, 4.75, 0.4, 2.3, 1.8, 0.3, '#1e293b', '#0f172a', '#38bdf8', 14);
+        // 3D Revit Building Tower Hologram Model on right side of desk
+        addVoxel(13.4, 4.75, 0.6, 1.1, 2.8, 1.1, '#7dd3fc', '#0284c7', '#38bdf8', 16);
+        addVoxel(13.6, 7.55, 0.8, 0.7, 1.1, 0.7, '#bae6fd', '#38bdf8', '#7dd3fc', 18);
+        // Minecraft Voxel Architect Avatar ("Chu-Shian") at the Taipei United Architects BIM Workstation
+        const stX = 11.8, stZ = 3.0;
+        addVoxel(stX, 0, stZ, 1.0, 1.7, 0.6, '#1d4ed8', '#1e40af', '#1e3a8a', 18);
+        addVoxel(stX - 0.1, 1.7, stZ - 0.05, 1.2, 1.8, 0.7, '#06b6d4', '#0891b2', '#0e7490', 20);
+        addVoxel(stX - 0.5, 2.0, stZ - 0.2, 0.4, 1.5, 0.85, '#d9a074', '#b88258', '#0891b2', 22);
+        addVoxel(stX + 1.1, 2.0, stZ - 0.2, 0.4, 1.5, 0.85, '#d9a074', '#b88258', '#0891b2', 22);
+        addVoxel(stX + 0.05, 3.5, stZ - 0.15, 0.95, 0.95, 0.95, '#3b2314', '#d9a074', '#c68b5e', 26);
+        addVoxel(stX + 0.03, 4.25, stZ - 0.17, 1.0, 0.3, 1.0, '#271705', '#1c1003', '#271705', 28);
+
+        // CORNER 08 (Front-Center-Right Zone: bx 6.4..10.4, bz 11.2..14.6)
+        // [08 • TAC 沙迦國際劇場建築競圖：Temporary Art Space in Sharjah]
+        // Sharjah Sandstone Courtyard Plinth + Modular Stage Pods + White Tensile Membrane Canopy
+        addVoxel(6.5, 0, 11.3, 3.8, 0.9, 3.2, '#f59e0b', '#d97706', '#b45309', 6); // Desert sandstone courtyard base
+        addVoxel(7.0, 0.9, 11.8, 1.3, 0.9, 1.2, '#fde68a', '#fcd34d', '#fbbf24', 10); // Modular timber stage pod 1
+        addVoxel(8.6, 0.9, 12.6, 1.2, 0.9, 1.2, '#fde68a', '#fcd34d', '#fbbf24', 10); // Modular audience pod 2
+        // 4 Angled Masts supporting the White Tensile Membrane Roof
+        addVoxel(6.7, 0.9, 11.5, 0.22, 2.8, 0.22, '#cbd5e1', '#94a3b8', '#64748b', 12);
+        addVoxel(9.9, 0.9, 11.5, 0.22, 2.8, 0.22, '#cbd5e1', '#94a3b8', '#64748b', 12);
+        addVoxel(6.7, 0.9, 14.1, 0.22, 2.8, 0.22, '#cbd5e1', '#94a3b8', '#64748b', 12);
+        addVoxel(9.9, 0.9, 14.1, 0.22, 2.8, 0.22, '#cbd5e1', '#94a3b8', '#64748b', 12);
+        // Sculptural Multi-Layered White PTFE Tensile Canopy Sails above Courtyard
+        addVoxel(6.5, 3.5, 11.3, 3.8, 0.32, 3.2, '#ffffff', '#e2e8f0', '#f1f5f9', 18);
+        addVoxel(7.2, 3.82, 11.9, 2.4, 0.45, 2.0, '#f8fafc', '#cbd5e1', '#e2e8f0', 22);
+
+        // CORNER 04 (Front-Right Corner: bx 11.2..14.8, bz 11.0..14.6)
+        // [04 • 2025 臺科大建築系畢業設計展 & TTDA 3D列印數位構築]
+        // White Graduation Exhibition Table + Vertical Presentation Board + Site Models + 3D Printer
+        addVoxel(11.3, 0, 11.2, 3.4, 2.2, 2.4, '#f8fafc', '#cbd5e1', '#e2e8f0', 6); // White exhibition table (from Page 4 photo)
+        addVoxel(11.3, 2.2, 11.2, 3.4, 3.2, 0.28, '#ffffff', '#e2e8f0', '#cbd5e1', 12); // Vertical presentation pin-up board
+        // Architectural site models on exhibition table (black & white contour models from Page 4)
+        addVoxel(11.6, 2.2, 11.8, 1.1, 0.45, 1.2, '#1e293b', '#0f172a', '#ffffff', 14);
+        // TTDA Multi-Axis 3D Printer Gantry on right side of table printing a glowing cyan voxel node
+        addVoxel(13.2, 2.2, 11.8, 1.2, 1.6, 1.2, '#475569', '#334155', '#1e293b', 16);
+        addVoxel(13.5, 2.5, 12.1, 0.65, 0.65, 0.65, '#38bdf8', '#0284c7', '#7dd3fc', 20);
+      } else {
+        // ============================================================================
+        // ARCHITECTURAL ISOMETRIC STUDIO MODE (Fallback when toggled via STYLE button)
+        // ============================================================================
+        addBox3D(
+          -WALL_THICK, -SLAB_THICK, -WALL_THICK,
+          ROOM_SIZE + WALL_THICK, SLAB_THICK, ROOM_SIZE + WALL_THICK,
+          homeLightOn ? '#d6c7b2' : '#574c3f',
+          homeLightOn ? '#dfbe99' : '#63513d',
+          homeLightOn ? '#bfa07a' : '#4a3c2c',
+          'rgba(0,0,0,0.18)',
+          -2000
         );
-        addBox3D(0, winY1 - 3, winZ1 - 2, 6, 3, winZ2 - winZ1 + 4, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', leftWallBias + 15);
-        addLine3D([3, winY2 + 5, winZ1 - 10], [3, winY2 + 5, winZ2 + 10], '#8c6249', 2.5 * camZoom, leftWallBias + 20);
-        addBox3D(1, winY1 - 8, winZ1 - 8, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
-        addBox3D(1, winY1 - 8, winZ2 - 6, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
 
-        // Framed Architectural Drawing on Left Wall
-        addBox3D(0.5, 62, 134, 2, 28, 36, '#1e293b', '#1e293b', '#f8fafc', '#1e293b', leftWallBias + 15);
-        addQuad3D([[2.8, 66, 138], [2.8, 66, 166], [2.8, 86, 166], [2.8, 86, 138]], '#e6c8b8', '#334155', 1, leftWallBias + 18);
+        const tileCount = 6;
+        const tileSize = ROOM_SIZE / tileCount;
+        const tilePaletteLight = [
+          ['#f5efe6', '#eadbc8', '#d4c3b3', '#e8d5b7', '#f5efe6', '#d8c8b8'],
+          ['#eadbc8', '#f7f3eb', '#e5d0b1', '#9e9289', '#eadbc8', '#c9b8a6'],
+          ['#f5efe6', '#e8d5b7', '#968980', '#84776f', '#e5d0b1', '#b5a493'],
+          ['#eadbc8', '#f7f3eb', '#e8d5b7', '#c2b09c', '#968980', '#d8c8b8'],
+          ['#d4c3b3', '#e5d0b1', '#f5efe6', '#e8d5b7', '#eadbc8', '#b5a493'],
+          ['#c9b8a6', '#d8c8b8', '#eadbc8', '#d4c3b3', '#c2b09c', '#9e9289']
+        ];
+        for (let ix = 0; ix < tileCount; ix++) {
+          for (let iz = 0; iz < tileCount; iz++) {
+            const x0 = ix * tileSize, z0 = iz * tileSize;
+            const baseCol = tilePaletteLight[ix][iz];
+            addQuad3D(
+              [[x0, 0.2, z0], [x0 + tileSize, 0.2, z0], [x0 + tileSize, 0.2, z0 + tileSize], [x0, 0.2, z0 + tileSize]],
+              homeLightOn ? baseCol : '#3e3832',
+              'rgba(0,0,0,0.08)',
+              1,
+              -1500
+            );
+          }
+        }
+
+        addBox3D(
+          -WALL_THICK, 0, -WALL_THICK,
+          WALL_THICK, leftWallH, ROOM_SIZE + WALL_THICK,
+          leftWallInFront ? '#f97316' : (homeLightOn ? '#e8f1f5' : '#64748b'),
+          homeLightOn ? '#9abfd1' : '#334155',
+          homeLightOn ? '#78a5bd' : '#1e293b',
+          'rgba(0,0,0,0.15)',
+          leftWallBias
+        );
+
+        addBox3D(
+          0, 0, -WALL_THICK,
+          ROOM_SIZE, backWallH, WALL_THICK,
+          backWallInFront ? '#f97316' : (homeLightOn ? '#f2f7f2' : '#64748b'),
+          homeLightOn ? '#c8d9ce' : '#334155',
+          homeLightOn ? '#dcebe0' : '#475569',
+          'rgba(0,0,0,0.15)',
+          backWallBias
+        );
+
+        if (!leftWallInFront) {
+          const winZ1 = 42, winZ2 = 114, winY1 = 76, winY2 = 136;
+          addQuad3D(
+            [[0.5, winY1, winZ1], [0.5, winY1, winZ2], [0.5, winY2, winZ2], [0.5, winY2, winZ1]],
+            homeLightOn ? '#f5e1e4' : '#1e293b',
+            '#ffffff',
+            2.5,
+            leftWallBias + 10
+          );
+          addBox3D(0, winY1 - 3, winZ1 - 2, 6, 3, winZ2 - winZ1 + 4, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', leftWallBias + 15);
+          addLine3D([3, winY2 + 5, winZ1 - 10], [3, winY2 + 5, winZ2 + 10], '#8c6249', 2.5 * camZoom, leftWallBias + 20);
+          addBox3D(1, winY1 - 8, winZ1 - 8, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
+          addBox3D(1, winY1 - 8, winZ2 - 6, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
+        }
+
+        const bedX = 4, bedZ = 44, bedW = 86, bedD = 64;
+        addBox3D(0.5, 0, bedZ, 6, 58, bedD, '#c89d74', '#9c744f', '#b38860');
+        addBox3D(bedX, 8, bedZ, bedW, 10, bedD, '#d9b38c', '#b38860', '#c89d74');
+        addBox3D(bedX + 4, 18, bedZ + 3, 46, 10, bedD - 6, '#a5b4fc', '#818cf8', '#93c5fd', 'rgba(0,0,0,0.1)', 5);
+        addBox3D(bedX + 36, 18, bedZ + 2, 36, 11, bedD - 4, '#ffffff', '#e2e8f0', '#f1f5f9', 'rgba(0,0,0,0.1)', 8);
+        addBox3D(bedX + 70, 18, bedZ + 3, 15, 10, bedD - 6, '#f4b8c4', '#e098a7', '#ebb0bc', 'rgba(0,0,0,0.1)', 6);
+        addBox3D(bedX + 7, 28, bedZ + 7, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
+        addBox3D(bedX + 7, 28, bedZ + 34, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
+
+        addBox3D(6, 0, 118, 32, 32, 34, '#ebd0a8', '#c9a97c', '#dec096');
+        addBox3D(14, 32, 134, 9, 10, 9, '#f3e5ab', '#d4c285', '#e6d598', 'rgba(0,0,0,0.12)', 10);
+        addBox3D(12, 42, 132, 13, 12, 13, '#65a30d', '#4d7c0f', '#84cc16', 'rgba(0,0,0,0.12)', 15);
+
+        addBox3D(8, 0, 10, 26, 26, 26, '#b38860', '#8c6642', '#9c744f');
+        addBox3D(12, 46, 14, 16, 14, 16, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', 12);
+
+        addBox3D(42, 0, 2, 44, 98, 24, '#e6c594', '#b89463', '#cfa977');
+        addBox3D(88, 0, 2, 34, 108, 28, '#f0d4a8', '#c7a473', '#deb986');
+
+        const deskX = 124, deskZ = 2, deskW = 54, deskD = 28, deskH = 62;
+        addBox3D(deskX, 0, deskZ, deskW, deskH, deskD, '#f2d7ad', '#c4a06e', '#dfb984');
+        addBox3D(deskX + 14, deskH + 3, deskZ + 7, 22, 13, 2, '#38bdf8', '#0284c7', '#7dd3fc', 'rgba(0,0,0,0.15)', 12);
+
+        if (!backWallInFront) {
+          addBox3D(132, 78, 0.5, 38, 32, 2, '#334155', '#1e293b', '#f8fafc', '#1e293b', backWallBias + 15);
+        }
+
+        const ottX = 92, ottZ = 118, ottW = 42, ottD = 26;
+        addBox3D(ottX, 8, ottZ, ottW, 14, ottD, '#f28b82', '#c95b52', '#e07067', 'rgba(0,0,0,0.12)', 4);
       }
-
-      // 6. Studio Lounge Bed / Daybed against Left Wall
-      const bedX = 4, bedZ = 44, bedW = 86, bedD = 64;
-      addBox3D(0.5, 0, bedZ, 6, 58, bedD, '#c89d74', '#9c744f', '#b38860');
-      addBox3D(bedX, 8, bedZ, bedW, 10, bedD, '#d9b38c', '#b38860', '#c89d74');
-      addBox3D(bedX + bedW - 6, 0, bedZ + 2, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
-      addBox3D(bedX + bedW - 6, 0, bedZ + bedD - 7, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
-      addBox3D(bedX + 4, 18, bedZ + 3, 46, 10, bedD - 6, '#a5b4fc', '#818cf8', '#93c5fd', 'rgba(0,0,0,0.1)', 5);
-      addBox3D(bedX + 36, 18, bedZ + 2, 36, 11, bedD - 4, '#ffffff', '#e2e8f0', '#f1f5f9', 'rgba(0,0,0,0.1)', 8);
-      addBox3D(bedX + 70, 18, bedZ + 3, 15, 10, bedD - 6, '#f4b8c4', '#e098a7', '#ebb0bc', 'rgba(0,0,0,0.1)', 6);
-      addBox3D(bedX + 7, 28, bedZ + 7, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
-      addBox3D(bedX + 7, 28, bedZ + 34, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
-
-      // Nightstand & Potted Plant in Front-Left Corner
-      addBox3D(6, 0, 118, 32, 32, 34, '#ebd0a8', '#c9a97c', '#dec096');
-      addBox3D(36, 4, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff', 'rgba(0,0,0,0.12)', 4);
-      addBox3D(36, 17, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff', 'rgba(0,0,0,0.12)', 4);
-      addBox3D(14, 32, 134, 9, 10, 9, '#f3e5ab', '#d4c285', '#e6d598', 'rgba(0,0,0,0.12)', 10);
-      addBox3D(12, 42, 132, 13, 12, 13, '#65a30d', '#4d7c0f', '#84cc16', 'rgba(0,0,0,0.12)', 15);
-
-      // Small bedside table & warm conical table lamp in Back Corner
-      addBox3D(8, 0, 10, 26, 26, 26, '#b38860', '#8c6642', '#9c744f');
-      addLine3D([20, 26, 22], [20, 48, 22], '#cbd5e1', 2.5 * camZoom, 8);
-      addBox3D(12, 46, 14, 16, 14, 16, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', 12);
-
-      // 7. Tall Multi-Cubby Bookshelf + Wardrobe Cabinet on Right Wall (Munich & Da'an Archive)
-      addBox3D(42, 0, 2, 44, 98, 24, '#e6c594', '#b89463', '#cfa977');
-      addBox3D(46, 28, 6, 16, 16, 18, '#fef3c7', '#d97706', '#f59e0b', 'rgba(0,0,0,0.12)', 6);
-      addBox3D(66, 28, 6, 14, 18, 18, '#dbeafe', '#2563eb', '#60a5fa', 'rgba(0,0,0,0.12)', 6);
-      addBox3D(46, 58, 6, 16, 18, 18, '#d1fae5', '#059669', '#34d399', 'rgba(0,0,0,0.12)', 6);
-      addBox3D(66, 58, 6, 15, 14, 18, '#fce7f3', '#db2777', '#f472b6', 'rgba(0,0,0,0.12)', 6);
-      addBox3D(48, 98, 8, 12, 12, 12, '#f3e5ab', '#d4c285', '#e6d598', 'rgba(0,0,0,0.12)', 12);
-      addBox3D(46, 110, 6, 16, 20, 16, '#4d7c0f', '#3f6212', '#65a30d', 'rgba(0,0,0,0.12)', 18);
-
-      // Tall wooden wardrobe cabinet next to shelf
-      addBox3D(88, 0, 2, 34, 108, 28, '#f0d4a8', '#c7a473', '#deb986');
-      addLine3D([105, 104, 30.5], [105, 6, 30.5], 'rgba(90,65,35,0.45)', 1.5 * camZoom, 6);
-
-      // 8. Architectural BIM Workstation Desk & Storage Unit on Right Wall
-      const deskX = 124, deskZ = 2, deskW = 54, deskD = 28, deskH = 62;
-      addBox3D(deskX, 0, deskZ, deskW, deskH, deskD, '#f2d7ad', '#c4a06e', '#dfb984');
-      addBox3D(deskX + 4, 8, deskZ + 6, 20, 22, 22, '#475569', '#1e293b', '#334155', 'rgba(0,0,0,0.15)', 6);
-      addBox3D(deskX + 28, 6, deskZ + 6, 20, 24, 22, '#65a30d', '#3f6212', '#4d7c0f', 'rgba(0,0,0,0.15)', 6);
-      addBox3D(deskX + 14, deskH, deskZ + 8, 22, 3, 14, '#334155', '#1e293b', '#475569', 'rgba(0,0,0,0.15)', 10);
-      addBox3D(deskX + 14, deskH + 3, deskZ + 7, 22, 13, 2, '#38bdf8', '#0284c7', '#7dd3fc', 'rgba(0,0,0,0.15)', 12);
-
-      if (!backWallInFront) {
-        addBox3D(132, 78, 0.5, 38, 32, 2, '#334155', '#1e293b', '#f8fafc', '#1e293b', backWallBias + 15);
-        addQuad3D([[136, 82, 2.8], [166, 82, 2.8], [166, 106, 2.8], [136, 106, 2.8]], '#f5d0c5', '#475569', 1, backWallBias + 18);
-      }
-
-      // 9. Foreground Coral-Terracotta Lounge Bench / Ottoman (Songshan Lounge)
-      const ottX = 92, ottZ = 118, ottW = 42, ottD = 26;
-      addBox3D(ottX + 2, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      addBox3D(ottX + ottW - 6, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      addBox3D(ottX + 2, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      addBox3D(ottX + ottW - 6, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      addBox3D(ottX, 8, ottZ, ottW, 14, ottD, '#f28b82', '#c95b52', '#e07067', 'rgba(0,0,0,0.12)', 4);
 
       // Sort all 3D geometry back-to-front by camera depth and draw!
       sceneItems.sort((a, b) => a.depth - b.depth);
