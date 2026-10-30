@@ -175,9 +175,10 @@
       "category": "architectural",
       "location": "Zhongshan District, Taipei",
       "area": "2,100 m² (B1–6F & Roof)",
-      "summary": "A 7-story urban boutique youth hostel (Project 113) defined by sculptural, wave-like cantilevered balconies that generate dynamic street rhythms. Includes complete B1 parking/service, 1F–2F public courtyard cafe & lounge, 3F–6F modular bunk & suite layouts, and rooftop garden.",
-      "image": "./assets/studio/curved_hostel_exterior.jpg",
+      "summary": "A 7-story urban boutique youth hostel (Project 113) defined by sculptural, wave-like white cantilevered balconies and curved glass balustrades that generate dynamic street rhythms. Includes complete B1 parking/service, 1F–2F public courtyard cafe & lounge, 3F–6F modular bunk & suite layouts, and rooftop garden.",
+      "image": "./assets/studio/curved_hostel_render.png",
       "gallery": [
+        "./assets/studio/curved_hostel_render.png",
         "./assets/studio/curved_hostel_exterior.jpg",
         "./assets/studio/curved_plans1_p19.jpg",
         "./assets/studio/curved_plans2_p20.jpg"
