@@ -115,7 +115,7 @@ function renderCV(data) {
           <div class="studio-split-canvas-wrap">
             <div class="studio-viewport-container" id="studioViewport">
               <!-- 3D Isometric Canvas -->
-              <canvas id="isometricStudioCanvas" width="860" height="540"></canvas>
+              <canvas id="isometricStudioCanvas" width="1100" height="660"></canvas>
 
               <!-- Interactive Floating Annotation Callouts -->
               <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 38%;">
@@ -341,13 +341,13 @@ function initIsometricStudioRoom(studioData) {
   let activeHotspotId = 'workstation';
   let hoveredHotspotId = null;
 
-  // Isometric projection parameters (calibrated for balanced split viewport)
-  const originX = canvas.width * 0.46;
+  // Isometric projection parameters (calibrated for spacious expanded viewport)
+  const originX = canvas.width * 0.45;
   const originY = canvas.height * 0.64;
   const ISO_ANGLE = Math.PI / 6; // 30 degrees
   const cosIso = Math.cos(ISO_ANGLE);
   const sinIso = Math.sin(ISO_ANGLE);
-  const scale = 1.75;
+  const scale = 2.05;
 
   function toIso(x, y, z) {
     // x: left-back to right-front
