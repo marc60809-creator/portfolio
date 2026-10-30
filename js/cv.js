@@ -47,75 +47,129 @@ function renderCV(data) {
         </div>
       </div>
       
-      <!-- Interactive 3D Isometric Studio Room (Inside the Studio) -->
+      <!-- Interactive 3D Isometric Studio Room (Fujitsu-Style Split Layout) -->
       <div class="studio-3d-section">
-        <div class="studio-top-bar">
-          <div>
-            <h2 class="studio-main-title">Inside the studio. <span class="studio-sub-zh">[ 空間研究室 ]</span></h2>
-            <p class="studio-tagline">I am Chu-Shian. I design computational spaces & sustainable environments you can explore. <span style="color:#f97316; font-weight:500;">Pick an object to explore a project.</span></p>
-          </div>
-          <div class="studio-view-btns">
-            <button class="studio-btn active" id="btnMyStudio">MY STUDIO</button>
-            <button class="studio-btn" id="btnResetView">RESET VIEW</button>
-            <button class="studio-btn" id="btnToggleLights">💡 LIGHTS: <span id="lightsStatus">ON</span></button>
+        <!-- Top Wide Banner Header -->
+        <div class="studio-top-banner">
+          <h2 class="studio-main-title">Step inside the computational studio with Chu-Shian Tsau</h2>
+          <div class="studio-sub-header-row">
+            <span class="studio-sub-zh">[ 運算化建築科學 • 3D 空間研究室 ]</span>
+            <div class="studio-view-btns">
+              <button class="studio-btn active" id="btnMyStudio">MY STUDIO</button>
+              <button class="studio-btn" id="btnResetView">RESET VIEW</button>
+              <button class="studio-btn" id="btnToggleLights">💡 LIGHTS: <span id="lightsStatus">ON</span></button>
+            </div>
           </div>
         </div>
 
-        <div class="studio-viewport-container" id="studioViewport">
-          <!-- 3D Isometric Canvas -->
-          <canvas id="isometricStudioCanvas" width="1200" height="680"></canvas>
-
-          <!-- Interactive Floating Annotation Callouts (Just like reference) -->
-          <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 38%;">
-            <span class="pin-dot"></span>
-            <div class="pin-line"></div>
-            <div class="pin-label">BIM Workstation</div>
-          </div>
-
-          <div class="studio-hotspot-pin" id="pin-window" style="top: 38%; left: 63%;">
-            <span class="pin-dot"></span>
-            <div class="pin-line"></div>
-            <div class="pin-label">Microclimate Window</div>
-          </div>
-
-          <div class="studio-hotspot-pin" id="pin-shelf" style="top: 24%; left: 32%;">
-            <span class="pin-dot"></span>
-            <div class="pin-line"></div>
-            <div class="pin-label">Munich & Da'an Archive</div>
-          </div>
-
-          <div class="studio-hotspot-pin" id="pin-chair" style="top: 66%; left: 56%;">
-            <span class="pin-dot"></span>
-            <div class="pin-line"></div>
-            <div class="pin-label">Songshan Lounge</div>
-          </div>
-
-          <!-- Bottom Left Architectural Stamp / Sheet Meta (from reference) -->
-          <div class="studio-sheet-stamp">
-            <strong>Chu-Shian Tsau 曹楚献</strong><br>
-            COMPUTATIONAL ARCHITECTURE • BIM<br>
-            SHEET 01 • NTUST STUDIO • 2026
-          </div>
-
-          <!-- Selected Project Card in bottom right (from reference) -->
-          <div class="studio-project-card" id="studioProjectCard">
-            <div class="card-tag" id="cardTag">SELECTED PROJECT</div>
-            <div class="card-thumb-wrap" id="cardThumbWrap">
-              <img id="cardThumbImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project preview">
+        <!-- Main Split Showcase: Left Index & Action, Right 3D Viewport -->
+        <div class="studio-split-showcase">
+          <!-- Left Column: Index Menu & Download Action Button -->
+          <div class="studio-split-sidebar">
+            <div class="studio-index-block">
+              <div class="studio-index-heading">Studio Index & Research Spheres</div>
+              <ul class="studio-index-list">
+                <li class="studio-index-item active" onclick="selectStudioHotspot('workstation')">
+                  <span class="index-bullet"></span>
+                  <div>
+                    <strong>BIM Workstation</strong>
+                    <p>Revit API Automation & gbXML BEM Validation</p>
+                  </div>
+                </li>
+                <li class="studio-index-item" onclick="selectStudioHotspot('window')">
+                  <span class="index-bullet"></span>
+                  <div>
+                    <strong>Microclimate Window</strong>
+                    <p>Autodesk Forma Daylighting & Urban Wind Comfort</p>
+                  </div>
+                </li>
+                <li class="studio-index-item" onclick="selectStudioHotspot('shelf')">
+                  <span class="index-bullet"></span>
+                  <div>
+                    <strong>Munich & Da'an Archive</strong>
+                    <p>European Timber Exchange, IELTS 6.0 & ACU Honors</p>
+                  </div>
+                </li>
+                <li class="studio-index-item" onclick="selectStudioHotspot('chair')">
+                  <span class="index-bullet"></span>
+                  <div>
+                    <strong>Songshan Lounge & Fabrication</strong>
+                    <p>Solo Graduation Exhibition & TTDA 3D Printing Lab</p>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <h3 class="card-title" id="cardTitle">BIM-to-BEM Interoperability</h3>
-            <div class="card-subtitle" id="cardCategory">GRADUATE RESEARCH LAB • NTUST</div>
-            <p class="card-desc" id="cardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to &lt;5%.</p>
-            <div class="card-action-row">
-              <a href="index.html" class="card-action-btn" id="cardLinkBtn">OPEN PROJECT &rarr;</a>
-              <button class="card-zoom-btn" id="cardZoomBtn">🔍 檢視原圖</button>
+
+            <!-- Download Official Portfolio / CV Action Button (Fujitsu Pill Style) -->
+            <a href="Midterm_Assignment_Submission_Chu-Shian_Tsau.doc" class="studio-fujitsu-cta" download>
+              <div class="fujitsu-cta-icon">📄</div>
+              <div class="fujitsu-cta-text">
+                <span class="cta-title">Download Official Report & CV</span>
+                <span class="cta-sub">Academic Portfolio & Credentials 2026</span>
+              </div>
+              <div class="fujitsu-cta-arrow">&rsaquo;</div>
+            </a>
+          </div>
+
+          <!-- Right Column: 3D Isometric Viewport & Dynamic Card Overlay -->
+          <div class="studio-split-canvas-wrap">
+            <div class="studio-viewport-container" id="studioViewport">
+              <!-- 3D Isometric Canvas -->
+              <canvas id="isometricStudioCanvas" width="860" height="540"></canvas>
+
+              <!-- Interactive Floating Annotation Callouts -->
+              <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 38%;">
+                <span class="pin-dot"></span>
+                <div class="pin-line"></div>
+                <div class="pin-label">BIM Workstation</div>
+              </div>
+
+              <div class="studio-hotspot-pin" id="pin-window" style="top: 38%; left: 63%;">
+                <span class="pin-dot"></span>
+                <div class="pin-line"></div>
+                <div class="pin-label">Microclimate Window</div>
+              </div>
+
+              <div class="studio-hotspot-pin" id="pin-shelf" style="top: 24%; left: 32%;">
+                <span class="pin-dot"></span>
+                <div class="pin-line"></div>
+                <div class="pin-label">Munich & Da'an Archive</div>
+              </div>
+
+              <div class="studio-hotspot-pin" id="pin-chair" style="top: 66%; left: 56%;">
+                <span class="pin-dot"></span>
+                <div class="pin-line"></div>
+                <div class="pin-label">Songshan Lounge</div>
+              </div>
+
+              <!-- Bottom Left Architectural Stamp / Sheet Meta -->
+              <div class="studio-sheet-stamp">
+                <strong>Chu-Shian Tsau 曹楚献</strong><br>
+                COMPUTATIONAL ARCHITECTURE • BIM<br>
+                SHEET 01 • NTUST STUDIO • 2026
+              </div>
+
+              <!-- Selected Project Card in bottom right -->
+              <div class="studio-project-card" id="studioProjectCard">
+                <div class="card-tag" id="cardTag">SELECTED PROJECT</div>
+                <div class="card-thumb-wrap" id="cardThumbWrap">
+                  <img id="cardThumbImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project preview">
+                </div>
+                <h3 class="card-title" id="cardTitle">BIM-to-BEM Interoperability</h3>
+                <div class="card-subtitle" id="cardCategory">GRADUATE RESEARCH LAB • NTUST</div>
+                <p class="card-desc" id="cardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to &lt;5%.</p>
+                <div class="card-action-row">
+                  <a href="index.html" class="card-action-btn" id="cardLinkBtn">OPEN PROJECT &rarr;</a>
+                  <button class="card-zoom-btn" id="cardZoomBtn">🔍 檢視原圖</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Real Portfolio Photo Gallery Strip below the 3D room -->
         <div class="studio-gallery-strip">
-          <div class="gallery-strip-title">Authentic Portfolio & Credentials Gallery • 實績成果與推薦函藝廊</div>
+          <div class="gallery-strip-title">Authentic Portfolio & Credentials Gallery • 實績成果、德國交換歷程與推薦函藝廊</div>
           <div class="gallery-strip-items">
             <div class="gallery-item" onclick="openStudioModal('Autodesk Revit ACU 國際認證', 'assets/studio/autodesk_revit_cert.jpg', 'Autodesk 原廠認證專業證照 (June 2023)')">
               <img src="assets/studio/autodesk_revit_cert.jpg" alt="Revit Cert">
@@ -136,6 +190,18 @@ function renderCV(data) {
             <div class="gallery-item" onclick="openStudioModal('蔡孟廷教授 推薦函 (國立臺灣科技大學建築系)', 'assets/studio/rec_letter_tsai_mt.jpg', '畢業設計指導教授極力推薦，肯定海外交換與國際競圖表現')">
               <img src="assets/studio/rec_letter_tsai_mt.jpg" alt="Rec Tsai">
               <span>蔡孟廷教授推薦函</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('德國慕尼黑交換過程：夜生活與國際友人交流', 'assets/studio/munich_exchange_01.jpg', '在慕尼黑與各國交換學生共聚，體驗歐洲多元文化與校園生活')">
+              <img src="assets/studio/munich_exchange_01.jpg" alt="Munich Exchange 01">
+              <span>德國交換生活 (一)</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('德國慕尼黑交換過程：營火晚會與露營交流', 'assets/studio/munich_exchange_02.jpg', '營火晚會與各國好友在草地交流，體驗戶外文化與國際情誼')">
+              <img src="assets/studio/munich_exchange_02.jpg" alt="Munich Exchange 02">
+              <span>德國交換生活 (二)</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('德國慕尼黑交換過程：建築參訪與城市探索', 'assets/studio/munich_exchange_03.jpg', '在歐洲各地與好友進行建築參訪、城市空間考察與文藝展覽')">
+              <img src="assets/studio/munich_exchange_03.jpg" alt="Munich Exchange 03">
+              <span>德國交換生活 (三)</span>
             </div>
             <div class="gallery-item" onclick="openStudioModal('阿吉師 MAOAO 餐廳 微氣候風場與日照分析', 'assets/studio/mooao_sun_wind_analysis.jpg', 'Autodesk Forma 早期微氣候分析圖板')">
               <img src="assets/studio/mooao_sun_wind_analysis.jpg" alt="Maoao Analysis">
@@ -275,13 +341,13 @@ function initIsometricStudioRoom(studioData) {
   let activeHotspotId = 'workstation';
   let hoveredHotspotId = null;
 
-  // Isometric projection parameters (calibrated for high-res spacious viewport)
-  const originX = canvas.width * 0.48;
-  const originY = canvas.height * 0.62;
+  // Isometric projection parameters (calibrated for balanced split viewport)
+  const originX = canvas.width * 0.46;
+  const originY = canvas.height * 0.64;
   const ISO_ANGLE = Math.PI / 6; // 30 degrees
   const cosIso = Math.cos(ISO_ANGLE);
   const sinIso = Math.sin(ISO_ANGLE);
-  const scale = 2.1;
+  const scale = 1.75;
 
   function toIso(x, y, z) {
     // x: left-back to right-front
@@ -594,7 +660,15 @@ function initIsometricStudioRoom(studioData) {
     document.querySelectorAll('.studio-hotspot-pin').forEach(pin => pin.classList.remove('active'));
     const activePin = document.getElementById(`pin-${hotspotId}`);
     if (activePin) activePin.classList.add('active');
+
+    // Highlight corresponding sidebar index item
+    document.querySelectorAll('.studio-index-item').forEach(item => item.classList.remove('active'));
+    const activeIndexItem = document.querySelector(`.studio-index-item[onclick*="${hotspotId}"]`);
+    if (activeIndexItem) activeIndexItem.classList.add('active');
   }
+
+  // Expose to window so sidebar list items can trigger it
+  window.selectStudioHotspot = selectHotspot;
 
   // Bind Pin Click Events
   const pinMapping = [
