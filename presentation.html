@@ -1267,6 +1267,7 @@
           </div>
           <div class="pres-studio-btns" style="gap: 10px;">
             <button class="pres-studio-btn active" id="presStyleToggleBtn" onclick="togglePresMinecraftStyle()" style="font-size: 11px; padding: 6px 14px; background: rgba(132, 204, 22, 0.18); border-color: #84cc16; color: #ecfccb;">⛏️ STYLE: <span id="presMinecraftStatus">MINECRAFT</span></button>
+            <button class="pres-studio-btn" id="presOutfitToggleBtn" onclick="togglePresOutfit()" style="font-size: 11px; padding: 6px 14px; background: rgba(56, 189, 248, 0.16); border-color: rgba(56, 189, 248, 0.55); color: #e0f2fe;" title="切換曹楚献角色穿搭：黑色落肩T恤(作品集肖像) / 白色捲袖襯衫(2025畢展導覽)">👕 穿搭: <span id="presOutfitStatus">黑T肖像</span></button>
             <button class="pres-studio-btn" onclick="selectPresHotspot('workstation')" style="font-size: 11px; padding: 6px 14px;">MY STUDIO</button>
             <button class="pres-studio-btn" onclick="switchDocSubtab('zh')" style="border-color:rgba(56,189,248,0.55); color:#38bdf8; font-size: 11px; padding: 6px 14px;">📑 文件頁籤 (DOCS)</button>
             <button class="pres-studio-btn" onclick="resetPresStudio()" style="font-size: 11px; padding: 6px 14px;">RESET VIEW</button>
@@ -1613,6 +1614,7 @@
 
     let presLightOn = true;
     let presMinecraftMode = true;
+    let presOutfitMode = 'black_tee';
     let presActiveId = null;
     let presCamZoom = 1.0;
     let presCamPanX = 0;
@@ -1620,6 +1622,13 @@
     let presCamYaw = 0;
     let presCamPitch = Math.PI / 6;
     let presAnimFrame = null;
+
+    function togglePresOutfit() {
+      presOutfitMode = (presOutfitMode === 'black_tee') ? 'white_shirt' : 'black_tee';
+      const el = document.getElementById('presOutfitStatus');
+      if (el) el.textContent = (presOutfitMode === 'black_tee') ? '黑T肖像' : '畢展白襯衫';
+      renderPresStudio();
+    }
 
     function togglePresMinecraftStyle() {
       presMinecraftMode = !presMinecraftMode;
@@ -2005,13 +2014,69 @@
         addVoxel(10.8, 4.75, 0.4, 2.3, 1.8, 0.3, '#1e293b', '#0f172a', '#38bdf8', 14);
         addVoxel(13.4, 4.75, 0.6, 1.1, 2.8, 1.1, '#7dd3fc', '#0284c7', '#38bdf8', 16);
         addVoxel(13.6, 7.55, 0.8, 0.7, 1.1, 0.7, '#bae6fd', '#38bdf8', '#7dd3fc', 18);
-        const stX = 11.8, stZ = 3.0;
-        addVoxel(stX, 0, stZ, 1.0, 1.7, 0.6, '#1d4ed8', '#1e40af', '#1e3a8a', 18);
-        addVoxel(stX - 0.1, 1.7, stZ - 0.05, 1.2, 1.8, 0.7, '#06b6d4', '#0891b2', '#0e7490', 20);
-        addVoxel(stX - 0.5, 2.0, stZ - 0.2, 0.4, 1.5, 0.85, '#d9a074', '#b88258', '#0891b2', 22);
-        addVoxel(stX + 1.1, 2.0, stZ - 0.2, 0.4, 1.5, 0.85, '#d9a074', '#b88258', '#0891b2', 22);
-        addVoxel(stX + 0.05, 3.5, stZ - 0.15, 0.95, 0.95, 0.95, '#3b2314', '#d9a074', '#c68b5e', 26);
-        addVoxel(stX + 0.03, 4.25, stZ - 0.17, 1.0, 0.3, 1.0, '#271705', '#1c1003', '#271705', 28);
+        // ============================================================================
+        // BESPOKE VOXEL CHARACTER: CHU-SHIAN TSAU (曹楚献)
+        // Wearing his exact Hairstyle (中分微捲層次黑髮 / 逗號瀏海) & Real-Life Outfits
+        // ============================================================================
+        const stX = 9.6, stZ = 5.2;
+        const isBlackTee = (presOutfitMode === 'black_tee');
+
+        const shoeTop = isBlackTee ? '#f8fafc' : '#27272a';
+        const shoeX   = isBlackTee ? '#e2e8f0' : '#18181b';
+        const shoeZ   = isBlackTee ? '#ffffff' : '#09090b';
+        addVoxel(stX, 0, stZ, 0.72, 0.45, 0.95, shoeTop, shoeX, shoeZ, 24);
+        addVoxel(stX + 0.78, 0, stZ, 0.72, 0.45, 0.95, shoeTop, shoeX, shoeZ, 24);
+
+        const pantTop = isBlackTee ? '#d6be96' : '#27272a';
+        const pantX   = isBlackTee ? '#bda37b' : '#18181b';
+        const pantZ   = isBlackTee ? '#cab088' : '#1f2028';
+        addVoxel(stX + 0.04, 0.45, stZ + 0.05, 0.68, 1.95, 0.78, pantTop, pantX, pantZ, 26);
+        addVoxel(stX + 0.78, 0.45, stZ + 0.05, 0.68, 1.95, 0.78, pantTop, pantX, pantZ, 26);
+        addVoxel(stX + 0.02, 2.38, stZ + 0.03, 1.46, 0.22, 0.82, '#18181b', '#09090b', '#18181b', 28);
+        addVoxel(stX + 0.62, 2.38, stZ + 0.78, 0.26, 0.22, 0.12, '#f8fafc', '#cbd5e1', '#e2e8f0', 30);
+
+        const shirtTop = isBlackTee ? '#22252f' : '#ffffff';
+        const shirtX   = isBlackTee ? '#12141c' : '#cbd5e1';
+        const shirtZ   = isBlackTee ? '#181a24' : '#f8fafc';
+        addVoxel(stX - 0.06, 2.60, stZ - 0.02, 1.62, 2.15, 0.90, shirtTop, shirtX, shirtZ, 30);
+        addVoxel(stX + 0.52, 4.45, stZ + 0.68, 0.46, 0.32, 0.24, '#e6b38a', '#d9a074', '#eab68c', 33);
+
+        if (isBlackTee) {
+          addVoxel(stX + 0.98, 3.92, stZ + 0.78, 0.42, 0.16, 0.14, '#ffffff', '#e2e8f0', '#ffffff', 35, 'rgba(0,0,0,0.2)');
+          addVoxel(stX + 0.36, 4.62, stZ + 0.12, 0.78, 0.16, 0.65, '#11131a', '#0b0d12', '#161922', 32);
+        } else {
+          addVoxel(stX + 0.68, 2.65, stZ + 0.78, 0.14, 1.85, 0.12, '#e2e8f0', '#94a3b8', '#ffffff', 34);
+          addVoxel(stX + 0.42, 3.65, stZ + 0.80, 0.66, 0.85, 0.12, '#1e293b', '#0f172a', '#334155', 35);
+          addVoxel(stX + 0.55, 3.25, stZ + 0.82, 0.40, 0.48, 0.14, '#ffffff', '#cbd5e1', '#38bdf8', 36);
+        }
+
+        addVoxel(stX - 0.52, 3.65, stZ + 0.04, 0.46, 1.05, 0.78, shirtTop, shirtX, shirtZ, 31);
+        addVoxel(stX - 0.48, 2.55, stZ + 0.10, 0.38, 1.10, 0.66, '#eab68c', '#c68b5e', '#d9a074', 31);
+        addVoxel(stX + 1.56, 3.65, stZ + 0.04, 0.46, 1.05, 0.78, shirtTop, shirtX, shirtZ, 31);
+        addVoxel(stX + 1.56, 2.55, stZ + 0.10, 0.38, 1.10, 0.66, '#eab68c', '#c68b5e', '#d9a074', 31);
+        addVoxel(stX + 1.54, 2.82, stZ + 0.08, 0.42, 0.18, 0.70, '#e2e8f0', '#94a3b8', '#cbd5e1', 33);
+
+        const headX = stX + 0.08, headY = 4.75, headZ = stZ - 0.08;
+        const headW = 1.34, headH = 1.28, headD = 1.18;
+        addVoxel(headX, headY, headZ, headW, headH, headD, '#eab68c', '#d1996c', '#e4af84', 36);
+
+        addVoxel(headX + 0.22, headY + 0.48, headZ + headD - 0.06, 0.24, 0.20, 0.12, '#111318', '#111318', '#090a0f', 40);
+        addVoxel(headX + 0.88, headY + 0.48, headZ + headD - 0.06, 0.24, 0.20, 0.12, '#111318', '#111318', '#090a0f', 40);
+        addVoxel(headX + 0.18, headY + 0.74, headZ + headD - 0.05, 0.32, 0.09, 0.11, '#18181b', '#18181b', '#18181b', 40);
+        addVoxel(headX + 0.84, headY + 0.74, headZ + headD - 0.05, 0.32, 0.09, 0.11, '#18181b', '#18181b', '#18181b', 40);
+        addVoxel(headX + 0.52, headY + 0.22, headZ + headD - 0.05, 0.30, 0.09, 0.10, '#a16247', '#8c523a', '#a16247', 40);
+
+        const hairTop = '#232733', hairX = '#11131a', hairZ = '#181b24';
+        addVoxel(headX - 0.08, headY + 0.98, headZ - 0.10, headW + 0.16, 0.42, headD + 0.18, hairTop, hairX, hairZ, 42);
+        addVoxel(headX - 0.04, headY + 1.36, headZ - 0.04, 0.64, 0.24, headD + 0.06, '#2a2e3d', hairX, hairZ, 44);
+        addVoxel(headX + 0.74, headY + 1.36, headZ - 0.04, 0.64, 0.24, headD + 0.06, '#2a2e3d', hairX, hairZ, 44);
+        addVoxel(headX - 0.08, headY + 0.18, headZ - 0.10, headW + 0.16, 0.85, 0.42, hairTop, hairX, hairZ, 38);
+        addVoxel(headX - 0.10, headY + 0.38, headZ + 0.25, 0.18, 0.68, 0.72, hairTop, hairX, hairZ, 41);
+        addVoxel(headX + headW - 0.08, headY + 0.38, headZ + 0.25, 0.18, 0.68, 0.72, hairTop, hairX, hairZ, 41);
+        addVoxel(headX - 0.04, headY + 0.78, headZ + headD - 0.12, 0.56, 0.32, 0.22, hairTop, hairX, hairZ, 43);
+        addVoxel(headX - 0.02, headY + 0.56, headZ + headD - 0.10, 0.32, 0.24, 0.20, hairTop, hairX, hairZ, 43);
+        addVoxel(headX + 0.82, headY + 0.78, headZ + headD - 0.12, 0.56, 0.32, 0.22, hairTop, hairX, hairZ, 43);
+        addVoxel(headX + 1.04, headY + 0.56, headZ + headD - 0.10, 0.32, 0.24, 0.20, hairTop, hairX, hairZ, 43);
 
         // CORNER 08 (Front-Center-Right Zone: bx 6.4..10.4, bz 11.2..14.6)
         // [08 • TAC 沙迦國際劇場建築競圖：Temporary Art Space in Sharjah]
