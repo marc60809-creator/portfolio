@@ -63,22 +63,22 @@ function renderCV(data) {
 
         <div class="studio-viewport-container" id="studioViewport">
           <!-- 3D Isometric Canvas -->
-          <canvas id="isometricStudioCanvas" width="920" height="520"></canvas>
+          <canvas id="isometricStudioCanvas" width="1200" height="680"></canvas>
 
           <!-- Interactive Floating Annotation Callouts (Just like reference) -->
-          <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 39%;">
+          <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 38%;">
             <span class="pin-dot"></span>
             <div class="pin-line"></div>
             <div class="pin-label">BIM Workstation</div>
           </div>
 
-          <div class="studio-hotspot-pin" id="pin-window" style="top: 40%; left: 63%;">
+          <div class="studio-hotspot-pin" id="pin-window" style="top: 38%; left: 63%;">
             <span class="pin-dot"></span>
             <div class="pin-line"></div>
             <div class="pin-label">Microclimate Window</div>
           </div>
 
-          <div class="studio-hotspot-pin" id="pin-shelf" style="top: 24%; left: 33%;">
+          <div class="studio-hotspot-pin" id="pin-shelf" style="top: 24%; left: 32%;">
             <span class="pin-dot"></span>
             <div class="pin-line"></div>
             <div class="pin-label">Munich & Da'an Archive</div>
@@ -275,13 +275,13 @@ function initIsometricStudioRoom(studioData) {
   let activeHotspotId = 'workstation';
   let hoveredHotspotId = null;
 
-  // Isometric projection parameters
-  const originX = canvas.width / 2;
-  const originY = 320;
+  // Isometric projection parameters (calibrated for high-res spacious viewport)
+  const originX = canvas.width * 0.48;
+  const originY = canvas.height * 0.62;
   const ISO_ANGLE = Math.PI / 6; // 30 degrees
   const cosIso = Math.cos(ISO_ANGLE);
   const sinIso = Math.sin(ISO_ANGLE);
-  const scale = 1.6;
+  const scale = 2.1;
 
   function toIso(x, y, z) {
     // x: left-back to right-front

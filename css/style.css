@@ -8,7 +8,7 @@
   --text-light: #a8a8a8;
   --border-color: #e5e5e5;
   --accent: #111111;
-  --container-max: 1240px;
+  --container-max: 1360px;
 
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -419,11 +419,11 @@ header {
 
 /* ================= 3D ISOMETRIC STUDIO ROOM (REFERENCE MATCH) ================= */
 .studio-3d-section {
-  margin-top: 52px;
+  margin-top: 56px;
   background-color: #1a1e24;
-  border-radius: 8px;
-  padding: 32px 36px 36px;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 40px 44px 44px;
+  box-shadow: 0 16px 44px rgba(0,0,0,0.28);
   color: #f3f4f6;
   position: relative;
   overflow: hidden;
@@ -433,39 +433,39 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .studio-main-title {
   font-family: var(--font-serif);
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 500;
   color: #ffffff;
   letter-spacing: -0.5px;
   line-height: 1.1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .studio-sub-zh {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 20px;
   color: #9ca3af;
   font-weight: 300;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .studio-tagline {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: #d1d5db;
-  max-width: 620px;
-  line-height: 1.6;
+  max-width: 720px;
+  line-height: 1.7;
 }
 
 .studio-view-btns {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -474,10 +474,10 @@ header {
   border: 1px solid rgba(255,255,255,0.18);
   color: #e5e7eb;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 1.2px;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -497,12 +497,12 @@ header {
 .studio-viewport-container {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 680px;
   background-color: #1e2228;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+  box-shadow: inset 0 2px 14px rgba(0,0,0,0.35);
 }
 
 #isometricStudioCanvas {
@@ -589,13 +589,13 @@ header {
   position: absolute;
   bottom: 24px;
   right: 24px;
-  width: 320px;
-  background: rgba(22, 27, 34, 0.94);
-  backdrop-filter: blur(8px);
+  width: 340px;
+  background: rgba(18, 22, 28, 0.95);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 6px;
-  padding: 20px 22px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  padding: 22px 24px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.5);
   z-index: 20;
 }
 
