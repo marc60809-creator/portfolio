@@ -99,9 +99,78 @@
     .home-studio-viewport {
       position: relative;
       width: 100%;
-      height: 620px;
+      height: 640px;
       background: #161b22;
       overflow: hidden;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .home-studio-viewport.dragging {
+      cursor: grabbing;
+    }
+
+    /* Interactive Zoom / Pan / Rotate HUD Controls */
+    .studio-nav-hud {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.86);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      padding: 6px 10px;
+      z-index: 20;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .hud-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #f8fafc;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .hud-btn:hover {
+      background: #f97316;
+      border-color: #f97316;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .hud-zoom-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #fb923c;
+      font-weight: 600;
+      min-width: 44px;
+      text-align: center;
+    }
+
+    .hud-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.16);
+      margin: 0 3px;
+    }
+
+    .hud-hint {
+      font-size: 11px;
+      color: #cbd5e1;
+      padding: 0 6px;
+      white-space: nowrap;
     }
 
     #homeStudioCanvas {
@@ -290,26 +359,43 @@
         </div>
       </div>
 
-      <div class="home-studio-viewport">
-        <canvas id="homeStudioCanvas" width="1360" height="620"></canvas>
+      <div class="home-studio-viewport" id="homeStudioViewport">
+        <canvas id="homeStudioCanvas" width="1360" height="640"></canvas>
 
-        <!-- Interactive Hotspot Pins -->
-        <div class="home-pin active" id="home-pin-workstation" style="top: 49%; left: 36%;" onclick="selectHomeHotspot('workstation')">
+        <!-- Interactive Zoom, Pan & Rotate HUD Toolbar -->
+        <div class="studio-nav-hud" onmousedown="event.stopPropagation()">
+          <button class="hud-btn" onclick="zoomHomeStudio(1.18)" title="放大 (Zoom In)">➕</button>
+          <span class="hud-zoom-label" id="homeZoomLabel">100%</span>
+          <button class="hud-btn" onclick="zoomHomeStudio(0.85)" title="縮小 (Zoom Out)">➖</button>
+          <span class="hud-divider"></span>
+          <button class="hud-btn" onclick="panHomeStudio(-60, 0)" title="向左移動 (Pan Left)">⬅️</button>
+          <button class="hud-btn" onclick="panHomeStudio(0, -45)" title="向上移動 (Pan Up)">⬆️</button>
+          <button class="hud-btn" onclick="panHomeStudio(0, 45)" title="向下移動 (Pan Down)">⬇️</button>
+          <button class="hud-btn" onclick="panHomeStudio(60, 0)" title="向右移動 (Pan Right)">➡️</button>
+          <span class="hud-divider"></span>
+          <button class="hud-btn" onclick="rotateHomeStudio(-0.12)" title="向左旋轉視角 (Rotate Left)">↺</button>
+          <button class="hud-btn" onclick="rotateHomeStudio(0.12)" title="向右旋轉視角 (Rotate Right)">↻</button>
+          <span class="hud-divider"></span>
+          <span class="hud-hint">🖱️ 拖曳平移 • 滾輪縮放 • 點擊熱點自動聚焦</span>
+        </div>
+
+        <!-- Interactive Hotspot Pins (Dynamically Anchored in 3D Space) -->
+        <div class="home-pin active" id="home-pin-workstation" onclick="selectHomeHotspot('workstation', true)">
           <span class="home-pin-dot"></span>
           <span class="home-pin-label">BIM Workstation</span>
         </div>
 
-        <div class="home-pin" id="home-pin-window" style="top: 36%; left: 58%;" onclick="selectHomeHotspot('window')">
+        <div class="home-pin" id="home-pin-window" onclick="selectHomeHotspot('window', true)">
           <span class="home-pin-dot"></span>
           <span class="home-pin-label">Microclimate Window</span>
         </div>
 
-        <div class="home-pin" id="home-pin-shelf" style="top: 23%; left: 30%;" onclick="selectHomeHotspot('shelf')">
+        <div class="home-pin" id="home-pin-shelf" onclick="selectHomeHotspot('shelf', true)">
           <span class="home-pin-dot"></span>
           <span class="home-pin-label">Munich & Da'an Archive</span>
         </div>
 
-        <div class="home-pin" id="home-pin-chair" style="top: 67%; left: 52%;" onclick="selectHomeHotspot('chair')">
+        <div class="home-pin" id="home-pin-chair" onclick="selectHomeHotspot('chair', true)">
           <span class="home-pin-dot"></span>
           <span class="home-pin-label">Songshan Lounge</span>
         </div>
@@ -394,32 +480,97 @@
         title: 'BIM-to-BEM Interoperability',
         sub: 'GRADUATE RESEARCH LAB • NTUST',
         desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
-        url: '#filterBar'
+        url: '#filterBar',
+        pos3D: { x: 145, y: 68, z: 32 },
+        camTarget: { zoom: 1.32, panX: -95, panY: 35, yaw: 0 }
       },
       window: {
         tag: 'SELECTED PROJECT • 02',
         title: 'Autodesk Forma Microclimate',
         sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
         desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
-        url: '#filterBar'
+        url: '#filterBar',
+        pos3D: { x: 12, y: 112, z: 95 },
+        camTarget: { zoom: 1.35, panX: 115, panY: 85, yaw: 0.08 }
       },
       shelf: {
         tag: 'ACADEMIC ARCHIVE • 03',
         title: 'Munich HM Exchange & Credentials',
         sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
         desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
-        url: './docs.html'
+        url: './docs.html',
+        pos3D: { x: 68, y: 118, z: 18 },
+        camTarget: { zoom: 1.35, panX: 10, panY: 95, yaw: -0.06 }
       },
       chair: {
         tag: 'EXHIBITION & FABRICATION • 04',
         title: 'Songshan Solo Exhibition & TTDA',
         sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
         desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
-        url: '#filterBar'
+        url: '#filterBar',
+        pos3D: { x: 108, y: 38, z: 128 },
+        camTarget: { zoom: 1.3, panX: 25, panY: -55, yaw: 0 }
       }
     };
 
     let homeLightOn = true;
+    let camZoom = 1.0;
+    let camPanX = 0;
+    let camPanY = 0;
+    let camYaw = 0; // Isometric rotation offset in radians
+
+    let animFrameId = null;
+
+    function animateCameraTo(targetZoom, targetPanX, targetPanY, targetYaw = 0) {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+      const startZoom = camZoom, startX = camPanX, startY = camPanY, startYaw = camYaw;
+      const startTime = performance.now();
+      const duration = 420;
+
+      function step(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const ease = 1 - Math.pow(1 - t, 3); // cubic ease-out
+        camZoom = startZoom + (targetZoom - startZoom) * ease;
+        camPanX = startX + (targetPanX - startX) * ease;
+        camPanY = startY + (targetPanY - startY) * ease;
+        camYaw = startYaw + (targetYaw - startYaw) * ease;
+        updateZoomUI();
+        renderHomeStudio();
+        if (t < 1) {
+          animFrameId = requestAnimationFrame(step);
+        }
+      }
+      animFrameId = requestAnimationFrame(step);
+    }
+
+    function updateZoomUI() {
+      const lbl = document.getElementById('homeZoomLabel');
+      if (lbl) lbl.textContent = Math.round(camZoom * 100) + '%';
+    }
+
+    function zoomHomeStudio(factor, centerX, centerY) {
+      const canvas = document.getElementById('homeStudioCanvas');
+      const prevZoom = camZoom;
+      camZoom = Math.max(0.55, Math.min(2.4, camZoom * factor));
+      if (canvas && centerX !== undefined && centerY !== undefined) {
+        const ratio = camZoom / prevZoom;
+        const cx = centerX - canvas.width * 0.45;
+        const cy = centerY - canvas.height * 0.62;
+        camPanX = cx - (cx - camPanX) * ratio;
+        camPanY = cy - (cy - camPanY) * ratio;
+      }
+      updateZoomUI();
+      renderHomeStudio();
+    }
+
+    function panHomeStudio(dx, dy) {
+      animateCameraTo(camZoom, camPanX + dx, camPanY + dy, camYaw);
+    }
+
+    function rotateHomeStudio(dYaw) {
+      const nextYaw = Math.max(-0.45, Math.min(0.45, camYaw + dYaw));
+      animateCameraTo(camZoom, camPanX, camPanY, nextYaw);
+    }
 
     function renderHomeStudio() {
       const canvas = document.getElementById('homeStudioCanvas');
@@ -427,17 +578,25 @@
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const originX = canvas.width * 0.43;
-      const originY = canvas.height * 0.65;
-      const ISO_ANGLE = Math.PI / 6;
-      const cosIso = Math.cos(ISO_ANGLE);
-      const sinIso = Math.sin(ISO_ANGLE);
-      const scale = 2.15;
+      const baseScale = 2.05;
+      const scale = baseScale * camZoom;
+      const originX = canvas.width * 0.45 + camPanX;
+      const originY = canvas.height * 0.62 + camPanY;
+
+      const ISO_PITCH = Math.PI / 6; // 30 deg
+      const cosPitch = Math.cos(ISO_PITCH);
+      const sinPitch = Math.sin(ISO_PITCH);
+      const cosYaw = Math.cos(camYaw);
+      const sinYaw = Math.sin(camYaw);
 
       function toIso(x, y, z) {
+        // Apply yaw rotation around room center (90, 90)
+        const cx = x - 90, cz = z - 90;
+        const rx = cx * cosYaw - cz * sinYaw + 90;
+        const rz = cx * sinYaw + cz * cosYaw + 90;
         return {
-          x: originX + (x - z) * cosIso * scale,
-          y: originY + (x + z) * sinIso * scale - y * scale
+          x: originX + (rx - rz) * cosPitch * scale,
+          y: originY + (rx + rz) * sinPitch * scale - y * scale
         };
       }
 
@@ -452,104 +611,238 @@
         if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
       }
 
-      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.15)') {
+      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.12)') {
         const pA = toIso(x, y, z), pB = toIso(x + w, y, z), pC = toIso(x + w, y, z + d), pD = toIso(x, y, z + d);
         const pAt = toIso(x, y + h, z), pBt = toIso(x + w, y + h, z), pCt = toIso(x + w, y + h, z + d), pDt = toIso(x, y + h, z + d);
+        // Back-to-front faces for isometric view
         drawQuad(pA, pD, pDt, pAt, leftC, strokeC);
         drawQuad(pD, pC, pCt, pDt, rightC, strokeC);
+        drawQuad(pB, pC, pCt, pBt, rightC, strokeC);
         drawQuad(pAt, pBt, pCt, pDt, topC, strokeC);
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const bgGrad = ctx.createRadialGradient(originX, originY - 60, 40, originX, originY - 40, 560);
-      bgGrad.addColorStop(0, homeLightOn ? '#2d333b' : '#1c1f24');
-      bgGrad.addColorStop(1, homeLightOn ? '#181c22' : '#0f1216');
+      // Studio ambient background
+      const bgGrad = ctx.createRadialGradient(originX, originY - 60 * camZoom, 40, originX, originY - 40 * camZoom, 580 * camZoom);
+      bgGrad.addColorStop(0, homeLightOn ? '#2b323c' : '#1a1e24');
+      bgGrad.addColorStop(1, homeLightOn ? '#151920' : '#0e1116');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // Architectural Grid (pans & zooms with camera)
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
       ctx.lineWidth = 1;
-      for (let gx = 0; gx < canvas.width; gx += 32) {
+      const gridStep = Math.max(18, Math.round(32 * camZoom));
+      const offsetX = ((originX % gridStep) + gridStep) % gridStep;
+      const offsetY = ((originY % gridStep) + gridStep) % gridStep;
+      for (let gx = offsetX; gx < canvas.width; gx += gridStep) {
         ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
       }
-      for (let gy = 0; gy < canvas.height; gy += 32) {
+      for (let gy = offsetY; gy < canvas.height; gy += gridStep) {
         ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
       }
 
-      const floorColor = homeLightOn ? '#8a6245' : '#4d3727';
-      const floorStroke = homeLightOn ? '#704f37' : '#38271b';
-      const wallLeftColor = homeLightOn ? '#d9d2c5' : '#6b665e';
-      const wallRightColor = homeLightOn ? '#c2baa9' : '#575249';
-      const ROOM_SIZE = 175, WALL_HEIGHT = 160;
+      const ROOM_SIZE = 184, WALL_HEIGHT = 158, WALL_THICK = 9, SLAB_THICK = 10;
 
-      const f0 = toIso(0, 0, 0), fX = toIso(ROOM_SIZE, 0, 0), fC = toIso(ROOM_SIZE, 0, ROOM_SIZE), fZ = toIso(0, 0, ROOM_SIZE);
-      drawQuad(f0, fX, fC, fZ, floorColor, floorStroke, 1.5);
+      // 1. Thick 3D Floor Slab Base (like uploaded reference room)
+      drawBox(
+        -WALL_THICK, -SLAB_THICK, -WALL_THICK,
+        ROOM_SIZE + WALL_THICK, SLAB_THICK, ROOM_SIZE + WALL_THICK,
+        homeLightOn ? '#d6c7b2' : '#574c3f',
+        homeLightOn ? '#dfbe99' : '#63513d',
+        homeLightOn ? '#bfa07a' : '#4a3c2c',
+        'rgba(0,0,0,0.18)'
+      );
 
-      ctx.strokeStyle = 'rgba(0,0,0,0.12)';
-      for (let s = 20; s < ROOM_SIZE; s += 22) {
-        const pS = toIso(s, 0, 0), pE = toIso(s, 0, ROOM_SIZE);
-        ctx.beginPath(); ctx.moveTo(pS.x, pS.y); ctx.lineTo(pE.x, pE.y); ctx.stroke();
+      // 2. Checkered Architectural Tile Carpet & Flooring (directly inspired by uploaded image)
+      const tileCount = 6;
+      const tileSize = ROOM_SIZE / tileCount;
+      const tilePaletteLight = [
+        ['#f5efe6', '#eadbc8', '#d4c3b3', '#e8d5b7', '#f5efe6', '#d8c8b8'],
+        ['#eadbc8', '#f7f3eb', '#e5d0b1', '#9e9289', '#eadbc8', '#c9b8a6'],
+        ['#f5efe6', '#e8d5b7', '#968980', '#84776f', '#e5d0b1', '#b5a493'],
+        ['#eadbc8', '#f7f3eb', '#e8d5b7', '#c2b09c', '#968980', '#d8c8b8'],
+        ['#d4c3b3', '#e5d0b1', '#f5efe6', '#e8d5b7', '#eadbc8', '#b5a493'],
+        ['#c9b8a6', '#d8c8b8', '#eadbc8', '#d4c3b3', '#c2b09c', '#9e9289']
+      ];
+      for (let ix = 0; ix < tileCount; ix++) {
+        for (let iz = 0; iz < tileCount; iz++) {
+          const x0 = ix * tileSize, z0 = iz * tileSize;
+          const baseCol = tilePaletteLight[ix][iz];
+          drawQuad(
+            toIso(x0, 0.2, z0),
+            toIso(x0 + tileSize, 0.2, z0),
+            toIso(x0 + tileSize, 0.2, z0 + tileSize),
+            toIso(x0, 0.2, z0 + tileSize),
+            homeLightOn ? baseCol : '#3e3832',
+            'rgba(0,0,0,0.08)',
+            1
+          );
+        }
       }
 
-      const w0t = toIso(0, WALL_HEIGHT, 0), wZt = toIso(0, WALL_HEIGHT, ROOM_SIZE), wXt = toIso(ROOM_SIZE, WALL_HEIGHT, 0);
-      drawQuad(f0, fZ, wZt, w0t, wallLeftColor, null);
-      drawQuad(f0, fX, wXt, w0t, wallRightColor, null);
+      // 3. Thick Cutaway Left Wall (along Z axis, painted soft sky-blue/teal like reference)
+      drawBox(
+        -WALL_THICK, 0, -WALL_THICK,
+        WALL_THICK, WALL_HEIGHT, ROOM_SIZE + WALL_THICK,
+        homeLightOn ? '#e8f1f5' : '#64748b',
+        homeLightOn ? '#9abfd1' : '#334155',
+        homeLightOn ? '#78a5bd' : '#1e293b',
+        'rgba(0,0,0,0.15)'
+      );
 
-      ctx.strokeStyle = homeLightOn ? '#fff' : '#888';
-      ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(wZt.x, wZt.y); ctx.lineTo(w0t.x, w0t.y); ctx.lineTo(wXt.x, wXt.y); ctx.stroke();
+      // 4. Thick Cutaway Right/Back Wall (along X axis, painted warm mint/cream like reference)
+      drawBox(
+        0, 0, -WALL_THICK,
+        ROOM_SIZE, WALL_HEIGHT, WALL_THICK,
+        homeLightOn ? '#f2f7f2' : '#64748b',
+        homeLightOn ? '#c8d9ce' : '#334155',
+        homeLightOn ? '#dcebe0' : '#475569',
+        'rgba(0,0,0,0.15)'
+      );
 
-      // Window
-      const winX1 = 45, winX2 = 125, winY1 = 35, winY2 = 125;
-      drawQuad(toIso(winX1, winY1, 0), toIso(winX2, winY1, 0), toIso(winX2, winY2, 0), toIso(winX1, winY2, 0), homeLightOn ? '#b8d5e5' : '#32404e', '#fff', 2);
-      const wmA = toIso((winX1 + winX2) / 2, winY1, 0), wmB = toIso((winX1 + winX2) / 2, winY2, 0);
-      ctx.beginPath(); ctx.moveTo(wmA.x, wmA.y); ctx.lineTo(wmB.x, wmB.y); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
-      drawQuad(toIso(winX1 - 10, winY1 - 8, 0), toIso(winX1 + 6, winY1 - 8, 0), toIso(winX1 + 6, winY2 + 10, 0), toIso(winX1 - 10, winY2 + 10, 0), '#6c5c4e', null);
-      drawQuad(toIso(winX2 - 6, winY1 - 8, 0), toIso(winX2 + 12, winY1 - 8, 0), toIso(winX2 + 12, winY2 + 10, 0), toIso(winX2 - 6, winY2 + 10, 0), '#6c5c4e', null);
-
-      // Bookshelf
-      drawBox(0, 105, 30, 8, 6, 95, '#4a3f35', '#382f27', '#5a4d41');
-      drawBox(0, 111, 40, 6, 18, 12, '#3b82f6', '#1d4ed8', '#60a5fa');
-      drawBox(0, 111, 55, 6, 22, 14, '#10b981', '#047857', '#34d399');
-      drawBox(0, 111, 72, 6, 16, 20, '#d97706', '#b45309', '#f59e0b');
-
-      // Desk & Laptop
-      const deskX = 2, deskZ = 20, deskW = 42, deskD = 110, deskH = 50;
-      ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 2.5;
-      [[deskX+4, deskZ+4], [deskX+deskW-4, deskZ+4], [deskX+4, deskZ+deskD-4], [deskX+deskW-4, deskZ+deskD-4]].forEach(([lx, lz]) => {
-        const b = toIso(lx, 0, lz), t = toIso(lx, deskH, lz);
-        ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(t.x, t.y); ctx.stroke();
-      });
-      drawBox(deskX, deskH, deskZ, deskW, 4, deskD, '#ffffff', '#e5e7eb', '#d1d5db');
-
-      const lapX = deskX + 12, lapZ = deskZ + 48;
-      drawBox(lapX, deskH + 4, lapZ, 20, 2, 22, '#374151', '#1f2937', '#4b5563');
-      drawQuad(toIso(lapX, deskH + 6, lapZ), toIso(lapX, deskH + 6, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ), homeLightOn ? '#ecfeff' : '#0284c7', '#fff', 1);
-
-      // Lamp
-      drawBox(deskX + 8, deskH + 4, deskZ + 14, 6, 2, 6, '#f59e0b', '#d97706', '#fbbf24');
-      drawBox(deskX + 7, deskH + 22, deskZ + 13, 8, 5, 8, '#fbbf24', '#f59e0b', '#fde68a');
-
-      // Rug & Chair
-      const rugX = 75, rugZ = 75, rugW = 75, rugD = 65;
-      drawQuad(toIso(rugX, 1, rugZ), toIso(rugX + rugW, 1, rugZ), toIso(rugX + rugW, 1, rugZ + rugD), toIso(rugX, 1, rugZ + rugD), '#f4ede4', '#ea580c', 2);
-
-      const chairX = 92, chairZ = 90;
-      drawBox(chairX - 6, 18, chairZ - 6, 26, 8, 26, '#1f2937', '#111827', '#374151');
-      drawBox(chairX + 10, 26, chairZ - 6, 10, 22, 26, '#111827', '#030712', '#1f2937');
-
+      // Subtle diagonal sunlight shadow cast on right wall (like reference image)
       if (homeLightOn) {
-        const glow = ctx.createRadialGradient(originX - 80, originY - 120, 15, originX - 80, originY - 120, 280);
-        glow.addColorStop(0, 'rgba(254, 243, 199, 0.44)');
+        drawQuad(
+          toIso(0, WALL_HEIGHT, 0),
+          toIso(52, WALL_HEIGHT, 0),
+          toIso(15, 0, 0),
+          toIso(0, 0, 0),
+          'rgba(55, 85, 110, 0.24)',
+          null
+        );
+      }
+
+      // 5. Recessed Window on Left Wall with Terracotta Curtains (Microclimate Window)
+      const winZ1 = 42, winZ2 = 114, winY1 = 76, winY2 = 136;
+      // Window recess & sky glow
+      drawQuad(
+        toIso(0.5, winY1, winZ1),
+        toIso(0.5, winY1, winZ2),
+        toIso(0.5, winY2, winZ2),
+        toIso(0.5, winY2, winZ1),
+        homeLightOn ? '#f5e1e4' : '#1e293b',
+        '#ffffff',
+        2.5
+      );
+      // Window sill
+      drawBox(0, winY1 - 3, winZ1 - 2, 6, 3, winZ2 - winZ1 + 4, '#f8fafc', '#cbd5e1', '#e2e8f0');
+      // Curtain rod
+      ctx.strokeStyle = '#8c6249';
+      ctx.lineWidth = 2.5 * camZoom;
+      const rodA = toIso(3, winY2 + 5, winZ1 - 10), rodB = toIso(3, winY2 + 5, winZ2 + 10);
+      ctx.beginPath(); ctx.moveTo(rodA.x, rodA.y); ctx.lineTo(rodB.x, rodB.y); ctx.stroke();
+      // Left & Right pleated curtains (warm terracotta rose)
+      drawBox(1, winY1 - 8, winZ1 - 8, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d');
+      drawBox(1, winY1 - 8, winZ2 - 6, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d');
+
+      // Framed Architectural Drawing on Left Wall (front of window)
+      drawBox(0.5, 62, 134, 2, 28, 36, '#1e293b', '#1e293b', '#f8fafc', '#1e293b');
+      drawQuad(toIso(2.8, 66, 138), toIso(2.8, 66, 166), toIso(2.8, 86, 166), toIso(2.8, 86, 138), '#e6c8b8', '#334155', 1);
+
+      // 6. Studio Lounge Bed / Daybed against Left Wall (like reference room)
+      const bedX = 4, bedZ = 44, bedW = 86, bedD = 64;
+      // Wooden headboard
+      drawBox(0.5, 14, bedZ, 6, 44, bedD, '#c89d74', '#9c744f', '#b38860');
+      // Wooden bed frame
+      drawBox(bedX, 8, bedZ, bedW, 10, bedD, '#d9b38c', '#b38860', '#c89d74');
+      // Bed legs
+      drawBox(bedX + bedW - 6, 0, bedZ + 2, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
+      drawBox(bedX + bedW - 6, 0, bedZ + bedD - 7, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
+      // Mattress (soft blue-lavender sheet + white duvet + pink throw blanket at foot)
+      drawBox(bedX + 4, 18, bedZ + 3, 46, 10, bedD - 6, '#a5b4fc', '#818cf8', '#93c5fd');
+      drawBox(bedX + 36, 18, bedZ + 2, 36, 11, bedD - 4, '#ffffff', '#e2e8f0', '#f1f5f9');
+      drawBox(bedX + 70, 18, bedZ + 3, 15, 10, bedD - 6, '#f4b8c4', '#e098a7', '#ebb0bc');
+      // Two fluffy pillows
+      drawBox(bedX + 7, 28, bedZ + 7, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff');
+      drawBox(bedX + 7, 28, bedZ + 34, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff');
+
+      // Nightstand & Potted Plant in Front-Left Corner
+      drawBox(6, 0, 118, 32, 32, 34, '#ebd0a8', '#c9a97c', '#dec096');
+      drawBox(36, 4, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff');
+      drawBox(36, 17, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff');
+      // Plant on nightstand
+      drawBox(14, 32, 134, 9, 10, 9, '#f3e5ab', '#d4c285', '#e6d598');
+      drawBox(12, 42, 132, 13, 12, 13, '#65a30d', '#4d7c0f', '#84cc16');
+
+      // Small bedside table & warm conical table lamp in Back Corner
+      drawBox(8, 0, 10, 26, 26, 26, '#b38860', '#8c6642', '#9c744f');
+      // Lamp stem & conical shade
+      const lBase = toIso(20, 26, 22), lTop = toIso(20, 48, 22);
+      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2.5 * camZoom;
+      ctx.beginPath(); ctx.moveTo(lBase.x, lBase.y); ctx.lineTo(lTop.x, lTop.y); ctx.stroke();
+      drawBox(12, 46, 14, 16, 14, 16, '#f8fafc', '#cbd5e1', '#e2e8f0');
+
+      // 7. Tall Multi-Cubby Bookshelf + Wardrobe Cabinet on Right Wall (Munich & Da'an Archive)
+      // Open shelving unit with cubbies
+      drawBox(42, 0, 2, 44, 98, 24, '#e6c594', '#b89463', '#cfa977');
+      // Shelves & book blocks inside cubbies
+      drawBox(46, 28, 6, 16, 16, 16, '#fef3c7', '#d97706', '#f59e0b');
+      drawBox(66, 28, 6, 14, 18, 16, '#dbeafe', '#2563eb', '#60a5fa');
+      drawBox(46, 58, 6, 16, 18, 16, '#d1fae5', '#059669', '#34d399');
+      drawBox(66, 58, 6, 15, 14, 16, '#fce7f3', '#db2777', '#f472b6');
+      // Potted plant on top of bookshelf
+      drawBox(48, 98, 8, 12, 12, 12, '#f3e5ab', '#d4c285', '#e6d598');
+      drawBox(46, 110, 6, 16, 20, 16, '#4d7c0f', '#3f6212', '#65a30d');
+
+      // Tall wooden wardrobe cabinet next to shelf
+      drawBox(88, 0, 2, 34, 108, 28, '#f0d4a8', '#c7a473', '#deb986');
+      // Cabinet door seam & handle
+      const cTop = toIso(105, 104, 30), cBot = toIso(105, 6, 30);
+      ctx.strokeStyle = 'rgba(90,65,35,0.45)'; ctx.lineWidth = 1.5 * camZoom;
+      ctx.beginPath(); ctx.moveTo(cTop.x, cTop.y); ctx.lineTo(cBot.x, cBot.y); ctx.stroke();
+
+      // 8. Architectural BIM Workstation Desk & Storage Unit on Right Wall
+      const deskX = 124, deskZ = 2, deskW = 54, deskD = 28, deskH = 62;
+      drawBox(deskX, 0, deskZ, deskW, deskH, deskD, '#f2d7ad', '#c4a06e', '#dfb984');
+      // Desk storage compartments (dark equipment & green archive box like reference)
+      drawBox(deskX + 4, 8, deskZ + 6, 20, 22, 20, '#475569', '#1e293b', '#334155');
+      drawBox(deskX + 28, 6, deskZ + 6, 20, 24, 20, '#65a30d', '#3f6212', '#4d7c0f');
+      // Laptop /BIM Workstation on top of desk
+      drawBox(deskX + 14, deskH, deskZ + 8, 22, 2, 14, '#334155', '#1e293b', '#475569');
+      // Framed Architectural Elevation above desk on Right Wall
+      drawBox(132, 78, 0.5, 38, 32, 2, '#334155', '#1e293b', '#f8fafc', '#1e293b');
+      drawQuad(toIso(136, 82, 2.8), toIso(166, 82, 2.8), toIso(166, 106, 2.8), toIso(136, 106, 2.8), '#f5d0c5', '#475569', 1);
+
+      // 9. Foreground Coral-Terracotta Lounge Bench / Ottoman (Songshan Lounge)
+      const ottX = 92, ottZ = 118, ottW = 42, ottD = 26;
+      // Wooden legs
+      drawBox(ottX + 2, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      drawBox(ottX + ottW - 6, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      drawBox(ottX + 2, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      drawBox(ottX + ottW - 6, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      // Coral cushioned top
+      drawBox(ottX, 8, ottZ, ottW, 14, ottD, '#f28b82', '#c95b52', '#e07067');
+
+      // 10. Warm Radial Light Glow when Lights are ON
+      if (homeLightOn) {
+        const lampPos = toIso(20, 52, 22);
+        const glow = ctx.createRadialGradient(lampPos.x, lampPos.y, 10 * camZoom, lampPos.x, lampPos.y, 290 * camZoom);
+        glow.addColorStop(0, 'rgba(254, 243, 199, 0.42)');
         glow.addColorStop(0.5, 'rgba(251, 191, 36, 0.12)');
         glow.addColorStop(1, 'rgba(251, 191, 36, 0)');
         ctx.fillStyle = glow;
-        ctx.beginPath(); ctx.arc(originX - 80, originY - 120, 280, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(lampPos.x, lampPos.y, 290 * camZoom, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // 11. Dynamically Project 3D Hotspot Pins onto Viewport
+      const viewport = document.getElementById('homeStudioViewport');
+      if (viewport) {
+        Object.keys(homeHotspots).forEach(key => {
+          const pinEl = document.getElementById('home-pin-' + key);
+          if (!pinEl) return;
+          const p3 = homeHotspots[key].pos3D;
+          const proj = toIso(p3.x, p3.y, p3.z);
+          const pctX = (proj.x / canvas.width) * 100;
+          const pctY = (proj.y / canvas.height) * 100;
+          pinEl.style.left = pctX + '%';
+          pinEl.style.top = pctY + '%';
+        });
       }
     }
 
-    function selectHomeHotspot(id) {
+    function selectHomeHotspot(id, focusCamera = false) {
       const item = homeHotspots[id];
       if (!item) return;
       document.getElementById('homeCardTag').textContent = item.tag;
@@ -561,6 +854,10 @@
       document.querySelectorAll('.home-pin').forEach(p => p.classList.remove('active'));
       const pin = document.getElementById('home-pin-' + id);
       if (pin) pin.classList.add('active');
+
+      if (focusCamera && item.camTarget) {
+        animateCameraTo(item.camTarget.zoom, item.camTarget.panX, item.camTarget.panY, item.camTarget.yaw);
+      }
     }
 
     function toggleHomeLights() {
@@ -572,11 +869,87 @@
     function resetHomeStudio() {
       homeLightOn = true;
       document.getElementById('homeLightsStatus').textContent = 'ON';
-      selectHomeHotspot('workstation');
-      renderHomeStudio();
+      selectHomeHotspot('workstation', false);
+      animateCameraTo(1.0, 0, 0, 0);
     }
 
-    window.addEventListener('DOMContentLoaded', renderHomeStudio);
+    // Interactive Mouse Drag Pan & Wheel Zoom
+    function initHomeStudioInteractions() {
+      const viewport = document.getElementById('homeStudioViewport');
+      const canvas = document.getElementById('homeStudioCanvas');
+      if (!viewport || !canvas) return;
+
+      let isDragging = false;
+      let startMouseX = 0, startMouseY = 0;
+      let startPanX = 0, startPanY = 0;
+
+      viewport.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.home-pin') || e.target.closest('.home-project-card') || e.target.closest('.studio-nav-hud')) return;
+        isDragging = true;
+        viewport.classList.add('dragging');
+        startMouseX = e.clientX;
+        startMouseY = e.clientY;
+        startPanX = camPanX;
+        startPanY = camPanY;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const rect = viewport.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        camPanX = startPanX + (e.clientX - startMouseX) * scaleX;
+        camPanY = startPanY + (e.clientY - startMouseY) * scaleY;
+        renderHomeStudio();
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('dragging');
+        }
+      });
+
+      // Mouse Wheel Zoom
+      viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const rect = viewport.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        const mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+        const factor = e.deltaY < 0 ? 1.1 : 0.9;
+        zoomHomeStudio(factor, mouseX, mouseY);
+      }, { passive: false });
+
+      // Touch Drag Support for Mobile/Tablet
+      viewport.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startMouseX = e.touches[0].clientX;
+          startMouseY = e.touches[0].clientY;
+          startPanX = camPanX;
+          startPanY = camPanY;
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const rect = viewport.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        camPanX = startPanX + (e.touches[0].clientX - startMouseX) * scaleX;
+        camPanY = startPanY + (e.touches[0].clientY - startMouseY) * scaleY;
+        renderHomeStudio();
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHomeStudio();
+      initHomeStudioInteractions();
+    });
   </script>
 </body>
 </html>

@@ -503,6 +503,75 @@
       width: 100%;
       background: #161b22;
       overflow: hidden;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .pres-studio-viewport.dragging {
+      cursor: grabbing;
+    }
+
+    /* Interactive Navigation HUD */
+    .studio-nav-hud {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 6px 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .hud-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .hud-btn:hover {
+      background: rgba(249, 115, 22, 0.25);
+      border-color: #f97316;
+      color: #fff;
+    }
+
+    .hud-zoom-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #38bdf8;
+      min-width: 44px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .hud-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0 4px;
+    }
+
+    .hud-hint {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #94a3b8;
+      margin-left: 6px;
+      letter-spacing: 0.3px;
     }
 
     #presStudioCanvas {
@@ -1157,8 +1226,24 @@
           </div>
         </div>
 
-        <div class="pres-studio-viewport" style="height: 600px;">
+        <div class="pres-studio-viewport" id="presStudioViewport" style="height: 600px;">
           <canvas id="presStudioCanvas" width="1280" height="600"></canvas>
+
+          <!-- Interactive Zoom / Pan / Rotate HUD Toolbar -->
+          <div class="studio-nav-hud" onmousedown="event.stopPropagation()" onwheel="event.stopPropagation()">
+            <button class="hud-btn" onclick="presZoom(0.2)" title="放大 (Zoom In)">➕</button>
+            <span class="hud-zoom-label" id="presZoomReadout">100%</span>
+            <button class="hud-btn" onclick="presZoom(-0.2)" title="縮小 (Zoom Out)">➖</button>
+            <div class="hud-divider"></div>
+            <button class="hud-btn" onclick="presPan(60, 0)" title="向左移動 (Pan Left)">⬅️</button>
+            <button class="hud-btn" onclick="presPan(0, 45)" title="向上移動 (Pan Up)">⬆️</button>
+            <button class="hud-btn" onclick="presPan(0, -45)" title="向下移動 (Pan Down)">⬇️</button>
+            <button class="hud-btn" onclick="presPan(-60, 0)" title="向右移動 (Pan Right)">➡️</button>
+            <div class="hud-divider"></div>
+            <button class="hud-btn" onclick="presRotate(-0.18)" title="向左旋轉視角 (Rotate Left)">↺</button>
+            <button class="hud-btn" onclick="presRotate(0.18)" title="向右旋轉視角 (Rotate Right)">↻</button>
+            <span class="hud-hint">🖱️ 滾輪縮放 • 按住拖曳平移視角</span>
+          </div>
 
           <!-- Interactive Hotspot Pins -->
           <div class="pres-pin active" id="pres-pin-workstation" style="top: 49%; left: 36%;" onclick="selectPresHotspot('workstation')">
@@ -1353,7 +1438,9 @@
         sub: 'GRADUATE RESEARCH LAB • NTUST',
         desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
         img: 'assets/studio/autodesk_revit_cert.jpg',
-        url: './index.html'
+        url: './index.html?v=4',
+        pos3D: { x: 158, y: 74, z: 120 },
+        focusPan: { x: -75, y: 20, zoom: 1.25 }
       },
       window: {
         tag: 'SELECTED PROJECT • 02',
@@ -1361,7 +1448,9 @@
         sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
         desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
         img: 'assets/studio/mooao_sun_wind_analysis.jpg',
-        url: './index.html'
+        url: './index.html?v=4',
+        pos3D: { x: 10, y: 125, z: 95 },
+        focusPan: { x: 85, y: 65, zoom: 1.25 }
       },
       shelf: {
         tag: 'ACADEMIC ARCHIVE • 03',
@@ -1369,7 +1458,9 @@
         sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
         desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
         img: 'assets/studio/ielts_score_cert.jpg',
-        url: './about.html'
+        url: './docs.html',
+        pos3D: { x: 78, y: 142, z: 18 },
+        focusPan: { x: 10, y: 80, zoom: 1.25 }
       },
       chair: {
         tag: 'EXHIBITION & FABRICATION • 04',
@@ -1377,12 +1468,58 @@
         sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
         desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
         img: 'assets/studio/ttda_3d_fabrication.jpg',
-        url: './index.html'
+        url: './index.html?v=4',
+        pos3D: { x: 135, y: 38, z: 145 },
+        focusPan: { x: -15, y: -45, zoom: 1.25 }
       }
     };
 
     let presLightOn = true;
     let presActiveId = 'workstation';
+    let presCamZoom = 1.0;
+    let presCamPanX = 0;
+    let presCamPanY = 0;
+    let presCamYaw = 0;
+    let presAnimFrame = null;
+
+    function animatePresCameraTo(targetPanX, targetPanY, targetZoom, targetYaw = presCamYaw) {
+      if (presAnimFrame) cancelAnimationFrame(presAnimFrame);
+      const startX = presCamPanX, startY = presCamPanY, startZ = presCamZoom, startYaw = presCamYaw;
+      const startTime = performance.now();
+      const duration = 360;
+
+      function step(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const ease = 1 - Math.pow(1 - t, 3);
+        presCamPanX = startX + (targetPanX - startX) * ease;
+        presCamPanY = startY + (targetPanY - startY) * ease;
+        presCamZoom = startZ + (targetZoom - startZ) * ease;
+        presCamYaw = startYaw + (targetYaw - startYaw) * ease;
+        updatePresZoomReadout();
+        renderPresStudio();
+        if (t < 1) presAnimFrame = requestAnimationFrame(step);
+      }
+      presAnimFrame = requestAnimationFrame(step);
+    }
+
+    function updatePresZoomReadout() {
+      const el = document.getElementById('presZoomReadout');
+      if (el) el.textContent = Math.round(presCamZoom * 100) + '%';
+    }
+
+    function presZoom(delta) {
+      const nextZoom = Math.max(0.55, Math.min(2.4, presCamZoom + delta));
+      animatePresCameraTo(presCamPanX, presCamPanY, nextZoom, presCamYaw);
+    }
+
+    function presPan(dx, dy) {
+      animatePresCameraTo(presCamPanX + dx, presCamPanY + dy, presCamZoom, presCamYaw);
+    }
+
+    function presRotate(dYaw) {
+      const nextYaw = Math.max(-0.55, Math.min(0.55, presCamYaw + dYaw));
+      animatePresCameraTo(presCamPanX, presCamPanY, presCamZoom, nextYaw);
+    }
 
     function renderPresStudio() {
       const canvas = document.getElementById('presStudioCanvas');
@@ -1390,17 +1527,29 @@
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const originX = canvas.width * 0.45;
-      const originY = canvas.height * 0.64;
+      const ROOM_SIZE = 190;
+      const WALL_HEIGHT = 155;
+      const WALL_THICK = 10;
+
+      const baseScale = 1.95 * presCamZoom;
+      const originX = canvas.width * 0.48 + presCamPanX;
+      const originY = canvas.height * 0.64 + presCamPanY;
       const ISO_ANGLE = Math.PI / 6;
       const cosIso = Math.cos(ISO_ANGLE);
       const sinIso = Math.sin(ISO_ANGLE);
-      const scale = 2.0;
+      const cosYaw = Math.cos(presCamYaw);
+      const sinYaw = Math.sin(presCamYaw);
+      const cx = ROOM_SIZE / 2;
+      const cz = ROOM_SIZE / 2;
 
       function toIso(x, y, z) {
+        const dx = x - cx;
+        const dz = z - cz;
+        const rx = cx + dx * cosYaw - dz * sinYaw;
+        const rz = cz + dx * sinYaw + dz * cosYaw;
         return {
-          x: originX + (x - z) * cosIso * scale,
-          y: originY + (x + z) * sinIso * scale - y * scale
+          x: originX + (rx - rz) * cosIso * baseScale,
+          y: originY + (rx + rz) * sinIso * baseScale - y * baseScale
         };
       }
 
@@ -1415,7 +1564,7 @@
         if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
       }
 
-      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.15)') {
+      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.12)') {
         const pA = toIso(x, y, z), pB = toIso(x + w, y, z), pC = toIso(x + w, y, z + d), pD = toIso(x, y, z + d);
         const pAt = toIso(x, y + h, z), pBt = toIso(x + w, y + h, z), pCt = toIso(x + w, y + h, z + d), pDt = toIso(x, y + h, z + d);
         drawQuad(pA, pD, pDt, pAt, leftC, strokeC);
@@ -1425,95 +1574,222 @@
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const bgGrad = ctx.createRadialGradient(originX, originY - 50, 30, originX, originY - 30, 440);
+      const bgGrad = ctx.createRadialGradient(originX, originY - 50, 30, originX, originY - 30, 520);
       bgGrad.addColorStop(0, presLightOn ? '#2d333b' : '#1c1f24');
-      bgGrad.addColorStop(1, presLightOn ? '#181c22' : '#0f1216');
+      bgGrad.addColorStop(1, presLightOn ? '#15191f' : '#0d1014');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Subtle architectural grid
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
       ctx.lineWidth = 1;
-      for (let gx = 0; gx < canvas.width; gx += 28) {
+      const gridStep = Math.max(18, Math.round(28 * presCamZoom));
+      const offsetX = ((presCamPanX % gridStep) + gridStep) % gridStep;
+      const offsetY = ((presCamPanY % gridStep) + gridStep) % gridStep;
+      for (let gx = offsetX; gx < canvas.width; gx += gridStep) {
         ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
       }
-      for (let gy = 0; gy < canvas.height; gy += 28) {
+      for (let gy = offsetY; gy < canvas.height; gy += gridStep) {
         ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
       }
 
-      const floorColor = presLightOn ? '#8a6245' : '#4d3727';
-      const floorStroke = presLightOn ? '#704f37' : '#38271b';
-      const wallLeftColor = presLightOn ? '#d9d2c5' : '#6b665e';
-      const wallRightColor = presLightOn ? '#c2baa9' : '#575249';
-      const ROOM_SIZE = 175, WALL_HEIGHT = 160;
+      // 1. Thick 3D Floor Slab & Cutaway Walls
+      drawBox(-WALL_THICK, -10, -WALL_THICK, ROOM_SIZE + WALL_THICK, 10, ROOM_SIZE + WALL_THICK,
+        presLightOn ? '#f3ead8' : '#574c3f',
+        presLightOn ? '#e5c49f' : '#4a3f33',
+        presLightOn ? '#d1ae88' : '#3b3228',
+        'rgba(0,0,0,0.2)'
+      );
 
-      const f0 = toIso(0, 0, 0), fX = toIso(ROOM_SIZE, 0, 0), fC = toIso(ROOM_SIZE, 0, ROOM_SIZE), fZ = toIso(0, 0, ROOM_SIZE);
-      drawQuad(f0, fX, fC, fZ, floorColor, floorStroke, 1.5);
+      // Left Wall
+      drawBox(-WALL_THICK, 0, -WALL_THICK, WALL_THICK, WALL_HEIGHT, ROOM_SIZE + WALL_THICK,
+        presLightOn ? '#eef6f9' : '#4a5a66',
+        presLightOn ? '#d9e8ef' : '#384650',
+        presLightOn ? '#8ab8cf' : '#2f4554',
+        'rgba(0,0,0,0.12)'
+      );
+      drawQuad(
+        toIso(0, 0, 0), toIso(0, 0, ROOM_SIZE),
+        toIso(0, WALL_HEIGHT, ROOM_SIZE), toIso(0, WALL_HEIGHT, 0),
+        presLightOn ? '#8ab8cf' : '#2f4554', 'rgba(0,0,0,0.15)', 1
+      );
 
-      ctx.strokeStyle = 'rgba(0,0,0,0.12)';
-      for (let s = 20; s < ROOM_SIZE; s += 22) {
-        const pS = toIso(s, 0, 0), pE = toIso(s, 0, ROOM_SIZE);
-        ctx.beginPath(); ctx.moveTo(pS.x, pS.y); ctx.lineTo(pE.x, pE.y); ctx.stroke();
-      }
-
-      const w0t = toIso(0, WALL_HEIGHT, 0), wZt = toIso(0, WALL_HEIGHT, ROOM_SIZE), wXt = toIso(ROOM_SIZE, WALL_HEIGHT, 0);
-      drawQuad(f0, fZ, wZt, w0t, wallLeftColor, null);
-      drawQuad(f0, fX, wXt, w0t, wallRightColor, null);
-
-      ctx.strokeStyle = presLightOn ? '#fff' : '#888';
-      ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(wZt.x, wZt.y); ctx.lineTo(w0t.x, w0t.y); ctx.lineTo(wXt.x, wXt.y); ctx.stroke();
-
-      // Window
-      const winX1 = 45, winX2 = 125, winY1 = 35, winY2 = 125;
-      drawQuad(toIso(winX1, winY1, 0), toIso(winX2, winY1, 0), toIso(winX2, winY2, 0), toIso(winX1, winY2, 0), presLightOn ? '#b8d5e5' : '#32404e', '#fff', 2);
-      const wmA = toIso((winX1 + winX2) / 2, winY1, 0), wmB = toIso((winX1 + winX2) / 2, winY2, 0);
-      ctx.beginPath(); ctx.moveTo(wmA.x, wmA.y); ctx.lineTo(wmB.x, wmB.y); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
-      drawQuad(toIso(winX1 - 10, winY1 - 8, 0), toIso(winX1 + 6, winY1 - 8, 0), toIso(winX1 + 6, winY2 + 10, 0), toIso(winX1 - 10, winY2 + 10, 0), '#6c5c4e', null);
-      drawQuad(toIso(winX2 - 6, winY1 - 8, 0), toIso(winX2 + 12, winY1 - 8, 0), toIso(winX2 + 12, winY2 + 10, 0), toIso(winX2 - 6, winY2 + 10, 0), '#6c5c4e', null);
-
-      // Bookshelf
-      drawBox(0, 105, 30, 8, 6, 95, '#4a3f35', '#382f27', '#5a4d41');
-      drawBox(0, 111, 40, 6, 18, 12, '#3b82f6', '#1d4ed8', '#60a5fa');
-      drawBox(0, 111, 55, 6, 22, 14, '#10b981', '#047857', '#34d399');
-      drawBox(0, 111, 72, 6, 16, 20, '#d97706', '#b45309', '#f59e0b');
-
-      // Desk & Laptop
-      const deskX = 2, deskZ = 20, deskW = 42, deskD = 110, deskH = 50;
-      ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 2.5;
-      [[deskX+4, deskZ+4], [deskX+deskW-4, deskZ+4], [deskX+4, deskZ+deskD-4], [deskX+deskW-4, deskZ+deskD-4]].forEach(([lx, lz]) => {
-        const b = toIso(lx, 0, lz), t = toIso(lx, deskH, lz);
-        ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(t.x, t.y); ctx.stroke();
-      });
-      drawBox(deskX, deskH, deskZ, deskW, 4, deskD, '#ffffff', '#e5e7eb', '#d1d5db');
-
-      const lapX = deskX + 12, lapZ = deskZ + 48;
-      drawBox(lapX, deskH + 4, lapZ, 20, 2, 22, '#374151', '#1f2937', '#4b5563');
-      drawQuad(toIso(lapX, deskH + 6, lapZ), toIso(lapX, deskH + 6, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ), presLightOn ? '#ecfeff' : '#0284c7', '#fff', 1);
-
-      // Lamp
-      drawBox(deskX + 8, deskH + 4, deskZ + 14, 6, 2, 6, '#f59e0b', '#d97706', '#fbbf24');
-      drawBox(deskX + 7, deskH + 22, deskZ + 13, 8, 5, 8, '#fbbf24', '#f59e0b', '#fde68a');
-
-      // Rug & Chair
-      const rugX = 75, rugZ = 75, rugW = 75, rugD = 65;
-      drawQuad(toIso(rugX, 1, rugZ), toIso(rugX + rugW, 1, rugZ), toIso(rugX + rugW, 1, rugZ + rugD), toIso(rugX, 1, rugZ + rugD), '#f4ede4', '#ea580c', 2);
-
-      const chairX = 92, chairZ = 90;
-      drawBox(chairX - 6, 18, chairZ - 6, 26, 8, 26, '#1f2937', '#111827', '#374151');
-      drawBox(chairX + 10, 26, chairZ - 6, 10, 22, 26, '#111827', '#030712', '#1f2937');
+      // Right Wall
+      drawBox(0, 0, -WALL_THICK, ROOM_SIZE, WALL_HEIGHT, WALL_THICK,
+        presLightOn ? '#f4f9f0' : '#555c52',
+        presLightOn ? '#8ab8cf' : '#3b4a54',
+        presLightOn ? '#e5f2dc' : '#464d44',
+        'rgba(0,0,0,0.12)'
+      );
+      drawQuad(
+        toIso(0, 0, 0), toIso(ROOM_SIZE, 0, 0),
+        toIso(ROOM_SIZE, WALL_HEIGHT, 0), toIso(0, WALL_HEIGHT, 0),
+        presLightOn ? '#e5f2dc' : '#464d44', 'rgba(0,0,0,0.15)', 1
+      );
 
       if (presLightOn) {
-        const glow = ctx.createRadialGradient(originX - 60, originY - 95, 12, originX - 60, originY - 95, 220);
-        glow.addColorStop(0, 'rgba(254, 243, 199, 0.42)');
-        glow.addColorStop(0.5, 'rgba(251, 191, 36, 0.12)');
+        drawQuad(
+          toIso(0, 0, 0), toIso(58, 0, 0),
+          toIso(15, WALL_HEIGHT, 0), toIso(0, WALL_HEIGHT, 0),
+          'rgba(105, 145, 168, 0.25)', null
+        );
+      }
+
+      // 2. Checkered Multi-Tone Tile Flooring
+      const tileCount = 5;
+      const tileSize = ROOM_SIZE / tileCount;
+      const tilePaletteLight = [
+        ['#f5ebd6', '#edd5a8', '#f7f2e7', '#e5c896', '#f2e4c8'],
+        ['#edd5a8', '#b8a99a', '#f5ebd6', '#9e8f80', '#edd5a8'],
+        ['#f7f2e7', '#f5ebd6', '#9e8f80', '#edd5a8', '#b8a99a'],
+        ['#e5c896', '#9e8f80', '#edd5a8', '#b8a99a', '#f5ebd6'],
+        ['#f7f2e7', '#f2e4c8', '#b8a99a', '#f5ebd6', '#edd5a8']
+      ];
+      for (let ix = 0; ix < tileCount; ix++) {
+        for (let iz = 0; iz < tileCount; iz++) {
+          const tx = ix * tileSize;
+          const tz = iz * tileSize;
+          const baseCol = tilePaletteLight[ix][iz];
+          const col = presLightOn ? baseCol : '#38322c';
+          drawQuad(
+            toIso(tx, 0.2, tz), toIso(tx + tileSize, 0.2, tz),
+            toIso(tx + tileSize, 0.2, tz + tileSize), toIso(tx, 0.2, tz + tileSize),
+            col, presLightOn ? 'rgba(120, 95, 70, 0.22)' : 'rgba(0,0,0,0.35)', 1
+          );
+        }
+      }
+
+      // 3. Left Wall Window & Curtains
+      const winZ1 = 52, winZ2 = 126, winY1 = 82, winY2 = 136;
+      drawQuad(
+        toIso(0.5, winY1, winZ1), toIso(0.5, winY1, winZ2),
+        toIso(0.5, winY2, winZ2), toIso(0.5, winY2, winZ1),
+        '#f8fafc', 'rgba(0,0,0,0.2)', 1.5
+      );
+      drawQuad(
+        toIso(0.8, winY1 + 5, winZ1 + 5), toIso(0.8, winY1 + 5, winZ2 - 5),
+        toIso(0.8, winY2 - 5, winZ2 - 5), toIso(0.8, winY2 - 5, winZ1 + 5),
+        presLightOn ? '#f9e0db' : '#1e293b', '#ffffff', 2
+      );
+      drawBox(0, winY1 - 3, winZ1 - 4, 5, 3, (winZ2 - winZ1) + 8, '#ffffff', '#e2e8f0', '#cbd5e1');
+      drawBox(0, winY2 + 4, winZ1 - 10, 4, 2.5, (winZ2 - winZ1) + 20, '#d9b38c', '#b89068', '#c7a078');
+      drawBox(0, winY1 - 10, winZ1 - 8, 6, (winY2 - winY1) + 14, 15, '#e09f87', '#c97e63', '#d48d73');
+      drawBox(0, winY1 - 10, winZ2 - 7, 6, (winY2 - winY1) + 14, 15, '#e09f87', '#c97e63', '#d48d73');
+
+      // Framed Picture on Left Wall
+      const picZ1 = 144, picZ2 = 180, picY1 = 68, picY2 = 98;
+      drawBox(0, picY1, picZ1, 2.5, picY2 - picY1, picZ2 - picZ1, '#334155', '#1e293b', '#475569');
+      drawQuad(
+        toIso(2.7, picY1 + 3, picZ1 + 3), toIso(2.7, picY1 + 3, picZ2 - 3),
+        toIso(2.7, picY2 - 3, picZ2 - 3), toIso(2.7, picY2 - 3, picZ1 + 3),
+        '#f8fafc', null
+      );
+      drawQuad(
+        toIso(2.9, picY1 + 6, picZ1 + 6), toIso(2.9, picY1 + 6, picZ2 - 6),
+        toIso(2.9, picY2 - 6, picZ2 - 6), toIso(2.9, picY2 - 6, picZ1 + 6),
+        '#e0aea0', null
+      );
+
+      // 4. Studio Daybed & Comfort Zone
+      const bedX = 4, bedZ = 50, bedW = 86, bedD = 72;
+      drawBox(bedX, 0, bedZ, 6, 56, bedD, '#d8b28a', '#b58d63', '#c79f75');
+      drawBox(bedX, 8, bedZ, bedW, 10, bedD, '#e3be96', '#b89068', '#cfa87e');
+      drawBox(bedX + 2, 0, bedZ + 2, 5, 8, 5, '#b89068', '#9c7650', '#b89068');
+      drawBox(bedX + bedW - 7, 0, bedZ + 2, 5, 8, 5, '#b89068', '#9c7650', '#b89068');
+      drawBox(bedX + bedW - 7, 0, bedZ + bedD - 7, 5, 8, 5, '#b89068', '#9c7650', '#b89068');
+      drawBox(bedX + 6, 18, bedZ + 3, bedW - 9, 12, bedD - 6, '#b8c7d9', '#94a7bd', '#a6b7cc');
+      drawBox(bedX + 34, 19, bedZ + 2, 36, 12.5, bedD - 4, '#fcfaf5', '#e5e0d5', '#f2ede2');
+      drawBox(bedX + 70, 18.5, bedZ + 3, 17, 12, bedD - 6, '#e8b4bc', '#cf959e', '#dba4ad');
+      drawBox(bedX + 9, 30, bedZ + 8, 18, 7, 25, '#dbe4f0', '#b8c7d9', '#cad6e6');
+      drawBox(bedX + 9, 30, bedZ + 39, 18, 7, 25, '#dbe4f0', '#b8c7d9', '#cad6e6');
+
+      // 5. Foreground Nightstand & Potted Plant
+      const nsX = 6, nsZ = 132, nsW = 34, nsD = 42, nsH = 34;
+      drawBox(nsX, 0, nsZ, nsW, nsH, nsD, '#f2d0a7', '#cfa678', '#e3bc91');
+      drawBox(nsX + nsW - 2, 4, nsZ + 5, 3, 11, nsD - 10, '#ffffff', '#cbd5e1', '#f1f5f9');
+      drawBox(nsX + nsW - 2, 18, nsZ + 5, 3, 11, nsD - 10, '#ffffff', '#cbd5e1', '#f1f5f9');
+      drawBox(nsX + 10, nsH, nsZ + 14, 11, 10, 11, '#f5e6d3', '#d4c2ad', '#e6d5c1');
+      drawBox(nsX + 12, nsH + 10, nsZ + 16, 7, 14, 7, '#65a34e', '#4b8236', '#7ab863');
+
+      // 6. Corner Bedside Table & Conical Lamp
+      const ctX = 8, ctZ = 12, ctW = 30, ctD = 30, ctH = 30;
+      drawBox(ctX, 0, ctZ, ctW, ctH, ctD, '#cfa678', '#a67f54', '#bd9368');
+      drawBox(ctX + 13, ctH, ctZ + 13, 4, 18, 4, '#cbd5e1', '#94a3b8', '#e2e8f0');
+      drawBox(ctX + 7, ctH + 18, ctZ + 7, 16, 13, 16, '#f8fafc', '#cbd5e1', '#e2e8f0');
+
+      // 7. Right Wall Bookshelf & Tall Wardrobe Cabinet
+      const shX = 52, shZ = 2, shW = 46, shD = 24, shH = 88;
+      drawBox(shX, 0, shZ, shW, shH, shD, '#e8c39b', '#c2996d', '#d6af85');
+      for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 2; col++) {
+          const cx0 = shX + 4 + col * 20;
+          const cy0 = 6 + row * 20;
+          drawBox(cx0, cy0, shZ + 4, 17, 16, shD - 4, '#9c7853', '#7d5d3b', '#8c6b48');
+          if ((row + col) % 2 === 0) {
+            drawBox(cx0 + 3, cy0 + 2, shZ + 8, 11, 7, 12, '#f8fafc', '#cbd5e1', '#e2e8f0');
+          } else {
+            drawBox(cx0 + 3, cy0 + 2, shZ + 8, 9, 10, 10, '#e09f87', '#c97e63', '#d48d73');
+          }
+        }
+      }
+      drawBox(shX + 8, shH, shZ + 6, 12, 11, 12, '#f5e6d3', '#d4c2ad', '#e6d5c1');
+      drawBox(shX + 10, shH + 11, shZ + 8, 8, 16, 8, '#558b44', '#3f6e30', '#68a355');
+
+      const wdX = 98, wdZ = 2, wdW = 36, wdD = 32, wdH = 98;
+      drawBox(wdX, 0, wdZ, wdW, wdH, wdD, '#f2d0a7', '#cfa678', '#e3bc91');
+      const doorLineB = toIso(wdX + wdW / 2, 4, wdZ + wdD), doorLineT = toIso(wdX + wdW / 2, wdH - 4, wdZ + wdD);
+      ctx.beginPath(); ctx.moveTo(doorLineB.x, doorLineB.y); ctx.lineTo(doorLineT.x, doorLineT.y);
+      ctx.strokeStyle = 'rgba(110, 80, 50, 0.45)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+      // 8. Right Wall Workstation Desk & Framed Architecture Board
+      const dkX = 136, dkZ = 2, dkW = 48, dkD = 32, dkH = 54;
+      drawBox(dkX, 0, dkZ, dkW, dkH, dkD, '#f2d0a7', '#cfa678', '#e3bc91');
+      drawBox(dkX + 4, 6, dkZ + 6, 20, 22, dkD - 6, '#8c6b48', '#6e5234', '#7d5d3b');
+      drawBox(dkX + 26, 6, dkZ + 6, 18, 22, dkD - 6, '#789c4a', '#5c7a36', '#6b8c40');
+      drawBox(dkX + 4, 32, dkZ + 6, 40, 16, dkD - 6, '#8c6b48', '#6e5234', '#7d5d3b');
+      drawBox(dkX + 14, dkH, dkZ + 10, 20, 2, 14, '#334155', '#1e293b', '#475569');
+      drawBox(dkX + 14, dkH + 2, dkZ + 8, 20, 13, 2, '#38bdf8', '#0284c7', '#7dd3fc');
+
+      const rPicX1 = 142, rPicX2 = 178, rPicY1 = 72, rPicY2 = 104;
+      drawBox(rPicX1, rPicY1, 0, rPicX2 - rPicX1, rPicY2 - rPicY1, 2.5, '#574c3f', '#3b3228', '#4a3f33');
+      drawQuad(
+        toIso(rPicX1 + 3, rPicY1 + 3, 2.8), toIso(rPicX2 - 3, rPicY1 + 3, 2.8),
+        toIso(rPicX2 - 3, rPicY2 - 3, 2.8), toIso(rPicX1 + 3, rPicY2 - 3, 2.8),
+        '#f8fafc', null
+      );
+
+      // 9. Foreground Coral-Terracotta Lounge Bench
+      const bnX = 82, bnZ = 136, bnW = 44, bnD = 26;
+      drawBox(bnX + 2, 0, bnZ + 2, 4, 8, 4, '#c79f75', '#a67f54', '#b89068');
+      drawBox(bnX + bnW - 6, 0, bnZ + 2, 4, 8, 4, '#c79f75', '#a67f54', '#b89068');
+      drawBox(bnX + bnW - 6, 0, bnZ + bnD - 6, 4, 8, 4, '#c79f75', '#a67f54', '#b89068');
+      drawBox(bnX + 2, 0, bnZ + bnD - 6, 4, 8, 4, '#c79f75', '#a67f54', '#b89068');
+      drawBox(bnX, 8, bnZ, bnW, 13, bnD, '#f28b7d', '#d96b5c', '#e67a6b');
+
+      if (presLightOn) {
+        const sunCenter = toIso(65, 65, 85);
+        const glow = ctx.createRadialGradient(sunCenter.x, sunCenter.y, 15, sunCenter.x, sunCenter.y, 260 * presCamZoom);
+        glow.addColorStop(0, 'rgba(255, 247, 214, 0.32)');
+        glow.addColorStop(0.5, 'rgba(253, 224, 71, 0.08)');
         glow.addColorStop(1, 'rgba(251, 191, 36, 0)');
         ctx.fillStyle = glow;
-        ctx.beginPath(); ctx.arc(originX - 60, originY - 95, 220, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(sunCenter.x, sunCenter.y, 260 * presCamZoom, 0, Math.PI * 2); ctx.fill();
       }
+
+      // 10. Dynamically project 3D hotspot pins
+      Object.keys(presHotspots).forEach(key => {
+        const pinEl = document.getElementById('pres-pin-' + key);
+        if (!pinEl) return;
+        const p3 = presHotspots[key].pos3D;
+        const p2 = toIso(p3.x, p3.y, p3.z);
+        const pctX = (p2.x / canvas.width) * 100;
+        const pctY = (p2.y / canvas.height) * 100;
+        pinEl.style.left = pctX.toFixed(2) + '%';
+        pinEl.style.top = pctY.toFixed(2) + '%';
+      });
     }
 
-    function selectPresHotspot(id) {
+    function selectPresHotspot(id, autoFocus = true) {
       presActiveId = id;
       const item = presHotspots[id];
       if (!item) return;
@@ -1538,6 +1814,10 @@
         idx.style.background = 'rgba(249,115,22,0.12)';
         idx.style.borderColor = '#f97316';
       }
+
+      if (autoFocus && item.focusPan) {
+        animatePresCameraTo(item.focusPan.x, item.focusPan.y, item.focusPan.zoom, presCamYaw);
+      }
     }
 
     function togglePresLights() {
@@ -1549,12 +1829,70 @@
     function resetPresStudio() {
       presLightOn = true;
       document.getElementById('presLightsStatus').textContent = 'ON';
-      selectPresHotspot('workstation');
-      renderPresStudio();
+      selectPresHotspot('workstation', false);
+      animatePresCameraTo(0, 0, 1.0, 0);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       renderPresStudio();
+
+      const viewport = document.getElementById('presStudioViewport');
+      const canvas = document.getElementById('presStudioCanvas');
+      if (!viewport || !canvas) return;
+
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let startPanX = 0;
+      let startPanY = 0;
+
+      viewport.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.pres-pin') || e.target.closest('.pres-project-card') || e.target.closest('.studio-nav-hud')) return;
+        isDragging = true;
+        viewport.classList.add('dragging');
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        startPanX = presCamPanX;
+        startPanY = presCamPanY;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const rect = viewport.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        presCamPanX = startPanX + (e.clientX - dragStartX) * scaleX;
+        presCamPanY = startPanY + (e.clientY - dragStartY) * scaleY;
+        renderPresStudio();
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('dragging');
+        }
+      });
+
+      viewport.addEventListener('wheel', (e) => {
+        if (e.target.closest('.pres-project-card')) return;
+        e.preventDefault();
+        const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+        const nextZoom = Math.max(0.55, Math.min(2.4, presCamZoom * zoomFactor));
+
+        const rect = viewport.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        const mouseY = (e.clientY - rect.top) * (canvas.height / rect.height);
+        const centerX = canvas.width * 0.48 + presCamPanX;
+        const centerY = canvas.height * 0.64 + presCamPanY;
+
+        const ratio = nextZoom / presCamZoom;
+        presCamPanX -= (mouseX - centerX) * (ratio - 1);
+        presCamPanY -= (mouseY - centerY) * (ratio - 1);
+        presCamZoom = nextZoom;
+
+        updatePresZoomReadout();
+        renderPresStudio();
+      }, { passive: false });
     });
   </script>
 </body>
