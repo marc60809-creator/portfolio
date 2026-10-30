@@ -3,15 +3,251 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chu-Xi Lin 林楚熙 | Architecture & Spatial Design</title>
-  <meta name="description" content="Personal architecture portfolio and spatial research by Chu-Xi Lin 林楚熙." />
+  <title>Chu-Shian Tsau 曹楚献 | Architecture, BIM & 3D Studio Lab</title>
+  <meta name="description" content="Personal architecture portfolio, computational building science research, and interactive 3D Studio Lab by Chu-Shian Tsau 曹楚献." />
   
   <!-- Typography Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    /* Homepage 3D Studio Lab Showcase (Full-Width Clean Viewport) */
+    .home-studio-card {
+      background: #12161c;
+      border: 1px solid #2d3442;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.22);
+      margin-bottom: 56px;
+    }
+
+    .home-studio-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: #0d1117;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .home-studio-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .home-studio-badge {
+      background: #f97316;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+
+    .home-studio-btns {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .home-studio-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #e2e8f0;
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .home-studio-btn:hover, .home-studio-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #ffffff;
+    }
+
+    .home-studio-btn.docs-link {
+      border-color: rgba(56, 189, 248, 0.55);
+      color: #38bdf8;
+    }
+
+    .home-studio-btn.docs-link:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+    }
+
+    .home-studio-viewport {
+      position: relative;
+      width: 100%;
+      height: 620px;
+      background: #161b22;
+      overflow: hidden;
+    }
+
+    #homeStudioCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .home-pin {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      z-index: 15;
+      transform: translate(-50%, -50%);
+      transition: transform 0.2s ease;
+    }
+
+    .home-pin:hover {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+
+    .home-pin-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #f97316;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 0 12px rgba(249,115,22,0.9);
+    }
+
+    .home-pin.active .home-pin-dot {
+      background: #38bdf8;
+      box-shadow: 0 0 16px #38bdf8;
+      transform: scale(1.2);
+    }
+
+    .home-pin-label {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #f8fafc;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 16px;
+      white-space: nowrap;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+
+    .home-pin.active .home-pin-label {
+      border-color: #f97316;
+      color: #fb923c;
+    }
+
+    .home-sheet-stamp {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(6px);
+      padding: 12px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.55;
+      color: #cbd5e1;
+      letter-spacing: 0.8px;
+      z-index: 12;
+    }
+
+    .home-project-card {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      width: 340px;
+      background: rgba(17, 22, 29, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      padding: 20px 22px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.55);
+      z-index: 15;
+    }
+
+    .home-card-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      color: #f97316;
+      margin-bottom: 6px;
+    }
+
+    .home-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .home-card-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+
+    .home-card-desc {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .home-card-btn {
+      display: block;
+      text-align: center;
+      background: #f97316;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 10px 16px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .home-card-btn:hover {
+      background: #ea580c;
+    }
+
+    @media (max-width: 900px) {
+      .home-studio-viewport {
+        height: 520px;
+      }
+      .home-project-card {
+        width: 260px;
+        padding: 14px;
+      }
+      .home-sheet-stamp {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -43,6 +279,63 @@
     <section class="hero-statement">
       <h1>Computational Building Science, BIM-to-BEM & High-Performance Design</h1>
       <p>Research and engineering portfolio by Chu-Shian Tsau (曹楚献). Bridging architectural BIM pipelines, automated thermal analysis, and genetic optimization for sustainable built environments.</p>
+    </section>
+
+    <!-- Homepage Interactive 3D Isometric Studio Lab (Exact Match to Screenshot) -->
+    <section class="home-studio-card" aria-label="3D Isometric Studio Lab">
+      <div class="home-studio-topbar">
+        <div class="home-studio-title">
+          <span class="home-studio-badge">3D STUDIO LAB</span>
+          <span>Inside the studio. [ 空間研究室 ] — Chu-Shian Tsau</span>
+        </div>
+        <div class="home-studio-btns">
+          <button class="home-studio-btn active" onclick="selectHomeHotspot('workstation')">MY STUDIO</button>
+          <a href="./docs.html" class="home-studio-btn docs-link">📑 文件頁籤 (DOCS)</a>
+          <button class="home-studio-btn" onclick="resetHomeStudio()">RESET VIEW</button>
+          <button class="home-studio-btn" onclick="toggleHomeLights()">💡 LIGHTS: <span id="homeLightsStatus">ON</span></button>
+        </div>
+      </div>
+
+      <div class="home-studio-viewport">
+        <canvas id="homeStudioCanvas" width="1360" height="620"></canvas>
+
+        <!-- Interactive Hotspot Pins -->
+        <div class="home-pin active" id="home-pin-workstation" style="top: 49%; left: 36%;" onclick="selectHomeHotspot('workstation')">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">BIM Workstation</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-window" style="top: 36%; left: 58%;" onclick="selectHomeHotspot('window')">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">Microclimate Window</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-shelf" style="top: 23%; left: 30%;" onclick="selectHomeHotspot('shelf')">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">Munich & Da'an Archive</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-chair" style="top: 67%; left: 52%;" onclick="selectHomeHotspot('chair')">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">Songshan Lounge</span>
+        </div>
+
+        <!-- Architectural Sheet Stamp -->
+        <div class="home-sheet-stamp">
+          <strong style="color:#fff;">Chu-Shian Tsau 曹楚献</strong><br>
+          COMPUTATIONAL ARCHITECTURE • BIM<br>
+          SHEET 01 • NTUST STUDIO • 2026
+        </div>
+
+        <!-- Live Updating Selected Project Card -->
+        <div class="home-project-card" id="homeProjectCard">
+          <div class="home-card-tag" id="homeCardTag">SELECTED PROJECT • 01</div>
+          <div class="home-card-title" id="homeCardTitle">BIM-to-BEM Interoperability</div>
+          <div class="home-card-sub" id="homeCardSub">GRADUATE RESEARCH LAB • NTUST</div>
+          <div class="home-card-desc" id="homeCardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
+          <a href="#filterBar" class="home-card-btn" id="homeCardBtn">OPEN FULL 3D STUDIO &rarr;</a>
+        </div>
+      </div>
     </section>
 
     <!-- Dynamic Category Filter Bar (populated from data/projects.json) -->
@@ -94,5 +387,196 @@
 
   <!-- Dynamic JS Engine -->
   <script src="./js/portfolio.js"></script>
+  <script>
+    const homeHotspots = {
+      workstation: {
+        tag: 'SELECTED PROJECT • 01',
+        title: 'BIM-to-BEM Interoperability',
+        sub: 'GRADUATE RESEARCH LAB • NTUST',
+        desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
+        url: '#filterBar'
+      },
+      window: {
+        tag: 'SELECTED PROJECT • 02',
+        title: 'Autodesk Forma Microclimate',
+        sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
+        desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
+        url: '#filterBar'
+      },
+      shelf: {
+        tag: 'ACADEMIC ARCHIVE • 03',
+        title: 'Munich HM Exchange & Credentials',
+        sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
+        desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
+        url: './docs.html'
+      },
+      chair: {
+        tag: 'EXHIBITION & FABRICATION • 04',
+        title: 'Songshan Solo Exhibition & TTDA',
+        sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
+        desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
+        url: '#filterBar'
+      }
+    };
+
+    let homeLightOn = true;
+
+    function renderHomeStudio() {
+      const canvas = document.getElementById('homeStudioCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const originX = canvas.width * 0.43;
+      const originY = canvas.height * 0.65;
+      const ISO_ANGLE = Math.PI / 6;
+      const cosIso = Math.cos(ISO_ANGLE);
+      const sinIso = Math.sin(ISO_ANGLE);
+      const scale = 2.15;
+
+      function toIso(x, y, z) {
+        return {
+          x: originX + (x - z) * cosIso * scale,
+          y: originY + (x + z) * sinIso * scale - y * scale
+        };
+      }
+
+      function drawQuad(p1, p2, p3, p4, fill, stroke, lw = 1) {
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.lineTo(p3.x, p3.y);
+        ctx.lineTo(p4.x, p4.y);
+        ctx.closePath();
+        if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+        if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
+      }
+
+      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.15)') {
+        const pA = toIso(x, y, z), pB = toIso(x + w, y, z), pC = toIso(x + w, y, z + d), pD = toIso(x, y, z + d);
+        const pAt = toIso(x, y + h, z), pBt = toIso(x + w, y + h, z), pCt = toIso(x + w, y + h, z + d), pDt = toIso(x, y + h, z + d);
+        drawQuad(pA, pD, pDt, pAt, leftC, strokeC);
+        drawQuad(pD, pC, pCt, pDt, rightC, strokeC);
+        drawQuad(pAt, pBt, pCt, pDt, topC, strokeC);
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const bgGrad = ctx.createRadialGradient(originX, originY - 60, 40, originX, originY - 40, 560);
+      bgGrad.addColorStop(0, homeLightOn ? '#2d333b' : '#1c1f24');
+      bgGrad.addColorStop(1, homeLightOn ? '#181c22' : '#0f1216');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+      ctx.lineWidth = 1;
+      for (let gx = 0; gx < canvas.width; gx += 32) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
+      }
+      for (let gy = 0; gy < canvas.height; gy += 32) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
+      }
+
+      const floorColor = homeLightOn ? '#8a6245' : '#4d3727';
+      const floorStroke = homeLightOn ? '#704f37' : '#38271b';
+      const wallLeftColor = homeLightOn ? '#d9d2c5' : '#6b665e';
+      const wallRightColor = homeLightOn ? '#c2baa9' : '#575249';
+      const ROOM_SIZE = 175, WALL_HEIGHT = 160;
+
+      const f0 = toIso(0, 0, 0), fX = toIso(ROOM_SIZE, 0, 0), fC = toIso(ROOM_SIZE, 0, ROOM_SIZE), fZ = toIso(0, 0, ROOM_SIZE);
+      drawQuad(f0, fX, fC, fZ, floorColor, floorStroke, 1.5);
+
+      ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+      for (let s = 20; s < ROOM_SIZE; s += 22) {
+        const pS = toIso(s, 0, 0), pE = toIso(s, 0, ROOM_SIZE);
+        ctx.beginPath(); ctx.moveTo(pS.x, pS.y); ctx.lineTo(pE.x, pE.y); ctx.stroke();
+      }
+
+      const w0t = toIso(0, WALL_HEIGHT, 0), wZt = toIso(0, WALL_HEIGHT, ROOM_SIZE), wXt = toIso(ROOM_SIZE, WALL_HEIGHT, 0);
+      drawQuad(f0, fZ, wZt, w0t, wallLeftColor, null);
+      drawQuad(f0, fX, wXt, w0t, wallRightColor, null);
+
+      ctx.strokeStyle = homeLightOn ? '#fff' : '#888';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(wZt.x, wZt.y); ctx.lineTo(w0t.x, w0t.y); ctx.lineTo(wXt.x, wXt.y); ctx.stroke();
+
+      // Window
+      const winX1 = 45, winX2 = 125, winY1 = 35, winY2 = 125;
+      drawQuad(toIso(winX1, winY1, 0), toIso(winX2, winY1, 0), toIso(winX2, winY2, 0), toIso(winX1, winY2, 0), homeLightOn ? '#b8d5e5' : '#32404e', '#fff', 2);
+      const wmA = toIso((winX1 + winX2) / 2, winY1, 0), wmB = toIso((winX1 + winX2) / 2, winY2, 0);
+      ctx.beginPath(); ctx.moveTo(wmA.x, wmA.y); ctx.lineTo(wmB.x, wmB.y); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+      drawQuad(toIso(winX1 - 10, winY1 - 8, 0), toIso(winX1 + 6, winY1 - 8, 0), toIso(winX1 + 6, winY2 + 10, 0), toIso(winX1 - 10, winY2 + 10, 0), '#6c5c4e', null);
+      drawQuad(toIso(winX2 - 6, winY1 - 8, 0), toIso(winX2 + 12, winY1 - 8, 0), toIso(winX2 + 12, winY2 + 10, 0), toIso(winX2 - 6, winY2 + 10, 0), '#6c5c4e', null);
+
+      // Bookshelf
+      drawBox(0, 105, 30, 8, 6, 95, '#4a3f35', '#382f27', '#5a4d41');
+      drawBox(0, 111, 40, 6, 18, 12, '#3b82f6', '#1d4ed8', '#60a5fa');
+      drawBox(0, 111, 55, 6, 22, 14, '#10b981', '#047857', '#34d399');
+      drawBox(0, 111, 72, 6, 16, 20, '#d97706', '#b45309', '#f59e0b');
+
+      // Desk & Laptop
+      const deskX = 2, deskZ = 20, deskW = 42, deskD = 110, deskH = 50;
+      ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 2.5;
+      [[deskX+4, deskZ+4], [deskX+deskW-4, deskZ+4], [deskX+4, deskZ+deskD-4], [deskX+deskW-4, deskZ+deskD-4]].forEach(([lx, lz]) => {
+        const b = toIso(lx, 0, lz), t = toIso(lx, deskH, lz);
+        ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(t.x, t.y); ctx.stroke();
+      });
+      drawBox(deskX, deskH, deskZ, deskW, 4, deskD, '#ffffff', '#e5e7eb', '#d1d5db');
+
+      const lapX = deskX + 12, lapZ = deskZ + 48;
+      drawBox(lapX, deskH + 4, lapZ, 20, 2, 22, '#374151', '#1f2937', '#4b5563');
+      drawQuad(toIso(lapX, deskH + 6, lapZ), toIso(lapX, deskH + 6, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ + 22), toIso(lapX - 4, deskH + 24, lapZ), homeLightOn ? '#ecfeff' : '#0284c7', '#fff', 1);
+
+      // Lamp
+      drawBox(deskX + 8, deskH + 4, deskZ + 14, 6, 2, 6, '#f59e0b', '#d97706', '#fbbf24');
+      drawBox(deskX + 7, deskH + 22, deskZ + 13, 8, 5, 8, '#fbbf24', '#f59e0b', '#fde68a');
+
+      // Rug & Chair
+      const rugX = 75, rugZ = 75, rugW = 75, rugD = 65;
+      drawQuad(toIso(rugX, 1, rugZ), toIso(rugX + rugW, 1, rugZ), toIso(rugX + rugW, 1, rugZ + rugD), toIso(rugX, 1, rugZ + rugD), '#f4ede4', '#ea580c', 2);
+
+      const chairX = 92, chairZ = 90;
+      drawBox(chairX - 6, 18, chairZ - 6, 26, 8, 26, '#1f2937', '#111827', '#374151');
+      drawBox(chairX + 10, 26, chairZ - 6, 10, 22, 26, '#111827', '#030712', '#1f2937');
+
+      if (homeLightOn) {
+        const glow = ctx.createRadialGradient(originX - 80, originY - 120, 15, originX - 80, originY - 120, 280);
+        glow.addColorStop(0, 'rgba(254, 243, 199, 0.44)');
+        glow.addColorStop(0.5, 'rgba(251, 191, 36, 0.12)');
+        glow.addColorStop(1, 'rgba(251, 191, 36, 0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath(); ctx.arc(originX - 80, originY - 120, 280, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    function selectHomeHotspot(id) {
+      const item = homeHotspots[id];
+      if (!item) return;
+      document.getElementById('homeCardTag').textContent = item.tag;
+      document.getElementById('homeCardTitle').textContent = item.title;
+      document.getElementById('homeCardSub').textContent = item.sub;
+      document.getElementById('homeCardDesc').textContent = item.desc;
+      document.getElementById('homeCardBtn').href = item.url;
+
+      document.querySelectorAll('.home-pin').forEach(p => p.classList.remove('active'));
+      const pin = document.getElementById('home-pin-' + id);
+      if (pin) pin.classList.add('active');
+    }
+
+    function toggleHomeLights() {
+      homeLightOn = !homeLightOn;
+      document.getElementById('homeLightsStatus').textContent = homeLightOn ? 'ON' : 'OFF';
+      renderHomeStudio();
+    }
+
+    function resetHomeStudio() {
+      homeLightOn = true;
+      document.getElementById('homeLightsStatus').textContent = 'ON';
+      selectHomeHotspot('workstation');
+      renderHomeStudio();
+    }
+
+    window.addEventListener('DOMContentLoaded', renderHomeStudio);
+  </script>
 </body>
 </html>
