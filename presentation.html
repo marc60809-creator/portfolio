@@ -800,7 +800,7 @@
           📊 簡報投影片 (Slides)
         </button>
         <button class="view-tab-btn" id="tabBtnDocs" onclick="switchPresView('docs')">
-          📑 文件與報告 (Documents)
+          🏛️ 3D 空間研究室 & 文件 (Studio Lab & Docs)
         </button>
       </div>
     </div>
@@ -864,105 +864,55 @@
     <!-- SLIDE 2: Demonstrate the Final Result (Part 2) -->
     <div class="slide-wrapper">
       <span class="slide-label" style="background:#10b981;">Part 2 • Slide 02</span>
-      <section class="slide" style="padding: 36px 48px 28px;">
-        <div class="slide-header" style="margin-bottom: 14px; display:flex; justify-content:space-between; align-items:flex-end;">
+      <section class="slide">
+        <div class="slide-header" style="display:flex; justify-content:space-between; align-items:flex-end;">
           <div>
-            <span class="slide-tag" style="color:#34d399; margin-bottom: 3px;">Part 2 / Demonstrate the Final Result</span>
-            <h2 class="slide-title" style="font-size: 28px;">Multi-Page Architecture & Interactive 3D Studio Lab</h2>
+            <span class="slide-tag" style="color:#34d399;">Part 2 / Demonstrate the Final Result</span>
+            <h2 class="slide-title">Multi-Page Architecture & Dedicated 3D Studio Lab Tab</h2>
           </div>
-          <span style="font-family: var(--font-mono); font-size: 11px; color: #f97316; background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.35); padding: 4px 10px; border-radius: 6px;">
-            ✨ 點擊右側 3D 空間研究室熱點可即時互動展示
-          </span>
+          <button class="btn btn-primary" onclick="switchPresView('docs')" style="background:#f97316; border-color:#f97316; font-size:13px; padding:10px 18px;">
+            🏛️ 點擊切換至「3D 空間研究室 & 文件頁籤」 &rarr;
+          </button>
         </div>
 
-        <div class="slide-body" style="justify-content: flex-start;">
-          <div class="slide-studio-preview" style="flex: 1;">
-            <div class="studio-info-col">
-              <div class="feature-card" style="padding: 14px 16px; flex: 1;">
-                <h3 style="margin-bottom: 6px; font-size: 14.5px;">🏛️ Page 1: Selected Works (index.html)</h3>
-                <ul style="margin-top: 4px;">
-                  <li style="font-size: 12px; line-height: 1.5;"><strong>Authentic Research:</strong> BIM-to-BEM EnergyPlus calibration, Autodesk Forma microclimate, and Songshan exhibition.</li>
-                  <li style="font-size: 12px; line-height: 1.5; margin-top: 4px;"><strong>Instant Filtering:</strong> Filter by <em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em> without reload.</li>
-                  <li style="font-size: 12px; line-height: 1.5; margin-top: 4px;"><strong>Lightbox Modal:</strong> Deep-dive inspection with tectonic specs & awards.</li>
-                </ul>
-              </div>
-
-              <div class="feature-card" style="padding: 14px 16px; flex: 1;">
-                <h3 style="margin-bottom: 6px; font-size: 14.5px;">📄 Page 2: CV & Studio Lab (about.html)</h3>
-                <ul style="margin-top: 4px;">
-                  <li style="font-size: 12px; line-height: 1.5;"><strong>Bilingual Identity:</strong> Chu-Shian Tsau (曹楚献) academic & professional monograph.</li>
-                  <li style="font-size: 12px; line-height: 1.5; margin-top: 4px;"><strong>3D Studio Lab:</strong> Interactive isometric room with 4 research hotspots & light toggle.</li>
-                  <li style="font-size: 12px; line-height: 1.5; margin-top: 4px;"><strong>Credentials & Endorsements:</strong> Munich HM exchange, IELTS 6.0, Revit ACU & 3 Professor letters.</li>
-                </ul>
-              </div>
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="feature-card">
+              <h3>🏛️ Page 1: Selected Works (index.html)</h3>
+              <ul>
+                <li><strong>Authentic Research:</strong> BIM-to-BEM EnergyPlus calibration, Autodesk Forma microclimate, and Songshan exhibition curation.</li>
+                <li><strong>Instantaneous Filtering:</strong> Filter by <em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em>, or <em>All</em> without reload.</li>
+                <li><strong>Interactive Lightbox:</strong> Deep-dive inspection showing floor areas, tectonic concepts, materials, and awards.</li>
+              </ul>
             </div>
 
-            <!-- Vastly Expanded Interactive 3D Isometric Studio Room Showcase -->
-            <div class="studio-visual-col">
-              <div class="pres-studio-topbar">
-                <div class="pres-studio-title">
-                  <span class="pres-studio-badge">3D STUDIO LAB</span>
-                  <span>Inside the studio. [ 空間研究室 ] — Chu-Shian Tsau</span>
-                </div>
-                <div class="pres-studio-btns">
-                  <button class="pres-studio-btn active" onclick="selectPresHotspot('workstation')">MY STUDIO</button>
-                  <button class="pres-studio-btn" onclick="switchPresView('docs')" style="border-color:rgba(56,189,248,0.5); color:#38bdf8;">📑 文件頁籤 (DOCS)</button>
-                  <button class="pres-studio-btn" onclick="resetPresStudio()">RESET VIEW</button>
-                  <button class="pres-studio-btn" onclick="togglePresLights()">💡 LIGHTS: <span id="presLightsStatus">ON</span></button>
-                </div>
-              </div>
+            <div class="feature-card">
+              <h3>📄 Page 2: Curriculum Vitae (about.html)</h3>
+              <ul>
+                <li><strong>Bilingual Identity:</strong> Chu-Shian Tsau (曹楚献) with Chinese and English professional summary.</li>
+                <li><strong>Academic & Honors:</strong> NTUST Master's research, Munich HM exchange, Da'an Mayor's Award (#1 rank).</li>
+                <li><strong>Competency Matrix:</strong> 4 distinct skill clusters (BIM/Forma, EnergyPlus simulation, digital fabrication, licenses & IELTS 6.0).</li>
+              </ul>
+            </div>
 
-              <div class="pres-studio-viewport">
-                <canvas id="presStudioCanvas" width="960" height="450"></canvas>
-
-                <!-- Interactive Hotspot Pins -->
-                <div class="pres-pin active" id="pres-pin-workstation" style="top: 49%; left: 36%;" onclick="selectPresHotspot('workstation')">
-                  <span class="pres-pin-dot"></span>
-                  <span class="pres-pin-label">BIM Workstation</span>
-                </div>
-
-                <div class="pres-pin" id="pres-pin-window" style="top: 36%; left: 58%;" onclick="selectPresHotspot('window')">
-                  <span class="pres-pin-dot"></span>
-                  <span class="pres-pin-label">Microclimate Window</span>
-                </div>
-
-                <div class="pres-pin" id="pres-pin-shelf" style="top: 23%; left: 30%;" onclick="selectPresHotspot('shelf')">
-                  <span class="pres-pin-dot"></span>
-                  <span class="pres-pin-label">Munich & Da'an Archive</span>
-                </div>
-
-                <div class="pres-pin" id="pres-pin-chair" style="top: 67%; left: 52%;" onclick="selectPresHotspot('chair')">
-                  <span class="pres-pin-dot"></span>
-                  <span class="pres-pin-label">Songshan Lounge</span>
-                </div>
-
-                <!-- Architectural Stamp -->
-                <div class="pres-sheet-stamp">
-                  <strong style="color:#fff;">Chu-Shian Tsau 曹楚献</strong><br>
-                  COMPUTATIONAL ARCHITECTURE • BIM<br>
-                  SHEET 01 • NTUST STUDIO • 2026
-                </div>
-
-                <!-- Live Updating Selected Project Card -->
-                <div class="pres-project-card" id="presProjectCard">
-                  <div class="pres-card-tag" id="presCardTag">SELECTED PROJECT • 01</div>
-                  <div class="pres-card-title" id="presCardTitle">BIM-to-BEM Interoperability</div>
-                  <div class="pres-card-sub" id="presCardSub">GRADUATE RESEARCH LAB • NTUST</div>
-                  <div class="pres-card-desc" id="presCardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
-                  <a href="./about.html" target="_blank" class="pres-card-btn" id="presCardBtn">OPEN FULL 3D STUDIO &rarr;</a>
-                </div>
-              </div>
+            <div class="feature-card" style="border-color:#f97316; background:rgba(249,115,22,0.06);">
+              <h3 style="color:#fb923c;">✨ Page 3 / Tab: 3D 空間研究室 & 文件 (docs.html)</h3>
+              <ul>
+                <li><strong>Dedicated Full-Viewport Tab:</strong> 3D Isometric Studio Lab moved to its own spacious tab for unobstructed exploration.</li>
+                <li><strong>Interactive Hotspots & Lighting:</strong> Clickable BIM Workstation, Microclimate Window, Munich Archive & Songshan Lounge.</li>
+                <li><strong>Official Docs & Credentials:</strong> Embedded ZH/EN PDFs, Midterm Report (.doc), and 3 Professor recommendation letters.</li>
+              </ul>
             </div>
           </div>
 
-          <div class="script-box" style="margin-top: 10px; padding: 10px 16px; font-size: 12px;">
-            <strong style="display:inline; margin-right: 6px;">🗣️ Part 2 建議講稿:</strong>
-            "Moving into Part 2: the website features two core pages—the Selected Works index with instantaneous filtering, and the About & CV page housing an expansive, interactive 3D Isometric Studio Lab ('Inside the studio'). Visitors can toggle studio lighting and click 3D hotspots—from my BIM workstation and microclimate window to my Munich exchange archive—to inspect real credentials and projects."
+          <div class="script-box" style="margin-top: 20px;">
+            <strong>🗣️ Part 2 建議講稿 (English Talking Point):</strong>
+            "Moving into Part 2: demonstrating the final result. The website is organized into three dedicated tabs: the Selected Works index with instantaneous category filtering, the clean bilingual Curriculum Vitae page, and a dedicated '3D Studio Lab & Documents' tab. By moving the interactive 'Inside the studio' 3D isometric room into its own full-width tab alongside official PDF guides and professor recommendation letters, visitors enjoy a spacious, unobstructed 3D architectural exploration experience."
           </div>
         </div>
 
-        <div class="slide-footer" style="padding-top: 10px;">
-          <span>Part 2: Demonstrate the Final Result (Interactive 3D Studio Lab Showcase)</span>
+        <div class="slide-footer">
+          <span>Part 2: Demonstrate the Final Result</span>
           <span>Slide 2 of 6</span>
         </div>
       </section>
@@ -1161,12 +1111,12 @@
 
   </main>
 
-  <!-- Documents & Reports View Tab (文件與報告中心頁籤) -->
+  <!-- 3D Studio Lab & Documents View Tab (3D 空間研究室與文件中心頁籤) -->
   <section class="docs-deck-container" id="docsDeckView">
     <div class="docs-header-bar">
       <div>
-        <span class="slide-tag" style="color:#38bdf8;">PROJECT DOCUMENTATION & OFFICIAL CREDENTIALS</span>
-        <h2 class="slide-title" style="font-size: 30px;">專案文件、開發說明書與權威推薦函中心 <span>Document Center</span></h2>
+        <span class="slide-tag" style="color:#f97316;">INTERACTIVE 3D STUDIO LAB & PROJECT DOCUMENTATION</span>
+        <h2 class="slide-title" style="font-size: 30px;">3D 空間研究室、開發說明書與權威推薦函中心 <span>Studio Lab & Docs</span></h2>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <a href="DEVELOPMENT_SUMMARY_ZH.pdf" class="btn btn-primary" download>📥 下載繁中製作說明 (PDF)</a>
@@ -1175,9 +1125,12 @@
       </div>
     </div>
 
-    <!-- Document Sub-Tabs -->
+    <!-- Document & Studio Sub-Tabs -->
     <div class="docs-subtabs">
-      <button class="doc-subtab-btn active" id="subtab-zh" onclick="switchDocSubtab('zh')">
+      <button class="doc-subtab-btn active" id="subtab-studio" onclick="switchDocSubtab('studio')">
+        🏛️ 3D 空間研究室 (Inside the Studio Lab)
+      </button>
+      <button class="doc-subtab-btn" id="subtab-zh" onclick="switchDocSubtab('zh')">
         📘 網站製作說明書 (繁中 PDF)
       </button>
       <button class="doc-subtab-btn" id="subtab-en" onclick="switchDocSubtab('en')">
@@ -1191,8 +1144,109 @@
       </button>
     </div>
 
+    <!-- Sub-Pane 0 (DEFAULT): Full Expanded 3D Isometric Studio Lab -->
+    <div class="doc-pane active" id="doc-pane-studio">
+      <div style="background:#0d1219; border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px 32px; box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+        <!-- Studio Top Banner -->
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:18px; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h3 style="font-size:24px; font-weight:600; color:#fff; margin-bottom:4px;">Step inside the computational studio with Chu-Shian Tsau</h3>
+            <span style="font-size:13.5px; color:#94a3b8;">[ 運算化建築科學 • 3D 等軸測空間研究室 — 點擊左側索引或右側 3D 房間熱點探索專案 ]</span>
+          </div>
+          <div class="pres-studio-btns">
+            <button class="pres-studio-btn active" onclick="selectPresHotspot('workstation')">MY STUDIO</button>
+            <button class="pres-studio-btn" onclick="resetPresStudio()">RESET VIEW</button>
+            <button class="pres-studio-btn" onclick="togglePresLights()">💡 LIGHTS: <span id="presLightsStatus">ON</span></button>
+          </div>
+        </div>
+
+        <!-- Split Layout: Left Index Sidebar (280px) + Massive Right 3D Viewport (1fr) -->
+        <div style="display:grid; grid-template-columns:280px 1fr; gap:26px; align-items:stretch;">
+          <!-- Left Sidebar -->
+          <div style="display:flex; flex-direction:column; justify-content:space-between; gap:18px;">
+            <div>
+              <div style="font-size:15px; font-weight:600; color:#fff; margin-bottom:14px;">Studio Index & Research Spheres</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div class="pres-idx-item active" id="pres-idx-workstation" onclick="selectPresHotspot('workstation')" style="padding:12px 14px; background:rgba(249,115,22,0.12); border:1px solid #f97316; border-radius:8px; cursor:pointer;">
+                  <strong style="display:block; font-size:13.5px; color:#fff; margin-bottom:3px;">1. BIM Workstation</strong>
+                  <span style="font-size:11.5px; color:#cbd5e1;">Revit API Automation & gbXML BEM Validation</span>
+                </div>
+                <div class="pres-idx-item" id="pres-idx-window" onclick="selectPresHotspot('window')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
+                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">2. Microclimate Window</strong>
+                  <span style="font-size:11.5px; color:#94a3b8;">Autodesk Forma Daylighting & Wind Comfort</span>
+                </div>
+                <div class="pres-idx-item" id="pres-idx-shelf" onclick="selectPresHotspot('shelf')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
+                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">3. Munich & Da'an Archive</strong>
+                  <span style="font-size:11.5px; color:#94a3b8;">European Timber Exchange, IELTS 6.0 & ACU</span>
+                </div>
+                <div class="pres-idx-item" id="pres-idx-chair" onclick="selectPresHotspot('chair')" style="padding:12px 14px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:8px; cursor:pointer;">
+                  <strong style="display:block; font-size:13.5px; color:#f1f5f9; margin-bottom:3px;">4. Songshan Lounge & TTDA</strong>
+                  <span style="font-size:11.5px; color:#94a3b8;">Solo Graduation Exhibition & 3D Printing Lab</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Download CTA Pill -->
+            <a href="Midterm_Assignment_Submission_Chu-Shian_Tsau.doc" download style="display:flex; align-items:center; gap:12px; background:#fff; color:#0f172a; text-decoration:none; border-radius:36px; padding:12px 18px; font-weight:700; font-size:12.5px; box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+              <span style="font-size:20px;">📄</span>
+              <span style="flex:1;">
+                <span style="display:block; color:#0f172a;">Download Official Report</span>
+                <span style="display:block; font-size:10.5px; color:#64748b; font-weight:500;">Academic Portfolio & CV 2026</span>
+              </span>
+              <span style="font-size:18px;">&rsaquo;</span>
+            </a>
+          </div>
+
+          <!-- Right Expanded 3D Isometric Viewport (1020x640) -->
+          <div class="pres-studio-viewport" style="height:640px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);">
+            <canvas id="presStudioCanvas" width="1020" height="640"></canvas>
+
+            <!-- Interactive Hotspot Pins -->
+            <div class="pres-pin active" id="pres-pin-workstation" style="top: 48%; left: 38%;" onclick="selectPresHotspot('workstation')">
+              <span class="pres-pin-dot"></span>
+              <span class="pres-pin-label">BIM Workstation</span>
+            </div>
+
+            <div class="pres-pin" id="pres-pin-window" style="top: 36%; left: 61%;" onclick="selectPresHotspot('window')">
+              <span class="pres-pin-dot"></span>
+              <span class="pres-pin-label">Microclimate Window</span>
+            </div>
+
+            <div class="pres-pin" id="pres-pin-shelf" style="top: 23%; left: 32%;" onclick="selectPresHotspot('shelf')">
+              <span class="pres-pin-dot"></span>
+              <span class="pres-pin-label">Munich & Da'an Archive</span>
+            </div>
+
+            <div class="pres-pin" id="pres-pin-chair" style="top: 66%; left: 55%;" onclick="selectPresHotspot('chair')">
+              <span class="pres-pin-dot"></span>
+              <span class="pres-pin-label">Songshan Lounge</span>
+            </div>
+
+            <!-- Architectural Stamp -->
+            <div class="pres-sheet-stamp" style="bottom:20px; left:20px; padding:10px 14px; font-size:10.5px;">
+              <strong style="color:#fff;">Chu-Shian Tsau 曹楚献</strong><br>
+              COMPUTATIONAL ARCHITECTURE • BIM<br>
+              SHEET 01 • NTUST STUDIO • 2026
+            </div>
+
+            <!-- Live Updating Selected Project Card with Image Preview -->
+            <div class="pres-project-card" id="presProjectCard" style="width:320px; bottom:20px; right:20px; padding:16px 18px;">
+              <div class="pres-card-tag" id="presCardTag">SELECTED PROJECT • 01</div>
+              <div style="width:100%; height:120px; border-radius:6px; overflow:hidden; margin:6px 0 10px; border:1px solid rgba(255,255,255,0.12);">
+                <img id="presCardImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project preview" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div class="pres-card-title" id="presCardTitle" style="font-size:15px;">BIM-to-BEM Interoperability</div>
+              <div class="pres-card-sub" id="presCardSub">GRADUATE RESEARCH LAB • NTUST</div>
+              <div class="pres-card-desc" id="presCardDesc" style="font-size:12px;">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
+              <a href="./index.html" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding:8px 14px; font-size:11px;">OPEN PROJECT &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Sub-Pane 1: Traditional Chinese Development Summary PDF -->
-    <div class="doc-pane active" id="doc-pane-zh">
+    <div class="doc-pane" id="doc-pane-zh">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
         <div style="font-size:13.5px; color:#cbd5e1;">
           <strong>檔案名稱：</strong><code>DEVELOPMENT_SUMMARY_ZH.pdf</code> — 個人作品集網站：製作過程、JSON 資料流與檔案架構整理
@@ -1308,13 +1362,13 @@
         docsView.classList.add('active');
         btnSlides.classList.remove('active');
         btnDocs.classList.add('active');
+        renderPresStudio();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         docsView.classList.remove('active');
         slidesView.style.display = 'flex';
         btnDocs.classList.remove('active');
         btnSlides.classList.add('active');
-        renderPresStudio();
       }
     }
 
@@ -1326,6 +1380,7 @@
       const activePane = document.getElementById('doc-pane-' + tabKey);
       if (activeBtn) activeBtn.classList.add('active');
       if (activePane) activePane.classList.add('active');
+      if (tabKey === 'studio') renderPresStudio();
     }
 
     function toggleScriptBox() {
@@ -1335,13 +1390,14 @@
       });
     }
 
-    // Interactive 3D Isometric Studio Lab Engine for Slide 2
+    // Interactive 3D Isometric Studio Lab Engine in the Dedicated Tab
     const presHotspots = {
       workstation: {
         tag: 'SELECTED PROJECT • 01',
         title: 'BIM-to-BEM Interoperability',
         sub: 'GRADUATE RESEARCH LAB • NTUST',
         desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
+        img: 'assets/studio/autodesk_revit_cert.jpg',
         url: './index.html'
       },
       window: {
@@ -1349,6 +1405,7 @@
         title: 'Autodesk Forma Microclimate',
         sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
         desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
+        img: 'assets/studio/mooao_sun_wind_analysis.jpg',
         url: './index.html'
       },
       shelf: {
@@ -1356,6 +1413,7 @@
         title: 'Munich HM Exchange & Credentials',
         sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
         desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
+        img: 'assets/studio/ielts_score_cert.jpg',
         url: './about.html'
       },
       chair: {
@@ -1363,6 +1421,7 @@
         title: 'Songshan Solo Exhibition & TTDA',
         sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
         desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
+        img: 'assets/studio/ttda_3d_fabrication.jpg',
         url: './index.html'
       }
     };
@@ -1376,12 +1435,12 @@
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const originX = canvas.width * 0.43;
-      const originY = canvas.height * 0.65;
+      const originX = canvas.width * 0.45;
+      const originY = canvas.height * 0.64;
       const ISO_ANGLE = Math.PI / 6;
       const cosIso = Math.cos(ISO_ANGLE);
       const sinIso = Math.sin(ISO_ANGLE);
-      const scale = 1.65;
+      const scale = 2.0;
 
       function toIso(x, y, z) {
         return {
@@ -1508,10 +1567,22 @@
       document.getElementById('presCardSub').textContent = item.sub;
       document.getElementById('presCardDesc').textContent = item.desc;
       document.getElementById('presCardBtn').href = item.url;
+      const imgEl = document.getElementById('presCardImg');
+      if (imgEl && item.img) imgEl.src = item.img;
 
       document.querySelectorAll('.pres-pin').forEach(p => p.classList.remove('active'));
       const pin = document.getElementById('pres-pin-' + id);
       if (pin) pin.classList.add('active');
+
+      document.querySelectorAll('.pres-idx-item').forEach(el => {
+        el.style.background = 'rgba(255,255,255,0.03)';
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+      });
+      const idx = document.getElementById('pres-idx-' + id);
+      if (idx) {
+        idx.style.background = 'rgba(249,115,22,0.12)';
+        idx.style.borderColor = '#f97316';
+      }
     }
 
     function togglePresLights() {

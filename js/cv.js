@@ -5,50 +5,33 @@
 
 async function initCV() {
   const container = document.getElementById('cvContent');
-  if (!container) return;
+  const studioMount = document.getElementById('studioLabMount');
+  if (!container && !studioMount) return;
 
   try {
     const response = await fetch('./data/cv.json');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 
-    renderCV(data);
+    if (container) renderCV(data);
+    if (studioMount) renderStudioLabSection(studioMount, data);
   } catch (error) {
     console.error('Failed to load cv.json:', error);
-    container.innerHTML = `
-      <div style="padding: 40px 0; color: #777;">
-        <p><strong>Notice:</strong> Unable to dynamically fetch <code>data/cv.json</code>.</p>
-        <p>If testing locally, please run a lightweight web server (e.g. <code>npx serve</code>), or view once deployed on GitHub Pages.</p>
-      </div>
-    `;
+    if (container) {
+      container.innerHTML = `
+        <div style="padding: 40px 0; color: #777;">
+          <p><strong>Notice:</strong> Unable to dynamically fetch <code>data/cv.json</code>.</p>
+          <p>If testing locally, please run a lightweight web server (e.g. <code>npx serve</code>), or view once deployed on GitHub Pages.</p>
+        </div>
+      `;
+    }
   }
 }
 
-function renderCV(data) {
-  const container = document.getElementById('cvContent');
-  const { profile, education, experience, skills, honors } = data;
-
-  container.innerHTML = `
-    <!-- Header / Statement -->
-    <header class="cv-header">
-      <h1>${profile.nameEn} <span style="font-family:'PingFang TC','Microsoft JhengHei',sans-serif; font-size:26px; color:#666; margin-left:12px;">${profile.nameZh}</span></h1>
-      <div class="cv-role">${profile.role} • ${profile.location}</div>
-      <div class="cv-role" style="margin-top:6px; font-size:15px; letter-spacing:0.04em;">
-        <a href="mailto:${profile.email}" style="color:#111; text-decoration:none;">${profile.email}</a>
-      </div>
-      <div class="cv-bio-block">
-        <div>
-          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ Professional Summary ]</p>
-          <p>${profile.statementEn}</p>
-        </div>
-        <div>
-          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ 專業實踐與研究自述 ]</p>
-          <p>${profile.statementZh}</p>
-        </div>
-      </div>
-      
+function getStudioLabHTML() {
+  return `
       <!-- Interactive 3D Isometric Studio Room (Fujitsu-Style Split Layout) -->
-      <div class="studio-3d-section">
+      <div class="studio-3d-section" style="margin-top: 24px; margin-bottom: 44px;">
         <!-- Top Wide Banner Header -->
         <div class="studio-top-banner">
           <h2 class="studio-main-title">Step inside the computational studio with Chu-Shian Tsau</h2>
@@ -56,7 +39,6 @@ function renderCV(data) {
             <span class="studio-sub-zh">[ 運算化建築科學 • 3D 空間研究室 ]</span>
             <div class="studio-view-btns">
               <button class="studio-btn active" id="btnMyStudio">MY STUDIO</button>
-              <a href="docs.html" class="studio-btn" style="text-decoration:none; border-color:rgba(56,189,248,0.5); color:#38bdf8;">📑 DOCS / 文件頁籤</a>
               <button class="studio-btn" id="btnResetView">RESET VIEW</button>
               <button class="studio-btn" id="btnToggleLights">💡 LIGHTS: <span id="lightsStatus">ON</span></button>
             </div>
@@ -219,7 +201,37 @@ function renderCV(data) {
           </div>
         </div>
       </div>
-    </header>
+  `;
+}
+
+function renderStudioLabSection(mountEl, data) {
+  mountEl.innerHTML = getStudioLabHTML();
+  initIsometricStudioRoom(data.studioRoom);
+}
+
+function renderCV(data) {
+  const container = document.getElementById('cvContent');
+  const { profile, education, experience, skills, honors } = data;
+
+  container.innerHTML = `
+    <!-- Header / Statement -->
+    <div class="cv-header">
+      <h1>${profile.nameEn} <span style="font-family:'PingFang TC','Microsoft JhengHei',sans-serif; font-size:26px; color:#666; margin-left:12px;">${profile.nameZh}</span></h1>
+      <div class="cv-role">${profile.role} • ${profile.location}</div>
+      <div class="cv-role" style="margin-top:6px; font-size:15px; letter-spacing:0.04em;">
+        <a href="mailto:${profile.email}" style="color:#111; text-decoration:none;">${profile.email}</a>
+      </div>
+      <div class="cv-bio-block">
+        <div>
+          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ Professional Summary ]</p>
+          <p>${profile.statementEn}</p>
+        </div>
+        <div>
+          <p style="font-weight:400; color:#111; margin-bottom:8px;">[ 專業實踐與研究自述 ]</p>
+          <p>${profile.statementZh}</p>
+        </div>
+      </div>
+    </div>
 
     <!-- Experience -->
     <section class="cv-section">
@@ -323,8 +335,6 @@ function renderCV(data) {
     </section>
     ` : ''}
   `;
-
-  initIsometricStudioRoom(data.studioRoom);
 }
 
 /**
