@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents & Reports | Chu-Shian Tsau 曹楚献</title>
+  <meta name="description" content="Official development documentation, midterm submission report, certificates, and professor recommendation letters of Chu-Shian Tsau 曹楚献." />
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    .docs-page-hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .docs-page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .docs-page-hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    .docs-quick-downloads {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .doc-dl-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111827;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 12.5px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .doc-dl-pill:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .doc-dl-pill.secondary {
+      background: #f3f4f6;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+
+    .doc-dl-pill.secondary:hover {
+      background: #e5e7eb;
+    }
+
+    /* Interactive Document Tabs */
+    .docs-tab-bar {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .docs-tab-item {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .docs-tab-item:hover {
+      border-color: #111;
+      color: #111;
+    }
+
+    .docs-tab-item.active {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
+    .docs-tab-panel {
+      display: none;
+      margin-bottom: 64px;
+    }
+
+    .docs-tab-panel.active {
+      display: block;
+    }
+
+    .pdf-frame-box {
+      width: 100%;
+      height: 760px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1e293b;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .pdf-frame-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .creds-archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .cred-archive-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cred-archive-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    }
+
+    .cred-archive-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: top;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cred-archive-info {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cred-archive-info h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .cred-archive-info p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .creds-archive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Global Navigation -->
+    <header>
+      <nav class="nav-left">
+        <a href="index.html" class="nav-link">Works / 專案</a>
+        <a href="about.html" class="nav-link">About & CV / 關於</a>
+        <a href="docs.html" class="nav-link active">Docs / 文件</a>
+        <a href="presentation.html" class="nav-link">Slides / 簡報</a>
+      </nav>
+
+      <a href="index.html" class="site-brand">
+        <span class="brand-monogram">CST</span>
+        <span class="brand-divider"></span>
+        <span class="brand-names">
+          <span>Chu-Shian Tsau</span>
+          <span class="name-zh">曹楚献</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <span class="lang-toggle">EN / 繁中</span>
+      </div>
+    </header>
+
+    <!-- Hero Title & Quick Downloads -->
+    <section class="docs-page-hero">
+      <div>
+        <h1>Project Documentation & Official Credentials <span style="font-size:22px; color:#666; font-family:var(--font-sans); font-weight:300; margin-left:8px;">專案文件與證照中心</span></h1>
+        <p>Complete technical documentation, decoupled JSON architecture guides (Traditional Chinese & English PDFs), midterm assignment submission report, and official professor recommendation letters.</p>
+      </div>
+      <div class="docs-quick-downloads">
+        <a href="DEVELOPMENT_SUMMARY_ZH.pdf" class="doc-dl-pill" download>📥 繁中製作說明 (PDF)</a>
+        <a href="DEVELOPMENT_SUMMARY_EN.pdf" class="doc-dl-pill secondary" download>📥 English Guide (PDF)</a>
+        <a href="Midterm_Assignment_Submission_Chu-Shian_Tsau.doc" class="doc-dl-pill secondary" download>📥 期中報告 (.doc)</a>
+      </div>
+    </section>
+
+    <!-- Document Sub-Tabs -->
+    <div class="docs-tab-bar">
+      <button class="docs-tab-item active" id="dtab-zh" onclick="switchDocsPageTab('zh')">
+        📘 網站製作過程與檔案整理 (繁中 PDF)
+      </button>
+      <button class="docs-tab-item" id="dtab-en" onclick="switchDocsPageTab('en')">
+        📗 Development Process & File Guide (English PDF)
+      </button>
+      <button class="docs-tab-item" id="dtab-report" onclick="switchDocsPageTab('report')">
+        📄 期中作業提交報告 (Midterm Report)
+      </button>
+      <button class="docs-tab-item" id="dtab-creds" onclick="switchDocsPageTab('creds')">
+        🏅 權威推薦函與國際證照原件 (6 份原件)
+      </button>
+    </div>
+
+    <!-- Tab 1: Traditional Chinese PDF -->
+    <div class="docs-tab-panel active" id="dpanel-zh">
+      <div class="pdf-frame-box">
+        <iframe src="DEVELOPMENT_SUMMARY_ZH.pdf" title="網站製作過程與檔案整理 PDF"></iframe>
+      </div>
+    </div>
+
+    <!-- Tab 2: English PDF -->
+    <div class="docs-tab-panel" id="dpanel-en">
+      <div class="pdf-frame-box">
+        <iframe src="DEVELOPMENT_SUMMARY_EN.pdf" title="Development Process and File Guide PDF"></iframe>
+      </div>
+    </div>
+
+    <!-- Tab 3: Midterm Report -->
+    <div class="docs-tab-panel" id="dpanel-report">
+      <div class="pdf-frame-box" style="background:#fff;">
+        <iframe src="Midterm_Assignment_Submission_Chu-Shian_Tsau.doc" title="Midterm Assignment Submission Report"></iframe>
+      </div>
+    </div>
+
+    <!-- Tab 4: Credentials & Recommendation Letters -->
+    <div class="docs-tab-panel" id="dpanel-creds">
+      <div class="creds-archive-grid">
+        <div class="cred-archive-card">
+          <img src="assets/studio/rec_letter_chang.jpg" alt="張國章建築師推薦函">
+          <div class="cred-archive-info">
+            <div>
+              <h3>張國章建築師 親筆推薦函</h3>
+              <p>台北國際聯合建築師事務所主持建築師極力推薦，高度肯定 Revit 作業與 BIM 實務協調表現。</p>
+            </div>
+            <a href="assets/studio/rec_letter_chang.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+
+        <div class="cred-archive-card">
+          <img src="assets/studio/rec_letter_tsaih.jpg" alt="蔡欣君副教授推薦函">
+          <div class="cred-archive-info">
+            <div>
+              <h3>蔡欣君副教授 親筆推薦函</h3>
+              <p>國立臺灣科技大學建築系指導教授極力推薦，肯定學習態度積極自主與建築研究潛力。</p>
+            </div>
+            <a href="assets/studio/rec_letter_tsaih.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+
+        <div class="cred-archive-card">
+          <img src="assets/studio/rec_letter_tsai_mt.jpg" alt="蔡孟廷教授推薦函">
+          <div class="cred-archive-info">
+            <div>
+              <h3>蔡孟廷教授 親筆推薦函</h3>
+              <p>國立臺灣科技大學建築系教授極力推薦，肯定海外德國慕尼黑交換表現與國際競圖實力。</p>
+            </div>
+            <a href="assets/studio/rec_letter_tsai_mt.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+
+        <div class="cred-archive-card">
+          <img src="assets/studio/autodesk_revit_cert.jpg" alt="Autodesk Revit ACU 證照">
+          <div class="cred-archive-info">
+            <div>
+              <h3>Autodesk Revit ACU 國際原廠認證</h3>
+              <p>Autodesk Certified User in Revit Architecture 國際專業認證證書 (June 2023)。</p>
+            </div>
+            <a href="assets/studio/autodesk_revit_cert.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+
+        <div class="cred-archive-card">
+          <img src="assets/studio/ielts_score_cert.jpg" alt="IELTS 6.0 成績單">
+          <div class="cred-archive-info">
+            <div>
+              <h3>IELTS 雅思國際英語測驗 (Overall 6.0)</h3>
+              <p>CEFR B2 專業工作水平（聽力 6.0、口說 6.0、寫作 6.0），赴德國慕尼黑交換之官方英語檢定。</p>
+            </div>
+            <a href="assets/studio/ielts_score_cert.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+
+        <div class="cred-archive-card">
+          <img src="assets/studio/mooao_sun_wind_analysis.jpg" alt="微氣候分析圖板">
+          <div class="cred-archive-info">
+            <div>
+              <h3>Autodesk Forma 微氣候與風場分析圖板</h3>
+              <p>東北角阿吉師 MAOAO 餐廳基地之日照軌跡、太陽輻射與季風微氣候分析模擬圖面。</p>
+            </div>
+            <a href="assets/studio/mooao_sun_wind_analysis.jpg" target="_blank" class="doc-dl-pill secondary" style="justify-content:center;">🔍 檢視高解析原圖</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="footer-left">
+        <strong>Chu-Shian Tsau 曹楚献</strong> — Computational Building Designer & BIM Specialist<br />
+        Bespoke Portfolio • Designed & Maintained via JSON Content Separation
+      </div>
+      <div>
+        <a href="#" class="footer-back-top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to Top &uarr;</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:marc60809@gmail.com">Email</a>
+        <a href="https://github.com/marc60809-creator/portfolio" target="_blank" rel="noopener">GitHub</a>
+        <a href="presentation.html">Presentation</a>
+        <a href="about.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function switchDocsPageTab(key) {
+      document.querySelectorAll('.docs-tab-item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.docs-tab-panel').forEach(p => p.classList.remove('active'));
+
+      const btn = document.getElementById('dtab-' + key);
+      const panel = document.getElementById('dpanel-' + key);
+      if (btn) btn.classList.add('active');
+      if (panel) panel.classList.add('active');
+    }
+  </script>
+</body>
+</html>

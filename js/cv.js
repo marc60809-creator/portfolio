@@ -56,6 +56,7 @@ function renderCV(data) {
             <span class="studio-sub-zh">[ 運算化建築科學 • 3D 空間研究室 ]</span>
             <div class="studio-view-btns">
               <button class="studio-btn active" id="btnMyStudio">MY STUDIO</button>
+              <a href="docs.html" class="studio-btn" style="text-decoration:none; border-color:rgba(56,189,248,0.5); color:#38bdf8;">📑 DOCS / 文件頁籤</a>
               <button class="studio-btn" id="btnResetView">RESET VIEW</button>
               <button class="studio-btn" id="btnToggleLights">💡 LIGHTS: <span id="lightsStatus">ON</span></button>
             </div>
