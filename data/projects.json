@@ -7,18 +7,120 @@
     "email": "marc60809@gmail.com",
     "location": "Taipei, Taiwan",
     "social": {
-      "github": "https://github.com",
+      "github": "https://github.com/marc60809-creator",
       "linkedin": "https://linkedin.com"
     }
   },
   "categories": [
     { "id": "all", "name": "All Works", "nameZh": "全部研究與專案" },
-    { "id": "computational", "name": "BIM & Computational Science", "nameZh": "BIM運算與建築科學" },
-    { "id": "environmental", "name": "Environmental Simulation", "nameZh": "微氣候與能耗模擬" },
-    { "id": "fabrication", "name": "Digital Fabrication", "nameZh": "數位構築與策展" },
-    { "id": "architectural", "name": "Architectural Design", "nameZh": "建築空間設計" }
+    { "id": "computational", "name": "BIM & Environmental", "nameZh": "BIM與環境模擬" },
+    { "id": "architectural", "name": "Architectural Design", "nameZh": "建築空間設計" },
+    { "id": "competition", "name": "Competitions & Urban", "nameZh": "國際競圖與都市" },
+    { "id": "fabrication", "name": "Digital Fabrication", "nameZh": "數位構築與材料" }
   ],
   "projects": [
+    {
+      "id": "mooao-restaurant",
+      "type": "featured",
+      "reverse": false,
+      "title": "Mr. Chi MAOAO Restaurant & Coast Bar",
+      "subtitle": "Urban Heat Island (UHI) & Autodesk Forma Microclimate Analysis",
+      "year": 2024,
+      "category": "computational",
+      "location": "Maoao Coast, New Taipei City",
+      "area": "1,450 m²",
+      "summary": "Practical thesis investigation on Urban Heat Island (UHI) mitigation along the coastal landscape. Integrating thermal imaging drone observation with Autodesk Forma early-stage solar radiation and wind simulations. The white reflecting canopy geometry and aerodynamic corridors mitigate heat absorption while framing sea horizons.",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+      "details": {
+        "concept": "Analyzing thermal radiation stark contrast between rock surfaces (34.1°C) and shaded vegetative corridors (<28.9°C). Autodesk Forma solar hour simulations guided the roof curvature to shelter visitors from extreme noon exposure while inviting prevailing coastal sea breezes through winding corridors.",
+        "materials": "High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, salt-resistant timber louvers.",
+        "awards": "Special Topics on Professional Practices: Urban Heat Island in Taipei (Advisor: Dr. Lucky S.J. Tsaih)"
+      }
+    },
+    {
+      "id": "grid-series-1",
+      "type": "grid",
+      "items": [
+        {
+          "id": "voute-gallery-bistro",
+          "title": "Jingmei VOUTE: Gallery & Bistro",
+          "year": 2022,
+          "category": "architectural",
+          "location": "Jingmei, Taipei",
+          "summary": "Adaptive cultural composite featuring a 3F/4F triple-height atrium gallery, cultural design shop, and rooftop sky bar beneath rhythmic masonry brick arches.",
+          "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "ndcc-hsinchu",
+          "title": "NTUST Hsinchu Campus (NDCC)",
+          "year": 2023,
+          "category": "architectural",
+          "location": "Hsinchu Campus",
+          "summary": "Comprehensive campus design featuring extensive sunshine analysis, shaded sunken courtyards, and open collaborative architectural design labs.",
+          "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "gulin-garden",
+          "title": "Gulin Garden Parent-Child Center",
+          "year": 2023,
+          "category": "architectural",
+          "location": "Guling Street, Taipei",
+          "summary": "A dynamic organic morphology composed of interlinked cylindrical volumes, grey brickwork, wooden louvers, and perforated mesh railings.",
+          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      "id": "curved-hostel",
+      "type": "featured",
+      "reverse": true,
+      "title": "Zhongshan CURVED Youth Hostel",
+      "subtitle": "Wave-form Urban Facade & Community Permeability",
+      "year": 2023,
+      "category": "architectural",
+      "location": "Zhongshan District, Taipei",
+      "area": "2,100 m² (7 Floors)",
+      "summary": "A 7-story urban boutique youth hostel defined by sculptural, wave-like cantilevered balconies that generate dynamic street rhythms. The ground floor dissolves into a public courtyard and community cafe, fostering spontaneous encounters between international travelers and local neighborhood residents.",
+      "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+      "details": {
+        "concept": "The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms, reducing summer cooling requirements while offering private green micro-terraces facing the city tree canopies.",
+        "materials": "Architectural fair-faced white concrete, acoustic double-glazed window assemblies, vertical greenery planter boxes, custom modular timber bunk joinery.",
+        "awards": "Design Studio III Project 113 • Selected for Departmental Exhibition"
+      }
+    },
+    {
+      "id": "grid-series-2",
+      "type": "grid",
+      "items": [
+        {
+          "id": "tac-sharjah",
+          "title": "TAC: Temporary Art Space in Sharjah",
+          "year": 2025,
+          "category": "competition",
+          "location": "Sharjah, UAE",
+          "summary": "International architecture competition entry exploring tensile fabric canopies, Souk Al Bahar cultural corridors, and modular public gathering pods.",
+          "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "munich-origami",
+          "title": "Origami Gradient Color & Light",
+          "year": 2025,
+          "category": "fabrication",
+          "location": "Munich (HM), Germany",
+          "summary": "Tectonic folding studies developed during visiting exchange at Hochschule München, examining light refraction through origami louver assemblies.",
+          "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "ttda-3d-laser",
+          "title": "TTDA Digital Fabrication & 3D Prototyping",
+          "year": 2024,
+          "category": "fabrication",
+          "location": "NTUST TTDA FabLab",
+          "summary": "Precision multi-material SLA/FDM 3D printing and laser-cut spatial joinery models; serving as Core FabLab Manager instructing 80+ peers.",
+          "image": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
     {
       "id": "bim-bem-interoperability",
       "type": "featured",
@@ -36,90 +138,6 @@
         "materials": "Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Optimization.",
         "awards": "15%–25% Simulated Building Energy Savings | Benchmarked to LEED EAc2 & Taiwan BERS"
       }
-    },
-    {
-      "id": "grid-series-1",
-      "type": "grid",
-      "items": [
-        {
-          "id": "forma-microclimate",
-          "title": "Microclimate & Wind Comfort Analysis",
-          "year": 2024,
-          "category": "environmental",
-          "location": "Taipei International Firm",
-          "summary": "Early-stage environmental simulation using Autodesk Forma to evaluate pedestrian wind comfort and solar radiation, reducing peak cooling loads by 12%.",
-          "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          "id": "clash-federation",
-          "title": "Multidisciplinary BIM Federation",
-          "year": 2024,
-          "category": "computational",
-          "location": "Taipei Commercial Project",
-          "summary": "Federated architectural, structural, and MEP models, resolving over 120 critical spatial conflicts prior to construction documentation.",
-          "image": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          "id": "revit-automation",
-          "title": "Revit API Boundary Automation",
-          "year": 2024,
-          "category": "computational",
-          "location": "Engineering Toolchain",
-          "summary": "Custom Python scripts extracting thermal boundaries and automating space cleanup, reducing model prep time by 60%.",
-          "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
-        }
-      ]
-    },
-    {
-      "id": "songshan-curation",
-      "type": "featured",
-      "reverse": true,
-      "title": "Songshan Solo Architectural Graduation Exhibition",
-      "subtitle": "Curator & Digital Fabrication Lead at Songshan Cultural Park",
-      "year": 2025,
-      "category": "fabrication",
-      "location": "Songshan Cultural and Creative Park (松菸), Taipei",
-      "area": "180 m² Exhibition",
-      "summary": "Independently planned, designed, and curated a solo architectural graduation exhibition showcasing parametric digital fabrication models, CNC-milled spatial assemblies, and environmental design methodologies to over 500 visitors and industry experts.",
-      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-      "details": {
-        "concept": "Exhibiting the dialogue between digital computational algorithms and physical joinery tectonics across complex spatial geometry.",
-        "materials": "Laser-cut acrylic, 5-axis CNC-milled acoustic panels, 3D printed PLA spatial tessellations.",
-        "awards": "Attracted 500+ attendees and architectural industry professionals"
-      }
-    },
-    {
-      "id": "grid-series-2",
-      "type": "grid",
-      "items": [
-        {
-          "id": "munich-exchange",
-          "title": "Low-Carbon Munich Tectonic Studies",
-          "year": 2025,
-          "category": "architectural",
-          "location": "Hochschule München (HM), Germany",
-          "summary": "Parametric modeling and carbon accounting coursework focusing on European high-performance timber facades.",
-          "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          "id": "ttda-fabrication",
-          "title": "NTUST Digital Fabrication Lab (TTDA)",
-          "year": 2024,
-          "category": "fabrication",
-          "location": "NTUST, Taipei",
-          "summary": "Supervised multi-material 3D printing and CNC milling while mentoring 80+ architecture students in physical prototyping.",
-          "image": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          "id": "daan-excellence",
-          "title": "Precision Architectural Drafting Series",
-          "year": 2021,
-          "category": "architectural",
-          "location": "Taipei Municipal Da'an",
-          "summary": "Class-C Architectural Drafting & Class-B Surveying technical study, recognized with the Taipei City Mayor's Award.",
-          "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
-        }
-      ]
     }
   ]
 }

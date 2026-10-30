@@ -5,103 +5,199 @@
     "role": "Computational Building Designer & BIM Engineering Specialist",
     "location": "Taipei, Taiwan",
     "email": "marc60809@gmail.com",
+    "studentEmail": "B11013119@mail.ntust.edu.tw",
     "statementEn": "Graduate researcher and computational building designer with cross-disciplinary expertise in spatial geometry and environmental engineering. Experienced in developing automated BIM-to-BEM pipelines with Revit API, executing early-stage microclimate simulations via Autodesk Forma, and implementing NSGA-II multi-objective genetic algorithms for daylight-energy optimization.",
     "statementZh": "國立臺灣科技大學建築研究所研究生，專注於運算化建築科學（Computational Building Science）、BIM-to-BEM 互通性與多目標遺傳演算法能耗優化。具備豐富的 Revit API 自動化腳本編寫、Autodesk Forma 早期微氣候模擬及跨專業碰撞檢討實務經驗，致力於將數位分身（Digital Twin）與環境工程深度整合於永續建築中。",
     "spatialPhilosophyEn": "My 3D spatial practice operates as a synthesis of algorithmic tectonic logic and environmental responsiveness. Through parametric surface discretization, daylight-guided voids, and digital twin calibrations, three-dimensional geometry is not merely formal expression, but an active thermal and atmospheric regulator mediating between structure and environment.",
     "spatialPhilosophyZh": "我的三維空間實踐立足於演算法構造邏輯與環境自適應機能的深度融合。透過參數化曲面離散化、採光導向開口拓撲以及數位分身幾何校正，3D 空間形體不再僅是形式上的雕塑，而是調解結構荷重、微氣候風場與熱能轉換的動態介質。"
   },
+  "studioRoom": {
+    "title": "Inside the studio. 空間研究室",
+    "tagline": "Step inside Chu-Shian's computational design lab. Pick an interactive object to explore research projects.",
+    "taglineZh": "走進楚献的運算建築研究室。點擊空間物件探索對應的學術與工程專案。",
+    "sheetMeta": "Chu-Shian Tsau 曹楚献 • COMPUTATIONAL ARCHITECTURE • NTUST STUDIO 2026",
+    "hotspots": [
+      {
+        "id": "workstation",
+        "name": "BIM Workstation",
+        "nameZh": "BIM 工作站與分析筆電",
+        "tag": "Selected Project",
+        "projectTitle": "BIM-to-BEM Interoperability",
+        "category": "Graduate Research Lab",
+        "summary": "Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to <5%.",
+        "summaryZh": "Revit API 空間熱區自動擷取腳本與 EnergyPlus 校準流程，降低拓撲錯誤至 5% 以下並取得 15%~25% 能耗節約。",
+        "targetUrl": "index.html"
+      },
+      {
+        "id": "window",
+        "name": "Forma Microclimate Window",
+        "nameZh": "微氣候落地採光窗",
+        "tag": "Environmental Study",
+        "projectTitle": "Autodesk Forma & Daylighting",
+        "category": "Microclimate & Wind Comfort",
+        "summary": "Simulating daylighting (sDA/ASE) and urban wind ventilation patterns in early schematic phases to slash HVAC cooling loads by 12%.",
+        "summaryZh": "建築初期微氣候風場與太陽日照模擬，平衡採光與能耗指標並降低尖峰空調負載 12%。",
+        "targetUrl": "index.html"
+      },
+      {
+        "id": "shelf",
+        "name": "Munich & Da'an Archive",
+        "nameZh": "慕尼黑文獻與大安市長獎",
+        "tag": "Academic Milestone",
+        "projectTitle": "HM Munich & Da'an Excellence",
+        "category": "Academic Honors",
+        "summary": "European low-carbon timber tectonics research at Hochschule München (HM) & Taipei City Mayor's Award (#1 rank across 5 semesters).",
+        "summaryZh": "德國慕尼黑應用科技大學低碳木構研習文獻，與大安高工五學期第一名臺北市市長獎獎座。",
+        "targetUrl": "#academic"
+      },
+      {
+        "id": "chair",
+        "name": "Songshan Exhibition Lounge",
+        "nameZh": "松菸策展躺椅與裝置",
+        "tag": "Fabrication Milestone",
+        "projectTitle": "Songshan Solo Exhibition (松菸)",
+        "category": "Solo Curation & Parametric Joinery",
+        "summary": "Independently curated solo graduation architectural exhibition featuring CNC-milled spatial assemblies and 3D printed tessellations (500+ attendees).",
+        "summaryZh": "於松山文創園區獨立策劃之畢業個展，展出參數化數位構築模型、CNC 銑削構件與 3D 列印空間裝置。",
+        "targetUrl": "index.html"
+      },
+      {
+        "id": "lamp",
+        "name": "Desk Task Light",
+        "nameZh": "工作室暖光燈",
+        "tag": "Atmospheric Control",
+        "projectTitle": "Lighting Environment",
+        "category": "Interactive Switch",
+        "summary": "Toggle studio lighting ambience between Daylit Mode and Night Study Mode.",
+        "summaryZh": "點擊切換研究室的日照採光模式與夜間專注暖燈模式。",
+        "targetUrl": "toggle-light"
+      }
+    ]
+  },
   "education": [
     {
       "period": "Sep. 2026 – Present",
-      "degree": "M.S. in Architecture",
-      "institution": "National Taiwan University of Science and Technology (NTUST)",
-      "notes": "Research Specialization: Computational Building Science, BIM-to-BEM Interoperability & Multi-Objective Genetic Optimization."
+      "degree": "M.S. in Architecture (建築研究所碩士班)",
+      "institution": "National Taiwan University of Science and Technology (NTUST / 國立臺灣科技大學)",
+      "notes": "Research Specialization: Computational Building Science, BIM-to-BEM Interoperability & Multi-Objective Genetic Optimization (Advisor: Dr. Meng-Ting Tsai 蔡孟廷教授 & Dr. Lucky S.J. Tsaih 蔡欣君副教授推薦)."
     },
     {
       "period": "Sep. 2024 – Feb. 2025",
       "degree": "Visiting Study — European Low-Carbon Architecture & Parametric Modeling",
       "institution": "Munich University of Applied Sciences (Hochschule München / HM), Germany",
-      "notes": "Completed advanced coursework in computational fabrication, low-carbon lifecycle assessments, and sustainable envelope systems."
+      "notes": "Completed advanced coursework in computational fabrication, low-carbon lifecycle assessments, and sustainable envelope systems. Conducted color and light gradient origami tectonic experiments."
     },
     {
       "period": "Sep. 2021 – Jun. 2025",
-      "degree": "B.S. in Architecture",
-      "institution": "National Taiwan University of Science and Technology (NTUST)",
-      "notes": "Focused on Architectural Design, Building Information Modeling (BIM), and Digital Design Methodologies."
+      "degree": "B.S. in Architecture (建築系學士)",
+      "institution": "National Taiwan University of Science and Technology (NTUST / 國立臺灣科技大學)",
+      "notes": "Comprehensive training in Architectural Design Studio, Building Information Modeling (BIM), and Digital Design Methodologies. Student ID: B11013119."
     },
     {
       "period": "Sep. 2018 – Jun. 2021",
-      "degree": "Architecture Program",
-      "institution": "Taipei Municipal Da'an Vocational High School (大安高工)",
-      "notes": "Graduated Ranked #1 in Class across 5 semesters; recipient of the prestigious Taipei City Mayor's Award (臺北市市長獎)."
+      "degree": "Architecture Program (建築科)",
+      "institution": "Taipei Municipal Da'an Vocational High School (大安高級工業職業學校)",
+      "notes": "Graduated Ranked #1 in Class across 5 consecutive semesters; Recipient of the prestigious Taipei City Mayor's Award (臺北市市長獎)."
     }
   ],
   "experience": [
     {
       "period": "Jun. 2024 – Feb. 2026",
-      "role": "BIM & Computational Design Intern",
-      "organization": "Taipei International Architecture Firm",
+      "role": "BIM & Computational Design Intern (BIM與運算設計實習生)",
+      "organization": "Taipei International Architecture Firm (台北國際聯合建築師事務所)",
       "responsibilities": [
+        "Principal Architect Recommendation: Recommended by Principal Architect Chang Kuo-Chang (張國章建築師極力推薦，評價具備卓越專業技能、獨立工作能力與高度工作熱忱).",
         "Autodesk Forma & Revit Workflow: Integrated cloud-based microclimate analysis in early design, evaluating wind patterns, solar radiation, and pedestrian comfort to reduce peak HVAC cooling loads by 12%.",
         "Automation Scripting: Built custom Revit API scripts to automate spatial boundary extraction and thermal zone cleanup, slashing model preparation time for energy simulation by 60%.",
-        "Clash Detection & Federation: Executed multidisciplinary clash detection across architectural, structural, and MEP models, resolving over 120 critical spatial conflicts before construction documentation."
+        "Clash Detection & 3D Federation: Executed multidisciplinary clash detection across architectural, structural, and MEP models, resolving over 120 critical spatial conflicts before construction documentation."
       ]
     },
     {
       "period": "May 2025",
-      "role": "Solo Graduation Exhibition Curator",
-      "organization": "Songshan Cultural and Creative Park (松菸)",
+      "role": "Solo Graduation Exhibition Curator (畢業設計展覽策展人)",
+      "organization": "Songshan Cultural and Creative Park (松山文創園區 松菸)",
       "responsibilities": [
-        "Project Management & Execution: Independently planned, designed, and curated a solo architectural exhibition featuring parametric digital fabrication models, attracting 500+ attendees and industry professionals."
+        "Project Management & Execution: Independently planned, designed, and curated a solo architectural exhibition featuring parametric digital fabrication models, attracting 500+ attendees and industry professionals.",
+        "Cultural Exchange: Actively shared overseas architectural exchange insights and conducted design sharing sessions to promote architectural aesthetics in Taiwan."
       ]
     },
     {
       "period": "Sep. 2022 – Jun. 2024",
-      "role": "Core Fabrication Specialist",
-      "organization": "NTUST Digital Fabrication Laboratory (TTDA)",
+      "role": "Core Fabrication Specialist & Lab Manager (3D列印與雷切實驗室管理員)",
+      "organization": "NTUST Digital Fabrication Laboratory (TTDA 臺科大數位構築實驗室)",
       "responsibilities": [
-        "Digital Prototyping & Mentorship: Operated precision laser cutters, CNC mills, and multi-material 3D printers; instructed 80+ architecture cohorts in digital fabrication, geometric tessellation, and physical prototyping."
+        "Digital Prototyping & Equipment Maintenance: Managed precision laser cutters, CNC milling machines, and multi-material 3D printers (FDM/SLA).",
+        "Student Mentorship: Instructed 80+ architecture cohorts in digital fabrication, geometric tessellation, and physical prototyping joinery."
       ]
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "張國章 建築師 (Chang Kuo-Chang)",
+      "title": "主持建築師 (Principal Architect)",
+      "organization": "台北國際聯合建築師事務所 (Taipei International Architecture Firm)",
+      "evaluation": "極力推薦 (Top 5% 專業技能、獨立工作能力、進取心與毅力). 評語：『曹同學於事務所實習，協助建築設計圖面繪製、Revit 3D模型建模及檢核、Revit 3D渲染圖及動畫影片製作。為人謙遜有禮、勤奮好學、認真負責，Revit作業能力強，具備優異團隊協作能力。』"
+    },
+    {
+      "name": "蔡欣君 副教授 (Dr. Lucky S.J. Tsaih)",
+      "title": "建築系副教授 (Associate Professor)",
+      "organization": "國立臺灣科技大學建築系 (NTUST Department of Architecture)",
+      "evaluation": "極力推薦 (Top 5% 專業知識、專業技能、創造力及思維力). 指導大二環控與大三專題，評語：『楚献在學習過程中展現出積極、自主與高度投入的態度，在未來建築領域具備深厚潛力與決心。』"
+    },
+    {
+      "name": "蔡孟廷 教授 (Dr. Meng-Ting Tsai)",
+      "title": "建築系教授 / 畢業設計指導教授 (Professor & Thesis Advisor)",
+      "organization": "國立臺灣科技大學建築系 (NTUST Department of Architecture)",
+      "evaluation": "極力推薦. 評語：『楚献學習態度勤奮認真，在慕尼黑科技大學交換期間積極參加學校國際事務，參加基地在中東的展演棚架競圖，兼備研究生潛力與態度，必將會有出色的表現與成就。』"
     }
   ],
   "skills": {
     "bimComputation": [
-      "Autodesk Revit (ACU Certified)",
+      "Autodesk Revit (ACU 國際原廠認證)",
       "Revit API (Python Automation)",
-      "Autodesk Forma",
-      "Rhino / Grasshopper",
-      "AutoCAD",
-      "Twinmotion",
-      "SketchUp"
+      "Autodesk Forma (Microclimate)",
+      "Rhino / Grasshopper (Parametric)",
+      "AutoCAD (專業製圖)",
+      "Twinmotion & Lumion (3D渲染)",
+      "SketchUp",
+      "Adobe Photoshop & Illustrator"
     ],
     "environmentalSimulation": [
-      "EnergyPlus Calibration",
+      "Urban Heat Island (UHI) 觀測與模擬",
+      "Autodesk Forma 太陽輻射與風場分析",
+      "EnergyPlus Calibration (BEM 校準)",
       "NSGA-II Genetic Algorithm",
-      "Daylighting (sDA / ASE)",
+      "Daylighting (sDA / ASE 採光評估)",
       "BIM-to-BEM gbXML Validation",
       "LEED EAc2 & Taiwan BERS",
       "DOE Asset Score Benchmarking"
     ],
     "fabricationTools": [
-      "Precision Laser Cutting",
-      "CNC Milling & Toolpathing",
-      "Multi-material 3D Printing (FDM/SLA)",
-      "Geometric Tessellation",
-      "Physical Joinery Prototyping"
+      "3D 列印與雷射切割實驗室維護管理 (TTDA)",
+      "Precision Laser Cutting (壓克力/椴木板)",
+      "CNC 銑削與刀路規劃 (Toolpathing)",
+      "Multi-material 3D Printing (FDM / SLA)",
+      "幾何鑲嵌與榫接實體模型 (Tessellation & Joinery)"
     ],
     "certificationsLanguages": [
-      "Autodesk Revit Architecture Certified User (ACU)",
-      "Class-B Surveying Technician (乙級測量技術士)",
-      "Class-C Architectural Drafting Technician (丙級建築製圖技術士)",
-      "Class-C Concrete Technology (丙級混凝土技術士)",
-      "English: IELTS Band 5.5 (Listening 6.5 - Professional Working Proficiency)",
-      "Mandarin: Native",
-      "German: Basic"
+      "Autodesk Revit Architecture Certified User (ACU 原廠國際認證)",
+      "乙級測量技術士 (Class-B Surveying Technician)",
+      "丙級測量技術士 (Class-C Surveying Technician)",
+      "丙級建築製圖技術士 (Class-C Architectural Drafting)",
+      "丙級混凝土技術士 (Class-C Concrete Technology)",
+      "人壽保險專業證照 (Life Insurance License)",
+      "English: IELTS Overall Band 6.0 (Listening 6.0, Reading 5.5, Speaking 6.0, Writing 6.0 - CEFR B2)",
+      "German: 基礎德文 (Basic German)",
+      "Mandarin: 母語 (Native)",
+      "Taiwanese: 精通/中等 (Fluent/Intermediate)"
     ]
   },
   "honors": [
-    { "year": "2021", "title": "Taipei City Mayor's Award (臺北市市長獎) — Ranked #1 in Class across 5 semesters at Da'an" },
-    { "year": "2025", "title": "Solo Exhibition Curation at Songshan Cultural and Creative Park (500+ Attendees)" },
-    { "year": "2024", "title": "Recipient, Visiting Study Grant for Hochschule München (HM), Germany" }
+    { "year": "2025", "title": "三大權威教授與事務所主持建築師「極力推薦」推薦函肯定 (張國章建築師、蔡欣君副教授、蔡孟廷教授)" },
+    { "year": "2025", "title": "松山文創園區（松菸）獨立畢業設計展策展人 (Solo Curator, 500+ Attendees)" },
+    { "year": "2025", "title": "TAC International Competition: Temporary Art Space in Sharjah 國際競圖參與" },
+    { "year": "2024", "title": "德國慕尼黑應用科技大學 (Hochschule München / HM) 訪問研究獎學金資助" },
+    { "year": "2023", "title": "Autodesk Revit Architecture Certified User (ACU) 國際原廠專業證照認證" },
+    { "year": "2021", "title": "臺北市市長獎 (Taipei City Mayor's Award) — 大安高工五學期成績第一名畢業" }
   ]
 }

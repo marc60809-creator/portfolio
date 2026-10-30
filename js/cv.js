@@ -47,31 +47,63 @@ function renderCV(data) {
         </div>
       </div>
       
-      <!-- Interactive 3D Spatial Pavilion & Tectonic Philosophy -->
-      <div class="spatial-3d-showcase">
-        <div class="spatial-3d-header">
-          <div class="spatial-3d-tag">Interactive 3D Spatial Pavilion • 三維空間構築探索</div>
-          <div class="spatial-3d-controls-hint">Drag to Orbit / 滑鼠拖曳旋轉 3D 視角</div>
-        </div>
-        <div class="spatial-3d-layout">
-          <div class="spatial-3d-canvas-wrap">
-            <canvas id="spatialCanvas" width="480" height="340"></canvas>
-            <div class="spatial-mode-pills">
-              <button class="spatial-pill-btn active" data-mode="wireframe">Tectonic Wireframe (幾何構造)</button>
-              <button class="spatial-pill-btn" data-mode="solid">Shaded Massing (量體光影)</button>
-              <button class="spatial-pill-btn" data-mode="nodes">Thermal Nodes (分析節點)</button>
-            </div>
+      <!-- Interactive 3D Isometric Studio Room (Inside the Studio) -->
+      <div class="studio-3d-section">
+        <div class="studio-top-bar">
+          <div>
+            <h2 class="studio-main-title">Inside the studio. <span class="studio-sub-zh">[ 空間研究室 ]</span></h2>
+            <p class="studio-tagline">I am Chu-Shian. I design computational spaces & sustainable environments you can explore. <span style="color:#f97316; font-weight:500;">Pick an object to explore a project.</span></p>
           </div>
-          <div class="spatial-3d-text">
-            <h3>3D Spatial Tectonics & Geometry</h3>
-            <p class="spatial-sub">[ 三維空間哲學與形態運算 ]</p>
-            <p>${profile.spatialPhilosophyZh || ''}</p>
-            <p style="margin-top:10px; color:#666; font-size:13px;">${profile.spatialPhilosophyEn || ''}</p>
-            <div class="spatial-specs-mini">
-              <div><strong>Morphology:</strong> Parametric Hyperbolic Pavilion</div>
-              <div><strong>Tessellation:</strong> Discretized Quad Louvers (Revit API)</div>
-              <div><strong>Solar Response:</strong> Daylighting & sDA Optimization</div>
-            </div>
+          <div class="studio-view-btns">
+            <button class="studio-btn active" id="btnMyStudio">MY STUDIO</button>
+            <button class="studio-btn" id="btnResetView">RESET VIEW</button>
+            <button class="studio-btn" id="btnToggleLights">💡 LIGHTS: <span id="lightsStatus">ON</span></button>
+          </div>
+        </div>
+
+        <div class="studio-viewport-container" id="studioViewport">
+          <!-- 3D Isometric Canvas -->
+          <canvas id="isometricStudioCanvas" width="920" height="520"></canvas>
+
+          <!-- Interactive Floating Annotation Callouts (Just like reference) -->
+          <div class="studio-hotspot-pin" id="pin-workstation" style="top: 48%; left: 39%;">
+            <span class="pin-dot"></span>
+            <div class="pin-line"></div>
+            <div class="pin-label">BIM Workstation</div>
+          </div>
+
+          <div class="studio-hotspot-pin" id="pin-window" style="top: 40%; left: 63%;">
+            <span class="pin-dot"></span>
+            <div class="pin-line"></div>
+            <div class="pin-label">Microclimate Window</div>
+          </div>
+
+          <div class="studio-hotspot-pin" id="pin-shelf" style="top: 24%; left: 33%;">
+            <span class="pin-dot"></span>
+            <div class="pin-line"></div>
+            <div class="pin-label">Munich & Da'an Archive</div>
+          </div>
+
+          <div class="studio-hotspot-pin" id="pin-chair" style="top: 66%; left: 56%;">
+            <span class="pin-dot"></span>
+            <div class="pin-line"></div>
+            <div class="pin-label">Songshan Lounge</div>
+          </div>
+
+          <!-- Bottom Left Architectural Stamp / Sheet Meta (from reference) -->
+          <div class="studio-sheet-stamp">
+            <strong>Chu-Shian Tsau 曹楚献</strong><br>
+            COMPUTATIONAL ARCHITECTURE • BIM<br>
+            SHEET 01 • NTUST STUDIO • 2026
+          </div>
+
+          <!-- Selected Project Card in bottom right (from reference) -->
+          <div class="studio-project-card" id="studioProjectCard">
+            <div class="card-tag" id="cardTag">SELECTED PROJECT</div>
+            <h3 class="card-title" id="cardTitle">BIM-to-BEM Interoperability</h3>
+            <div class="card-subtitle" id="cardCategory">GRADUATE RESEARCH LAB • NTUST</div>
+            <p class="card-desc" id="cardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to &lt;5%.</p>
+            <a href="index.html" class="card-action-btn" id="cardLinkBtn">OPEN PROJECT &rarr;</a>
           </div>
         </div>
       </div>
@@ -148,7 +180,7 @@ function renderCV(data) {
     </section>
 
     <!-- Honors & Awards -->
-    <section class="cv-section" style="border-bottom:none;">
+    <section class="cv-section">
       <div class="cv-section-title">04 / Honors & Leadership</div>
       <div class="cv-list">
         ${honors.map(h => `
@@ -159,247 +191,395 @@ function renderCV(data) {
         `).join('')}
       </div>
     </section>
+
+    <!-- Professional Recommendations & Endorsements -->
+    ${data.recommendations ? `
+    <section class="cv-section" style="border-bottom:none;">
+      <div class="cv-section-title">05 / Recommendation Letters (權威推薦函)</div>
+      <div class="cv-list">
+        ${data.recommendations.map(rec => `
+          <div class="cv-entry" style="background:#fafafa; border:1px solid #eaeaea; border-radius:4px; padding:20px 24px;">
+            <div class="cv-entry-head">
+              <div class="cv-entry-title" style="font-size:15px; font-weight:600; color:#111;">${rec.name}</div>
+              <div class="cv-entry-period" style="color:#2563eb; font-weight:500;">極力推薦</div>
+            </div>
+            <div class="cv-entry-org" style="color:#666; font-size:12px; margin-bottom:8px;">${rec.title} • ${rec.organization}</div>
+            <div class="cv-entry-notes" style="font-size:13px; line-height:1.75; color:#333;">${rec.evaluation}</div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+    ` : ''}
   `;
 
-  initSpatial3DViewer();
+  initIsometricStudioRoom(data.studioRoom);
 }
 
 /**
- * Lightweight bespoke 3D Vector Math & Parametric Pavilion Renderer
- * Uses HTML5 Canvas without heavy external dependencies for fast GitHub Pages loading.
+ * 3D Isometric Studio Room Engine (Directly mimicking the reference image)
+ * Renders a stylized isometric room with warm lighting, walls, desk, laptop, window,
+ * chair, rug, and interactive hotspot picking that updates the project card.
  */
-function initSpatial3DViewer() {
-  const canvas = document.getElementById('spatialCanvas');
+function initIsometricStudioRoom(studioData) {
+  const canvas = document.getElementById('isometricStudioCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  // View state & angles
-  let rotX = 0.45;
-  let rotY = -0.55;
-  let autoRotate = true;
-  let renderMode = 'wireframe'; // 'wireframe', 'solid', 'nodes'
-  let isDragging = false;
-  let lastMouseX = 0;
-  let lastMouseY = 0;
+  let isLightOn = true;
+  let activeHotspotId = 'workstation';
+  let hoveredHotspotId = null;
 
-  // Generate 3D parametric pavilion mesh (Hyperbolic Paraboloid / Tectonic Shell)
-  const U_SEGMENTS = 14;
-  const V_SEGMENTS = 14;
-  const vertices = [];
-  const faces = [];
+  // Isometric projection parameters
+  const originX = canvas.width / 2;
+  const originY = 320;
+  const ISO_ANGLE = Math.PI / 6; // 30 degrees
+  const cosIso = Math.cos(ISO_ANGLE);
+  const sinIso = Math.sin(ISO_ANGLE);
+  const scale = 1.6;
 
-  for (let i = 0; i <= U_SEGMENTS; i++) {
-    const u = (i / U_SEGMENTS) * 2 - 1; // -1 to 1
-    for (let j = 0; j <= V_SEGMENTS; j++) {
-      const v = (j / V_SEGMENTS) * 2 - 1; // -1 to 1
-      // Architectural saddle shell surface
-      const x = u * 120;
-      const z = v * 120;
-      const y = (u * u - v * v) * 55 - 25; // Saddle height formula
-      vertices.push({ x, y, z });
+  function toIso(x, y, z) {
+    // x: left-back to right-front
+    // y: height (upward is positive in our 3D logic, canvas Y is inverted)
+    // z: right-back to left-front
+    const screenX = originX + (x - z) * cosIso * scale;
+    const screenY = originY + (x + z) * sinIso * scale - y * scale;
+    return { x: screenX, y: screenY };
+  }
+
+  function drawQuad(p1, p2, p3, p4, fillStyle, strokeStyle, lineWidth = 1) {
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.lineTo(p3.x, p3.y);
+    ctx.lineTo(p4.x, p4.y);
+    ctx.closePath();
+    if (fillStyle) {
+      ctx.fillStyle = fillStyle;
+      ctx.fill();
+    }
+    if (strokeStyle) {
+      ctx.strokeStyle = strokeStyle;
+      ctx.lineWidth = lineWidth;
+      ctx.stroke();
     }
   }
 
-  // Create quad faces & diagonal trusses
-  for (let i = 0; i < U_SEGMENTS; i++) {
-    for (let j = 0; j < V_SEGMENTS; j++) {
-      const idx = i * (V_SEGMENTS + 1) + j;
-      const p1 = idx;
-      const p2 = idx + 1;
-      const p3 = idx + (V_SEGMENTS + 1) + 1;
-      const p4 = idx + (V_SEGMENTS + 1);
-      faces.push([p1, p2, p3, p4]);
-    }
+  function drawBox(x, y, z, w, h, d, topColor, leftColor, rightColor, strokeColor = 'rgba(0,0,0,0.15)') {
+    const pA = toIso(x, y, z);
+    const pB = toIso(x + w, y, z);
+    const pC = toIso(x + w, y, z + d);
+    const pD = toIso(x, y, z + d);
+
+    const pA_top = toIso(x, y + h, z);
+    const pB_top = toIso(x + w, y + h, z);
+    const pC_top = toIso(x + w, y + h, z + d);
+    const pD_top = toIso(x, y + h, z + d);
+
+    // Left wall face (along Z)
+    drawQuad(pA, pD, pD_top, pA_top, leftColor, strokeColor);
+    // Right wall face (along X)
+    drawQuad(pD, pC, pC_top, pD_top, rightColor, strokeColor);
+    // Top face
+    drawQuad(pA_top, pB_top, pC_top, pD_top, topColor, strokeColor);
   }
 
-  // Ground base ring / boundary support foundation
-  const groundRing = [];
-  for (let a = 0; a <= 24; a++) {
-    const angle = (a / 24) * Math.PI * 2;
-    groundRing.push({
-      x: Math.cos(angle) * 140,
-      y: -60,
-      z: Math.sin(angle) * 140
-    });
-  }
-
-  // Project 3D Point to 2D Screen
-  function project(p) {
-    // Rotation around Y
-    const cosY = Math.cos(rotY);
-    const sinY = Math.sin(rotY);
-    const x1 = p.x * cosY + p.z * sinY;
-    const z1 = -p.x * sinY + p.z * cosY;
-
-    // Rotation around X
-    const cosX = Math.cos(rotX);
-    const sinX = Math.sin(rotX);
-    const y2 = p.y * cosX - z1 * sinX;
-    const z2 = p.y * sinX + z1 * cosX;
-
-    // Perspective projection
-    const fov = 340;
-    const distance = 420;
-    const scale = fov / (distance + z2);
-
-    return {
-      x: canvas.width / 2 + x1 * scale,
-      y: canvas.height / 2 - y2 * scale,
-      z: z2,
-      scale: scale
-    };
-  }
-
-  // Draw loop
-  function draw() {
+  function renderRoom() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (autoRotate && !isDragging) {
-      rotY += 0.007;
+    // Warm atmospheric gradient in background
+    const bgGrad = ctx.createRadialGradient(originX, originY - 60, 40, originX, originY - 40, 420);
+    if (isLightOn) {
+      bgGrad.addColorStop(0, '#2d333b');
+      bgGrad.addColorStop(1, '#1e2228');
+    } else {
+      bgGrad.addColorStop(0, '#1c1f24');
+      bgGrad.addColorStop(1, '#111317');
+    }
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Architectural Grid on the background (from reference)
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+    ctx.lineWidth = 1;
+    const GRID_STEP = 32;
+    for (let gx = 0; gx < canvas.width; gx += GRID_STEP) {
+      ctx.beginPath();
+      ctx.moveTo(gx, 0);
+      ctx.lineTo(gx, canvas.height);
+      ctx.stroke();
+    }
+    for (let gy = 0; gy < canvas.height; gy += GRID_STEP) {
+      ctx.beginPath();
+      ctx.moveTo(0, gy);
+      ctx.lineTo(canvas.width, gy);
+      ctx.stroke();
     }
 
-    // Draw Ground Grid / Datum
-    ctx.strokeStyle = '#eaeaea';
+    // Colors depending on light state
+    const floorColor = isLightOn ? '#8a6245' : '#4d3727';
+    const floorStroke = isLightOn ? '#704f37' : '#38271b';
+    const wallLeftColor = isLightOn ? '#d9d2c5' : '#6b665e';
+    const wallRightColor = isLightOn ? '#c2baa9' : '#575249';
+    const wallEdge = isLightOn ? '#fff' : '#888';
+
+    // 1. Room Floor (Trapezoid / Isometric rhombus)
+    const ROOM_SIZE = 175;
+    const WALL_HEIGHT = 160;
+
+    const f0 = toIso(0, 0, 0);                   // Back corner
+    const fX = toIso(ROOM_SIZE, 0, 0);          // Right corner
+    const fC = toIso(ROOM_SIZE, 0, ROOM_SIZE);  // Front corner
+    const fZ = toIso(0, 0, ROOM_SIZE);          // Left corner
+
+    // Draw Floor with wooden plank texture lines
+    drawQuad(f0, fX, fC, fZ, floorColor, floorStroke, 1.5);
+    ctx.strokeStyle = 'rgba(0,0,0,0.12)';
     ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (let i = 0; i < groundRing.length - 1; i++) {
-      const sp1 = project(groundRing[i]);
-      const sp2 = project(groundRing[i + 1]);
-      ctx.moveTo(sp1.x, sp1.y);
-      ctx.lineTo(sp2.x, sp2.y);
+    for (let s = 20; s < ROOM_SIZE; s += 22) {
+      const pStart = toIso(s, 0, 0);
+      const pEnd = toIso(s, 0, ROOM_SIZE);
+      ctx.beginPath();
+      ctx.moveTo(pStart.x, pStart.y);
+      ctx.lineTo(pEnd.x, pEnd.y);
+      ctx.stroke();
     }
+
+    // 2. Left Wall (Z-axis wall)
+    const w0_top = toIso(0, WALL_HEIGHT, 0);
+    const wZ_top = toIso(0, WALL_HEIGHT, ROOM_SIZE);
+    drawQuad(f0, fZ, wZ_top, w0_top, wallLeftColor, null);
+
+    // 3. Right Wall (X-axis wall)
+    const wX_top = toIso(ROOM_SIZE, WALL_HEIGHT, 0);
+    drawQuad(f0, fX, wX_top, w0_top, wallRightColor, null);
+
+    // White architectural clean top cut line
+    ctx.strokeStyle = wallEdge;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(wZ_top.x, wZ_top.y);
+    ctx.lineTo(w0_top.x, w0_top.y);
+    ctx.lineTo(wX_top.x, wX_top.y);
     ctx.stroke();
 
-    // Sort faces by depth for Painter's algorithm
-    const projectedFaces = faces.map(face => {
-      const pts = face.map(idx => project(vertices[idx]));
-      const avgZ = (pts[0].z + pts[1].z + pts[2].z + pts[3].z) / 4;
-      return { face, pts, avgZ };
-    }).sort((a, b) => b.avgZ - a.avgZ);
+    // 4. Window on the Right Wall (Daylight source)
+    const winX1 = 45;
+    const winX2 = 125;
+    const winY1 = 35;
+    const winY2 = 125;
+    const winP1 = toIso(winX1, winY1, 0);
+    const winP2 = toIso(winX2, winY1, 0);
+    const winP3 = toIso(winX2, winY2, 0);
+    const winP4 = toIso(winX1, winY2, 0);
 
-    projectedFaces.forEach(pf => {
-      const { pts, avgZ } = pf;
+    // Window frame depth & light fill
+    drawQuad(winP1, winP2, winP3, winP4, isLightOn ? '#b8d5e5' : '#32404e', '#ffffff', 2);
+    // Window mullions
+    const winMidX = (winX1 + winX2) / 2;
+    const wmA = toIso(winMidX, winY1, 0);
+    const wmB = toIso(winMidX, winY2, 0);
+    ctx.beginPath();
+    ctx.moveTo(wmA.x, wmA.y);
+    ctx.lineTo(wmB.x, wmB.y);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
 
-      if (renderMode === 'solid') {
-        ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
-        ctx.lineTo(pts[1].x, pts[1].y);
-        ctx.lineTo(pts[2].x, pts[2].y);
-        ctx.lineTo(pts[3].x, pts[3].y);
-        ctx.closePath();
+    // Curtains on sides
+    drawQuad(toIso(winX1 - 10, winY1 - 8, 0), toIso(winX1 + 6, winY1 - 8, 0), toIso(winX1 + 6, winY2 + 10, 0), toIso(winX1 - 10, winY2 + 10, 0), '#6c5c4e', null);
+    drawQuad(toIso(winX2 - 6, winY1 - 8, 0), toIso(winX2 + 12, winY1 - 8, 0), toIso(winX2 + 12, winY2 + 10, 0), toIso(winX2 - 6, winY2 + 10, 0), '#6c5c4e', null);
 
-        // Shading based on Z depth & curvature
-        const depthTone = Math.min(235, Math.max(160, Math.floor(190 + avgZ * 0.4)));
-        ctx.fillStyle = `rgb(${depthTone - 10}, ${depthTone}, ${depthTone + 15})`;
-        ctx.fill();
-        ctx.strokeStyle = '#222222';
-        ctx.lineWidth = 0.75;
-        ctx.stroke();
+    // 5. Bookshelf on the Left Wall (Munich & Da'an Archive)
+    drawBox(0, 105, 30, 8, 6, 95, '#4a3f35', '#382f27', '#5a4d41');
+    // Books on the shelf
+    drawBox(0, 111, 40, 6, 18, 12, '#3b82f6', '#1d4ed8', '#60a5fa');
+    drawBox(0, 111, 55, 6, 22, 14, '#10b981', '#047857', '#34d399');
+    drawBox(0, 111, 72, 6, 16, 20, '#d97706', '#b45309', '#f59e0b');
 
-      } else if (renderMode === 'wireframe') {
-        ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
-        ctx.lineTo(pts[1].x, pts[1].y);
-        ctx.lineTo(pts[2].x, pts[2].y);
-        ctx.lineTo(pts[3].x, pts[3].y);
-        ctx.closePath();
-        ctx.strokeStyle = '#1a1a1a';
-        ctx.lineWidth = 0.85;
-        ctx.stroke();
+    // 6. Architectural Desk (BIM Workstation)
+    const deskX = 2;
+    const deskZ = 20;
+    const deskW = 42;
+    const deskD = 110;
+    const deskH = 50;
 
-        // Internal cross braces for spatial tectonic feel
-        ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
-        ctx.lineTo(pts[2].x, pts[2].y);
-        ctx.strokeStyle = '#b0b0b0';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+    // Desk legs (slim architectural steel legs)
+    ctx.strokeStyle = '#d1d5db';
+    ctx.lineWidth = 2.5;
+    const leg1 = toIso(deskX + 4, 0, deskZ + 4);
+    const leg1_top = toIso(deskX + 4, deskH, deskZ + 4);
+    const leg2 = toIso(deskX + deskW - 4, 0, deskZ + 4);
+    const leg2_top = toIso(deskX + deskW - 4, deskH, deskZ + 4);
+    const leg3 = toIso(deskX + 4, 0, deskZ + deskD - 4);
+    const leg3_top = toIso(deskX + 4, deskH, deskZ + deskD - 4);
+    const leg4 = toIso(deskX + deskW - 4, 0, deskZ + deskD - 4);
+    const leg4_top = toIso(deskX + deskW - 4, deskH, deskZ + deskD - 4);
 
-      } else if (renderMode === 'nodes') {
-        // Analytical nodes
-        ctx.beginPath();
-        ctx.moveTo(pts[0].x, pts[0].y);
-        ctx.lineTo(pts[1].x, pts[1].y);
-        ctx.lineTo(pts[2].x, pts[2].y);
-        ctx.lineTo(pts[3].x, pts[3].y);
-        ctx.closePath();
-        ctx.strokeStyle = '#d5d5d5';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-
-        pts.forEach(pt => {
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = '#2563eb'; // High-performance blue node
-          ctx.fill();
-        });
-      }
+    [ [leg1, leg1_top], [leg2, leg2_top], [leg3, leg3_top], [leg4, leg4_top] ].forEach(pair => {
+      ctx.beginPath();
+      ctx.moveTo(pair[0].x, pair[0].y);
+      ctx.lineTo(pair[1].x, pair[1].y);
+      ctx.stroke();
     });
 
-    requestAnimationFrame(draw);
+    // Desk top table-board (White minimalist desk)
+    drawBox(deskX, deskH, deskZ, deskW, 4, deskD, '#ffffff', '#e5e7eb', '#d1d5db');
+
+    // Laptop on desk
+    const lapX = deskX + 12;
+    const lapZ = deskZ + 48;
+    drawBox(lapX, deskH + 4, lapZ, 20, 2, 22, '#374151', '#1f2937', '#4b5563');
+    // Laptop screen (tilted)
+    const scrBase = toIso(lapX, deskH + 6, lapZ);
+    const scrBaseR = toIso(lapX, deskH + 6, lapZ + 22);
+    const scrTop = toIso(lapX - 4, deskH + 24, lapZ);
+    const scrTopR = toIso(lapX - 4, deskH + 24, lapZ + 22);
+    drawQuad(scrBase, scrBaseR, scrTopR, scrTop, isLightOn ? '#ecfeff' : '#0284c7', '#ffffff', 1);
+
+    // Warm task lamp on desk
+    drawBox(deskX + 8, deskH + 4, deskZ + 14, 6, 2, 6, '#f59e0b', '#d97706', '#fbbf24');
+    ctx.strokeStyle = '#d97706';
+    ctx.lineWidth = 2;
+    const lampStem = toIso(deskX + 11, deskH + 6, deskZ + 17);
+    const lampTop = toIso(deskX + 11, deskH + 22, deskZ + 17);
+    ctx.beginPath();
+    ctx.moveTo(lampStem.x, lampStem.y);
+    ctx.lineTo(lampTop.x, lampTop.y);
+    ctx.stroke();
+    drawBox(deskX + 7, deskH + 22, deskZ + 13, 8, 5, 8, '#fbbf24', '#f59e0b', '#fde68a');
+
+    // 7. Area Rug on Floor
+    const rugX = 75;
+    const rugZ = 75;
+    const rugW = 75;
+    const rugD = 65;
+    drawQuad(
+      toIso(rugX, 1, rugZ),
+      toIso(rugX + rugW, 1, rugZ),
+      toIso(rugX + rugW, 1, rugZ + rugD),
+      toIso(rugX, 1, rugZ + rugD),
+      '#f4ede4',
+      '#ea580c',
+      2
+    );
+
+    // 8. Modern Lounge Chair (Songshan Lounge Chair)
+    const chairX = 92;
+    const chairZ = 90;
+    // Chair legs
+    ctx.strokeStyle = '#111827';
+    ctx.lineWidth = 2;
+    const cl1 = toIso(chairX - 8, 0, chairZ - 8);
+    const cl1_t = toIso(chairX, 18, chairZ);
+    const cl2 = toIso(chairX + 18, 0, chairZ - 8);
+    const cl3 = toIso(chairX - 8, 0, chairZ + 18);
+    const cl4 = toIso(chairX + 18, 0, chairZ + 18);
+    [cl1, cl2, cl3, cl4].forEach(leg => {
+      ctx.beginPath();
+      ctx.moveTo(leg.x, leg.y);
+      ctx.lineTo(cl1_t.x, cl1_t.y);
+      ctx.stroke();
+    });
+    // Chair bowl cushion (Egg / Shell chair)
+    drawBox(chairX - 6, 18, chairZ - 6, 26, 8, 26, '#1f2937', '#111827', '#374151');
+    drawBox(chairX + 10, 26, chairZ - 6, 10, 22, 26, '#111827', '#030712', '#1f2937');
+
+    // Warm radial light glow onto desk and floor when light is ON
+    if (isLightOn) {
+      const glowGrad = ctx.createRadialGradient(originX - 70, originY - 110, 15, originX - 70, originY - 110, 240);
+      glowGrad.addColorStop(0, 'rgba(254, 243, 199, 0.45)');
+      glowGrad.addColorStop(0.5, 'rgba(251, 191, 36, 0.12)');
+      glowGrad.addColorStop(1, 'rgba(251, 191, 36, 0)');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(originX - 70, originY - 110, 240, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 
-  // Interactive mouse/touch drag controls
-  canvas.addEventListener('mousedown', e => {
-    isDragging = true;
-    autoRotate = false;
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-  });
+  // Update Project Card when a hotspot is clicked
+  function selectHotspot(hotspotId) {
+    activeHotspotId = hotspotId;
+    const hotspot = studioData.hotspots.find(h => h.id === hotspotId);
+    if (!hotspot) return;
 
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
+    if (hotspot.id === 'lamp') {
+      isLightOn = !isLightOn;
+      const lightLabel = document.getElementById('lightsStatus');
+      if (lightLabel) lightLabel.textContent = isLightOn ? 'ON' : 'OFF';
+      renderRoom();
+      return;
+    }
 
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const dx = e.clientX - lastMouseX;
-    const dy = e.clientY - lastMouseY;
-    rotY += dx * 0.009;
-    rotX += dy * 0.009;
-    rotX = Math.max(-1.1, Math.min(1.1, rotX)); // clamp pitch
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-  });
+    const card = document.getElementById('studioProjectCard');
+    const cardTag = document.getElementById('cardTag');
+    const cardTitle = document.getElementById('cardTitle');
+    const cardCategory = document.getElementById('cardCategory');
+    const cardDesc = document.getElementById('cardDesc');
+    const cardLinkBtn = document.getElementById('cardLinkBtn');
 
-  // Touch support for mobile devices
-  canvas.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) {
-      isDragging = true;
-      autoRotate = false;
-      lastMouseX = e.touches[0].clientX;
-      lastMouseY = e.touches[0].clientY;
+    if (cardTag) cardTag.textContent = hotspot.tag.toUpperCase();
+    if (cardTitle) cardTitle.textContent = hotspot.projectTitle;
+    if (cardCategory) cardCategory.textContent = `${hotspot.category.toUpperCase()} • NTUST`;
+    if (cardDesc) cardDesc.textContent = `${hotspot.summaryZh} (${hotspot.summary})`;
+    if (cardLinkBtn) cardLinkBtn.href = hotspot.targetUrl;
+
+    // Highlight card animation
+    if (card) {
+      card.classList.remove('pulse-card');
+      void card.offsetWidth; // trigger reflow
+      card.classList.add('pulse-card');
+    }
+
+    // Highlight corresponding pin
+    document.querySelectorAll('.studio-hotspot-pin').forEach(pin => pin.classList.remove('active'));
+    const activePin = document.getElementById(`pin-${hotspotId}`);
+    if (activePin) activePin.classList.add('active');
+  }
+
+  // Bind Pin Click Events
+  const pinMapping = [
+    { pinId: 'pin-workstation', hotspotId: 'workstation' },
+    { pinId: 'pin-window', hotspotId: 'window' },
+    { pinId: 'pin-shelf', hotspotId: 'shelf' },
+    { pinId: 'pin-chair', hotspotId: 'chair' }
+  ];
+
+  pinMapping.forEach(item => {
+    const pinEl = document.getElementById(item.pinId);
+    if (pinEl) {
+      pinEl.addEventListener('click', () => {
+        selectHotspot(item.hotspotId);
+      });
     }
   });
 
-  window.addEventListener('touchend', () => {
-    isDragging = false;
-  });
-
-  canvas.addEventListener('touchmove', e => {
-    if (!isDragging || e.touches.length !== 1) return;
-    const dx = e.touches[0].clientX - lastMouseX;
-    const dy = e.touches[0].clientY - lastMouseY;
-    rotY += dx * 0.01;
-    rotX += dy * 0.01;
-    rotX = Math.max(-1.1, Math.min(1.1, rotX));
-    lastMouseX = e.touches[0].clientX;
-    lastMouseY = e.touches[0].clientY;
-    e.preventDefault();
-  }, { passive: false });
-
-  // Mode button interactions
-  const pills = document.querySelectorAll('.spatial-pill-btn');
-  pills.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pills.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderMode = btn.dataset.mode;
+  // Top Buttons
+  const btnReset = document.getElementById('btnResetView');
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      selectHotspot('workstation');
+      isLightOn = true;
+      const lightLabel = document.getElementById('lightsStatus');
+      if (lightLabel) lightLabel.textContent = 'ON';
+      renderRoom();
     });
-  });
+  }
 
-  draw();
+  const btnLights = document.getElementById('btnToggleLights');
+  if (btnLights) {
+    btnLights.addEventListener('click', () => {
+      isLightOn = !isLightOn;
+      const lightLabel = document.getElementById('lightsStatus');
+      if (lightLabel) lightLabel.textContent = isLightOn ? 'ON' : 'OFF';
+      renderRoom();
+    });
+  }
+
+  // Initial render & select workstation
+  renderRoom();
+  selectHotspot('workstation');
 }
 
 document.addEventListener('DOMContentLoaded', initCV);
