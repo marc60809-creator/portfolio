@@ -373,31 +373,52 @@
           <button class="hud-btn" onclick="panHomeStudio(0, 45)" title="向下移動 (Pan Down)">⬇️</button>
           <button class="hud-btn" onclick="panHomeStudio(60, 0)" title="向右移動 (Pan Right)">➡️</button>
           <span class="hud-divider"></span>
-          <button class="hud-btn" onclick="rotateHomeStudio(-0.12)" title="向左旋轉視角 (Rotate Left)">↺</button>
-          <button class="hud-btn" onclick="rotateHomeStudio(0.12)" title="向右旋轉視角 (Rotate Right)">↻</button>
+          <button class="hud-btn" onclick="rotateHomeStudio(-Math.PI / 6)" title="向左旋轉 30° (Rotate Left)">↺</button>
+          <button class="hud-btn" onclick="switchHomeRoomFace()" title="旋轉換面 90° (Switch 3D Room Face)" style="width:auto; padding:0 8px; font-size:11px; gap:4px; border-color:rgba(56,189,248,0.45); color:#38bdf8;">🔄 換面 <span id="homeAngleLabel">0°</span></button>
+          <button class="hud-btn" onclick="rotateHomeStudio(Math.PI / 6)" title="向右旋轉 30° (Rotate Right)">↻</button>
           <span class="hud-divider"></span>
-          <span class="hud-hint">🖱️ 拖曳平移 • 滾輪縮放 • 點擊熱點自動聚焦</span>
+          <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
         </div>
 
-        <!-- Interactive Hotspot Pins (Dynamically Anchored in 3D Space) -->
+        <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space) -->
         <div class="home-pin active" id="home-pin-workstation" onclick="selectHomeHotspot('workstation', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">BIM Workstation</span>
+          <span class="home-pin-label">01 • BIM Workstation</span>
         </div>
 
         <div class="home-pin" id="home-pin-window" onclick="selectHomeHotspot('window', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">Microclimate Window</span>
+          <span class="home-pin-label">02 • Microclimate Window</span>
         </div>
 
         <div class="home-pin" id="home-pin-shelf" onclick="selectHomeHotspot('shelf', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">Munich & Da'an Archive</span>
+          <span class="home-pin-label">03 • Munich & Da'an Archive</span>
         </div>
 
         <div class="home-pin" id="home-pin-chair" onclick="selectHomeHotspot('chair', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">Songshan Lounge</span>
+          <span class="home-pin-label">04 • Songshan Lounge</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-daybed" onclick="selectHomeHotspot('daybed', true)">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">05 • NSGA-II Comfort Zone</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-wardrobe" onclick="selectHomeHotspot('wardrobe', true)">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">06 • Timber Tectonic Cabinet</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-nightstand" onclick="selectHomeHotspot('nightstand', true)">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">07 • Biophilic Micro-Ecology</span>
+        </div>
+
+        <div class="home-pin" id="home-pin-elevation" onclick="selectHomeHotspot('elevation', true)">
+          <span class="home-pin-dot"></span>
+          <span class="home-pin-label">08 • Digital Twin Board</span>
         </div>
 
         <!-- Architectural Sheet Stamp -->
@@ -481,8 +502,8 @@
         sub: 'GRADUATE RESEARCH LAB • NTUST',
         desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
         url: '#filterBar',
-        pos3D: { x: 145, y: 68, z: 32 },
-        camTarget: { zoom: 1.32, panX: -95, panY: 35, yaw: 0 }
+        pos3D: { x: 148, y: 74, z: 18 },
+        targetZoom: 1.35
       },
       window: {
         tag: 'SELECTED PROJECT • 02',
@@ -490,8 +511,8 @@
         sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
         desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
         url: '#filterBar',
-        pos3D: { x: 12, y: 112, z: 95 },
-        camTarget: { zoom: 1.35, panX: 115, panY: 85, yaw: 0.08 }
+        pos3D: { x: 8, y: 112, z: 78 },
+        targetZoom: 1.35
       },
       shelf: {
         tag: 'ACADEMIC ARCHIVE • 03',
@@ -499,8 +520,8 @@
         sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
         desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
         url: './docs.html',
-        pos3D: { x: 68, y: 118, z: 18 },
-        camTarget: { zoom: 1.35, panX: 10, panY: 95, yaw: -0.06 }
+        pos3D: { x: 64, y: 88, z: 14 },
+        targetZoom: 1.35
       },
       chair: {
         tag: 'EXHIBITION & FABRICATION • 04',
@@ -508,8 +529,44 @@
         sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
         desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
         url: '#filterBar',
-        pos3D: { x: 108, y: 38, z: 128 },
-        camTarget: { zoom: 1.3, panX: 25, panY: -55, yaw: 0 }
+        pos3D: { x: 112, y: 26, z: 132 },
+        targetZoom: 1.35
+      },
+      daybed: {
+        tag: 'GENETIC OPTIMIZATION • 05',
+        title: 'NSGA-II Multi-Objective Optimization',
+        sub: 'THERMAL COMFORT & DAYLIGHT • PYTHON',
+        desc: 'Pareto-front evolutionary algorithms balancing Spatial Daylight Autonomy (sDA) and Annual Cooling EUI.',
+        url: '#filterBar',
+        pos3D: { x: 46, y: 34, z: 76 },
+        targetZoom: 1.35
+      },
+      wardrobe: {
+        tag: 'TECTONIC RESEARCH • 06',
+        title: 'Cross-Laminated Timber (CLT) Systems',
+        sub: 'HOCHSCHULE MÜNCHEN • GERMANY',
+        desc: 'Modular European mass-timber joinery, structural grid rationalization & carbon-negative envelope detailing.',
+        url: '#filterBar',
+        pos3D: { x: 105, y: 96, z: 18 },
+        targetZoom: 1.35
+      },
+      nightstand: {
+        tag: 'SUSTAINABLE DESIGN • 07',
+        title: 'Urban Greening & Biophilic Envelopes',
+        sub: 'MICROCLIMATE MITIGATION • NTUST',
+        desc: 'Evapotranspirative facade vegetation modeling & outdoor thermal comfort (UTCI) regulation in high-density cities.',
+        url: '#filterBar',
+        pos3D: { x: 22, y: 52, z: 135 },
+        targetZoom: 1.35
+      },
+      elevation: {
+        tag: 'CREDENTIALS & DOCS • 08',
+        title: 'BIM Digital Twin & Official Dossier',
+        sub: 'REVIT ACU • 3 PROFESSOR LETTERS',
+        desc: 'Complete bilingual technical documentation, Revit API architecture blueprints & signed academic endorsements.',
+        url: './docs.html',
+        pos3D: { x: 152, y: 104, z: 6 },
+        targetZoom: 1.35
       }
     };
 
@@ -517,13 +574,14 @@
     let camZoom = 1.0;
     let camPanX = 0;
     let camPanY = 0;
-    let camYaw = 0; // Isometric rotation offset in radians
+    let camYaw = 0; // Full 360-degree orbit yaw in radians
+    let camPitch = Math.PI / 6; // Elevation pitch in radians (default 30 deg)
 
     let animFrameId = null;
 
-    function animateCameraTo(targetZoom, targetPanX, targetPanY, targetYaw = 0) {
+    function animateCameraTo(targetZoom, targetPanX, targetPanY, targetYaw = camYaw, targetPitch = camPitch) {
       if (animFrameId) cancelAnimationFrame(animFrameId);
-      const startZoom = camZoom, startX = camPanX, startY = camPanY, startYaw = camYaw;
+      const startZoom = camZoom, startX = camPanX, startY = camPanY, startYaw = camYaw, startPitch = camPitch;
       const startTime = performance.now();
       const duration = 420;
 
@@ -534,6 +592,7 @@
         camPanX = startX + (targetPanX - startX) * ease;
         camPanY = startY + (targetPanY - startY) * ease;
         camYaw = startYaw + (targetYaw - startYaw) * ease;
+        camPitch = startPitch + (targetPitch - startPitch) * ease;
         updateZoomUI();
         renderHomeStudio();
         if (t < 1) {
@@ -546,6 +605,12 @@
     function updateZoomUI() {
       const lbl = document.getElementById('homeZoomLabel');
       if (lbl) lbl.textContent = Math.round(camZoom * 100) + '%';
+      const angLbl = document.getElementById('homeAngleLabel');
+      if (angLbl) {
+        let deg = Math.round((camYaw * 180) / Math.PI) % 360;
+        if (deg < 0) deg += 360;
+        angLbl.textContent = deg + '°';
+      }
     }
 
     function zoomHomeStudio(factor, centerX, centerY) {
@@ -564,12 +629,18 @@
     }
 
     function panHomeStudio(dx, dy) {
-      animateCameraTo(camZoom, camPanX + dx, camPanY + dy, camYaw);
+      animateCameraTo(camZoom, camPanX + dx, camPanY + dy, camYaw, camPitch);
     }
 
     function rotateHomeStudio(dYaw) {
-      const nextYaw = Math.max(-0.45, Math.min(0.45, camYaw + dYaw));
-      animateCameraTo(camZoom, camPanX, camPanY, nextYaw);
+      animateCameraTo(camZoom, camPanX, camPanY, camYaw + dYaw, camPitch);
+    }
+
+    function switchHomeRoomFace() {
+      // Snap to the next 90-degree architectural face around the 3D room
+      const quarter = Math.PI / 2;
+      const nextQuarter = (Math.round(camYaw / quarter) + 1) * quarter;
+      animateCameraTo(camZoom, camPanX, camPanY, nextQuarter, camPitch);
     }
 
     function renderHomeStudio() {
@@ -580,27 +651,33 @@
 
       const baseScale = 2.05;
       const scale = baseScale * camZoom;
-      const originX = canvas.width * 0.45 + camPanX;
-      const originY = canvas.height * 0.62 + camPanY;
+      const originX = canvas.width * 0.46 + camPanX;
+      const originY = canvas.height * 0.60 + camPanY;
 
-      const ISO_PITCH = Math.PI / 6; // 30 deg
-      const cosPitch = Math.cos(ISO_PITCH);
-      const sinPitch = Math.sin(ISO_PITCH);
+      const ISO_COS = Math.cos(Math.PI / 6);
+      const sinPitch = Math.sin(camPitch);
+      const cosPitch = Math.cos(camPitch);
+      const yScale = cosPitch / Math.cos(Math.PI / 6);
       const cosYaw = Math.cos(camYaw);
       const sinYaw = Math.sin(camYaw);
 
+      const ROOM_SIZE = 184, WALL_HEIGHT = 158, WALL_THICK = 9, SLAB_THICK = 10;
+      const ROOM_CENTER = ROOM_SIZE / 2;
+
       function toIso(x, y, z) {
-        // Apply yaw rotation around room center (90, 90)
-        const cx = x - 90, cz = z - 90;
-        const rx = cx * cosYaw - cz * sinYaw + 90;
-        const rz = cx * sinYaw + cz * cosYaw + 90;
+        const cx = x - ROOM_CENTER, cz = z - ROOM_CENTER;
+        const rx = cx * cosYaw - cz * sinYaw + ROOM_CENTER;
+        const rz = cx * sinYaw + cz * cosYaw + ROOM_CENTER;
         return {
-          x: originX + (rx - rz) * cosPitch * scale,
-          y: originY + (rx + rz) * sinPitch * scale - y * scale
+          x: originX + (rx - rz) * ISO_COS * scale,
+          y: originY + (rx + rz) * sinPitch * scale - y * yScale * scale,
+          rx: rx,
+          rz: rz,
+          depth: (rx + rz) * cosPitch + y * sinPitch * 0.85
         };
       }
 
-      function drawQuad(p1, p2, p3, p4, fill, stroke, lw = 1) {
+      function drawQuadImm(p1, p2, p3, p4, fill, stroke, lw = 1) {
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
@@ -611,14 +688,64 @@
         if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw; ctx.stroke(); }
       }
 
-      function drawBox(x, y, z, w, h, d, topC, leftC, rightC, strokeC = 'rgba(0,0,0,0.12)') {
-        const pA = toIso(x, y, z), pB = toIso(x + w, y, z), pC = toIso(x + w, y, z + d), pD = toIso(x, y, z + d);
-        const pAt = toIso(x, y + h, z), pBt = toIso(x + w, y + h, z), pCt = toIso(x + w, y + h, z + d), pDt = toIso(x, y + h, z + d);
-        // Back-to-front faces for isometric view
-        drawQuad(pA, pD, pDt, pAt, leftC, strokeC);
-        drawQuad(pD, pC, pCt, pDt, rightC, strokeC);
-        drawQuad(pB, pC, pCt, pBt, rightC, strokeC);
-        drawQuad(pAt, pBt, pCt, pDt, topC, strokeC);
+      // 3D Depth-Sorted Render Queue for true 360-degree solid room rotation
+      const sceneItems = [];
+
+      function addQuad3D(pts3D, fill, stroke, lw = 1, layerBias = 0) {
+        const proj = pts3D.map(([x, y, z]) => toIso(x, y, z));
+        const avgDepth = proj.reduce((acc, p) => acc + p.depth, 0) / proj.length + layerBias;
+        sceneItems.push({
+          depth: avgDepth,
+          draw: () => drawQuadImm(proj[0], proj[1], proj[2], proj[3], fill, stroke, lw)
+        });
+      }
+
+      function addLine3D(pA3D, pB3D, stroke, lw = 2, layerBias = 0) {
+        const pA = toIso(pA3D[0], pA3D[1], pA3D[2]);
+        const pB = toIso(pB3D[0], pB3D[1], pB3D[2]);
+        const avgDepth = (pA.depth + pB.depth) * 0.5 + layerBias;
+        sceneItems.push({
+          depth: avgDepth,
+          draw: () => {
+            ctx.beginPath();
+            ctx.moveTo(pA.x, pA.y);
+            ctx.lineTo(pB.x, pB.y);
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = lw;
+            ctx.stroke();
+          }
+        });
+      }
+
+      // True 360-degree 3D Box with automatic visible face culling & depth sorting
+      function addBox3D(x, y, z, w, h, d, topC, xFaceC, zFaceC, strokeC = 'rgba(0,0,0,0.13)', layerBias = 0) {
+        const p000 = toIso(x, y, z), p100 = toIso(x + w, y, z), p101 = toIso(x + w, y, z + d), p001 = toIso(x, y, z + d);
+        const p010 = toIso(x, y + h, z), p110 = toIso(x + w, y + h, z), p111 = toIso(x + w, y + h, z + d), p011 = toIso(x, y + h, z + d);
+
+        const center = toIso(x + w * 0.5, y + h * 0.5, z + d * 0.5);
+        const boxDepth = center.depth + layerBias;
+
+        // Determine which vertical faces (+X vs -X, +Z vs -Z) face the camera at current camYaw
+        const showPlusX = (cosYaw + sinYaw) >= 0;
+        const showPlusZ = (cosYaw - sinYaw) >= 0;
+
+        sceneItems.push({
+          depth: boxDepth,
+          draw: () => {
+            if (showPlusX) {
+              drawQuadImm(p100, p101, p111, p110, xFaceC, strokeC);
+            } else {
+              drawQuadImm(p001, p000, p010, p011, xFaceC, strokeC);
+            }
+            if (showPlusZ) {
+              drawQuadImm(p001, p101, p111, p011, zFaceC, strokeC);
+            } else {
+              drawQuadImm(p100, p000, p010, p110, zFaceC, strokeC);
+            }
+            // Top face (+Y)
+            drawQuadImm(p010, p110, p111, p011, topC, strokeC);
+          }
+        });
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -643,19 +770,18 @@
         ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
       }
 
-      const ROOM_SIZE = 184, WALL_HEIGHT = 158, WALL_THICK = 9, SLAB_THICK = 10;
-
-      // 1. Thick 3D Floor Slab Base (like uploaded reference room)
-      drawBox(
+      // 1. Thick 3D Floor Slab Base (always rendered underneath at layerBias -2000)
+      addBox3D(
         -WALL_THICK, -SLAB_THICK, -WALL_THICK,
         ROOM_SIZE + WALL_THICK, SLAB_THICK, ROOM_SIZE + WALL_THICK,
         homeLightOn ? '#d6c7b2' : '#574c3f',
         homeLightOn ? '#dfbe99' : '#63513d',
         homeLightOn ? '#bfa07a' : '#4a3c2c',
-        'rgba(0,0,0,0.18)'
+        'rgba(0,0,0,0.18)',
+        -2000
       );
 
-      // 2. Checkered Architectural Tile Carpet & Flooring (directly inspired by uploaded image)
+      // 2. Checkered Architectural Tile Carpet & Flooring
       const tileCount = 6;
       const tileSize = ROOM_SIZE / tileCount;
       const tilePaletteLight = [
@@ -670,150 +796,141 @@
         for (let iz = 0; iz < tileCount; iz++) {
           const x0 = ix * tileSize, z0 = iz * tileSize;
           const baseCol = tilePaletteLight[ix][iz];
-          drawQuad(
-            toIso(x0, 0.2, z0),
-            toIso(x0 + tileSize, 0.2, z0),
-            toIso(x0 + tileSize, 0.2, z0 + tileSize),
-            toIso(x0, 0.2, z0 + tileSize),
+          addQuad3D(
+            [[x0, 0.2, z0], [x0 + tileSize, 0.2, z0], [x0 + tileSize, 0.2, z0 + tileSize], [x0, 0.2, z0 + tileSize]],
             homeLightOn ? baseCol : '#3e3832',
             'rgba(0,0,0,0.08)',
-            1
+            1,
+            -1500
           );
         }
       }
 
-      // 3. Thick Cutaway Left Wall (along Z axis, painted soft sky-blue/teal like reference)
-      drawBox(
+      // Dynamic Smart Wall Cutaway: when rotating 360 deg, if a wall turns to the front and blocks the interior,
+      // it automatically drops to a low cutaway section (height 24) with a translucent ghost upper wall so you can see inside!
+      const leftWallInFront = (cosYaw + sinYaw) < -0.22;
+      const backWallInFront = (cosYaw - sinYaw) < -0.22;
+      const leftWallH = leftWallInFront ? 22 : WALL_HEIGHT;
+      const backWallH = backWallInFront ? 22 : WALL_HEIGHT;
+      const leftWallBias = leftWallInFront ? 800 : -900;
+      const backWallBias = backWallInFront ? 800 : -900;
+
+      // 3. Left Wall (along Z axis at X = 0)
+      addBox3D(
         -WALL_THICK, 0, -WALL_THICK,
-        WALL_THICK, WALL_HEIGHT, ROOM_SIZE + WALL_THICK,
-        homeLightOn ? '#e8f1f5' : '#64748b',
+        WALL_THICK, leftWallH, ROOM_SIZE + WALL_THICK,
+        leftWallInFront ? '#f97316' : (homeLightOn ? '#e8f1f5' : '#64748b'),
         homeLightOn ? '#9abfd1' : '#334155',
         homeLightOn ? '#78a5bd' : '#1e293b',
-        'rgba(0,0,0,0.15)'
+        'rgba(0,0,0,0.15)',
+        leftWallBias
       );
 
-      // 4. Thick Cutaway Right/Back Wall (along X axis, painted warm mint/cream like reference)
-      drawBox(
+      // 4. Right/Back Wall (along X axis at Z = 0)
+      addBox3D(
         0, 0, -WALL_THICK,
-        ROOM_SIZE, WALL_HEIGHT, WALL_THICK,
-        homeLightOn ? '#f2f7f2' : '#64748b',
+        ROOM_SIZE, backWallH, WALL_THICK,
+        backWallInFront ? '#f97316' : (homeLightOn ? '#f2f7f2' : '#64748b'),
         homeLightOn ? '#c8d9ce' : '#334155',
         homeLightOn ? '#dcebe0' : '#475569',
-        'rgba(0,0,0,0.15)'
+        'rgba(0,0,0,0.15)',
+        backWallBias
       );
 
-      // Subtle diagonal sunlight shadow cast on right wall (like reference image)
-      if (homeLightOn) {
-        drawQuad(
-          toIso(0, WALL_HEIGHT, 0),
-          toIso(52, WALL_HEIGHT, 0),
-          toIso(15, 0, 0),
-          toIso(0, 0, 0),
-          'rgba(55, 85, 110, 0.24)',
-          null
+      // Subtle diagonal sunlight shadow cast on right wall when standing
+      if (homeLightOn && !backWallInFront) {
+        addQuad3D(
+          [[0, WALL_HEIGHT, 0.2], [52, WALL_HEIGHT, 0.2], [15, 0, 0.2], [0, 0, 0.2]],
+          'rgba(55, 85, 110, 0.22)',
+          null,
+          1,
+          backWallBias + 5
         );
       }
 
       // 5. Recessed Window on Left Wall with Terracotta Curtains (Microclimate Window)
-      const winZ1 = 42, winZ2 = 114, winY1 = 76, winY2 = 136;
-      // Window recess & sky glow
-      drawQuad(
-        toIso(0.5, winY1, winZ1),
-        toIso(0.5, winY1, winZ2),
-        toIso(0.5, winY2, winZ2),
-        toIso(0.5, winY2, winZ1),
-        homeLightOn ? '#f5e1e4' : '#1e293b',
-        '#ffffff',
-        2.5
-      );
-      // Window sill
-      drawBox(0, winY1 - 3, winZ1 - 2, 6, 3, winZ2 - winZ1 + 4, '#f8fafc', '#cbd5e1', '#e2e8f0');
-      // Curtain rod
-      ctx.strokeStyle = '#8c6249';
-      ctx.lineWidth = 2.5 * camZoom;
-      const rodA = toIso(3, winY2 + 5, winZ1 - 10), rodB = toIso(3, winY2 + 5, winZ2 + 10);
-      ctx.beginPath(); ctx.moveTo(rodA.x, rodA.y); ctx.lineTo(rodB.x, rodB.y); ctx.stroke();
-      // Left & Right pleated curtains (warm terracotta rose)
-      drawBox(1, winY1 - 8, winZ1 - 8, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d');
-      drawBox(1, winY1 - 8, winZ2 - 6, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d');
+      if (!leftWallInFront) {
+        const winZ1 = 42, winZ2 = 114, winY1 = 76, winY2 = 136;
+        addQuad3D(
+          [[0.5, winY1, winZ1], [0.5, winY1, winZ2], [0.5, winY2, winZ2], [0.5, winY2, winZ1]],
+          homeLightOn ? '#f5e1e4' : '#1e293b',
+          '#ffffff',
+          2.5,
+          leftWallBias + 10
+        );
+        addBox3D(0, winY1 - 3, winZ1 - 2, 6, 3, winZ2 - winZ1 + 4, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', leftWallBias + 15);
+        addLine3D([3, winY2 + 5, winZ1 - 10], [3, winY2 + 5, winZ2 + 10], '#8c6249', 2.5 * camZoom, leftWallBias + 20);
+        addBox3D(1, winY1 - 8, winZ1 - 8, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
+        addBox3D(1, winY1 - 8, winZ2 - 6, 5, winY2 - winY1 + 12, 14, '#d98a7c', '#b86b5e', '#c97a6d', 'rgba(0,0,0,0.12)', leftWallBias + 20);
 
-      // Framed Architectural Drawing on Left Wall (front of window)
-      drawBox(0.5, 62, 134, 2, 28, 36, '#1e293b', '#1e293b', '#f8fafc', '#1e293b');
-      drawQuad(toIso(2.8, 66, 138), toIso(2.8, 66, 166), toIso(2.8, 86, 166), toIso(2.8, 86, 138), '#e6c8b8', '#334155', 1);
+        // Framed Architectural Drawing on Left Wall
+        addBox3D(0.5, 62, 134, 2, 28, 36, '#1e293b', '#1e293b', '#f8fafc', '#1e293b', leftWallBias + 15);
+        addQuad3D([[2.8, 66, 138], [2.8, 66, 166], [2.8, 86, 166], [2.8, 86, 138]], '#e6c8b8', '#334155', 1, leftWallBias + 18);
+      }
 
-      // 6. Studio Lounge Bed / Daybed against Left Wall (like reference room)
+      // 6. Studio Lounge Bed / Daybed against Left Wall
       const bedX = 4, bedZ = 44, bedW = 86, bedD = 64;
-      // Wooden headboard
-      drawBox(0.5, 14, bedZ, 6, 44, bedD, '#c89d74', '#9c744f', '#b38860');
-      // Wooden bed frame
-      drawBox(bedX, 8, bedZ, bedW, 10, bedD, '#d9b38c', '#b38860', '#c89d74');
-      // Bed legs
-      drawBox(bedX + bedW - 6, 0, bedZ + 2, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
-      drawBox(bedX + bedW - 6, 0, bedZ + bedD - 7, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
-      // Mattress (soft blue-lavender sheet + white duvet + pink throw blanket at foot)
-      drawBox(bedX + 4, 18, bedZ + 3, 46, 10, bedD - 6, '#a5b4fc', '#818cf8', '#93c5fd');
-      drawBox(bedX + 36, 18, bedZ + 2, 36, 11, bedD - 4, '#ffffff', '#e2e8f0', '#f1f5f9');
-      drawBox(bedX + 70, 18, bedZ + 3, 15, 10, bedD - 6, '#f4b8c4', '#e098a7', '#ebb0bc');
-      // Two fluffy pillows
-      drawBox(bedX + 7, 28, bedZ + 7, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff');
-      drawBox(bedX + 7, 28, bedZ + 34, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff');
+      addBox3D(0.5, 0, bedZ, 6, 58, bedD, '#c89d74', '#9c744f', '#b38860');
+      addBox3D(bedX, 8, bedZ, bedW, 10, bedD, '#d9b38c', '#b38860', '#c89d74');
+      addBox3D(bedX + bedW - 6, 0, bedZ + 2, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
+      addBox3D(bedX + bedW - 6, 0, bedZ + bedD - 7, 5, 8, 5, '#b38860', '#8c6642', '#9c744f');
+      addBox3D(bedX + 4, 18, bedZ + 3, 46, 10, bedD - 6, '#a5b4fc', '#818cf8', '#93c5fd', 'rgba(0,0,0,0.1)', 5);
+      addBox3D(bedX + 36, 18, bedZ + 2, 36, 11, bedD - 4, '#ffffff', '#e2e8f0', '#f1f5f9', 'rgba(0,0,0,0.1)', 8);
+      addBox3D(bedX + 70, 18, bedZ + 3, 15, 10, bedD - 6, '#f4b8c4', '#e098a7', '#ebb0bc', 'rgba(0,0,0,0.1)', 6);
+      addBox3D(bedX + 7, 28, bedZ + 7, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
+      addBox3D(bedX + 7, 28, bedZ + 34, 16, 7, 22, '#dbeafe', '#bfdbfe', '#eff6ff', 'rgba(0,0,0,0.1)', 14);
 
       // Nightstand & Potted Plant in Front-Left Corner
-      drawBox(6, 0, 118, 32, 32, 34, '#ebd0a8', '#c9a97c', '#dec096');
-      drawBox(36, 4, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff');
-      drawBox(36, 17, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff');
-      // Plant on nightstand
-      drawBox(14, 32, 134, 9, 10, 9, '#f3e5ab', '#d4c285', '#e6d598');
-      drawBox(12, 42, 132, 13, 12, 13, '#65a30d', '#4d7c0f', '#84cc16');
+      addBox3D(6, 0, 118, 32, 32, 34, '#ebd0a8', '#c9a97c', '#dec096');
+      addBox3D(36, 4, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff', 'rgba(0,0,0,0.12)', 4);
+      addBox3D(36, 17, 121, 3, 11, 28, '#f8fafc', '#cbd5e1', '#ffffff', 'rgba(0,0,0,0.12)', 4);
+      addBox3D(14, 32, 134, 9, 10, 9, '#f3e5ab', '#d4c285', '#e6d598', 'rgba(0,0,0,0.12)', 10);
+      addBox3D(12, 42, 132, 13, 12, 13, '#65a30d', '#4d7c0f', '#84cc16', 'rgba(0,0,0,0.12)', 15);
 
       // Small bedside table & warm conical table lamp in Back Corner
-      drawBox(8, 0, 10, 26, 26, 26, '#b38860', '#8c6642', '#9c744f');
-      // Lamp stem & conical shade
-      const lBase = toIso(20, 26, 22), lTop = toIso(20, 48, 22);
-      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2.5 * camZoom;
-      ctx.beginPath(); ctx.moveTo(lBase.x, lBase.y); ctx.lineTo(lTop.x, lTop.y); ctx.stroke();
-      drawBox(12, 46, 14, 16, 14, 16, '#f8fafc', '#cbd5e1', '#e2e8f0');
+      addBox3D(8, 0, 10, 26, 26, 26, '#b38860', '#8c6642', '#9c744f');
+      addLine3D([20, 26, 22], [20, 48, 22], '#cbd5e1', 2.5 * camZoom, 8);
+      addBox3D(12, 46, 14, 16, 14, 16, '#f8fafc', '#cbd5e1', '#e2e8f0', 'rgba(0,0,0,0.12)', 12);
 
       // 7. Tall Multi-Cubby Bookshelf + Wardrobe Cabinet on Right Wall (Munich & Da'an Archive)
-      // Open shelving unit with cubbies
-      drawBox(42, 0, 2, 44, 98, 24, '#e6c594', '#b89463', '#cfa977');
-      // Shelves & book blocks inside cubbies
-      drawBox(46, 28, 6, 16, 16, 16, '#fef3c7', '#d97706', '#f59e0b');
-      drawBox(66, 28, 6, 14, 18, 16, '#dbeafe', '#2563eb', '#60a5fa');
-      drawBox(46, 58, 6, 16, 18, 16, '#d1fae5', '#059669', '#34d399');
-      drawBox(66, 58, 6, 15, 14, 16, '#fce7f3', '#db2777', '#f472b6');
-      // Potted plant on top of bookshelf
-      drawBox(48, 98, 8, 12, 12, 12, '#f3e5ab', '#d4c285', '#e6d598');
-      drawBox(46, 110, 6, 16, 20, 16, '#4d7c0f', '#3f6212', '#65a30d');
+      addBox3D(42, 0, 2, 44, 98, 24, '#e6c594', '#b89463', '#cfa977');
+      addBox3D(46, 28, 6, 16, 16, 18, '#fef3c7', '#d97706', '#f59e0b', 'rgba(0,0,0,0.12)', 6);
+      addBox3D(66, 28, 6, 14, 18, 18, '#dbeafe', '#2563eb', '#60a5fa', 'rgba(0,0,0,0.12)', 6);
+      addBox3D(46, 58, 6, 16, 18, 18, '#d1fae5', '#059669', '#34d399', 'rgba(0,0,0,0.12)', 6);
+      addBox3D(66, 58, 6, 15, 14, 18, '#fce7f3', '#db2777', '#f472b6', 'rgba(0,0,0,0.12)', 6);
+      addBox3D(48, 98, 8, 12, 12, 12, '#f3e5ab', '#d4c285', '#e6d598', 'rgba(0,0,0,0.12)', 12);
+      addBox3D(46, 110, 6, 16, 20, 16, '#4d7c0f', '#3f6212', '#65a30d', 'rgba(0,0,0,0.12)', 18);
 
       // Tall wooden wardrobe cabinet next to shelf
-      drawBox(88, 0, 2, 34, 108, 28, '#f0d4a8', '#c7a473', '#deb986');
-      // Cabinet door seam & handle
-      const cTop = toIso(105, 104, 30), cBot = toIso(105, 6, 30);
-      ctx.strokeStyle = 'rgba(90,65,35,0.45)'; ctx.lineWidth = 1.5 * camZoom;
-      ctx.beginPath(); ctx.moveTo(cTop.x, cTop.y); ctx.lineTo(cBot.x, cBot.y); ctx.stroke();
+      addBox3D(88, 0, 2, 34, 108, 28, '#f0d4a8', '#c7a473', '#deb986');
+      addLine3D([105, 104, 30.5], [105, 6, 30.5], 'rgba(90,65,35,0.45)', 1.5 * camZoom, 6);
 
       // 8. Architectural BIM Workstation Desk & Storage Unit on Right Wall
       const deskX = 124, deskZ = 2, deskW = 54, deskD = 28, deskH = 62;
-      drawBox(deskX, 0, deskZ, deskW, deskH, deskD, '#f2d7ad', '#c4a06e', '#dfb984');
-      // Desk storage compartments (dark equipment & green archive box like reference)
-      drawBox(deskX + 4, 8, deskZ + 6, 20, 22, 20, '#475569', '#1e293b', '#334155');
-      drawBox(deskX + 28, 6, deskZ + 6, 20, 24, 20, '#65a30d', '#3f6212', '#4d7c0f');
-      // Laptop /BIM Workstation on top of desk
-      drawBox(deskX + 14, deskH, deskZ + 8, 22, 2, 14, '#334155', '#1e293b', '#475569');
-      // Framed Architectural Elevation above desk on Right Wall
-      drawBox(132, 78, 0.5, 38, 32, 2, '#334155', '#1e293b', '#f8fafc', '#1e293b');
-      drawQuad(toIso(136, 82, 2.8), toIso(166, 82, 2.8), toIso(166, 106, 2.8), toIso(136, 106, 2.8), '#f5d0c5', '#475569', 1);
+      addBox3D(deskX, 0, deskZ, deskW, deskH, deskD, '#f2d7ad', '#c4a06e', '#dfb984');
+      addBox3D(deskX + 4, 8, deskZ + 6, 20, 22, 22, '#475569', '#1e293b', '#334155', 'rgba(0,0,0,0.15)', 6);
+      addBox3D(deskX + 28, 6, deskZ + 6, 20, 24, 22, '#65a30d', '#3f6212', '#4d7c0f', 'rgba(0,0,0,0.15)', 6);
+      addBox3D(deskX + 14, deskH, deskZ + 8, 22, 3, 14, '#334155', '#1e293b', '#475569', 'rgba(0,0,0,0.15)', 10);
+      addBox3D(deskX + 14, deskH + 3, deskZ + 7, 22, 13, 2, '#38bdf8', '#0284c7', '#7dd3fc', 'rgba(0,0,0,0.15)', 12);
+
+      if (!backWallInFront) {
+        addBox3D(132, 78, 0.5, 38, 32, 2, '#334155', '#1e293b', '#f8fafc', '#1e293b', backWallBias + 15);
+        addQuad3D([[136, 82, 2.8], [166, 82, 2.8], [166, 106, 2.8], [136, 106, 2.8]], '#f5d0c5', '#475569', 1, backWallBias + 18);
+      }
 
       // 9. Foreground Coral-Terracotta Lounge Bench / Ottoman (Songshan Lounge)
       const ottX = 92, ottZ = 118, ottW = 42, ottD = 26;
-      // Wooden legs
-      drawBox(ottX + 2, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      drawBox(ottX + ottW - 6, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      drawBox(ottX + 2, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      drawBox(ottX + ottW - 6, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
-      // Coral cushioned top
-      drawBox(ottX, 8, ottZ, ottW, 14, ottD, '#f28b82', '#c95b52', '#e07067');
+      addBox3D(ottX + 2, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      addBox3D(ottX + ottW - 6, 0, ottZ + 2, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      addBox3D(ottX + 2, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      addBox3D(ottX + ottW - 6, 0, ottZ + ottD - 6, 4, 8, 4, '#c89d74', '#8c6642', '#b38860');
+      addBox3D(ottX, 8, ottZ, ottW, 14, ottD, '#f28b82', '#c95b52', '#e07067', 'rgba(0,0,0,0.12)', 4);
+
+      // Sort all 3D geometry back-to-front by camera depth and draw!
+      sceneItems.sort((a, b) => a.depth - b.depth);
+      for (let i = 0; i < sceneItems.length; i++) {
+        sceneItems[i].draw();
+      }
 
       // 10. Warm Radial Light Glow when Lights are ON
       if (homeLightOn) {
@@ -855,8 +972,25 @@
       const pin = document.getElementById('home-pin-' + id);
       if (pin) pin.classList.add('active');
 
-      if (focusCamera && item.camTarget) {
-        animateCameraTo(item.camTarget.zoom, item.camTarget.panX, item.camTarget.panY, item.camTarget.yaw);
+      if (focusCamera && item.pos3D) {
+        const canvas = document.getElementById('homeStudioCanvas');
+        const targetZoom = item.targetZoom || 1.35;
+        const scale = 2.05 * targetZoom;
+        const ROOM_CENTER = 92;
+        const cosYaw = Math.cos(camYaw), sinYaw = Math.sin(camYaw);
+        const cx = item.pos3D.x - ROOM_CENTER, cz = item.pos3D.z - ROOM_CENTER;
+        const rx = cx * cosYaw - cz * sinYaw + ROOM_CENTER;
+        const rz = cx * sinYaw + cz * cosYaw + ROOM_CENTER;
+        const ISO_COS = Math.cos(Math.PI / 6);
+        const sinPitch = Math.sin(camPitch);
+        const yScale = Math.cos(camPitch) / ISO_COS;
+        const offsetX = (rx - rz) * ISO_COS * scale;
+        const offsetY = (rx + rz) * sinPitch * scale - item.pos3D.y * yScale * scale;
+        const cw = canvas ? canvas.width : 1360;
+        const ch = canvas ? canvas.height : 640;
+        const targetPanX = (cw * 0.44 - cw * 0.46) - offsetX;
+        const targetPanY = (ch * 0.50 - ch * 0.60) - offsetY;
+        animateCameraTo(targetZoom, targetPanX, targetPanY, camYaw, camPitch);
       }
     }
 
@@ -870,43 +1004,79 @@
       homeLightOn = true;
       document.getElementById('homeLightsStatus').textContent = 'ON';
       selectHomeHotspot('workstation', false);
-      animateCameraTo(1.0, 0, 0, 0);
+      animateCameraTo(1.0, 0, 0, 0, Math.PI / 6);
     }
 
-    // Interactive Mouse Drag Pan & Wheel Zoom
+    // Interactive Mouse Drag Pan, Middle-Mouse 360° 3D Orbit Rotation & Wheel Zoom
     function initHomeStudioInteractions() {
       const viewport = document.getElementById('homeStudioViewport');
       const canvas = document.getElementById('homeStudioCanvas');
       if (!viewport || !canvas) return;
 
-      let isDragging = false;
+      let dragMode = null; // 'pan' (left click) or 'orbit' (middle mouse button / right click / Shift+left)
       let startMouseX = 0, startMouseY = 0;
       let startPanX = 0, startPanY = 0;
+      let startYaw = 0, startPitch = Math.PI / 6;
+
+      // Prevent browser native middle-click auto-scroll and right-click context menu on canvas
+      viewport.addEventListener('auxclick', (e) => {
+        if (e.button === 1) e.preventDefault();
+      });
+      viewport.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+      });
 
       viewport.addEventListener('mousedown', (e) => {
         if (e.target.closest('.home-pin') || e.target.closest('.home-project-card') || e.target.closest('.studio-nav-hud')) return;
-        isDragging = true;
-        viewport.classList.add('dragging');
-        startMouseX = e.clientX;
-        startMouseY = e.clientY;
-        startPanX = camPanX;
-        startPanY = camPanY;
+
+        // Middle mouse button (e.button === 1), Right mouse button (e.button === 2), or Shift + Left Click -> 360° 3D Orbit Rotation!
+        if (e.button === 1 || e.button === 2 || (e.button === 0 && e.shiftKey)) {
+          e.preventDefault();
+          dragMode = 'orbit';
+          viewport.style.cursor = 'all-scroll';
+          startMouseX = e.clientX;
+          startMouseY = e.clientY;
+          startYaw = camYaw;
+          startPitch = camPitch;
+          return;
+        }
+
+        // Left mouse button (e.button === 0) -> Pan Left/Right/Up/Down
+        if (e.button === 0) {
+          dragMode = 'pan';
+          viewport.classList.add('dragging');
+          startMouseX = e.clientX;
+          startMouseY = e.clientY;
+          startPanX = camPanX;
+          startPanY = camPanY;
+        }
       });
 
       window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const rect = viewport.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        camPanX = startPanX + (e.clientX - startMouseX) * scaleX;
-        camPanY = startPanY + (e.clientY - startMouseY) * scaleY;
-        renderHomeStudio();
+        if (!dragMode) return;
+        if (dragMode === 'orbit') {
+          const dx = e.clientX - startMouseX;
+          const dy = e.clientY - startMouseY;
+          // Full 360-degree horizontal rotation + vertical elevation tilt
+          camYaw = startYaw + dx * 0.0085;
+          camPitch = Math.max(0.20, Math.min(1.05, startPitch + dy * 0.0055));
+          updateZoomUI();
+          renderHomeStudio();
+        } else if (dragMode === 'pan') {
+          const rect = viewport.getBoundingClientRect();
+          const scaleX = canvas.width / rect.width;
+          const scaleY = canvas.height / rect.height;
+          camPanX = startPanX + (e.clientX - startMouseX) * scaleX;
+          camPanY = startPanY + (e.clientY - startMouseY) * scaleY;
+          renderHomeStudio();
+        }
       });
 
       window.addEventListener('mouseup', () => {
-        if (isDragging) {
-          isDragging = false;
+        if (dragMode) {
+          dragMode = null;
           viewport.classList.remove('dragging');
+          viewport.style.cursor = '';
         }
       });
 
@@ -920,29 +1090,43 @@
         zoomHomeStudio(factor, mouseX, mouseY);
       }, { passive: false });
 
-      // Touch Drag Support for Mobile/Tablet
+      // Touch Drag Support for Mobile/Tablet (1 finger pan, 2 fingers orbit rotate)
       viewport.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
-          isDragging = true;
+          dragMode = 'pan';
           startMouseX = e.touches[0].clientX;
           startMouseY = e.touches[0].clientY;
           startPanX = camPanX;
           startPanY = camPanY;
+        } else if (e.touches.length === 2) {
+          dragMode = 'orbit';
+          startMouseX = (e.touches[0].clientX + e.touches[1].clientX) * 0.5;
+          startMouseY = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
+          startYaw = camYaw;
+          startPitch = camPitch;
         }
       }, { passive: true });
 
       viewport.addEventListener('touchmove', (e) => {
-        if (!isDragging || e.touches.length !== 1) return;
-        const rect = viewport.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        camPanX = startPanX + (e.touches[0].clientX - startMouseX) * scaleX;
-        camPanY = startPanY + (e.touches[0].clientY - startMouseY) * scaleY;
-        renderHomeStudio();
+        if (dragMode === 'pan' && e.touches.length === 1) {
+          const rect = viewport.getBoundingClientRect();
+          const scaleX = canvas.width / rect.width;
+          const scaleY = canvas.height / rect.height;
+          camPanX = startPanX + (e.touches[0].clientX - startMouseX) * scaleX;
+          camPanY = startPanY + (e.touches[0].clientY - startMouseY) * scaleY;
+          renderHomeStudio();
+        } else if (dragMode === 'orbit' && e.touches.length === 2) {
+          const mx = (e.touches[0].clientX + e.touches[1].clientX) * 0.5;
+          const my = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
+          camYaw = startYaw + (mx - startMouseX) * 0.0085;
+          camPitch = Math.max(0.20, Math.min(1.05, startPitch + (my - startMouseY) * 0.0055));
+          updateZoomUI();
+          renderHomeStudio();
+        }
       }, { passive: true });
 
       viewport.addEventListener('touchend', () => {
-        isDragging = false;
+        dragMode = null;
       });
     }
 
