@@ -142,6 +142,28 @@ function renderProjects(projects, filterId) {
   });
 }
 
+// Helper to find a project by ID from allProjectsData
+function findProjectById(projectId) {
+  if (!allProjectsData || !allProjectsData.projects) return null;
+  for (const block of allProjectsData.projects) {
+    if (block.type === 'featured' && block.id === projectId) return block;
+    if (block.type === 'grid' && Array.isArray(block.items)) {
+      const found = block.items.find(it => it.id === projectId);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+window.openProjectModalById = function(projectId, fallbackData) {
+  const found = findProjectById(projectId);
+  if (found) {
+    openProjectModal(found);
+  } else if (fallbackData) {
+    openProjectModal(fallbackData);
+  }
+};
+
 // 4. Modal Lightbox Handler
 function openProjectModal(project) {
   const modal = document.getElementById('projectModal');
@@ -154,22 +176,22 @@ function openProjectModal(project) {
   const modalSpecs = document.getElementById('modalSpecs');
 
   modalImg.onerror = () => {
-    modalImg.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80';
+    modalImg.src = './assets/studio/mooao_sun_wind_analysis.jpg';
   };
   modalImg.src = project.image;
   modalImg.alt = project.title;
-  modalTitle.textContent = `${project.title} (${project.year})`;
-  modalMetaTag.textContent = `${project.category} • ${project.location}`;
-  modalDesc.textContent = project.summary || '';
+  modalTitle.textContent = `${project.title} (${project.year || 2025})`;
+  modalMetaTag.textContent = `${project.category || 'Architecture'} • ${project.location || 'Taipei'}`;
+  modalDesc.textContent = project.summary || project.desc || '';
 
-  // Render spec list if available
+  // Render spec list + interactive image gallery if available
   let specsHtml = `
-    <p><strong>Location:</strong> ${project.location}</p>
-    <p><strong>Year:</strong> ${project.year}</p>
+    <p><strong>Location:</strong> ${project.location || 'Taipei, Taiwan'}</p>
+    <p><strong>Year:</strong> ${project.year || '2024–2025'}</p>
   `;
 
   if (project.area) {
-    specsHtml += `<p><strong>Floor Area:</strong> ${project.area}</p>`;
+    specsHtml += `<p><strong>Floor Area / Scope:</strong> ${project.area}</p>`;
   }
 
   if (project.details) {
@@ -177,11 +199,29 @@ function openProjectModal(project) {
       specsHtml += `<p style="margin-top:10px;"><strong>Tectonic Concept:</strong><br>${project.details.concept}</p>`;
     }
     if (project.details.materials) {
-      specsHtml += `<p style="margin-top:10px;"><strong>Materiality:</strong><br>${project.details.materials}</p>`;
+      specsHtml += `<p style="margin-top:10px;"><strong>Materiality & Tools:</strong><br>${project.details.materials}</p>`;
     }
     if (project.details.awards) {
-      specsHtml += `<p style="margin-top:10px;"><strong>Recognition:</strong><br>${project.details.awards}</p>`;
+      specsHtml += `<p style="margin-top:10px;"><strong>Recognition & Metrics:</strong><br>${project.details.awards}</p>`;
     }
+  }
+
+  if (Array.isArray(project.gallery) && project.gallery.length > 1) {
+    specsHtml += `
+      <div style="margin-top:14px;">
+        <strong>Project Drawings & Evidence (${project.gallery.length} Sheets):</strong>
+        <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+          ${project.gallery.map((gUrl, idx) => `
+            <img src="${gUrl}" alt="Sheet ${idx + 1}"
+              onclick="document.getElementById('modalImg').src='${gUrl}'"
+              style="width:76px; height:54px; object-fit:cover; border-radius:4px; cursor:pointer; border:2px solid #cbd5e1; transition:border-color 0.15s;"
+              onmouseover="this.style.borderColor='#f97316'"
+              onmouseout="this.style.borderColor='#cbd5e1'"
+            >
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   modalSpecs.innerHTML = specsHtml;

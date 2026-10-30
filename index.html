@@ -210,21 +210,39 @@
     }
 
     .home-pin-label {
-      background: rgba(15, 23, 42, 0.88);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(15, 23, 42, 0.90);
       border: 1px solid rgba(255,255,255,0.22);
       color: #f8fafc;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 16px;
+      padding: 4px 11px 4px 5px;
+      border-radius: 18px;
       white-space: nowrap;
       backdrop-filter: blur(6px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+    }
+
+    .home-pin-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid rgba(255,255,255,0.65);
+      flex-shrink: 0;
     }
 
     .home-pin.active .home-pin-label {
       border-color: #f97316;
       color: #fb923c;
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: 0 0 18px rgba(249, 115, 22, 0.35);
+    }
+
+    .home-pin.active .home-pin-thumb {
+      border-color: #38bdf8;
     }
 
     .home-sheet-stamp {
@@ -245,16 +263,79 @@
 
     .home-project-card {
       position: absolute;
-      bottom: 24px;
-      right: 24px;
-      width: 340px;
-      background: rgba(17, 22, 29, 0.94);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 10px;
-      padding: 20px 22px;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.55);
-      z-index: 15;
+      bottom: 20px;
+      right: 20px;
+      width: 360px;
+      background: rgba(15, 20, 28, 0.95);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 12px;
+      padding: 14px 16px 16px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.65);
+      z-index: 16;
+    }
+
+    .home-card-media {
+      position: relative;
+      width: 100%;
+      height: 148px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: #0f172a;
+      cursor: pointer;
+    }
+
+    .home-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .home-card-media:hover img {
+      transform: scale(1.04);
+    }
+
+    .home-card-media-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .home-card-thumbs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .home-card-thumb-item {
+      width: 48px;
+      height: 34px;
+      border-radius: 4px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      opacity: 0.7;
+      transition: all 0.15s ease;
+    }
+
+    .home-card-thumb-item:hover,
+    .home-card-thumb-item.active {
+      border-color: #f97316;
+      opacity: 1;
+      transform: translateY(-1px);
     }
 
     .home-card-tag {
@@ -380,45 +461,69 @@
           <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
         </div>
 
-        <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space) -->
+        <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space with Project Thumbnails) -->
         <div class="home-pin active" id="home-pin-workstation" onclick="selectHomeHotspot('workstation', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">01 • BIM Workstation</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/autodesk_revit_cert.jpg" alt="BIM-to-BEM">
+            01 • BIM-to-BEM &amp; Revit API
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-window" onclick="selectHomeHotspot('window', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">02 • Microclimate Window</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/mooao_sun_wind_analysis.jpg" alt="MAOAO Forma">
+            02 • MAOAO Forma Microclimate
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-shelf" onclick="selectHomeHotspot('shelf', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">03 • Munich & Da'an Archive</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/munich_exchange_01.jpg" alt="Munich HM">
+            03 • Munich HM Exchange
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-chair" onclick="selectHomeHotspot('chair', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">04 • Songshan Lounge</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/ttda_3d_fabrication.jpg" alt="TTDA FabLab">
+            04 • TTDA 3D Fabrication
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-daybed" onclick="selectHomeHotspot('daybed', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">05 • NSGA-II Comfort Zone</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/curved_hostel_exterior.jpg" alt="CURVED Hostel">
+            05 • Zhongshan CURVED Hostel
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-wardrobe" onclick="selectHomeHotspot('wardrobe', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">06 • Timber Tectonic Cabinet</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/voute_gallery_atrium.jpg" alt="Jingmei VOUTE">
+            06 • Jingmei VOUTE Gallery
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-nightstand" onclick="selectHomeHotspot('nightstand', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">07 • Biophilic Micro-Ecology</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/gulin_garden_axon.jpg" alt="Gulin Garden">
+            07 • Gulin Garden Center
+          </span>
         </div>
 
         <div class="home-pin" id="home-pin-elevation" onclick="selectHomeHotspot('elevation', true)">
           <span class="home-pin-dot"></span>
-          <span class="home-pin-label">08 • Digital Twin Board</span>
+          <span class="home-pin-label">
+            <img class="home-pin-thumb" src="./assets/studio/tac_sharjah_boards.jpg" alt="TAC Sharjah">
+            08 • TAC Sharjah Competition
+          </span>
         </div>
 
         <!-- Architectural Sheet Stamp -->
@@ -428,13 +533,21 @@
           SHEET 01 • NTUST STUDIO • 2026
         </div>
 
-        <!-- Live Updating Selected Project Card -->
+        <!-- Live Updating Selected Project Card with Authentic Project Imagery & Gallery -->
         <div class="home-project-card" id="homeProjectCard">
+          <div class="home-card-media" onclick="openActiveHotspotModal()" title="點擊開啟高解析專案圖面與完整資料">
+            <img id="homeCardImg" src="./assets/studio/autodesk_revit_cert.jpg" alt="Project Drawing Preview">
+            <span class="home-card-media-badge" id="homeCardBadge">🔍 點擊放大檢視圖面</span>
+          </div>
+          <div class="home-card-thumbs" id="homeCardThumbs"></div>
           <div class="home-card-tag" id="homeCardTag">SELECTED PROJECT • 01</div>
-          <div class="home-card-title" id="homeCardTitle">BIM-to-BEM Interoperability</div>
-          <div class="home-card-sub" id="homeCardSub">GRADUATE RESEARCH LAB • NTUST</div>
-          <div class="home-card-desc" id="homeCardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
-          <a href="#filterBar" class="home-card-btn" id="homeCardBtn">OPEN FULL 3D STUDIO &rarr;</a>
+          <div class="home-card-title" id="homeCardTitle">BIM-to-BEM Interoperability &amp; EnergyPlus</div>
+          <div class="home-card-sub" id="homeCardSub">NTUST RESEARCH LAB • 2025 • COMPUTATIONAL</div>
+          <div class="home-card-desc" id="homeCardDesc">Automated Revit API analytical space boundaries &amp; gbXML thermal validation pipeline (&lt;5% error, 15–25% energy savings).</div>
+          <div style="display:flex; gap:8px;">
+            <button type="button" onclick="openActiveHotspotModal()" class="home-card-btn" id="homeCardBtn" style="flex:1; border:none; cursor:pointer;">🔍 開啟專案圖面與資料 &rarr;</button>
+            <a href="#filterBar" class="home-card-btn" style="background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.22); padding:10px 12px;" title="捲動至下方完整作品集列表">↓ 列表</a>
+          </div>
         </div>
       </div>
     </section>
@@ -497,78 +610,196 @@
   <script>
     const homeHotspots = {
       workstation: {
-        tag: 'SELECTED PROJECT • 01',
-        title: 'BIM-to-BEM Interoperability',
-        sub: 'GRADUATE RESEARCH LAB • NTUST',
-        desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
-        url: '#filterBar',
+        projectId: 'bim-bem-interoperability',
+        tag: 'SELECTED PROJECT • 01 • COMPUTATIONAL',
+        title: 'BIM-to-BEM Interoperability & EnergyPlus',
+        sub: 'NTUST RESEARCH LAB • 2025 • MULTI-ZONE FACILITY',
+        desc: 'Automated Revit API analytical space boundaries & gbXML thermal validation pipeline (<5% error, 15–25% energy savings).',
+        image: './assets/studio/autodesk_revit_cert.jpg',
+        gallery: [
+          './assets/studio/autodesk_revit_cert.jpg',
+          './assets/studio/mooao_forma_boards.jpg',
+          './assets/studio/rec_letter_chang.jpg'
+        ],
+        year: 2025,
+        category: 'computational',
+        location: 'NTUST Research Lab, Taipei',
+        area: 'Multi-Zone Facility',
+        details: {
+          concept: 'Bridging architectural BIM and thermal simulation (BEM). By scripting automated Revit API analytical space boundaries, the framework resolves non-manifold surface geometry prior to EnergyPlus simulation.',
+          materials: 'Autodesk Revit API, EnergyPlus, Python, gbXML Schema, NSGA-II Multi-Objective Optimization.',
+          awards: '15%–25% Simulated Building Energy Savings | Autodesk Revit ACU Certified | Benchmarked to LEED EAc2 & Taiwan BERS'
+        },
         pos3D: { x: 148, y: 74, z: 18 },
         targetZoom: 1.35
       },
       window: {
-        tag: 'SELECTED PROJECT • 02',
-        title: 'Autodesk Forma Microclimate',
-        sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
-        desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
-        url: '#filterBar',
+        projectId: 'mooao-restaurant',
+        tag: 'SELECTED PROJECT • 02 • MICROCLIMATE',
+        title: 'Mr. Chi MAOAO Restaurant & Coast Bar',
+        sub: 'MAOAO COAST • 2024 • 1,450 m² • FORMA UHI',
+        desc: 'Urban Heat Island (UHI) thesis integrating drone thermal imaging with Autodesk Forma solar radiation & coastal wind simulations.',
+        image: './assets/studio/mooao_sun_wind_analysis.jpg',
+        gallery: [
+          './assets/studio/mooao_sun_wind_analysis.jpg',
+          './assets/studio/mooao_restaurant_sun.jpg',
+          './assets/studio/mooao_forma_boards.jpg'
+        ],
+        year: 2024,
+        category: 'computational',
+        location: 'Maoao Coast, New Taipei City',
+        area: '1,450 m²',
+        details: {
+          concept: 'Analyzing thermal radiation stark contrast between rock surfaces (34.1°C) and shaded vegetative corridors (<28.9°C). Autodesk Forma solar hour simulations guided the roof curvature to shelter visitors from extreme noon exposure.',
+          materials: 'High-albedo white roof membranes, local basalt aggregate concrete, low-E operable double glazing, salt-resistant timber louvers.',
+          awards: 'Special Topics on Professional Practices: Urban Heat Island in Taipei (Advisor: Dr. Lucky S.J. Tsaih)'
+        },
         pos3D: { x: 8, y: 112, z: 78 },
         targetZoom: 1.35
       },
       shelf: {
-        tag: 'ACADEMIC ARCHIVE • 03',
-        title: 'Munich HM Exchange & Credentials',
-        sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
-        desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
-        url: './docs.html',
+        projectId: 'munich-origami',
+        tag: 'SELECTED PROJECT • 03 • MUNICH EXCHANGE',
+        title: 'Origami Gradient Color & Light (Munich HM)',
+        sub: 'HOCHSCHULE MÜNCHEN, GERMANY • 2025 • FABRICATION',
+        desc: 'Tectonic folding & timber daylight refraction studies developed during visiting exchange at Hochschule München.',
+        image: './assets/studio/munich_exchange_01.jpg',
+        gallery: [
+          './assets/studio/munich_exchange_01.jpg',
+          './assets/studio/munich_exchange_02.jpg',
+          './assets/studio/munich_exchange_03.jpg',
+          './assets/studio/ielts_score_cert.jpg'
+        ],
+        year: 2025,
+        category: 'fabrication',
+        location: 'Munich (HM), Germany',
+        area: 'Pavilion & Kinetic Louver System',
+        details: {
+          concept: 'Parametric Miura-ori folding geometry translated into kinetic facade louvers that modulate chromatic daylight transmission and solar heat gain across seasonal sun angles in Munich.',
+          materials: 'Birch aircraft plywood, dichromatic acrylic films, CNC-scored folding hinges, precision aluminum sub-frames.',
+          awards: 'Visiting Exchange Scholarship • Hochschule München (HM) Department of Architecture (2025) • IELTS 6.0'
+        },
         pos3D: { x: 64, y: 88, z: 14 },
         targetZoom: 1.35
       },
       chair: {
-        tag: 'EXHIBITION & FABRICATION • 04',
-        title: 'Songshan Solo Exhibition & TTDA',
-        sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
-        desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
-        url: '#filterBar',
+        projectId: 'ttda-3d-laser',
+        tag: 'SELECTED PROJECT • 04 • DIGITAL FABRICATION',
+        title: 'TTDA Digital Fabrication & 3D Prototyping',
+        sub: 'NTUST TTDA FABLAB & SONGSHAN PARK • 2024',
+        desc: 'Precision multi-material SLA/FDM 3D printing & laser-cut spatial joinery models; instructing 80+ peers as Core FabLab Manager.',
+        image: './assets/studio/ttda_3d_fabrication.jpg',
+        gallery: [
+          './assets/studio/ttda_3d_fabrication.jpg',
+          './assets/studio/rec_letter_tsai_mt.jpg'
+        ],
+        year: 2024,
+        category: 'fabrication',
+        location: 'NTUST TTDA FabLab & Songshan Cultural Park',
+        area: 'Solo Exhibition & Prototyping Lab',
+        details: {
+          concept: 'Bridging digital Grasshopper/Revit parametric geometry with physical multi-axis fabrication, structural node 3D printing, and full-scale exhibition curation at Songshan Cultural Park.',
+          materials: 'SLA Tough Resin, carbon-fiber reinforced PLA, laser-cut basswood & anodized aluminum, custom G-code toolpaths.',
+          awards: 'NTUST TTDA FabLab Manager • Songshan Cultural Park Solo Exhibition Curator'
+        },
         pos3D: { x: 112, y: 26, z: 132 },
         targetZoom: 1.35
       },
       daybed: {
-        tag: 'GENETIC OPTIMIZATION • 05',
-        title: 'NSGA-II Multi-Objective Optimization',
-        sub: 'THERMAL COMFORT & DAYLIGHT • PYTHON',
-        desc: 'Pareto-front evolutionary algorithms balancing Spatial Daylight Autonomy (sDA) and Annual Cooling EUI.',
-        url: '#filterBar',
+        projectId: 'curved-hostel',
+        tag: 'SELECTED PROJECT • 05 • ARCHITECTURAL DESIGN',
+        title: 'Zhongshan CURVED Youth Hostel',
+        sub: 'ZHONGSHAN DISTRICT, TAIPEI • 2023 • 2,100 m² (7F)',
+        desc: '7-story urban boutique youth hostel with wave-like cantilevered passive solar balconies and ground-floor community courtyard.',
+        image: './assets/studio/curved_hostel_exterior.jpg',
+        gallery: [
+          './assets/studio/curved_hostel_exterior.jpg',
+          './assets/studio/rec_letter_tsaih.jpg'
+        ],
+        year: 2023,
+        category: 'architectural',
+        location: 'Zhongshan District, Taipei',
+        area: '2,100 m² (7 Floors)',
+        details: {
+          concept: 'The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms, reducing summer cooling requirements while offering private green micro-terraces facing the city tree canopies.',
+          materials: 'Architectural fair-faced white concrete, acoustic double-glazed window assemblies, vertical greenery planter boxes, custom modular timber bunk joinery.',
+          awards: 'Design Studio III Project 113 • Selected for Departmental Exhibition'
+        },
         pos3D: { x: 46, y: 34, z: 76 },
         targetZoom: 1.35
       },
       wardrobe: {
-        tag: 'TECTONIC RESEARCH • 06',
-        title: 'Cross-Laminated Timber (CLT) Systems',
-        sub: 'HOCHSCHULE MÜNCHEN • GERMANY',
-        desc: 'Modular European mass-timber joinery, structural grid rationalization & carbon-negative envelope detailing.',
-        url: '#filterBar',
+        projectId: 'voute-gallery-bistro',
+        tag: 'SELECTED PROJECT • 06 • CULTURAL ATRIUM',
+        title: 'Jingmei VOUTE: Gallery & Bistro',
+        sub: 'JINGMEI, TAIPEI • 2022 • 980 m² (4F)',
+        desc: 'Adaptive cultural composite featuring a 3F/4F triple-height atrium gallery, design shop & rooftop sky bar beneath brick arches.',
+        image: './assets/studio/voute_gallery_atrium.jpg',
+        gallery: [
+          './assets/studio/voute_gallery_atrium.jpg',
+          './assets/studio/voute_section.jpg'
+        ],
+        year: 2022,
+        category: 'architectural',
+        location: 'Jingmei, Taipei',
+        area: '980 m² (4 Floors)',
+        details: {
+          concept: 'Carving a continuous vertical daylight void through an urban street-block parcel, using paraboloid brick vaults to diffuse top-lit sunshine into the lower exhibition galleries.',
+          materials: 'Hand-laid red clay masonry arches, board-formed architectural concrete, blackened steel mezzanine walkways, acoustic timber ceilings.',
+          awards: 'NTUST Architectural Design Studio II • Featured Tectonic Section Model'
+        },
         pos3D: { x: 105, y: 96, z: 18 },
         targetZoom: 1.35
       },
       nightstand: {
-        tag: 'SUSTAINABLE DESIGN • 07',
-        title: 'Urban Greening & Biophilic Envelopes',
-        sub: 'MICROCLIMATE MITIGATION • NTUST',
-        desc: 'Evapotranspirative facade vegetation modeling & outdoor thermal comfort (UTCI) regulation in high-density cities.',
-        url: '#filterBar',
+        projectId: 'gulin-garden',
+        tag: 'SELECTED PROJECT • 07 • BIOPHILIC DESIGN',
+        title: 'Gulin Garden Parent-Child Center',
+        sub: 'GULING STREET, TAIPEI • 2023 • 1,250 m²',
+        desc: 'Dynamic organic morphology composed of interlinked cylindrical volumes, grey brickwork, wooden louvers & sensory courtyards.',
+        image: './assets/studio/gulin_garden_axon.jpg',
+        gallery: [
+          './assets/studio/gulin_garden_axon.jpg',
+          './assets/studio/mooao_forma_boards.jpg'
+        ],
+        year: 2023,
+        category: 'architectural',
+        location: 'Guling Street, Taipei',
+        area: '1,250 m²',
+        details: {
+          concept: 'Replacing rigid institutional corridors with interlocking circular play pavilions that wrap around existing heritage trees and biophilic sensory gardens.',
+          materials: 'Perforated grey masonry screen walls, warm cedar vertical louvers, cushioned cork flooring, seamless curved safety mesh.',
+          awards: 'Urban Community Architecture Studio • Taipei Guling Street Revitalization'
+        },
         pos3D: { x: 22, y: 52, z: 135 },
         targetZoom: 1.35
       },
       elevation: {
-        tag: 'CREDENTIALS & DOCS • 08',
-        title: 'BIM Digital Twin & Official Dossier',
-        sub: 'REVIT ACU • 3 PROFESSOR LETTERS',
-        desc: 'Complete bilingual technical documentation, Revit API architecture blueprints & signed academic endorsements.',
-        url: './docs.html',
+        projectId: 'tac-sharjah',
+        tag: 'SELECTED PROJECT • 08 • INTERNATIONAL COMPETITION',
+        title: 'TAC: Temporary Art Space in Sharjah',
+        sub: 'SHARJAH, UAE • 2025 • 1,800 m² • TENSILE CANOPY',
+        desc: 'International competition entry exploring tensile fabric canopies, Souk Al Bahar cultural corridors & modular public pods.',
+        image: './assets/studio/tac_sharjah_boards.jpg',
+        gallery: [
+          './assets/studio/tac_sharjah_boards.jpg',
+          './assets/studio/rec_letter_chang.jpg'
+        ],
+        year: 2025,
+        category: 'competition',
+        location: 'Sharjah, UAE',
+        area: '1,800 m²',
+        details: {
+          concept: 'Deploying a lightweight double-skin PTFE tensile roof that induces stack-effect natural ventilation above modular timber exhibition pavilions in the arid Sharjah climate.',
+          materials: 'PTFE tensile membrane, CNC-milled glulam timber ribs, rammed earth plinths, woven palm-fiber shading screens.',
+          awards: '2025 International Architecture Competition Entry • Sharjah Cultural District'
+        },
         pos3D: { x: 152, y: 104, z: 6 },
         targetZoom: 1.35
       }
     };
+
+    let activeHomeHotspotId = 'workstation';
 
     let homeLightOn = true;
     let camZoom = 1.0;
@@ -959,14 +1190,61 @@
       }
     }
 
+    function switchHomeCardThumb(imgUrl, thumbEl) {
+      const imgEl = document.getElementById('homeCardImg');
+      if (imgEl) imgEl.src = imgUrl;
+      document.querySelectorAll('.home-card-thumb-item').forEach(el => el.classList.remove('active'));
+      if (thumbEl) thumbEl.classList.add('active');
+    }
+
+    function openActiveHotspotModal() {
+      const item = homeHotspots[activeHomeHotspotId];
+      if (!item) return;
+      if (typeof window.openProjectModalById === 'function') {
+        window.openProjectModalById(item.projectId, {
+          id: item.projectId,
+          title: item.title,
+          year: item.year,
+          category: item.category,
+          location: item.location,
+          area: item.area,
+          summary: item.desc,
+          image: document.getElementById('homeCardImg')?.src || item.image,
+          gallery: item.gallery,
+          details: item.details
+        });
+      }
+    }
+
     function selectHomeHotspot(id, focusCamera = false) {
       const item = homeHotspots[id];
       if (!item) return;
+      activeHomeHotspotId = id;
       document.getElementById('homeCardTag').textContent = item.tag;
       document.getElementById('homeCardTitle').textContent = item.title;
       document.getElementById('homeCardSub').textContent = item.sub;
       document.getElementById('homeCardDesc').textContent = item.desc;
-      document.getElementById('homeCardBtn').href = item.url;
+
+      const imgEl = document.getElementById('homeCardImg');
+      if (imgEl && item.image) {
+        imgEl.src = item.image;
+        imgEl.alt = item.title;
+      }
+
+      const thumbsEl = document.getElementById('homeCardThumbs');
+      if (thumbsEl) {
+        if (Array.isArray(item.gallery) && item.gallery.length > 0) {
+          thumbsEl.innerHTML = item.gallery.map((gUrl, idx) => `
+            <img src="${gUrl}" alt="${item.title} - ${idx + 1}"
+              class="home-card-thumb-item ${idx === 0 ? 'active' : ''}"
+              onclick="switchHomeCardThumb('${gUrl}', this)"
+              title="切換預覽圖面 (${idx + 1}/${item.gallery.length})"
+            >
+          `).join('');
+        } else {
+          thumbsEl.innerHTML = '';
+        }
+      }
 
       document.querySelectorAll('.home-pin').forEach(p => p.classList.remove('active'));
       const pin = document.getElementById('home-pin-' + id);
@@ -1131,6 +1409,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      selectHomeHotspot('workstation', false);
       renderHomeStudio();
       initHomeStudioInteractions();
     });

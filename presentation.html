@@ -1246,45 +1246,69 @@
             <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
           </div>
 
-          <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space) -->
+          <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space with Project Thumbnails) -->
           <div class="pres-pin active" id="pres-pin-workstation" onclick="selectPresHotspot('workstation')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">01 • BIM Workstation</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/autodesk_revit_cert.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              01 • BIM-to-BEM &amp; Revit API
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-window" onclick="selectPresHotspot('window')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">02 • Microclimate Window</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/mooao_sun_wind_analysis.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              02 • MAOAO Forma Microclimate
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-shelf" onclick="selectPresHotspot('shelf')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">03 • Munich & Da'an Archive</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/munich_exchange_01.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              03 • Munich HM Exchange
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-chair" onclick="selectPresHotspot('chair')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">04 • Songshan Lounge</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/ttda_3d_fabrication.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              04 • TTDA 3D Fabrication
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-daybed" onclick="selectPresHotspot('daybed')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">05 • NSGA-II Comfort Zone</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/curved_hostel_exterior.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              05 • Zhongshan CURVED Hostel
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-wardrobe" onclick="selectPresHotspot('wardrobe')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">06 • Timber Tectonic Cabinet</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/voute_gallery_atrium.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              06 • Jingmei VOUTE Gallery
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-nightstand" onclick="selectPresHotspot('nightstand')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">07 • Biophilic Micro-Ecology</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/gulin_garden_axon.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              07 • Gulin Garden Center
+            </span>
           </div>
 
           <div class="pres-pin" id="pres-pin-elevation" onclick="selectPresHotspot('elevation')">
             <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label">08 • Digital Twin Board</span>
+            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+              <img src="assets/studio/tac_sharjah_boards.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
+              08 • TAC Sharjah Competition
+            </span>
           </div>
 
           <!-- Architectural Stamp -->
@@ -1294,13 +1318,16 @@
             SHEET 01 • NTUST STUDIO • 2026
           </div>
 
-          <!-- Live Updating Selected Project Card -->
-          <div class="pres-project-card" id="presProjectCard" style="width: 330px; bottom: 22px; right: 22px; padding: 18px 20px;">
-            <div class="pres-card-tag" id="presCardTag" style="font-size: 10px;">SELECTED PROJECT • 01</div>
-            <div class="pres-card-title" id="presCardTitle" style="font-size: 16px; margin-bottom: 4px;">BIM-to-BEM Interoperability</div>
-            <div class="pres-card-sub" id="presCardSub" style="font-size: 10.5px; margin-bottom: 8px;">GRADUATE RESEARCH LAB • NTUST</div>
-            <div class="pres-card-desc" id="presCardDesc" style="font-size: 12px; line-height: 1.5; margin-bottom: 12px;">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (&lt;5% error).</div>
-            <a href="./index.html?v=3" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding: 9px 14px; font-size: 11.5px;">OPEN FULL 3D STUDIO &rarr;</a>
+          <!-- Live Updating Selected Project Card with Authentic Project Image -->
+          <div class="pres-project-card" id="presProjectCard" style="width: 340px; bottom: 20px; right: 20px; padding: 14px 16px;">
+            <div style="width:100%; height:136px; border-radius:7px; overflow:hidden; margin-bottom:10px; border:1px solid rgba(255,255,255,0.15); background:#0f172a;">
+              <img id="presCardImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project Preview" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="pres-card-tag" id="presCardTag" style="font-size: 10px;">SELECTED PROJECT • 01 • COMPUTATIONAL</div>
+            <div class="pres-card-title" id="presCardTitle" style="font-size: 15.5px; margin-bottom: 4px;">BIM-to-BEM Interoperability &amp; EnergyPlus</div>
+            <div class="pres-card-sub" id="presCardSub" style="font-size: 10px; margin-bottom: 8px;">NTUST RESEARCH LAB • 2025 • MULTI-ZONE FACILITY</div>
+            <div class="pres-card-desc" id="presCardDesc" style="font-size: 11.5px; line-height: 1.5; margin-bottom: 12px;">Automated Revit API analytical space boundaries &amp; gbXML thermal validation pipeline (&lt;5% error, 15–25% energy savings).</div>
+            <a href="./index.html?v=6" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding: 9px 14px; font-size: 11.5px;">🔍 開啟首頁完整專案圖面 &rarr;</a>
           </div>
         </div>
       </div>
@@ -1454,82 +1481,82 @@
     // Interactive 3D Isometric Studio Lab Engine in the Dedicated Tab
     const presHotspots = {
       workstation: {
-        tag: 'SELECTED PROJECT • 01',
-        title: 'BIM-to-BEM Interoperability',
-        sub: 'GRADUATE RESEARCH LAB • NTUST',
-        desc: 'Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus (<5% error).',
+        tag: 'SELECTED PROJECT • 01 • COMPUTATIONAL',
+        title: 'BIM-to-BEM Interoperability & EnergyPlus',
+        sub: 'NTUST RESEARCH LAB • 2025 • MULTI-ZONE FACILITY',
+        desc: 'Automated Revit API analytical space boundaries & gbXML thermal validation pipeline (<5% error, 15–25% energy savings).',
         img: 'assets/studio/autodesk_revit_cert.jpg',
-        url: './index.html?v=5',
+        url: './index.html?v=6',
         pos3D: { x: 148, y: 74, z: 18 },
         targetZoom: 1.35
       },
       window: {
-        tag: 'SELECTED PROJECT • 02',
-        title: 'Autodesk Forma Microclimate',
-        sub: 'ENVIRONMENTAL SIMULATION • TAIPEI',
-        desc: 'Computational CFD wind comfort, solar radiation & daylight autonomy optimization for coastal & urban sites.',
+        tag: 'SELECTED PROJECT • 02 • MICROCLIMATE',
+        title: 'Mr. Chi MAOAO Restaurant & Coast Bar',
+        sub: 'MAOAO COAST • 2024 • 1,450 m² • FORMA UHI',
+        desc: 'Urban Heat Island (UHI) thesis integrating drone thermal imaging with Autodesk Forma solar radiation & coastal wind simulations.',
         img: 'assets/studio/mooao_sun_wind_analysis.jpg',
-        url: './index.html?v=5',
+        url: './index.html?v=6',
         pos3D: { x: 8, y: 112, z: 78 },
         targetZoom: 1.35
       },
       shelf: {
-        tag: 'ACADEMIC ARCHIVE • 03',
-        title: 'Munich HM Exchange & Credentials',
-        sub: 'MUNICH GERMANY • DA\'AN #1 • IELTS 6.0',
-        desc: 'European timber construction studio in Munich, Autodesk Revit ACU certification & 3 Professor recommendations.',
-        img: 'assets/studio/ielts_score_cert.jpg',
-        url: './docs.html',
+        tag: 'SELECTED PROJECT • 03 • MUNICH EXCHANGE',
+        title: 'Origami Gradient Color & Light (Munich HM)',
+        sub: 'HOCHSCHULE MÜNCHEN, GERMANY • 2025 • FABRICATION',
+        desc: 'Tectonic folding & timber daylight refraction studies developed during visiting exchange at Hochschule München.',
+        img: 'assets/studio/munich_exchange_01.jpg',
+        url: './index.html?v=6',
         pos3D: { x: 64, y: 88, z: 14 },
         targetZoom: 1.35
       },
       chair: {
-        tag: 'EXHIBITION & FABRICATION • 04',
-        title: 'Songshan Solo Exhibition & TTDA',
-        sub: 'DIGITAL FABRICATION • 3D PRINTING LAB',
-        desc: 'Spatial curation at Songshan Cultural Park & high-precision 3D-printed architectural tectonic prototypes.',
+        tag: 'SELECTED PROJECT • 04 • DIGITAL FABRICATION',
+        title: 'TTDA Digital Fabrication & 3D Prototyping',
+        sub: 'NTUST TTDA FABLAB & SONGSHAN PARK • 2024',
+        desc: 'Precision multi-material SLA/FDM 3D printing & laser-cut spatial joinery models; instructing 80+ peers as Core FabLab Manager.',
         img: 'assets/studio/ttda_3d_fabrication.jpg',
-        url: './index.html?v=5',
+        url: './index.html?v=6',
         pos3D: { x: 112, y: 26, z: 132 },
         targetZoom: 1.35
       },
       daybed: {
-        tag: 'GENETIC OPTIMIZATION • 05',
-        title: 'NSGA-II Multi-Objective Optimization',
-        sub: 'THERMAL COMFORT & DAYLIGHT • PYTHON',
-        desc: 'Pareto-front evolutionary algorithms balancing Spatial Daylight Autonomy (sDA) and Annual Cooling EUI.',
-        img: 'assets/studio/mooao_sun_wind_analysis.jpg',
-        url: './index.html?v=5',
+        tag: 'SELECTED PROJECT • 05 • ARCHITECTURAL DESIGN',
+        title: 'Zhongshan CURVED Youth Hostel',
+        sub: 'ZHONGSHAN DISTRICT, TAIPEI • 2023 • 2,100 m² (7F)',
+        desc: '7-story urban boutique youth hostel with wave-like cantilevered passive solar balconies and ground-floor community courtyard.',
+        img: 'assets/studio/curved_hostel_exterior.jpg',
+        url: './index.html?v=6',
         pos3D: { x: 46, y: 34, z: 76 },
         targetZoom: 1.35
       },
       wardrobe: {
-        tag: 'TECTONIC RESEARCH • 06',
-        title: 'Cross-Laminated Timber (CLT) Systems',
-        sub: 'HOCHSCHULE MÜNCHEN • GERMANY',
-        desc: 'Modular European mass-timber joinery, structural grid rationalization & carbon-negative envelope detailing.',
-        img: 'assets/studio/ielts_score_cert.jpg',
-        url: './index.html?v=5',
+        tag: 'SELECTED PROJECT • 06 • CULTURAL ATRIUM',
+        title: 'Jingmei VOUTE: Gallery & Bistro',
+        sub: 'JINGMEI, TAIPEI • 2022 • 980 m² (4F)',
+        desc: 'Adaptive cultural composite featuring a 3F/4F triple-height atrium gallery, design shop & rooftop sky bar beneath brick arches.',
+        img: 'assets/studio/voute_gallery_atrium.jpg',
+        url: './index.html?v=6',
         pos3D: { x: 105, y: 96, z: 18 },
         targetZoom: 1.35
       },
       nightstand: {
-        tag: 'SUSTAINABLE DESIGN • 07',
-        title: 'Urban Greening & Biophilic Envelopes',
-        sub: 'MICROCLIMATE MITIGATION • NTUST',
-        desc: 'Evapotranspirative facade vegetation modeling & outdoor thermal comfort (UTCI) regulation in high-density cities.',
-        img: 'assets/studio/mooao_sun_wind_analysis.jpg',
-        url: './index.html?v=5',
+        tag: 'SELECTED PROJECT • 07 • BIOPHILIC DESIGN',
+        title: 'Gulin Garden Parent-Child Center',
+        sub: 'GULING STREET, TAIPEI • 2023 • 1,250 m²',
+        desc: 'Dynamic organic morphology composed of interlinked cylindrical volumes, grey brickwork, wooden louvers & sensory courtyards.',
+        img: 'assets/studio/gulin_garden_axon.jpg',
+        url: './index.html?v=6',
         pos3D: { x: 22, y: 52, z: 135 },
         targetZoom: 1.35
       },
       elevation: {
-        tag: 'CREDENTIALS & DOCS • 08',
-        title: 'BIM Digital Twin & Official Dossier',
-        sub: 'REVIT ACU • 3 PROFESSOR LETTERS',
-        desc: 'Complete bilingual technical documentation, Revit API architecture blueprints & signed academic endorsements.',
-        img: 'assets/studio/autodesk_revit_cert.jpg',
-        url: './docs.html',
+        tag: 'SELECTED PROJECT • 08 • INTERNATIONAL COMPETITION',
+        title: 'TAC: Temporary Art Space in Sharjah',
+        sub: 'SHARJAH, UAE • 2025 • 1,800 m² • TENSILE CANOPY',
+        desc: 'International competition entry exploring tensile fabric canopies, Souk Al Bahar cultural corridors & modular public pods.',
+        img: 'assets/studio/tac_sharjah_boards.jpg',
+        url: './index.html?v=6',
         pos3D: { x: 152, y: 104, z: 6 },
         targetZoom: 1.35
       }
