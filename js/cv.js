@@ -100,10 +100,55 @@ function renderCV(data) {
           <!-- Selected Project Card in bottom right (from reference) -->
           <div class="studio-project-card" id="studioProjectCard">
             <div class="card-tag" id="cardTag">SELECTED PROJECT</div>
+            <div class="card-thumb-wrap" id="cardThumbWrap">
+              <img id="cardThumbImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project preview">
+            </div>
             <h3 class="card-title" id="cardTitle">BIM-to-BEM Interoperability</h3>
             <div class="card-subtitle" id="cardCategory">GRADUATE RESEARCH LAB • NTUST</div>
             <p class="card-desc" id="cardDesc">Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to &lt;5%.</p>
-            <a href="index.html" class="card-action-btn" id="cardLinkBtn">OPEN PROJECT &rarr;</a>
+            <div class="card-action-row">
+              <a href="index.html" class="card-action-btn" id="cardLinkBtn">OPEN PROJECT &rarr;</a>
+              <button class="card-zoom-btn" id="cardZoomBtn">🔍 檢視原圖</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Portfolio Photo Gallery Strip below the 3D room -->
+        <div class="studio-gallery-strip">
+          <div class="gallery-strip-title">Authentic Portfolio & Credentials Gallery • 實績成果與推薦函藝廊</div>
+          <div class="gallery-strip-items">
+            <div class="gallery-item" onclick="openStudioModal('Autodesk Revit ACU 國際認證', 'assets/studio/autodesk_revit_cert.jpg', 'Autodesk 原廠認證專業證照 (June 2023)')">
+              <img src="assets/studio/autodesk_revit_cert.jpg" alt="Revit Cert">
+              <span>Revit 原廠證照</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('IELTS 國際英語測驗成績單 (Overall 6.0)', 'assets/studio/ielts_score_cert.jpg', 'CEFR B2 專業工作水平，聽力 6.0、口說 6.0、寫作 6.0')">
+              <img src="assets/studio/ielts_score_cert.jpg" alt="IELTS Cert">
+              <span>雅思 6.0 證照</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('張國章建築師 推薦函 (台北國際聯合建築師事務所)', 'assets/studio/rec_letter_chang.jpg', '主持建築師極力推薦，高度肯定 Revit 作業能力與實習表現')">
+              <img src="assets/studio/rec_letter_chang.jpg" alt="Rec Chang">
+              <span>張國章建築師推薦函</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('蔡欣君副教授 推薦函 (國立臺灣科技大學建築系)', 'assets/studio/rec_letter_tsaih.jpg', '指導教授極力推薦，肯定學習態度積極自主與研究潛力')">
+              <img src="assets/studio/rec_letter_tsaih.jpg" alt="Rec Tsaih">
+              <span>蔡欣君教授推薦函</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('蔡孟廷教授 推薦函 (國立臺灣科技大學建築系)', 'assets/studio/rec_letter_tsai_mt.jpg', '畢業設計指導教授極力推薦，肯定海外交換與國際競圖表現')">
+              <img src="assets/studio/rec_letter_tsai_mt.jpg" alt="Rec Tsai">
+              <span>蔡孟廷教授推薦函</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('阿吉師 MAOAO 餐廳 微氣候風場與日照分析', 'assets/studio/mooao_sun_wind_analysis.jpg', 'Autodesk Forma 早期微氣候分析圖板')">
+              <img src="assets/studio/mooao_sun_wind_analysis.jpg" alt="Maoao Analysis">
+              <span>Forma 微氣候圖板</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('TTDA 數位構築與 3D 列印精密實體模型', 'assets/studio/ttda_3d_fabrication.jpg', '3D 列印與雷切管理員實作成果')">
+              <img src="assets/studio/ttda_3d_fabrication.jpg" alt="TTDA Fab">
+              <span>TTDA 3D 列印構件</span>
+            </div>
+            <div class="gallery-item" onclick="openStudioModal('中山 CURVED 青年旅舍 7層波浪形外觀渲染', 'assets/studio/curved_hostel_exterior.jpg', '波浪立面遮陽與透通社區空間設計')">
+              <img src="assets/studio/curved_hostel_exterior.jpg" alt="Curved Hostel">
+              <span>中山青年旅舍</span>
+            </div>
           </div>
         </div>
       </div>
@@ -518,12 +563,25 @@ function initIsometricStudioRoom(studioData) {
     const cardCategory = document.getElementById('cardCategory');
     const cardDesc = document.getElementById('cardDesc');
     const cardLinkBtn = document.getElementById('cardLinkBtn');
+    const cardThumbImg = document.getElementById('cardThumbImg');
+    const cardZoomBtn = document.getElementById('cardZoomBtn');
 
     if (cardTag) cardTag.textContent = hotspot.tag.toUpperCase();
     if (cardTitle) cardTitle.textContent = hotspot.projectTitle;
     if (cardCategory) cardCategory.textContent = `${hotspot.category.toUpperCase()} • NTUST`;
     if (cardDesc) cardDesc.textContent = `${hotspot.summaryZh} (${hotspot.summary})`;
     if (cardLinkBtn) cardLinkBtn.href = hotspot.targetUrl;
+
+    if (cardThumbImg && hotspot.image) {
+      cardThumbImg.src = hotspot.image;
+      cardThumbImg.alt = hotspot.projectTitle;
+    }
+
+    if (cardZoomBtn) {
+      cardZoomBtn.onclick = () => {
+        openStudioModal(hotspot.projectTitle, hotspot.image || hotspot.previewImage, `${hotspot.category} • ${hotspot.summaryZh}`);
+      };
+    }
 
     // Highlight card animation
     if (card) {
@@ -581,5 +639,53 @@ function initIsometricStudioRoom(studioData) {
   renderRoom();
   selectHotspot('workstation');
 }
+
+/**
+ * Fullscreen Modal Viewer for Studio Real Photos & Credentials
+ */
+function openStudioModal(title, imgSrc, desc) {
+  let modal = document.getElementById('studioPhotoModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'studioPhotoModal';
+    modal.className = 'studio-modal-overlay';
+    modal.innerHTML = `
+      <div class="studio-modal-box">
+        <button class="studio-modal-close" onclick="closeStudioModal()">&times;</button>
+        <div class="studio-modal-img-wrap">
+          <img id="studioModalImg" src="" alt="Photo preview">
+        </div>
+        <div class="studio-modal-meta">
+          <h3 id="studioModalTitle"></h3>
+          <p id="studioModalDesc"></p>
+        </div>
+      </div>
+    `;
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeStudioModal();
+    });
+    document.body.appendChild(modal);
+  }
+
+  const mImg = document.getElementById('studioModalImg');
+  const mTitle = document.getElementById('studioModalTitle');
+  const mDesc = document.getElementById('studioModalDesc');
+
+  mImg.src = imgSrc;
+  mTitle.textContent = title;
+  mDesc.textContent = desc || '';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStudioModal() {
+  const modal = document.getElementById('studioPhotoModal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeStudioModal();
+});
 
 document.addEventListener('DOMContentLoaded', initCV);

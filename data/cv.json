@@ -24,8 +24,10 @@
         "tag": "Selected Project",
         "projectTitle": "BIM-to-BEM Interoperability",
         "category": "Graduate Research Lab",
+        "image": "assets/studio/autodesk_revit_cert.jpg",
+        "previewImage": "assets/studio/mooao_forma_boards.jpg",
         "summary": "Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to <5%.",
-        "summaryZh": "Revit API 空間熱區自動擷取腳本與 EnergyPlus 校準流程，降低拓撲錯誤至 5% 以下並取得 15%~25% 能耗節約。",
+        "summaryZh": "Revit API 空間熱區自動擷取腳本與 EnergyPlus 校準流程，降低拓撲錯誤至 5% 以下並取得 15%~25% 能耗節約。持有 Autodesk 原廠國際認證。",
         "targetUrl": "index.html"
       },
       {
@@ -35,8 +37,10 @@
         "tag": "Environmental Study",
         "projectTitle": "Autodesk Forma & Daylighting",
         "category": "Microclimate & Wind Comfort",
+        "image": "assets/studio/mooao_sun_wind_analysis.jpg",
+        "previewImage": "assets/studio/mooao_restaurant_sun.jpg",
         "summary": "Simulating daylighting (sDA/ASE) and urban wind ventilation patterns in early schematic phases to slash HVAC cooling loads by 12%.",
-        "summaryZh": "建築初期微氣候風場與太陽日照模擬，平衡採光與能耗指標並降低尖峰空調負載 12%。",
+        "summaryZh": "阿吉師 Maoao 實務專題：以 Autodesk Forma 深入模擬海邊微氣候風場與太陽日照時數（Sun Hours），實測岩石與陰涼處達 5°C 以上溫差。",
         "targetUrl": "index.html"
       },
       {
@@ -46,8 +50,10 @@
         "tag": "Academic Milestone",
         "projectTitle": "HM Munich & Da'an Excellence",
         "category": "Academic Honors",
+        "image": "assets/studio/rec_letter_chang.jpg",
+        "previewImage": "assets/studio/ielts_score_cert.jpg",
         "summary": "European low-carbon timber tectonics research at Hochschule München (HM) & Taipei City Mayor's Award (#1 rank across 5 semesters).",
-        "summaryZh": "德國慕尼黑應用科技大學低碳木構研習文獻，與大安高工五學期第一名臺北市市長獎獎座。",
+        "summaryZh": "德國慕尼黑應用科技大學低碳木構研習文獻，雅思 6.0 官方成績單，與張國章建築師、蔡欣君副教授、蔡孟廷教授極力推薦函肯定。",
         "targetUrl": "#academic"
       },
       {
@@ -57,8 +63,10 @@
         "tag": "Fabrication Milestone",
         "projectTitle": "Songshan Solo Exhibition (松菸)",
         "category": "Solo Curation & Parametric Joinery",
+        "image": "assets/studio/ttda_3d_fabrication.jpg",
+        "previewImage": "assets/studio/curved_hostel_exterior.jpg",
         "summary": "Independently curated solo graduation architectural exhibition featuring CNC-milled spatial assemblies and 3D printed tessellations (500+ attendees).",
-        "summaryZh": "於松山文創園區獨立策劃之畢業個展，展出參數化數位構築模型、CNC 銑削構件與 3D 列印空間裝置。",
+        "summaryZh": "於松山文創園區獨立策劃之畢業個展，展出中山 CURVED 青年旅舍模型、TTDA 3D 列印精密實體構件與多材質空間裝置。",
         "targetUrl": "index.html"
       },
       {
