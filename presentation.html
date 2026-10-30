@@ -511,21 +511,20 @@
       cursor: grabbing;
     }
 
-    /* Interactive Navigation HUD */
+    /* Interactive Navigation HUD — Docked Flush & Aligned with Top Bar */
     .studio-nav-hud {
-      position: absolute;
-      top: 16px;
-      left: 16px;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
       z-index: 20;
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 6px;
-      background: rgba(15, 23, 42, 0.88);
+      background: rgba(15, 23, 42, 0.96);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
-      padding: 6px 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 24px;
     }
 
     .hud-btn {
@@ -568,9 +567,10 @@
 
     .hud-hint {
       font-family: var(--font-mono);
-      font-size: 10px;
-      color: #94a3b8;
-      margin-left: 6px;
+      font-size: 11px;
+      color: #cbd5e1;
+      margin-left: auto;
+      white-space: nowrap;
       letter-spacing: 0.3px;
     }
 
@@ -1275,25 +1275,26 @@
           </div>
         </div>
 
+        <!-- Interactive Zoom / Pan / Rotate HUD Toolbar (Aligned Flush with Top Bar) -->
+        <div class="studio-nav-hud" onmousedown="event.stopPropagation()" onwheel="event.stopPropagation()">
+          <button class="hud-btn" onclick="presZoom(0.2)" title="放大 (Zoom In)">➕</button>
+          <span class="hud-zoom-label" id="presZoomReadout">100%</span>
+          <button class="hud-btn" onclick="presZoom(-0.2)" title="縮小 (Zoom Out)">➖</button>
+          <div class="hud-divider"></div>
+          <button class="hud-btn" onclick="presPan(60, 0)" title="向左移動 (Pan Left)">⬅️</button>
+          <button class="hud-btn" onclick="presPan(0, 45)" title="向上移動 (Pan Up)">⬆️</button>
+          <button class="hud-btn" onclick="presPan(0, -45)" title="向下移動 (Pan Down)">⬇️</button>
+          <button class="hud-btn" onclick="presPan(-60, 0)" title="向右移動 (Pan Right)">➡️</button>
+          <div class="hud-divider"></div>
+          <button class="hud-btn" onclick="presRotate(-Math.PI / 6)" title="向左旋轉視角 (Rotate Left)">↺</button>
+          <button class="hud-btn" onclick="presSwitchFace()" title="旋轉換面 90° (Switch 3D Room Face)" style="width:auto; padding:0 8px; font-size:11px; gap:4px; border-color:rgba(56,189,248,0.45); color:#38bdf8;">🔄 換面 <span id="presAngleReadout">0°</span></button>
+          <button class="hud-btn" onclick="presRotate(Math.PI / 6)" title="向右旋轉視角 (Rotate Right)">↻</button>
+          <div class="hud-divider"></div>
+          <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
+        </div>
+
         <div class="pres-studio-viewport" id="presStudioViewport" style="height: 600px;">
           <canvas id="presStudioCanvas" width="1280" height="600"></canvas>
-
-          <!-- Interactive Zoom / Pan / Rotate HUD Toolbar -->
-          <div class="studio-nav-hud" onmousedown="event.stopPropagation()" onwheel="event.stopPropagation()">
-            <button class="hud-btn" onclick="presZoom(0.2)" title="放大 (Zoom In)">➕</button>
-            <span class="hud-zoom-label" id="presZoomReadout">100%</span>
-            <button class="hud-btn" onclick="presZoom(-0.2)" title="縮小 (Zoom Out)">➖</button>
-            <div class="hud-divider"></div>
-            <button class="hud-btn" onclick="presPan(60, 0)" title="向左移動 (Pan Left)">⬅️</button>
-            <button class="hud-btn" onclick="presPan(0, 45)" title="向上移動 (Pan Up)">⬆️</button>
-            <button class="hud-btn" onclick="presPan(0, -45)" title="向下移動 (Pan Down)">⬇️</button>
-            <button class="hud-btn" onclick="presPan(-60, 0)" title="向右移動 (Pan Right)">➡️</button>
-            <div class="hud-divider"></div>
-            <button class="hud-btn" onclick="presRotate(-Math.PI / 6)" title="向左旋轉視角 (Rotate Left)">↺</button>
-            <button class="hud-btn" onclick="presSwitchFace()" title="旋轉換面 90° (Switch 3D Room Face)" style="width:auto; padding:0 8px; font-size:11px; gap:4px; border-color:rgba(56,189,248,0.45); color:#38bdf8;">🔄 換面 <span id="presAngleReadout">0°</span></button>
-            <button class="hud-btn" onclick="presRotate(Math.PI / 6)" title="向右旋轉視角 (Rotate Right)">↻</button>
-            <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
-          </div>
 
           <!-- Interactive Hotspot Pins (8 Pins Placed on Bespoke Objects Across the 8 Room Corners, Collapsed by Default) -->
           <div class="pres-pin" id="pres-pin-workstation" onclick="togglePresHotspot('workstation', event)" title="點擊展開 / 收合：01 • 台北聯合建築師事務所 & Revit BIM">
