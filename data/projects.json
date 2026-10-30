@@ -82,10 +82,13 @@
       "location": "Maoao Coast, New Taipei City",
       "area": "1,450 m²",
       "summary": "Practical thesis investigation on Urban Heat Island (UHI) mitigation along the coastal landscape (Advisor: Dr. Lucky S.J. Tsaih). Integrating thermal imaging observation before and after direct sunrise with Autodesk Forma early-stage solar radiation, wind corridor, and microclimate comfort simulations.",
-      "image": "./assets/studio/mooao_sun_wind_analysis.jpg",
+      "image": "./assets/studio/mooao_spread_p22.jpg?v=17",
       "gallery": [
-        "./assets/studio/mooao_sun_wind_analysis.jpg",
-        "./assets/studio/mooao_forma_boards.jpg"
+        "./assets/studio/mooao_spread_p22.jpg?v=17",
+        "./assets/studio/mooao_restaurant_sun.jpg?v=17",
+        "./assets/studio/mooao_discussion_p23.jpg?v=17",
+        "./assets/studio/mooao_sun_wind_analysis.jpg?v=17",
+        "./assets/studio/mooao_forma_boards.jpg?v=17"
       ],
       "details": {
         "concept": "Analyzing thermal radiation stark contrast between exposed coastal rock surfaces (34.1°C) and shaded vegetative/water zones (<28.9°C). Autodesk Forma Sun Hours (6/21 vs 12/21) and Wind Analysis guided the high-albedo white landform roof curvature to shelter visitors while channeling natural south-north sea breezes.",
@@ -201,13 +204,13 @@
           "location": "Jingmei, Taipei",
           "area": "980 m² (1F–5F & RFL)",
           "summary": "Vertical cultural composite integrating 1FL Cultural & Creative Shop, 2FL Art Gallery, 3FL–4FL Double/Triple-Height Vaulted Red-Brick Atrium with suspended spherical woven installations, 5FL Bistro, and RFL Rooftop Sky Bar.",
-          "image": "./assets/studio/voute_atrium_spheres.jpg",
+          "image": "./assets/studio/voute_atrium_spheres.jpg?v=17",
           "gallery": [
-            "./assets/studio/voute_atrium_spheres.jpg",
-            "./assets/studio/voute_gallery_atrium.jpg",
-            "./assets/studio/voute_axon_p09.jpg",
-            "./assets/studio/voute_section.jpg",
-            "./assets/studio/voute_bistro_p11.jpg"
+            "./assets/studio/voute_atrium_spheres.jpg?v=17",
+            "./assets/studio/voute_gallery_atrium.jpg?v=17",
+            "./assets/studio/voute_axon_p09.jpg?v=17",
+            "./assets/studio/voute_section.jpg?v=17",
+            "./assets/studio/voute_bistro_p11.jpg?v=17"
           ],
           "details": {
             "concept": "Stacking public-to-intimate cultural programs vertically while carving a dramatic multi-story red-brick arched atrium hung with floating spherical woven luminaires that draw daylight deep into the 2FL–4FL gallery levels.",
