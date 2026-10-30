@@ -584,47 +584,87 @@
       position: absolute;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0;
       cursor: pointer;
       z-index: 15;
-      transform: translate(-50%, -50%);
-      transition: transform 0.2s ease;
+      transform: translate(-11px, -11px);
+      transition: transform 0.2s ease, z-index 0s;
     }
 
     .pres-pin:hover {
-      transform: translate(-50%, -50%) scale(1.08);
+      z-index: 22;
+    }
+
+    .pres-pin.active {
+      z-index: 26;
     }
 
     .pres-pin-dot {
-      width: 11px;
-      height: 11px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: #f97316;
+      background: rgba(249, 115, 22, 0.92);
       border: 2px solid #fff;
-      box-shadow: 0 0 10px rgba(249,115,22,0.9);
+      box-shadow: 0 0 12px rgba(249,115,22,0.95);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .pres-pin:hover .pres-pin-dot {
+      transform: scale(1.14);
+      background: #ea580c;
     }
 
     .pres-pin.active .pres-pin-dot {
       background: #38bdf8;
-      box-shadow: 0 0 14px #38bdf8;
-      transform: scale(1.25);
+      box-shadow: 0 0 16px #38bdf8;
+      transform: scale(1.15);
     }
 
     .pres-pin-label {
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(255,255,255,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 0px solid rgba(255,255,255,0);
       color: #f8fafc;
       font-size: 11px;
       font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 12px;
+      padding: 0;
+      margin-left: 0;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      border-radius: 16px;
       white-space: nowrap;
       backdrop-filter: blur(4px);
+      pointer-events: none;
+      transform: translateX(-6px) scale(0.92);
+      transition: max-width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.22s ease,
+                  padding 0.25s ease,
+                  margin-left 0.25s ease,
+                  transform 0.25s ease;
     }
 
     .pres-pin.active .pres-pin-label {
-      border-color: #f97316;
+      max-width: 280px;
+      opacity: 1;
+      padding: 4px 10px 4px 5px;
+      margin-left: 7px;
+      border: 1px solid #f97316;
       color: #fb923c;
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), 0 0 16px rgba(249, 115, 22, 0.35);
+      pointer-events: auto;
+      transform: translateX(0) scale(1);
     }
 
     .pres-sheet-stamp {
@@ -655,6 +695,13 @@
       padding: 12px 14px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.55);
       z-index: 15;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .pres-project-card.collapsed {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(14px) scale(0.96);
     }
 
     .pres-card-tag {
@@ -1246,66 +1293,66 @@
             <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
           </div>
 
-          <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space with Project Thumbnails) -->
-          <div class="pres-pin active" id="pres-pin-workstation" onclick="selectPresHotspot('workstation')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <!-- Interactive Hotspot Pins (8 Pins Collapsed by Default, Expand on Click) -->
+          <div class="pres-pin" id="pres-pin-workstation" onclick="togglePresHotspot('workstation', event)" title="點擊展開 / 收合：01 • BIM-to-BEM & Revit API">
+            <span class="pres-pin-dot">01</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/autodesk_revit_cert.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               01 • BIM-to-BEM &amp; Revit API
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-window" onclick="selectPresHotspot('window')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-window" onclick="togglePresHotspot('window', event)" title="點擊展開 / 收合：02 • MAOAO Forma Microclimate">
+            <span class="pres-pin-dot">02</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/mooao_sun_wind_analysis.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               02 • MAOAO Forma Microclimate
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-shelf" onclick="selectPresHotspot('shelf')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-shelf" onclick="togglePresHotspot('shelf', event)" title="點擊展開 / 收合：03 • Munich HM Exchange">
+            <span class="pres-pin-dot">03</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/munich_exchange_01.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               03 • Munich HM Exchange
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-chair" onclick="selectPresHotspot('chair')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-chair" onclick="togglePresHotspot('chair', event)" title="點擊展開 / 收合：04 • TTDA 3D Fabrication">
+            <span class="pres-pin-dot">04</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/ttda_3d_fabrication.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               04 • TTDA 3D Fabrication
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-daybed" onclick="selectPresHotspot('daybed')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-daybed" onclick="togglePresHotspot('daybed', event)" title="點擊展開 / 收合：05 • Zhongshan CURVED Hostel">
+            <span class="pres-pin-dot">05</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/curved_hostel_exterior.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               05 • Zhongshan CURVED Hostel
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-wardrobe" onclick="selectPresHotspot('wardrobe')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-wardrobe" onclick="togglePresHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • Jingmei VOUTE Gallery">
+            <span class="pres-pin-dot">06</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/voute_gallery_atrium.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               06 • Jingmei VOUTE Gallery
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-nightstand" onclick="selectPresHotspot('nightstand')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-nightstand" onclick="togglePresHotspot('nightstand', event)" title="點擊展開 / 收合：07 • Gulin Garden Center">
+            <span class="pres-pin-dot">07</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/gulin_garden_axon.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               07 • Gulin Garden Center
             </span>
           </div>
 
-          <div class="pres-pin" id="pres-pin-elevation" onclick="selectPresHotspot('elevation')">
-            <span class="pres-pin-dot"></span>
-            <span class="pres-pin-label" style="display:inline-flex; align-items:center; gap:6px;">
+          <div class="pres-pin" id="pres-pin-elevation" onclick="togglePresHotspot('elevation', event)" title="點擊展開 / 收合：08 • TAC Sharjah Competition">
+            <span class="pres-pin-dot">08</span>
+            <span class="pres-pin-label">
               <img src="assets/studio/tac_sharjah_boards.jpg" alt="" style="width:18px; height:18px; border-radius:50%; object-fit:cover; border:1px solid #fff;">
               08 • TAC Sharjah Competition
             </span>
@@ -1319,7 +1366,8 @@
           </div>
 
           <!-- Live Updating Selected Project Card with Authentic Project Image -->
-          <div class="pres-project-card" id="presProjectCard" style="width: 340px; bottom: 20px; right: 20px; padding: 14px 16px;">
+          <div class="pres-project-card collapsed" id="presProjectCard" style="width: 340px; bottom: 20px; right: 20px; padding: 14px 16px;">
+            <button type="button" onclick="collapsePresHotspots()" title="收合標籤與專案卡片" style="position:absolute; top:10px; right:10px; width:24px; height:24px; border-radius:50%; border:1px solid rgba(255,255,255,0.25); background:rgba(15,23,42,0.85); color:#fff; cursor:pointer; z-index:5;">&times;</button>
             <div style="width:100%; height:136px; border-radius:7px; overflow:hidden; margin-bottom:10px; border:1px solid rgba(255,255,255,0.15); background:#0f172a;">
               <img id="presCardImg" src="assets/studio/autodesk_revit_cert.jpg" alt="Project Preview" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
@@ -1327,7 +1375,7 @@
             <div class="pres-card-title" id="presCardTitle" style="font-size: 15.5px; margin-bottom: 4px;">BIM-to-BEM Interoperability &amp; EnergyPlus</div>
             <div class="pres-card-sub" id="presCardSub" style="font-size: 10px; margin-bottom: 8px;">NTUST RESEARCH LAB • 2025 • MULTI-ZONE FACILITY</div>
             <div class="pres-card-desc" id="presCardDesc" style="font-size: 11.5px; line-height: 1.5; margin-bottom: 12px;">Automated Revit API analytical space boundaries &amp; gbXML thermal validation pipeline (&lt;5% error, 15–25% energy savings).</div>
-            <a href="./index.html?v=6" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding: 9px 14px; font-size: 11.5px;">🔍 開啟首頁完整專案圖面 &rarr;</a>
+            <a href="./index.html?v=7" target="_blank" class="pres-card-btn" id="presCardBtn" style="padding: 9px 14px; font-size: 11.5px;">🔍 開啟首頁完整專案圖面 &rarr;</a>
           </div>
         </div>
       </div>
@@ -1917,6 +1965,23 @@
       });
     }
 
+    function collapsePresHotspots() {
+      presActiveId = null;
+      document.querySelectorAll('.pres-pin').forEach(p => p.classList.remove('active'));
+      const cardEl = document.getElementById('presProjectCard');
+      if (cardEl) cardEl.classList.add('collapsed');
+    }
+
+    function togglePresHotspot(id, e) {
+      const pin = document.getElementById('pres-pin-' + id);
+      const isAlreadyActive = pin && pin.classList.contains('active');
+      if (isAlreadyActive) {
+        collapsePresHotspots();
+        return;
+      }
+      selectPresHotspot(id, true);
+    }
+
     function selectPresHotspot(id, autoFocus = true) {
       presActiveId = id;
       const item = presHotspots[id];
@@ -1932,6 +1997,9 @@
       document.querySelectorAll('.pres-pin').forEach(p => p.classList.remove('active'));
       const pin = document.getElementById('pres-pin-' + id);
       if (pin) pin.classList.add('active');
+
+      const cardEl = document.getElementById('presProjectCard');
+      if (cardEl) cardEl.classList.remove('collapsed');
 
       document.querySelectorAll('.pres-idx-item').forEach(el => {
         el.style.background = 'rgba(255,255,255,0.03)';
@@ -1974,11 +2042,12 @@
     function resetPresStudio() {
       presLightOn = true;
       document.getElementById('presLightsStatus').textContent = 'ON';
-      selectPresHotspot('workstation', false);
+      collapsePresHotspots();
       animatePresCameraTo(0, 0, 1.0, 0, Math.PI / 6);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      collapsePresHotspots();
       renderPresStudio();
 
       const viewport = document.getElementById('presStudioViewport');
@@ -1989,6 +2058,7 @@
       let dragStartX = 0, dragStartY = 0;
       let startPanX = 0, startPanY = 0;
       let startYaw = 0, startPitch = Math.PI / 6;
+      let movedDuringDrag = false;
 
       viewport.addEventListener('auxclick', (e) => {
         if (e.button === 1) e.preventDefault();
@@ -1999,6 +2069,7 @@
 
       viewport.addEventListener('mousedown', (e) => {
         if (e.target.closest('.pres-pin') || e.target.closest('.pres-project-card') || e.target.closest('.studio-nav-hud')) return;
+        movedDuringDrag = false;
         if (e.button === 1 || e.button === 2 || (e.button === 0 && e.shiftKey)) {
           e.preventDefault();
           dragMode = 'orbit';
@@ -2021,6 +2092,7 @@
 
       window.addEventListener('mousemove', (e) => {
         if (!dragMode) return;
+        if (Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) > 4) movedDuringDrag = true;
         if (dragMode === 'orbit') {
           const dx = e.clientX - dragStartX;
           const dy = e.clientY - dragStartY;
@@ -2038,8 +2110,11 @@
         }
       });
 
-      window.addEventListener('mouseup', () => {
+      window.addEventListener('mouseup', (e) => {
         if (dragMode) {
+          if (dragMode === 'pan' && !movedDuringDrag && !e.target.closest('.pres-pin') && !e.target.closest('.pres-project-card') && !e.target.closest('.studio-nav-hud')) {
+            collapsePresHotspots();
+          }
           dragMode = null;
           viewport.classList.remove('dragging');
           viewport.style.cursor = '';

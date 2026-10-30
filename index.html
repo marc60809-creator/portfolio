@@ -183,46 +183,75 @@
       position: absolute;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0;
       cursor: pointer;
       z-index: 15;
-      transform: translate(-50%, -50%);
-      transition: transform 0.2s ease;
+      transform: translate(-12px, -12px);
+      transition: transform 0.2s ease, z-index 0s;
     }
 
     .home-pin:hover {
-      transform: translate(-50%, -50%) scale(1.06);
+      z-index: 22;
+    }
+
+    .home-pin.active {
+      z-index: 26;
     }
 
     .home-pin-dot {
-      width: 13px;
-      height: 13px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: #f97316;
-      border: 2.5px solid #ffffff;
-      box-shadow: 0 0 12px rgba(249,115,22,0.9);
+      background: rgba(249, 115, 22, 0.92);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 14px rgba(249,115,22,0.95);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 800;
+      color: #ffffff;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .home-pin:hover .home-pin-dot {
+      transform: scale(1.14);
+      background: #ea580c;
     }
 
     .home-pin.active .home-pin-dot {
       background: #38bdf8;
-      box-shadow: 0 0 16px #38bdf8;
-      transform: scale(1.2);
+      box-shadow: 0 0 18px #38bdf8;
+      transform: scale(1.15);
     }
 
+    /* Collapsed by default when not clicked */
     .home-pin-label {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(15, 23, 42, 0.90);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(15, 23, 42, 0.94);
+      border: 0px solid rgba(255,255,255,0);
       color: #f8fafc;
       font-size: 12px;
       font-weight: 600;
-      padding: 4px 11px 4px 5px;
+      padding: 0;
+      margin-left: 0;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
       border-radius: 18px;
       white-space: nowrap;
       backdrop-filter: blur(6px);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      pointer-events: none;
+      transform: translateX(-6px) scale(0.92);
+      transition: max-width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.22s ease,
+                  padding 0.25s ease,
+                  margin-left 0.25s ease,
+                  transform 0.25s ease;
     }
 
     .home-pin-thumb {
@@ -234,11 +263,18 @@
       flex-shrink: 0;
     }
 
+    /* Expanded only when clicked (.active) */
     .home-pin.active .home-pin-label {
-      border-color: #f97316;
+      max-width: 300px;
+      opacity: 1;
+      padding: 4px 12px 4px 5px;
+      margin-left: 8px;
+      border: 1px solid #f97316;
       color: #fb923c;
       background: rgba(15, 23, 42, 0.96);
-      box-shadow: 0 0 18px rgba(249, 115, 22, 0.35);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55), 0 0 18px rgba(249, 115, 22, 0.35);
+      pointer-events: auto;
+      transform: translateX(0) scale(1);
     }
 
     .home-pin.active .home-pin-thumb {
@@ -273,6 +309,38 @@
       padding: 14px 16px 16px;
       box-shadow: 0 18px 42px rgba(0,0,0,0.65);
       z-index: 16;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .home-project-card.collapsed {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(14px) scale(0.96);
+    }
+
+    .home-card-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(15, 23, 42, 0.85);
+      color: #f8fafc;
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .home-card-close:hover {
+      background: #f97316;
+      border-color: #f97316;
     }
 
     .home-card-media {
@@ -461,65 +529,65 @@
           <span class="hud-hint">🖱️ 按住滑鼠中鍵(滾輪) 360° 旋轉換面 • 左鍵拖曳平移 • 滾輪縮放</span>
         </div>
 
-        <!-- Interactive Hotspot Pins (8 Pins Dynamically Anchored in 3D Space with Project Thumbnails) -->
-        <div class="home-pin active" id="home-pin-workstation" onclick="selectHomeHotspot('workstation', true)">
-          <span class="home-pin-dot"></span>
+        <!-- Interactive Hotspot Pins (8 Pins Collapsed by Default, Expand on Click) -->
+        <div class="home-pin" id="home-pin-workstation" onclick="toggleHomeHotspot('workstation', event)" title="點擊展開 / 收合：01 • BIM-to-BEM & Revit API">
+          <span class="home-pin-dot">01</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/autodesk_revit_cert.jpg" alt="BIM-to-BEM">
             01 • BIM-to-BEM &amp; Revit API
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-window" onclick="selectHomeHotspot('window', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-window" onclick="toggleHomeHotspot('window', event)" title="點擊展開 / 收合：02 • MAOAO Forma Microclimate">
+          <span class="home-pin-dot">02</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/mooao_sun_wind_analysis.jpg" alt="MAOAO Forma">
             02 • MAOAO Forma Microclimate
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-shelf" onclick="selectHomeHotspot('shelf', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-shelf" onclick="toggleHomeHotspot('shelf', event)" title="點擊展開 / 收合：03 • Munich HM Exchange">
+          <span class="home-pin-dot">03</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/munich_exchange_01.jpg" alt="Munich HM">
             03 • Munich HM Exchange
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-chair" onclick="selectHomeHotspot('chair', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-chair" onclick="toggleHomeHotspot('chair', event)" title="點擊展開 / 收合：04 • TTDA 3D Fabrication">
+          <span class="home-pin-dot">04</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/ttda_3d_fabrication.jpg" alt="TTDA FabLab">
             04 • TTDA 3D Fabrication
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-daybed" onclick="selectHomeHotspot('daybed', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-daybed" onclick="toggleHomeHotspot('daybed', event)" title="點擊展開 / 收合：05 • Zhongshan CURVED Hostel">
+          <span class="home-pin-dot">05</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/curved_hostel_exterior.jpg" alt="CURVED Hostel">
             05 • Zhongshan CURVED Hostel
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-wardrobe" onclick="selectHomeHotspot('wardrobe', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-wardrobe" onclick="toggleHomeHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • Jingmei VOUTE Gallery">
+          <span class="home-pin-dot">06</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/voute_gallery_atrium.jpg" alt="Jingmei VOUTE">
             06 • Jingmei VOUTE Gallery
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-nightstand" onclick="selectHomeHotspot('nightstand', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-nightstand" onclick="toggleHomeHotspot('nightstand', event)" title="點擊展開 / 收合：07 • Gulin Garden Center">
+          <span class="home-pin-dot">07</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/gulin_garden_axon.jpg" alt="Gulin Garden">
             07 • Gulin Garden Center
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-elevation" onclick="selectHomeHotspot('elevation', true)">
-          <span class="home-pin-dot"></span>
+        <div class="home-pin" id="home-pin-elevation" onclick="toggleHomeHotspot('elevation', event)" title="點擊展開 / 收合：08 • TAC Sharjah Competition">
+          <span class="home-pin-dot">08</span>
           <span class="home-pin-label">
             <img class="home-pin-thumb" src="./assets/studio/tac_sharjah_boards.jpg" alt="TAC Sharjah">
             08 • TAC Sharjah Competition
@@ -534,10 +602,11 @@
         </div>
 
         <!-- Live Updating Selected Project Card with Authentic Project Imagery & Gallery -->
-        <div class="home-project-card" id="homeProjectCard">
+        <div class="home-project-card collapsed" id="homeProjectCard">
+          <button type="button" class="home-card-close" onclick="collapseHomeHotspots()" title="收合標籤與專案卡片">&times;</button>
           <div class="home-card-media" onclick="openActiveHotspotModal()" title="點擊開啟高解析專案圖面與完整資料">
             <img id="homeCardImg" src="./assets/studio/autodesk_revit_cert.jpg" alt="Project Drawing Preview">
-            <span class="home-card-media-badge" id="homeCardBadge">🔍 點擊放大檢視圖面</span>
+            <span class="home-card-media-badge" id="homeCardBadge" style="right:36px;">🔍 點擊放大檢視圖面</span>
           </div>
           <div class="home-card-thumbs" id="homeCardThumbs"></div>
           <div class="home-card-tag" id="homeCardTag">SELECTED PROJECT • 01</div>
@@ -1216,6 +1285,33 @@
       }
     }
 
+    function collapseHomeHotspots() {
+      activeHomeHotspotId = null;
+      document.querySelectorAll('.home-pin').forEach(p => p.classList.remove('active'));
+      const cardEl = document.getElementById('homeProjectCard');
+      if (cardEl) cardEl.classList.add('collapsed');
+    }
+
+    function toggleHomeHotspot(id, e) {
+      const pin = document.getElementById('home-pin-' + id);
+      const isAlreadyActive = pin && pin.classList.contains('active');
+
+      // If clicking on the expanded label pill while already active -> open full Project Modal!
+      if (isAlreadyActive && e && e.target.closest('.home-pin-label')) {
+        openActiveHotspotModal();
+        return;
+      }
+
+      // If clicking the numbered dot of an already-active pin -> collapse it!
+      if (isAlreadyActive) {
+        collapseHomeHotspots();
+        return;
+      }
+
+      // Otherwise expand this hotspot and focus camera
+      selectHomeHotspot(id, true);
+    }
+
     function selectHomeHotspot(id, focusCamera = false) {
       const item = homeHotspots[id];
       if (!item) return;
@@ -1250,6 +1346,9 @@
       const pin = document.getElementById('home-pin-' + id);
       if (pin) pin.classList.add('active');
 
+      const cardEl = document.getElementById('homeProjectCard');
+      if (cardEl) cardEl.classList.remove('collapsed');
+
       if (focusCamera && item.pos3D) {
         const canvas = document.getElementById('homeStudioCanvas');
         const targetZoom = item.targetZoom || 1.35;
@@ -1281,7 +1380,7 @@
     function resetHomeStudio() {
       homeLightOn = true;
       document.getElementById('homeLightsStatus').textContent = 'ON';
-      selectHomeHotspot('workstation', false);
+      collapseHomeHotspots();
       animateCameraTo(1.0, 0, 0, 0, Math.PI / 6);
     }
 
@@ -1295,6 +1394,7 @@
       let startMouseX = 0, startMouseY = 0;
       let startPanX = 0, startPanY = 0;
       let startYaw = 0, startPitch = Math.PI / 6;
+      let movedDuringDrag = false;
 
       // Prevent browser native middle-click auto-scroll and right-click context menu on canvas
       viewport.addEventListener('auxclick', (e) => {
@@ -1306,6 +1406,8 @@
 
       viewport.addEventListener('mousedown', (e) => {
         if (e.target.closest('.home-pin') || e.target.closest('.home-project-card') || e.target.closest('.studio-nav-hud')) return;
+
+        movedDuringDrag = false;
 
         // Middle mouse button (e.button === 1), Right mouse button (e.button === 2), or Shift + Left Click -> 360° 3D Orbit Rotation!
         if (e.button === 1 || e.button === 2 || (e.button === 0 && e.shiftKey)) {
@@ -1332,6 +1434,9 @@
 
       window.addEventListener('mousemove', (e) => {
         if (!dragMode) return;
+        const dist = Math.hypot(e.clientX - startMouseX, e.clientY - startMouseY);
+        if (dist > 4) movedDuringDrag = true;
+
         if (dragMode === 'orbit') {
           const dx = e.clientX - startMouseX;
           const dy = e.clientY - startMouseY;
@@ -1350,8 +1455,12 @@
         }
       });
 
-      window.addEventListener('mouseup', () => {
+      window.addEventListener('mouseup', (e) => {
         if (dragMode) {
+          // If clicked on empty canvas without dragging, collapse open hotspot labels
+          if (dragMode === 'pan' && !movedDuringDrag && !e.target.closest('.home-pin') && !e.target.closest('.home-project-card') && !e.target.closest('.studio-nav-hud')) {
+            collapseHomeHotspots();
+          }
           dragMode = null;
           viewport.classList.remove('dragging');
           viewport.style.cursor = '';
@@ -1409,7 +1518,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      selectHomeHotspot('workstation', false);
+      collapseHomeHotspots();
       renderHomeStudio();
       initHomeStudioInteractions();
     });
