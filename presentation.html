@@ -850,6 +850,135 @@
       margin-bottom: 2px;
     }
 
+    /* Mobile & Tablet Responsive Layout */
+    @media (max-width: 960px) {
+      body {
+        padding: 14px 12px 48px;
+      }
+      .top-toolbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 14px;
+        position: relative;
+        top: 0;
+      }
+      .toolbar-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+      }
+      .slide {
+        height: auto;
+        min-height: auto;
+        padding: 32px 24px 28px;
+      }
+      .grid-2, .grid-3, .slide-studio-preview, .doc-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .docs-deck-container {
+        padding: 22px 16px;
+      }
+      .pres-studio-topbar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 14px !important;
+      }
+      .studio-nav-hud {
+        padding: 8px 14px;
+      }
+      .hud-hint {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4px;
+        white-space: normal;
+        font-size: 10px;
+      }
+      #presStudioViewport {
+        height: 440px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .view-tabs {
+        width: 100%;
+        display: flex;
+      }
+      .view-tab-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 7px 8px;
+        font-size: 11px;
+      }
+      .btn {
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+      .slide {
+        padding: 24px 16px 20px;
+      }
+      .slide-title {
+        font-size: 22px !important;
+      }
+      .main-hero-title {
+        font-size: 28px;
+      }
+      .title-monogram {
+        font-size: 36px;
+      }
+      .hero-meta-grid {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .flow-diagram {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .pres-studio-title {
+        font-size: 13px !important;
+        flex-wrap: wrap;
+      }
+      .pres-studio-btns {
+        flex-wrap: wrap;
+        gap: 6px !important;
+        width: 100%;
+      }
+      .pres-studio-btn {
+        font-size: 10px !important;
+        padding: 5px 9px !important;
+      }
+      .studio-nav-hud {
+        padding: 6px 12px;
+        gap: 4px;
+      }
+      .hud-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+      }
+      #presStudioViewport {
+        height: 380px !important;
+      }
+      .pres-pin-dot {
+        width: 19px;
+        height: 19px;
+        font-size: 8.5px;
+      }
+      .pres-pin.active .pres-pin-label {
+        max-width: 200px;
+        font-size: 10px;
+      }
+      .pres-project-card {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        width: auto;
+        padding: 10px 12px;
+        max-height: 60%;
+        overflow-y: auto;
+      }
+    }
+
     /* Print / PDF Mode */
     @media print {
       body {
@@ -1701,18 +1830,39 @@
       animatePresCameraTo(presCamPanX, presCamPanY, presCamZoom, nextQuarter, presCamPitch);
     }
 
+    function getPresBaseScale(cw, ch) {
+      const fitRatio = Math.min(1, (cw * 0.92) / 670, (ch * 0.88) / 500);
+      return 1.95 * fitRatio;
+    }
+
+    function syncPresCanvasSize() {
+      const viewport = document.getElementById('presStudioViewport');
+      const canvas = document.getElementById('presStudioCanvas');
+      if (!viewport || !canvas) return;
+      const cw = Math.max(280, Math.round(viewport.clientWidth || 1280));
+      const ch = Math.max(260, Math.round(viewport.clientHeight || 600));
+      if (canvas.width !== cw || canvas.height !== ch) {
+        canvas.width = cw;
+        canvas.height = ch;
+      }
+    }
+
     function renderPresStudio() {
       const canvas = document.getElementById('presStudioCanvas');
       if (!canvas) return;
+      syncPresCanvasSize();
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       const ROOM_SIZE = 184, WALL_HEIGHT = 158, WALL_THICK = 9, SLAB_THICK = 10;
       const ROOM_CENTER = ROOM_SIZE / 2;
 
-      const scale = 1.95 * presCamZoom;
-      const originX = canvas.width * 0.46 + presCamPanX;
-      const originY = canvas.height * 0.60 + presCamPanY;
+      const baseScale = getPresBaseScale(canvas.width, canvas.height);
+      const scale = baseScale * presCamZoom;
+      const origXRatio = canvas.width < 640 ? 0.50 : 0.46;
+      const origYRatio = canvas.width < 640 ? 0.58 : 0.60;
+      const originX = canvas.width * origXRatio + presCamPanX;
+      const originY = canvas.height * origYRatio + presCamPanY;
       const ISO_COS = Math.cos(Math.PI / 6);
       const sinPitch = Math.sin(presCamPitch);
       const cosPitch = Math.cos(presCamPitch);
@@ -2227,9 +2377,14 @@
       }
 
       if (autoFocus && item.pos3D) {
+        syncPresCanvasSize();
         const canvas = document.getElementById('presStudioCanvas');
-        const targetZoom = item.targetZoom || 1.35;
-        const scale = 1.95 * targetZoom;
+        const cw = canvas ? canvas.width : 1280;
+        const ch = canvas ? canvas.height : 600;
+        const isMobile = cw < 640;
+        const targetZoom = isMobile ? 1.15 : (item.targetZoom || 1.35);
+        const baseScale = getPresBaseScale(cw, ch);
+        const scale = baseScale * targetZoom;
         const ROOM_CENTER = 92;
         const cosYaw = Math.cos(presCamYaw), sinYaw = Math.sin(presCamYaw);
         const cx = item.pos3D.x - ROOM_CENTER, cz = item.pos3D.z - ROOM_CENTER;
@@ -2240,10 +2395,11 @@
         const yScale = Math.cos(presCamPitch) / ISO_COS;
         const offsetX = (rx - rz) * ISO_COS * scale;
         const offsetY = (rx + rz) * sinPitch * scale - item.pos3D.y * yScale * scale;
-        const cw = canvas ? canvas.width : 1280;
-        const ch = canvas ? canvas.height : 600;
-        const targetPanX = (cw * 0.44 - cw * 0.46) - offsetX;
-        const targetPanY = (ch * 0.50 - ch * 0.60) - offsetY;
+        const origXRatio = isMobile ? 0.50 : 0.46;
+        const origYRatio = isMobile ? 0.58 : 0.60;
+        const targetCenterY = isMobile ? 0.34 : 0.50;
+        const targetPanX = (cw * (isMobile ? 0.50 : 0.44) - cw * origXRatio) - offsetX;
+        const targetPanY = (ch * targetCenterY - ch * origYRatio) - offsetY;
         animatePresCameraTo(targetPanX, targetPanY, targetZoom, presCamYaw, presCamPitch);
       }
     }
@@ -2356,6 +2512,65 @@
         updatePresZoomReadout();
         renderPresStudio();
       }, { passive: false });
+
+      // Touch Drag Support for Mobile/Tablet (1 finger pan, 2 fingers pinch-zoom + orbit rotate)
+      let startPinchDist = 0;
+      let startPinchZoom = 1.0;
+
+      viewport.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.pres-pin') || e.target.closest('.pres-project-card') || e.target.closest('.studio-nav-hud')) return;
+        if (e.touches.length === 1) {
+          dragMode = 'pan';
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+          startPanX = presCamPanX;
+          startPanY = presCamPanY;
+        } else if (e.touches.length === 2) {
+          dragMode = 'orbit';
+          dragStartX = (e.touches[0].clientX + e.touches[1].clientX) * 0.5;
+          dragStartY = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
+          startYaw = presCamYaw;
+          startPitch = presCamPitch;
+          startPinchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          startPinchZoom = presCamZoom;
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        if (dragMode === 'pan' && e.touches.length === 1) {
+          const rect = viewport.getBoundingClientRect();
+          const scaleX = canvas.width / rect.width;
+          const scaleY = canvas.height / rect.height;
+          presCamPanX = startPanX + (e.touches[0].clientX - dragStartX) * scaleX;
+          presCamPanY = startPanY + (e.touches[0].clientY - dragStartY) * scaleY;
+          renderPresStudio();
+        } else if (dragMode === 'orbit' && e.touches.length === 2) {
+          const mx = (e.touches[0].clientX + e.touches[1].clientX) * 0.5;
+          const my = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
+          presCamYaw = startYaw + (mx - dragStartX) * 0.0085;
+          presCamPitch = Math.max(0.20, Math.min(1.05, startPitch + (my - dragStartY) * 0.0055));
+          const curDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (startPinchDist > 10) {
+            presCamZoom = Math.max(0.50, Math.min(2.6, startPinchZoom * (curDist / startPinchDist)));
+          }
+          updatePresZoomReadout();
+          renderPresStudio();
+        }
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', () => {
+        dragMode = null;
+      });
+
+      window.addEventListener('resize', () => {
+        renderPresStudio();
+      });
     });
   </script>
 </body>

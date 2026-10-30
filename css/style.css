@@ -1350,23 +1350,77 @@ footer {
 }
 
 @media (max-width: 640px) {
+  body {
+    padding: 0 14px;
+  }
   header {
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     align-items: flex-start;
+    padding: 22px 0 16px;
+    margin-bottom: 24px;
+  }
+  .nav-left {
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+  }
+  .hero-statement {
+    padding: 16px 0 28px;
+  }
+  .hero-statement h1 {
+    font-size: 25px;
+  }
+  .hero-statement p {
+    font-size: 13.5px;
+  }
+  .filter-bar {
+    gap: 14px;
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+  }
+  .filter-btn {
+    font-size: 11px;
+  }
+  .portfolio-feed {
+    gap: 56px;
+    margin-bottom: 64px;
+  }
+  .featured-title {
+    font-size: 26px;
+  }
+  .featured-media img {
+    height: 240px;
   }
   .grid-row {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cv-entry-head {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .modal-overlay {
+    padding: 12px;
   }
   .modal-img-container {
-    height: 280px;
+    height: 230px;
   }
   .modal-body {
-    padding: 24px;
+    padding: 20px 18px 24px;
+  }
+  .modal-title {
+    font-size: 23px;
   }
   footer {
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     align-items: flex-start;
+    padding: 32px 0 44px;
   }
 }

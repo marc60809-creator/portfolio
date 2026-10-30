@@ -454,15 +454,134 @@
     }
 
     @media (max-width: 900px) {
+      .home-studio-topbar {
+        padding: 12px 16px;
+      }
+      .studio-nav-hud {
+        padding: 8px 16px;
+      }
+      .hud-hint {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 4px;
+        white-space: normal;
+        font-size: 10.5px;
+      }
       .home-studio-viewport {
-        height: 520px;
+        height: 460px;
       }
       .home-project-card {
-        width: 260px;
-        padding: 14px;
+        width: 280px;
+        padding: 12px 14px;
       }
       .home-sheet-stamp {
         display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .home-studio-card {
+        border-radius: 10px;
+        margin-bottom: 32px !important;
+      }
+      .home-studio-topbar {
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .home-studio-title {
+        font-size: 13px;
+        gap: 8px;
+        flex-wrap: wrap;
+        line-height: 1.35;
+      }
+      .home-studio-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+      }
+      .home-studio-btns {
+        gap: 6px;
+        width: 100%;
+      }
+      .home-studio-btn {
+        font-size: 10px;
+        padding: 5px 9px;
+        letter-spacing: 0.4px;
+      }
+      .studio-nav-hud {
+        padding: 6px 12px;
+        gap: 4px;
+      }
+      .hud-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+      }
+      .hud-zoom-label {
+        min-width: 36px;
+        font-size: 10px;
+      }
+      .hud-divider {
+        height: 15px;
+        margin: 0 2px;
+      }
+      .hud-hint {
+        font-size: 10px;
+        line-height: 1.35;
+      }
+      .home-studio-viewport {
+        height: 380px;
+      }
+      .home-pin {
+        transform: translate(-10px, -10px);
+      }
+      .home-pin-dot {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+        border-width: 1.5px;
+      }
+      .home-pin.active .home-pin-label {
+        max-width: 205px;
+        font-size: 10.5px;
+        padding: 3px 9px 3px 4px;
+        margin-left: 5px;
+      }
+      .home-pin-thumb {
+        width: 18px;
+        height: 18px;
+      }
+      .home-project-card {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        width: auto;
+        padding: 10px 12px 12px;
+        max-height: 62%;
+        overflow-y: auto;
+      }
+      .home-card-media {
+        height: 104px;
+        margin-bottom: 8px;
+      }
+      .home-card-thumb-item {
+        width: 40px;
+        height: 28px;
+      }
+      .home-card-title {
+        font-size: 14.5px;
+      }
+      .home-card-sub {
+        font-size: 10px;
+        margin-bottom: 6px;
+      }
+      .home-card-desc {
+        font-size: 11.5px;
+        line-height: 1.45;
+        margin-bottom: 10px;
+      }
+      .home-card-btn {
+        padding: 8px 12px;
+        font-size: 11px;
       }
     }
   </style>
@@ -960,14 +1079,33 @@
       }
     }
 
+    function getHomeBaseScale(cw, ch) {
+      const fitRatio = Math.min(1, (cw * 0.92) / 670, (ch * 0.88) / 500);
+      return 2.05 * fitRatio;
+    }
+
+    function syncHomeCanvasSize() {
+      const viewport = document.getElementById('homeStudioViewport');
+      const canvas = document.getElementById('homeStudioCanvas');
+      if (!viewport || !canvas) return;
+      const cw = Math.max(280, Math.round(viewport.clientWidth || 1360));
+      const ch = Math.max(260, Math.round(viewport.clientHeight || 640));
+      if (canvas.width !== cw || canvas.height !== ch) {
+        canvas.width = cw;
+        canvas.height = ch;
+      }
+    }
+
     function zoomHomeStudio(factor, centerX, centerY) {
       const canvas = document.getElementById('homeStudioCanvas');
       const prevZoom = camZoom;
-      camZoom = Math.max(0.55, Math.min(2.4, camZoom * factor));
+      camZoom = Math.max(0.50, Math.min(2.6, camZoom * factor));
       if (canvas && centerX !== undefined && centerY !== undefined) {
         const ratio = camZoom / prevZoom;
-        const cx = centerX - canvas.width * 0.45;
-        const cy = centerY - canvas.height * 0.62;
+        const origXRatio = canvas.width < 640 ? 0.50 : 0.46;
+        const origYRatio = canvas.width < 640 ? 0.58 : 0.60;
+        const cx = centerX - canvas.width * origXRatio;
+        const cy = centerY - canvas.height * origYRatio;
         camPanX = cx - (cx - camPanX) * ratio;
         camPanY = cy - (cy - camPanY) * ratio;
       }
@@ -993,13 +1131,16 @@
     function renderHomeStudio() {
       const canvas = document.getElementById('homeStudioCanvas');
       if (!canvas) return;
+      syncHomeCanvasSize();
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      const baseScale = 2.05;
+      const baseScale = getHomeBaseScale(canvas.width, canvas.height);
       const scale = baseScale * camZoom;
-      const originX = canvas.width * 0.46 + camPanX;
-      const originY = canvas.height * 0.60 + camPanY;
+      const origXRatio = canvas.width < 640 ? 0.50 : 0.46;
+      const origYRatio = canvas.width < 640 ? 0.58 : 0.60;
+      const originX = canvas.width * origXRatio + camPanX;
+      const originY = canvas.height * origYRatio + camPanY;
 
       const ISO_COS = Math.cos(Math.PI / 6);
       const sinPitch = Math.sin(camPitch);
@@ -1686,9 +1827,14 @@
       if (cardEl) cardEl.classList.remove('collapsed');
 
       if (focusCamera && item.pos3D) {
+        syncHomeCanvasSize();
         const canvas = document.getElementById('homeStudioCanvas');
-        const targetZoom = item.targetZoom || 1.35;
-        const scale = 2.05 * targetZoom;
+        const cw = canvas ? canvas.width : 1360;
+        const ch = canvas ? canvas.height : 640;
+        const isMobile = cw < 640;
+        const targetZoom = isMobile ? 1.15 : (item.targetZoom || 1.35);
+        const baseScale = getHomeBaseScale(cw, ch);
+        const scale = baseScale * targetZoom;
         const ROOM_CENTER = 92;
         const cosYaw = Math.cos(camYaw), sinYaw = Math.sin(camYaw);
         const cx = item.pos3D.x - ROOM_CENTER, cz = item.pos3D.z - ROOM_CENTER;
@@ -1699,10 +1845,11 @@
         const yScale = Math.cos(camPitch) / ISO_COS;
         const offsetX = (rx - rz) * ISO_COS * scale;
         const offsetY = (rx + rz) * sinPitch * scale - item.pos3D.y * yScale * scale;
-        const cw = canvas ? canvas.width : 1360;
-        const ch = canvas ? canvas.height : 640;
-        const targetPanX = (cw * 0.44 - cw * 0.46) - offsetX;
-        const targetPanY = (ch * 0.50 - ch * 0.60) - offsetY;
+        const origXRatio = isMobile ? 0.50 : 0.46;
+        const origYRatio = isMobile ? 0.58 : 0.60;
+        const targetCenterY = isMobile ? 0.34 : 0.50;
+        const targetPanX = (cw * (isMobile ? 0.50 : 0.44) - cw * origXRatio) - offsetX;
+        const targetPanY = (ch * targetCenterY - ch * origYRatio) - offsetY;
         animateCameraTo(targetZoom, targetPanX, targetPanY, camYaw, camPitch);
       }
     }
@@ -1813,8 +1960,12 @@
         zoomHomeStudio(factor, mouseX, mouseY);
       }, { passive: false });
 
-      // Touch Drag Support for Mobile/Tablet (1 finger pan, 2 fingers orbit rotate)
+      // Touch Drag Support for Mobile/Tablet (1 finger pan, 2 fingers pinch-zoom + orbit rotate)
+      let startPinchDist = 0;
+      let startPinchZoom = 1.0;
+
       viewport.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.home-pin') || e.target.closest('.home-project-card') || e.target.closest('.studio-nav-hud')) return;
         if (e.touches.length === 1) {
           dragMode = 'pan';
           startMouseX = e.touches[0].clientX;
@@ -1827,6 +1978,11 @@
           startMouseY = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
           startYaw = camYaw;
           startPitch = camPitch;
+          startPinchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          startPinchZoom = camZoom;
         }
       }, { passive: true });
 
@@ -1843,6 +1999,13 @@
           const my = (e.touches[0].clientY + e.touches[1].clientY) * 0.5;
           camYaw = startYaw + (mx - startMouseX) * 0.0085;
           camPitch = Math.max(0.20, Math.min(1.05, startPitch + (my - startMouseY) * 0.0055));
+          const curDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (startPinchDist > 10) {
+            camZoom = Math.max(0.50, Math.min(2.6, startPinchZoom * (curDist / startPinchDist)));
+          }
           updateZoomUI();
           renderHomeStudio();
         }
@@ -1852,6 +2015,10 @@
         dragMode = null;
       });
     }
+
+    window.addEventListener('resize', () => {
+      renderHomeStudio();
+    });
 
     window.addEventListener('DOMContentLoaded', () => {
       collapseHomeHotspots();
