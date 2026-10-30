@@ -195,22 +195,23 @@
         {
           "id": "voute-gallery-bistro",
           "title": "Jingmei VOUTE: Gallery & Bistro (景美藝廊複合餐酒館)",
-          "subtitle": "5-Story Masonry Arch Atrium, Cultural Shop & Rooftop Sky Bar",
+          "subtitle": "5-Story Masonry Arch Atrium, Floating Spherical Installations & Rooftop Sky Bar",
           "year": 2022,
           "category": "architectural",
           "location": "Jingmei, Taipei",
           "area": "980 m² (1F–5F & RFL)",
-          "summary": "Vertical cultural composite integrating 1FL Cultural & Creative Shop, 2FL Art Gallery, 3FL–4FL Double/Triple-Height Vaulted Atrium, 5FL Bistro, and RFL Rooftop Sky Bar framed by red brick arches.",
-          "image": "./assets/studio/voute_gallery_atrium.jpg",
+          "summary": "Vertical cultural composite integrating 1FL Cultural & Creative Shop, 2FL Art Gallery, 3FL–4FL Double/Triple-Height Vaulted Red-Brick Atrium with suspended spherical woven installations, 5FL Bistro, and RFL Rooftop Sky Bar.",
+          "image": "./assets/studio/voute_atrium_spheres.jpg",
           "gallery": [
+            "./assets/studio/voute_atrium_spheres.jpg",
             "./assets/studio/voute_gallery_atrium.jpg",
             "./assets/studio/voute_axon_p09.jpg",
             "./assets/studio/voute_section.jpg",
             "./assets/studio/voute_bistro_p11.jpg"
           ],
           "details": {
-            "concept": "Stacking public-to-intimate cultural programs vertically while carving a dramatic multi-story vaulted atrium hung with floating spherical luminaires that draw daylight deep into the gallery levels.",
-            "materials": "Hand-laid red clay masonry arches, warm travertine stone, blackened steel mezzanine bridges, rooftop garden paving.",
+            "concept": "Stacking public-to-intimate cultural programs vertically while carving a dramatic multi-story red-brick arched atrium hung with floating spherical woven luminaires that draw daylight deep into the 2FL–4FL gallery levels.",
+            "materials": "Hand-laid red clay masonry arches, translucent spherical woven fiber installations, warm travertine stone, white steel mezzanine bridges, rooftop sky bar.",
             "awards": "NTUST Architectural Design Studio VOUTE (2022)"
           }
         },

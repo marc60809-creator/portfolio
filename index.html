@@ -691,11 +691,11 @@
           </span>
         </div>
 
-        <div class="home-pin" id="home-pin-wardrobe" onclick="toggleHomeHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • 景美 VOUTE 藝廊 & 新竹校區 NDCC">
+        <div class="home-pin" id="home-pin-wardrobe" onclick="toggleHomeHotspot('wardrobe', event)" title="點擊展開 / 收合：06 • 景美 VOUTE 藝廊複合餐酒館">
           <span class="home-pin-dot">06</span>
           <span class="home-pin-label">
-            <img class="home-pin-thumb" src="./assets/studio/voute_gallery_atrium.jpg" alt="VOUTE & NDCC">
-            06 • 景美 VOUTE 藝廊 &amp; 新竹校區 NDCC
+            <img class="home-pin-thumb" src="./assets/studio/voute_atrium_spheres.jpg" alt="Jingmei VOUTE Gallery & Bistro">
+            06 • 景美藝廊複合餐酒館 (VOUTE)
           </span>
         </div>
 
@@ -927,12 +927,13 @@
       },
       wardrobe: {
         projectId: 'voute-gallery-bistro',
-        tag: 'SELECTED PROJECT • 06 • VOUTE ATRIUM & NDCC CAMPUS',
-        title: '景美 VOUTE 藝廊複合餐酒館 & 台科大新竹校區 (NDCC)',
-        sub: 'JINGMEI & HSINCHU • 2022–2023 • MASONRY ARCH & SUNSHINE CAMPUS',
-        desc: '景美 5 層樓紅磚拱挑高藝廊複合餐酒館（1FL文創、2FL–4FL挑高藝廊、5FL餐酒館、RFL空中酒吧）與台科大新竹校區日照分析校園設計。',
-        image: './assets/studio/voute_gallery_atrium.jpg',
+        tag: 'SELECTED PROJECT • 06 • JINGMEI GALLERY & BISTRO',
+        title: '景美藝廊複合餐酒館 (Jingmei VOUTE: Gallery & Bistro)',
+        sub: 'JINGMEI, TAIPEI • 2022–2023 • 5F MASONRY ARCH ATRIUM & SPHERES',
+        desc: '景美 5 層樓紅磚拱挑高藝廊複合餐酒館：3FL–4FL 藝廊挑高中庭懸掛漂浮編織球體裝置，串聯 1FL 文創商店、2FL 本土藝廊、5FL 餐酒館與 RFL 空中酒吧（含台科大新竹校區 NDCC 日照設計）。',
+        image: './assets/studio/voute_atrium_spheres.jpg',
         gallery: [
+          './assets/studio/voute_atrium_spheres.jpg',
           './assets/studio/voute_gallery_atrium.jpg',
           './assets/studio/voute_axon_p09.jpg',
           './assets/studio/voute_section.jpg',
@@ -941,14 +942,14 @@
           './assets/studio/ndcc_plans_p13.jpg',
           './assets/studio/ndcc_renders_p14.jpg'
         ],
-        year: 2023,
+        year: 2022,
         category: 'architectural',
-        location: 'Jingmei, Taipei & NTUST Hsinchu Campus',
-        area: '980 m² (VOUTE) & 4,800 m² (NDCC)',
+        location: 'Jingmei, Taipei (台北景美)',
+        area: '980 m² (1FL–5FL & RFL Sky Bar)',
         details: {
-          concept: 'VOUTE 透過連續紅磚拋物線拱廊與三、四樓挑高漂浮球體燈飾中庭，串聯文創商店、本土藝術展覽與空中酒吧；NDCC 台科大新竹校區則以 10:00 與 14:00 太陽軌跡日照分析（Sunshine Analysis）形塑綠意中庭與教學研究量體。',
-          materials: 'Hand-laid red clay masonry arches, suspended spherical luminaires, fair-faced concrete sun-breakers, low-E campus glazing.',
-          awards: 'NTUST Design Studio Projects: VOUTE (2022) & NDCC Hsinchu Campus (2023)'
+          concept: 'VOUTE 景美藝廊複合餐酒館透過連續紅磚拱廊與三、四樓藝廊挑高中庭懸掛之多顆半透明漂浮編織球體裝置，將自然天光與立體雕塑視野引入展覽空間，垂直串聯 1FL 文創商店、2FL–4FL 藝廊、5FL 餐酒館與 RFL 面河空中酒吧。',
+          materials: '紅磚砌築拱廊 (Red Clay Masonry Arches)、挑高中庭漂浮編織球體裝置 (Suspended Woven Sphere Luminaires)、白色鋼構空橋與平台.',
+          awards: 'NTUST Architectural Design Studio • Jingmei VOUTE Gallery & Bistro (2022)'
         },
         pos3D: { x: 22, y: 78, z: 20 },
         targetZoom: 1.35
@@ -1380,18 +1381,22 @@
         // ============================================================================
 
         // CORNER 06 (Back-Left Corner: bx 0.4..3.5, bz 0.3..3.2)
-        // [06 • 景美 VOUTE 紅磚拱藝廊複合餐酒館 & 台科大新竹校區 NDCC]
-        // 5-Story Red-Brick Arch Atrium Cutaway Model with Floating Spherical Pendant Lights
+        // [06 • 景美藝廊複合餐酒館 VOUTE — 紅磚拱廊挑高中庭與漂浮球體裝置]
         addVoxel(0.4, 0, 0.3, 3.1, 0.6, 2.9, '#c29d66', '#9e7c4b', '#87693e', 2); // Timber model plinth
-        // Red-brick masonry outer walls & arch piers
-        addVoxel(0.5, 0.6, 0.4, 2.9, 5.2, 0.5, '#b45309', '#9a3412', '#7c2d12', 4); // Back brick wall
-        addVoxel(0.5, 0.6, 0.4, 0.5, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 5); // Left brick arch pier
-        addVoxel(2.9, 0.6, 0.4, 0.5, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 6); // Right brick arch pier
-        addVoxel(0.5, 5.8, 0.4, 2.9, 0.5, 2.6, '#d97706', '#b45309', '#9a3412', 10); // Rooftop Sky Bar cornice
-        // Floating Glowing Spherical Atrium Luminaires (from VOUTE Page 10)
-        addVoxel(1.3, 3.8, 1.3, 0.65, 0.65, 0.65, '#fef08a', '#fde047', '#facc15', 12);
-        addVoxel(2.1, 2.6, 1.6, 0.55, 0.55, 0.55, '#ffffff', '#fef08a', '#fde047', 14);
-        addVoxel(1.5, 6.3, 1.2, 0.9, 0.9, 0.9,
+        // Red-brick masonry outer walls & arch piers (matching the red-brick arches in voute_atrium_spheres.jpg)
+        addVoxel(0.5, 0.6, 0.4, 2.9, 5.2, 0.45, '#b45309', '#9a3412', '#7c2d12', 4); // Back red-brick wall
+        addVoxel(0.5, 0.6, 0.4, 0.45, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 5); // Left red-brick arch pier
+        addVoxel(2.95, 0.6, 0.4, 0.45, 5.2, 2.6, '#b45309', '#9a3412', '#7c2d12', 6); // Right red-brick arch pier
+        // White gallery mezzanine bridge & railing inside atrium
+        addVoxel(0.95, 3.2, 0.85, 2.0, 0.22, 0.9, '#f8fafc', '#e2e8f0', '#cbd5e1', 8);
+        addVoxel(0.5, 5.8, 0.4, 2.9, 0.45, 2.6, '#d97706', '#b45309', '#9a3412', 10); // Rooftop Sky Bar cornice
+        // Cluster of 5 Floating Translucent Woven Spherical Installations inside the Atrium
+        addVoxel(1.15, 4.3, 1.15, 0.58, 0.58, 0.58, '#ffffff', '#e7e5e4', '#d6d3d1', 12);
+        addVoxel(1.85, 3.6, 1.45, 0.68, 0.68, 0.68, '#fafaf9', '#d6d3d1', '#a8a29e', 13);
+        addVoxel(1.35, 2.5, 1.75, 0.52, 0.52, 0.52, '#ffffff', '#e7e5e4', '#d6d3d1', 14);
+        addVoxel(2.15, 4.7, 1.05, 0.48, 0.48, 0.48, '#fef3c7', '#fde68a', '#d6d3d1', 15);
+        addVoxel(1.65, 1.6, 1.35, 0.56, 0.56, 0.56, '#fafaf9', '#e7e5e4', '#d6d3d1', 14);
+        addVoxel(1.5, 6.25, 1.2, 0.85, 0.85, 0.85,
           homeLightOn ? '#fef08a' : '#38bdf8',
           homeLightOn ? '#facc15' : '#0284c7',
           homeLightOn ? '#eab308' : '#0369a1',
