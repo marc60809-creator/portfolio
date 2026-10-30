@@ -85,8 +85,7 @@
       "image": "./assets/studio/mooao_sun_wind_analysis.jpg",
       "gallery": [
         "./assets/studio/mooao_sun_wind_analysis.jpg",
-        "./assets/studio/mooao_forma_boards.jpg",
-        "./assets/studio/mooao_restaurant_sun.jpg"
+        "./assets/studio/mooao_forma_boards.jpg"
       ],
       "details": {
         "concept": "Analyzing thermal radiation stark contrast between exposed coastal rock surfaces (34.1°C) and shaded vegetative/water zones (<28.9°C). Autodesk Forma Sun Hours (6/21 vs 12/21) and Wind Analysis guided the high-albedo white landform roof curvature to shelter visitors while channeling natural south-north sea breezes.",
@@ -179,9 +178,9 @@
       "image": "./assets/studio/curved_hostel_render.png",
       "gallery": [
         "./assets/studio/curved_hostel_render.png",
-        "./assets/studio/curved_hostel_exterior.jpg",
         "./assets/studio/curved_plans1_p19.jpg",
-        "./assets/studio/curved_plans2_p20.jpg"
+        "./assets/studio/curved_plans2_p20.jpg",
+        "./assets/studio/curved_floorplan_1f2f.jpg"
       ],
       "details": {
         "concept": "The continuous sinuous floorplates serve as passive solar sunshades for the guest rooms while creating fluid indoor-outdoor pocket terraces overlooking Zhongshan's tree-lined avenues.",
@@ -229,8 +228,7 @@
           "gallery": [
             "./assets/studio/gulin_materials_p15.jpg",
             "./assets/studio/gulin_courtyard_p17.jpg",
-            "./assets/studio/gulin_plans_p16.jpg",
-            "./assets/studio/gulin_garden_axon.jpg"
+            "./assets/studio/gulin_plans_p16.jpg"
           ],
           "details": {
             "concept": "Replacing rigid institutional corridors with three looping cylindrical volumes that embrace pocket trees, sunken amphitheaters, curved reading tables, and an elevated rooftop play promenade.",

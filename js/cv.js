@@ -9,7 +9,7 @@ async function initCV() {
   if (!container && !studioMount) return;
 
   try {
-    const response = await fetch('./data/cv.json');
+    const response = await fetch('./data/cv.json?v=16', { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
 

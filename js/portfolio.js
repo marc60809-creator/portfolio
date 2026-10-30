@@ -14,7 +14,7 @@ async function initPortfolio() {
   if (!feedContainer || !filterContainer) return;
 
   try {
-    const response = await fetch('./data/projects.json');
+    const response = await fetch('./data/projects.json?v=16', { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     allProjectsData = await response.json();
 
