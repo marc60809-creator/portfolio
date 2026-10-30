@@ -252,6 +252,68 @@
       margin-top: 8px;
     }
 
+    .slide-studio-preview {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+      height: 100%;
+    }
+
+    .slide-studio-preview .studio-info-col {
+      flex: 1.1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .slide-studio-preview .studio-visual-col {
+      flex: 1.4;
+      background: #12161c;
+      border: 1px solid #2d3442;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    .studio-visual-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .studio-visual-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(249, 115, 22, 0.9);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .studio-visual-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(10,13,18,0.92) 50%);
+      padding: 24px 16px 14px;
+      font-size: 11.5px;
+      color: #d1d5db;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
     /* Workflow Diagram Box */
     .flow-diagram {
       background: #0f1217;
@@ -471,29 +533,46 @@
         </div>
 
         <div class="slide-body">
-          <div class="grid-2">
-            <div class="feature-card">
-              <h3>🏛️ Page 1: Selected Works (index.html)</h3>
-              <ul>
-                <li><strong>Authentic Research:</strong> BIM-to-BEM EnergyPlus calibration, Autodesk Forma microclimate simulation, and Songshan exhibition curation.</li>
-                <li><strong>Instantaneous Filtering:</strong> Filter by <em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em>, or <em>All</em> without page reload.</li>
-                <li><strong>Interactive Lightbox:</strong> Deep-dive inspection showing floor areas, tectonic concepts, materials, and awards with image-error fallback.</li>
-              </ul>
+          <div class="slide-studio-preview">
+            <div class="studio-info-col">
+              <div class="feature-card" style="padding: 16px 20px;">
+                <h3 style="margin-bottom: 8px;">🏛️ Page 1: Selected Works (index.html)</h3>
+                <ul style="margin-top: 4px;">
+                  <li><strong>Authentic Research:</strong> BIM-to-BEM EnergyPlus calibration, Autodesk Forma microclimate, and Songshan exhibition curation.</li>
+                  <li><strong>Instantaneous Filtering:</strong> Filter by <em>BIM Science</em>, <em>Microclimate</em>, <em>Fabrication</em>, or <em>All</em> without reload.</li>
+                  <li><strong>Interactive Lightbox:</strong> Deep-dive inspection showing floor areas, tectonic concepts, materials, and awards.</li>
+                </ul>
+              </div>
+
+              <div class="feature-card" style="padding: 16px 20px;">
+                <h3 style="margin-bottom: 8px;">📄 Page 2: Curriculum Vitae (about.html)</h3>
+                <ul style="margin-top: 4px;">
+                  <li><strong>Bilingual Identity:</strong> Chu-Shian Tsau (曹楚献) with Chinese and English professional summary.</li>
+                  <li><strong>Academic & Honors:</strong> NTUST Master's research, Munich HM exchange, Da'an Mayor's Award (#1 rank).</li>
+                  <li><strong>Competency Matrix:</strong> 4 distinct skill clusters (BIM/Forma, EnergyPlus simulation, digital fabrication, licenses & IELTS 6.0).</li>
+                </ul>
+              </div>
             </div>
 
-            <div class="feature-card">
-              <h3>📄 Page 2: Curriculum Vitae (about.html)</h3>
-              <ul>
-                <li><strong>Bilingual Identity:</strong> Chu-Shian Tsau (曹楚献) with Chinese and English professional summary.</li>
-                <li><strong>Academic & Honors:</strong> NTUST Master's research, Munich HM exchange, Da'an Mayor's Award (#1 rank).</li>
-                <li><strong>Competency Matrix:</strong> 4 distinct skill clusters (BIM/Forma, EnergyPlus simulation, digital fabrication, licenses & IELTS 5.5).</li>
-              </ul>
+            <!-- Dedicated 3D Isometric Studio Room Preview Area -->
+            <div class="studio-visual-col">
+              <span class="studio-visual-badge">3D Isometric Studio • 空間研究室</span>
+              <img src="assets/studio_iso_preview.jpg" alt="3D Isometric Studio Room Preview">
+              <div class="studio-visual-caption">
+                <div>
+                  <strong style="color: #fff; font-size: 13px;">Inside the studio. (about.html)</strong><br>
+                  Interactive Hotspots • Live Lighting Toggle • Real-Time Project Modal
+                </div>
+                <div style="font-family: monospace; color: #f97316; font-size: 11px;">
+                  CANVAS: 1200×680 ISO
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="script-box">
+          <div class="script-box" style="margin-top: 16px;">
             <strong>🗣️ Part 2 建議講稿 (English Talking Point):</strong>
-            "Now moving into Part 2: demonstrating the final result. The website contains two fully realized, distinct pages. All placeholder text and Lorem ipsum were completely replaced with my actual research projects: from Revit API thermal zone automation to my solo graduation exhibition at Songshan Cultural Park. The landing page features real-time category filtering and an accessible lightbox modal, while the About page presents my bilingual identity and academic credentials."
+            "Now moving into Part 2: demonstrating the final result. The website contains two fully realized pages: the Works index with instantaneous category filtering and lightbox inspection, and the About page featuring my bilingual identity, academic credentials, and an interactive 'Inside the studio' 3D isometric room. Users can explore my architectural workstation, microclimate window, and fabrication archive through clickable 3D hotspots."
           </div>
         </div>
 
