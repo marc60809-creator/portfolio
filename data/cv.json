@@ -19,15 +19,15 @@
     "hotspots": [
       {
         "id": "workstation",
-        "name": "BIM Workstation",
-        "nameZh": "BIM 工作站與分析筆電",
-        "tag": "Selected Project",
-        "projectTitle": "BIM-to-BEM Interoperability",
-        "category": "Graduate Research Lab",
-        "image": "assets/studio/autodesk_revit_cert.jpg",
-        "previewImage": "assets/studio/mooao_forma_boards.jpg",
-        "summary": "Revit API analytical space boundaries & automated gbXML validation pipeline to EnergyPlus, reducing topological error to <5%.",
-        "summaryZh": "Revit API 空間熱區自動擷取腳本與 EnergyPlus 校準流程，降低拓撲錯誤至 5% 以下並取得 15%~25% 能耗節約。持有 Autodesk 原廠國際認證。",
+        "name": "Taipei Int'l Arch Firm & BIM",
+        "nameZh": "台北國際聯合建築師事務所 & BIM 工作站",
+        "tag": "Architectural Practice",
+        "projectTitle": "彰化銀行建城／建成分行危老重建大樓案 (B4–20F)",
+        "category": "3D 建模與動畫影片製作 & Revit BIM",
+        "image": "assets/studio/chang_hwa_bank_jiancheng.png?v=18",
+        "previewImage": "assets/studio/rec_letter_chang.jpg?v=18",
+        "summary": "Participated in the Chang Hwa Bank Jiancheng Branch Redevelopment (B4–20F SC Green Smart Building) 3D modeling & animation video production at Taipei International Architecture Firm.",
+        "summaryZh": "於台北國際聯合建築師事務所參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」之 3D 模型建模與動畫影片製作，獲張國章主持建築師極力推薦（Top 5%）。",
         "targetUrl": "index.html"
       },
       {
@@ -114,7 +114,7 @@
       "role": "Architectural & Revit BIM Intern (建築設計與 Revit BIM 實務實習生)",
       "organization": "Taipei International Architecture Firm (台北國際聯合建築師事務所 — 主持建築師：張國章建築師)",
       "responsibilities": [
-        "Chang Hwa Bank Jiancheng Branch Redevelopment (彰化銀行建城/建成分行大樓案 — 影片製作與3D建模): Participated directly in the Chang Hwa Bank Jiancheng Branch (B4–20F SC green smart office building) project, executing 3D architectural/Revit BIM modeling and producing full 3D walkthrough animation videos (參與彰化銀行建城分行之3D建模與渲染動畫影片製作).",
+        "參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」之 3D 模型建模與動畫影片製作 (Chang Hwa Bank Jiancheng Branch Redevelopment Project, B4–20F SC Smart Green Building — 3D Modeling & Walkthrough Animation Video Production).",
         "Principal Architect Top 5% Recommendation: Strongly recommended by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦：專業技能、創造力、獨立工作能力、恆心與合作態度均獲評最高等級「極為突出」).",
         "Revit 3D BIM Modeling & Model Auditing: Executed full-scale architectural design drafting (建築設計圖面繪製), Autodesk Revit 3D model construction and clash/quality auditing (Revit 3D模型建模及檢核).",
         "3D Rendering, Animation & Competition Proposals: Produced high-impact architectural 3D renderings, walkthrough animation videos (建築3D渲染圖及動畫影片製作), and comprehensive competition proposal reports (競圖報告書作業)."

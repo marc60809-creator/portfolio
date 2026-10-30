@@ -23,24 +23,25 @@
       "id": "taipei-united-architects",
       "type": "featured",
       "reverse": false,
-      "title": "Taipei International Architecture Firm (台北國際聯合建築師事務所) — 彰化銀行建城分行 & Revit BIM",
-      "subtitle": "Chang Hwa Bank Jiancheng Branch (彰化銀行建城/建成分行 B4–20F) 3D Modeling, Animation Video & BIM Auditing",
+      "title": "Taipei International Architecture Firm (台北國際聯合建築師事務所) — 彰化銀行建城／建成分行危老重建大樓案",
+      "subtitle": "參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」之 3D 模型建模與動畫影片製作 & Revit BIM",
       "year": 2025,
       "category": "computational",
       "location": "Taipei, Taiwan (Principal Architect: Chang Kuo-Chang 張國章建築師)",
-      "area": "Chang Hwa Bank Jiancheng Branch (B4–20F) & BIM Practice",
-      "summary": "Professional architectural practice at Taipei International Architecture Firm (台北國際聯合建築師事務所). Participated directly in the Chang Hwa Bank Jiancheng Branch / Building Redevelopment Project (彰化銀行建城/建成分行危老重建大樓案, B4–20F SC Green Smart Office Tower), executing Autodesk Revit 3D BIM modeling, model quality/clash auditing, 3D rendering and walkthrough animation video production (影片製作與3D建模), and competition proposal reports — earning the highest Top 5% recommendation from Principal Architect Chang Kuo-Chang.",
-      "image": "./assets/studio/rec_letter_chang.jpg",
+      "area": "彰化銀行建城／建成分行危老重建大樓案 (B4–20F 鋼骨智慧綠建築)",
+      "summary": "於台北國際聯合建築師事務所（Taipei International Architecture Firm）實務期間，參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」之 3D 模型建模與動畫影片製作；同時負責 Autodesk Revit 3D 模型建模及檢核、建築設計圖面繪製與競圖報告書作業，榮獲主持建築師張國章「極力推薦（Top 5%）」。",
+      "image": "./assets/studio/chang_hwa_bank_jiancheng.png?v=18",
       "gallery": [
-        "./assets/studio/rec_letter_chang.jpg",
-        "./assets/studio/autodesk_revit_cert.jpg",
-        "./assets/studio/cv_skills_p03.jpg",
-        "./assets/studio/rec_letter_tsaih.jpg"
+        "./assets/studio/chang_hwa_bank_jiancheng.png?v=18",
+        "./assets/studio/rec_letter_chang.jpg?v=18",
+        "./assets/studio/autodesk_revit_cert.jpg?v=18",
+        "./assets/studio/cv_skills_p03.jpg?v=18",
+        "./assets/studio/rec_letter_tsaih.jpg?v=18"
       ],
       "details": {
-        "concept": "Key project participation in the Chang Hwa Bank Jiancheng Branch Redevelopment (彰化銀行建城/建成分行大樓興建案 — 地上20層、地下4層鋼骨綠色低碳智慧辦公大樓): responsible for 3D architectural modeling, Revit BIM model auditing, and architectural animation video production (影片製作與建模), alongside graduate BIM-to-BEM interoperability automation at NTUST.",
-        "materials": "Autodesk Revit (ACU Certified), Revit API (Python), Twinmotion / Lumion 3D Animation Video Production, AutoCAD, EnergyPlus, gbXML Validation.",
-        "awards": "Chang Hwa Bank Jiancheng Branch (彰化銀行建城分行) 3D Modeling & Animation Video Production | Strongly Recommended (Top 5%) by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦)"
+        "concept": "參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」之 3D 模型建模與動畫影片製作，透過曲線玻璃帷幕與垂直遮陽格柵形塑高層智慧綠建築立面語彙，並結合 Autodesk Revit BIM 3D 建模檢核與跨專業協作。",
+        "materials": "Autodesk Revit (ACU Certified), 3D Architectural Modeling & Walkthrough Animation Video Production, Twinmotion / Lumion, Revit API (Python), AutoCAD.",
+        "awards": "參與「彰化銀行建城／建成分行危老重建大樓案（B4–20F 鋼骨智慧綠建築）」3D 模型建模與動畫影片製作｜張國章主持建築師極力推薦 (Top 5%)"
       }
     },
     {
