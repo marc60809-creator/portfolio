@@ -23,13 +23,13 @@
       "id": "taipei-united-architects",
       "type": "featured",
       "reverse": false,
-      "title": "Taipei International Architecture Firm (台北國際聯合建築師事務所) — BIM & Practice",
-      "subtitle": "Revit 3D Modeling, Clash Verification, Architectural Animation & Competition Proposals",
+      "title": "Taipei International Architecture Firm (台北國際聯合建築師事務所) — 彰化銀行建城分行 & Revit BIM",
+      "subtitle": "Chang Hwa Bank Jiancheng Branch (彰化銀行建城/建成分行 B4–20F) 3D Modeling, Animation Video & BIM Auditing",
       "year": 2025,
       "category": "computational",
       "location": "Taipei, Taiwan (Principal Architect: Chang Kuo-Chang 張國章建築師)",
-      "area": "Professional Practice & BIM-to-BEM",
-      "summary": "Professional architectural practice at Taipei International Architecture Firm (台北國際聯合建築師事務所) alongside graduate BIM-to-BEM interoperability research at NTUST. Executed full-scale Autodesk Revit 3D modeling and model auditing, architectural 3D rendering and walkthrough animations, and large-scale public competition reports, earning the highest Top 5% recommendation from Principal Architect Chang Kuo-Chang.",
+      "area": "Chang Hwa Bank Jiancheng Branch (B4–20F) & BIM Practice",
+      "summary": "Professional architectural practice at Taipei International Architecture Firm (台北國際聯合建築師事務所). Participated directly in the Chang Hwa Bank Jiancheng Branch / Building Redevelopment Project (彰化銀行建城/建成分行危老重建大樓案, B4–20F SC Green Smart Office Tower), executing Autodesk Revit 3D BIM modeling, model quality/clash auditing, 3D rendering and walkthrough animation video production (影片製作與3D建模), and competition proposal reports — earning the highest Top 5% recommendation from Principal Architect Chang Kuo-Chang.",
       "image": "./assets/studio/rec_letter_chang.jpg",
       "gallery": [
         "./assets/studio/rec_letter_chang.jpg",
@@ -38,9 +38,9 @@
         "./assets/studio/rec_letter_tsaih.jpg"
       ],
       "details": {
-        "concept": "Bridging professional architectural practice at Taipei International Architecture Firm with computational BIM-to-BEM automation. Streamlined Revit 3D family auditing, multidisciplinary clash verification, real-time 3D visualization/animation workflows, and automated gbXML analytical space extraction for EnergyPlus thermal simulation.",
-        "materials": "Autodesk Revit (ACU Certified), Revit API (Python), Twinmotion / Lumion 3D Animation, AutoCAD, EnergyPlus, gbXML Validation.",
-        "awards": "Strongly Recommended (Top 5%) by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦) | Autodesk Revit Architecture Certified User (ACU)"
+        "concept": "Key project participation in the Chang Hwa Bank Jiancheng Branch Redevelopment (彰化銀行建城/建成分行大樓興建案 — 地上20層、地下4層鋼骨綠色低碳智慧辦公大樓): responsible for 3D architectural modeling, Revit BIM model auditing, and architectural animation video production (影片製作與建模), alongside graduate BIM-to-BEM interoperability automation at NTUST.",
+        "materials": "Autodesk Revit (ACU Certified), Revit API (Python), Twinmotion / Lumion 3D Animation Video Production, AutoCAD, EnergyPlus, gbXML Validation.",
+        "awards": "Chang Hwa Bank Jiancheng Branch (彰化銀行建城分行) 3D Modeling & Animation Video Production | Strongly Recommended (Top 5%) by Principal Architect Chang Kuo-Chang (張國章主持建築師極力推薦)"
       }
     },
     {
