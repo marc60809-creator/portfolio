@@ -417,6 +417,148 @@ header {
   color: var(--text-body);
 }
 
+/* ================= 3D SPATIAL SHOWCASE ================= */
+.spatial-3d-showcase {
+  margin-top: 48px;
+  border: 1px solid var(--border-color);
+  background-color: #fafafa;
+  padding: 32px;
+  border-radius: 4px;
+}
+
+.spatial-3d-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+
+.spatial-3d-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.spatial-3d-controls-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.spatial-3d-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.spatial-3d-canvas-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+
+#spatialCanvas {
+  width: 100%;
+  max-width: 480px;
+  height: 310px;
+  display: block;
+  cursor: grab;
+  background: radial-gradient(circle at center, #ffffff 60%, #f7f7f8 100%);
+}
+
+#spatialCanvas:active {
+  cursor: grabbing;
+}
+
+.spatial-mode-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spatial-pill-btn {
+  background: #f1f1f1;
+  border: 1px solid #e0e0e0;
+  color: #555;
+  font-size: 10.5px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.spatial-pill-btn:hover {
+  background: #e5e5e5;
+  color: #111;
+}
+
+.spatial-pill-btn.active {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+.spatial-3d-text h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.spatial-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.spatial-3d-text p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+
+.spatial-specs-mini {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  color: #555;
+  line-height: 2;
+}
+
+.spatial-specs-mini strong {
+  color: #111;
+  font-weight: 500;
+}
+
+@media (max-width: 860px) {
+  .spatial-3d-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .spatial-3d-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
 .cv-section {
   display: grid;
   grid-template-columns: 260px 1fr;

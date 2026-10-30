@@ -6,7 +6,9 @@
     "location": "Taipei, Taiwan",
     "email": "marc60809@gmail.com",
     "statementEn": "Graduate researcher and computational building designer with cross-disciplinary expertise in spatial geometry and environmental engineering. Experienced in developing automated BIM-to-BEM pipelines with Revit API, executing early-stage microclimate simulations via Autodesk Forma, and implementing NSGA-II multi-objective genetic algorithms for daylight-energy optimization.",
-    "statementZh": "國立臺灣科技大學建築研究所研究生，專注於運算化建築科學（Computational Building Science）、BIM-to-BEM 互通性與多目標遺傳演算法能耗優化。具備豐富的 Revit API 自動化腳本編寫、Autodesk Forma 早期微氣候模擬及跨專業碰撞檢討實務經驗，致力於將數位分身（Digital Twin）與環境工程深度整合於永續建築中。"
+    "statementZh": "國立臺灣科技大學建築研究所研究生，專注於運算化建築科學（Computational Building Science）、BIM-to-BEM 互通性與多目標遺傳演算法能耗優化。具備豐富的 Revit API 自動化腳本編寫、Autodesk Forma 早期微氣候模擬及跨專業碰撞檢討實務經驗，致力於將數位分身（Digital Twin）與環境工程深度整合於永續建築中。",
+    "spatialPhilosophyEn": "My 3D spatial practice operates as a synthesis of algorithmic tectonic logic and environmental responsiveness. Through parametric surface discretization, daylight-guided voids, and digital twin calibrations, three-dimensional geometry is not merely formal expression, but an active thermal and atmospheric regulator mediating between structure and environment.",
+    "spatialPhilosophyZh": "我的三維空間實踐立足於演算法構造邏輯與環境自適應機能的深度融合。透過參數化曲面離散化、採光導向開口拓撲以及數位分身幾何校正，3D 空間形體不再僅是形式上的雕塑，而是調解結構荷重、微氣候風場與熱能轉換的動態介質。"
   },
   "education": [
     {
