@@ -384,19 +384,22 @@
 
     .home-card-thumbs {
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
       margin-bottom: 10px;
     }
 
     .home-card-thumb-item {
-      width: 48px;
-      height: 34px;
+      width: calc((100% - 24px) / 5);
+      min-width: 54px;
+      height: 38px;
       border-radius: 4px;
       object-fit: cover;
       cursor: pointer;
       border: 1.5px solid rgba(255,255,255,0.2);
       opacity: 0.7;
       transition: all 0.15s ease;
+      box-sizing: border-box;
     }
 
     .home-card-thumb-item:hover,
@@ -564,8 +567,9 @@
         margin-bottom: 8px;
       }
       .home-card-thumb-item {
-        width: 40px;
-        height: 28px;
+        width: calc((100% - 20px) / 5);
+        min-width: 44px;
+        height: 30px;
       }
       .home-card-title {
         font-size: 14.5px;
